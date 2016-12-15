@@ -4,12 +4,6 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+This is the website for Jay Jay Billings' research on scientific workflows for his PhD thesis in the Bredesen Center at the University of Tennessee.
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jekyll" %} /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+Jay Jay Billings is a member of the research staff at Oak Ridge National Laboratory where he leads the Scientific Software Initiative within the Computer Science and Mathematics Division.
