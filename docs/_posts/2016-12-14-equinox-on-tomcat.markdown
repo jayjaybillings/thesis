@@ -16,7 +16,7 @@ jar -xvf bridge.war
 ```
 
 which is the Document Base for the external module. The Path of the external module is web path in the browser. For bridge.war with a path of /, the default URL is
-http://localhost:8080/sp_test. 
+http://localhost:8080/sp_test. Tomcat can be started through as usual in Eclipse after the external module is committed. 
 
 [osgi]: https://www.osgi.org/
 [guide]: http://www.eclipse.org/equinox/server/http_in_container.php
