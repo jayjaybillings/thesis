@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Eclipse ICE Vaadin Client
+Bundle-SymbolicName: org.eclipse.ice.client.vaadin
+Bundle-Version: 2.2.2
+Bundle-ClassPath: WEB-INF/classes/
+Export-Package: org.eclipse.ice.client.vaadin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: javax.el,
+ javax.servlet,
+ javax.servlet.annotation;version="3.1.0",
+ javax.servlet.http,
+ javax.servlet.jsp,
+ javax.servlet.jsp.el,
+ javax.servlet.jsp.tagext,
+ org.osgi.service.http
+Web-ContextPath: /ice
+Service-Component: OSGI-INF/*.xml
+Bundle-ActivationPolicy: lazy
