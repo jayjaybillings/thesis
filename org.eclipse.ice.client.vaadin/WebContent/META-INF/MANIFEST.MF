@@ -1,19 +1,38 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Eclipse ICE Vaadin Client
-Bundle-SymbolicName: org.eclipse.ice.client.vaadin
+Bundle-SymbolicName: org.eclipse.ice.client.vaadin;singleton:=true
 Bundle-Version: 2.2.2
-Bundle-ClassPath: WEB-INF/classes/
+Bundle-ClassPath: WEB-INF/classes/,
+ WEB-INF/com.vaadin.themes.ebr-7.7.6-SNAPSHOT.jar,
+ WEB-INF/com.vaadin.widgets.ebr-7.7.6-SNAPSHOT.jar,
+ WEB-INF/lib/com.vaadin.client-compiled.ebr-7.7.6-SNAPSHOT.jar,
+ WEB-INF/lib/com.vaadin.push.ebr-7.7.6-SNAPSHOT.jar,
+ WEB-INF/lib/com.vaadin.server.ebr-7.7.6-SNAPSHOT.jar,
+ WEB-INF/lib/com.vaadin.shared.ebr-7.7.6-SNAPSHOT.jar,
+ WEB-INF/lib/jsoup-1.8.3.jar
 Export-Package: org.eclipse.ice.client.vaadin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Import-Package: javax.el,
+Import-Package: com.sun.jersey.spi.container.servlet,
+ javax.el,
  javax.servlet,
  javax.servlet.annotation;version="3.1.0",
  javax.servlet.http,
  javax.servlet.jsp,
  javax.servlet.jsp.el,
  javax.servlet.jsp.tagext,
- org.osgi.service.http
+ javax.ws.rs.core,
+ org.apache.commons.codec.binary,
+ org.eclipse.core.runtime;version="3.5.0",
+ org.eclipse.equinox.security.auth,
+ org.eclipse.ice.core.iCore,
+ org.eclipse.ice.datastructures.ICEObject,
+ org.osgi.framework;version="1.8.0",
+ org.osgi.service.component.annotations;version="1.2.0",
+ org.osgi.service.http,
+ org.slf4j
 Web-ContextPath: /ice
 Service-Component: OSGI-INF/*.xml
 Bundle-ActivationPolicy: lazy
+Require-Bundle: javax.servlet;bundle-version="3.1.0",
+ org.eclipse.equinox.http.registry

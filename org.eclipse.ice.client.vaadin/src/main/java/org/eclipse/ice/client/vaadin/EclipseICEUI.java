@@ -1,9 +1,25 @@
 package org.eclipse.ice.client.vaadin;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.Dictionary;
+import java.util.Hashtable;
+
+import javax.servlet.Servlet;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.ice.core.iCore.ICore;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.http.HttpContext;
 import org.osgi.service.http.HttpService;
+import org.osgi.service.http.NamespaceException;
 
+import com.sun.jersey.spi.container.servlet.ServletContainer;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
@@ -33,6 +49,9 @@ public class EclipseICEUI extends UI {
     @VaadinServletConfiguration(ui = EclipseICEUI.class, productionMode = false)
     public static class EclipseICEUIServlet extends VaadinServlet {
     }
+
+	private BundleContext context;
+	private HttpService httpService;
 	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -54,8 +73,39 @@ public class EclipseICEUI extends UI {
         setContent(layout);
     }
     
+    @Activate
+	public void start(BundleContext context) {
+		System.out.println("VAADIN bundle started.");
+		this.context = context;
+		
+		System.out.println("VAADIN Grabbed " + httpService.toString());
+		Dictionary<String, String> servletParams = new Hashtable<>();
+		servletParams.put("javax.ws.rs.Application", EclipseICEUIServlet.class.getName());
+		Bundle bundle = null;
+		bundle = context.getBundle();
+		// Find the root location and the jaas_config file
+		URL resourceURL = bundle.getEntry("");
+		URL configFileURL = bundle.getEntry("jaas_config.txt");
+		try {
+			// Resolve the URLs to be absolute
+//			resourceURL = FileLocator.resolve(resourceURL);
+//			configFileURL = FileLocator.resolve(configFileURL);
+//			HttpContext httpContext = new BasicAuthSecuredContext(resourceURL, configFileURL, "ICE UI");
+			httpService.registerServlet("/", new EclipseICEUIServlet(), null, null);
+		//	System.out.println("Resource = " + httpContext.getResource("VAADIN").toString());
+		} catch (ServletException | NamespaceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
+    
     public void setService(HttpService httpService) {
-    	System.out.println("VAADIN Grabbed " + httpService.toString());
+    	this.httpService = httpService;
     }
 
+    public void setCore(ICore core) {
+    	System.out.println("VAADIN Grabbed " + core.toString());
+    	System.out.println(core.getAvailableItemTypes().getList());
+    }
+    
 }
