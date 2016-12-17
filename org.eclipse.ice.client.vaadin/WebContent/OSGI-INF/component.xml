@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="start" enabled="true" immediate="true" name="org.eclipse.ice.client.vaadin">
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" enabled="true" immediate="true" name="org.eclipse.ice.client.vaadin">
    <implementation class="org.eclipse.ice.client.vaadin.EclipseICEUI"/>
    <reference bind="setService" cardinality="1..1" interface="org.osgi.service.http.HttpService" name="HttpService" policy="static"/>
-   <reference bind="setCore" cardinality="1..1" interface="org.eclipse.ice.core.iCore.ICore" name="ICore" policy="dynamic"/>
 </scr:component>
