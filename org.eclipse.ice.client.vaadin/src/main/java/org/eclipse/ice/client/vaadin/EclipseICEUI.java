@@ -1,8 +1,14 @@
 package org.eclipse.ice.client.vaadin;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 
+import org.eclipse.ice.core.iCore.ICore;
+import org.eclipse.ice.datastructures.ICEObject.Identifiable;
+import org.osgi.framework.BundleContext;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.http.HttpService;
+import org.osgi.service.http.NamespaceException;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -33,13 +39,18 @@ public class EclipseICEUI extends UI {
     @VaadinServletConfiguration(ui = EclipseICEUI.class, productionMode = false)
     public static class EclipseICEUIServlet extends VaadinServlet {
     }
+
+	private HttpService httpService;
+	private ICore coreService;
 	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout layout = new VerticalLayout();
         
+        System.out.println("VAADIN Initialized.");
+        
         final TextField name = new TextField();
-        name.setCaption("Type your name here:");
+        name.setCaption("ICE - Type your name here:");
 
         Button button = new Button("Click Me");
         button.addClickListener( e -> {
@@ -47,15 +58,42 @@ public class EclipseICEUI extends UI {
                     + ", it works!"));
         });
         
-        layout.addComponents(name, button);
+        final TextField items = new TextField();
+        String itemName = "Service is null";
+        if (coreService != null) {
+        	itemName = coreService.getAvailableItemTypes().getList().get(0);
+        }
+        items.setCaption(itemName);
+        
+        layout.addComponents(name, button, items);
         layout.setMargin(true);
         layout.setSpacing(true);
         
         setContent(layout);
     }
     
+    /**
+     * OSGi bundle activator with annotation instead of activator class.
+     * @param context
+     */
+    @Activate
+	public void start(BundleContext context) {
+		System.out.println("VAADIN bundle started.");
+		try {
+			httpService.registerServlet("/", new EclipseICEUIServlet(), null, null);
+		} catch (ServletException | NamespaceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
+    
     public void setService(HttpService httpService) {
-    	System.out.println("VAADIN Grabbed " + httpService.toString());
+    	this.httpService = httpService;
     }
-
+    
+    public void setCoreService(ICore coreService) {
+    	System.out.println("Core status service = " + coreService);
+    	this.coreService = coreService;
+    }
+    
 }

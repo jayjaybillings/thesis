@@ -3,7 +3,30 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Eclipse ICE Vaadin Client
 Bundle-SymbolicName: org.eclipse.ice.client.vaadin
 Bundle-Version: 2.2.2
-Bundle-ClassPath: WEB-INF/classes/
+Bundle-ClassPath: WEB-INF/classes/,
+ WEB-INF/lib/asm-5.0.3.jar,
+ WEB-INF/lib/asm-commons-5.0.3.jar,
+ WEB-INF/lib/asm-tree-5.0.3.jar,
+ WEB-INF/lib/asm-util-5.0.3.jar,
+ WEB-INF/lib/atmosphere-runtime-2.2.9.vaadin2.jar,
+ WEB-INF/lib/flute-1.3.0.gg2.jar,
+ WEB-INF/lib/gwt-dev-2.7.0.vaadin4.jar,
+ WEB-INF/lib/gwt-elemental-2.7.0.vaadin4.jar,
+ WEB-INF/lib/gwt-user-2.7.0.vaadin4.jar,
+ WEB-INF/lib/jsoup-1.8.3.jar,
+ WEB-INF/lib/sac-1.3.jar,
+ WEB-INF/lib/vaadin-client-7.7.6.jar,
+ WEB-INF/lib/vaadin-client-compiled-7.7.6.jar,
+ WEB-INF/lib/vaadin-client-compiler-7.7.6.jar,
+ WEB-INF/lib/vaadin-push-7.7.6.jar,
+ WEB-INF/lib/vaadin-sass-compiler-0.9.13.jar,
+ WEB-INF/lib/vaadin-server-7.7.6.jar,
+ WEB-INF/lib/vaadin-shared-7.7.6.jar,
+ WEB-INF/lib/vaadin-slf4j-jdk14-1.6.1.jar,
+ WEB-INF/lib/vaadin-themes-7.7.6.jar,
+ WEB-INF/lib/vaadin-widgets-7.7.6.jar,
+ WEB-INF/lib/validation-api-1.0.0.GA-sources.jar,
+ WEB-INF/lib/validation-api-1.0.0.GA.jar
 Export-Package: org.eclipse.ice.client.vaadin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: javax.el,
@@ -13,6 +36,10 @@ Import-Package: javax.el,
  javax.servlet.jsp,
  javax.servlet.jsp.el,
  javax.servlet.jsp.tagext,
+ org.eclipse.ice.core.iCore,
+ org.eclipse.ice.datastructures.ICEObject,
+ org.osgi.framework;version="1.8.0",
+ org.osgi.service.component.annotations;version="1.2.0",
  org.osgi.service.http
 Web-ContextPath: /ice
 Service-Component: OSGI-INF/*.xml
