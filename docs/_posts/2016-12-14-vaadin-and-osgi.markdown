@@ -8,6 +8,8 @@ categories: eclipse
 Vaadin is a web framework for business applications with Java and HTML programming interfaces. It can be used to provide web interfaces for OSGi applications by 
 deploying an OSGi framework, such as Equinox, [in a servlet container.][deployment]
 
+Same code showing it running the OSGi framework is available in [myapplication directory of the thesis repository.](https://github.com/jayjaybillings/thesis/tree/master/myapplication)
+
 ## Prerequisites
 
 The Vaadin development team has provided code generators and other utilities for working with the framework in the Eclipse IDE. It is best to install these tools in either the "Java EE" or "JavaScript and Web" versions of Eclipse that also includes all WST packages, all JST packages, and the Eclipse Java Web Developer Tools. The author configured a version of Eclipse with all of these packages and the Java EE and web tools. 
@@ -325,6 +327,10 @@ myapplication_1.0.0.qualifier [7]
   No fragment bundles
   No required bundles
 ```
+
+The result should be viewable at http://localhost:8082 or whatever port is specified with the -Dorg.osgi.service.http.port VM argument in the run configuration and resemble the figure below. 
+
+![Vaadin running in the OSGi](vaadin_osgi_20161216.png).
 
 ## Possible Errors
 
