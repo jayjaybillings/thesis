@@ -332,6 +332,8 @@ The result should be viewable at http://localhost:8082 or whatever port is speci
 
 ![Image of Vaadin running in OSGi]({{ site.url }}/{{site.baseurl}}/images/vaadin_osgi_20161216.png)
 
+Finally, note that the MyUI class does all of its OSGi work in the activator and that the HttpService will not be available when MyUI.init() is called. Vaadin calls its own instance of MyUI.init() each time the site is accessed, so OSGi services must be stored as static members or retrieved separately on the Vaadin thread if they need to be used outside of the activator. 
+
 ## Possible Errors
 
 ### Dynamic Web project Error “Loading descriptor”

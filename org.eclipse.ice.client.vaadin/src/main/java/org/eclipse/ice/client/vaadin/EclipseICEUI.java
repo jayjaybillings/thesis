@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import org.eclipse.ice.core.iCore.ICore;
 import org.eclipse.ice.datastructures.ICEObject.Identifiable;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.http.HttpService;
 import org.osgi.service.http.NamespaceException;
@@ -41,7 +42,7 @@ public class EclipseICEUI extends UI {
     }
 
 	private HttpService httpService;
-	private ICore coreService;
+	private static ICore coreService;
 	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -85,6 +86,18 @@ public class EclipseICEUI extends UI {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
+		
+		// Acquire the Core service if it is available
+		ServiceReference<ICore> iCoreServiceRef = context.getServiceReference(ICore.class);
+		if (iCoreServiceRef != null) {
+			System.out.println("Retrieving coreService for the client.");
+			coreService = context.getService(iCoreServiceRef);
+			System.out.println("Core service set.");
+		} else {
+			// Failure to get the core is a catastrophic error.
+			System.out.println("Unable to access core!.");
+		}
+		
 	}
     
     public void setService(HttpService httpService) {
