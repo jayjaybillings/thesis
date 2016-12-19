@@ -328,7 +328,9 @@ myapplication_1.0.0.qualifier [7]
   No required bundles
 ```
 
-The result should be viewable at http://localhost:8082 or whatever port is specified with the -Dorg.osgi.service.http.port VM argument in the run configuration and resemble ![Image of Vaadin running in OSGi](/images/vaadin_osgi_20161216.png).
+The result should be viewable at http://localhost:8082 or whatever port is specified with the -Dorg.osgi.service.http.port VM argument in the run configuration and resemble the image below.
+
+![Image of Vaadin running in OSGi]({{ site.url }}/{{site.baseurl}}/images/vaadin_osgi_20161216.png)
 
 ## Possible Errors
 
