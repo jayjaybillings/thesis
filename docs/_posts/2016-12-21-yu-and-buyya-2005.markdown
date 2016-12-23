@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Reference: A Taxonomy of Workflow Management Systems for Grid Computing
+title:  Reference - A Taxonomy of Workflow Management Systems for Grid Computing
 date:   2016-12-21 17:26
 categories: references
 ---
