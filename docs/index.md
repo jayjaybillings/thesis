@@ -4,3 +4,7 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: home
 ---
+
+These posts are presented by date. Some of the posts are complete, but many 
+may need more work. (You know what a thesis looks like! ;-)) Email me if you 
+have a particular request for more content.
