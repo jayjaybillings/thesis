@@ -48,7 +48,7 @@ execution is common practice, this author's research record would suggest that
 it is hardly the state of the art, as would the work by several attendees to 
 the same workshop (notably that of Ernest "Foss" Friedman-Hill described in 
 \[Clay, 2015]), and that of 
-[Pizzi et. al]({{ site.url }}/{{site.baseurl}}/references/pizzi-aiida-2015.html).
+[Pizzi et. al]({{ site.url }}/{{site.baseurl}}/references/2016/12/26/pizzi-aiida-2015.html).
 
 ### Full Citation
 *Deelman, Ewa, Tom Peterka, Ilkay Altintas, Christopher Carothers, Kerstin Kleese van Dam, Kenneth Moreland, Lavanya Ramakrishnan, and Jeffrey Vetter. “The Future of Scientific Workflows.” Workshop. U.S. Department of Energy, April 20, 2015. http://science.energy.gov/~/media/ascr/pdf/programdocuments/docs/workflows_final_report.pdf.*
