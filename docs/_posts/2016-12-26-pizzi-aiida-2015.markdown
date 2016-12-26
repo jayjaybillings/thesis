@@ -1,0 +1,38 @@
+---
+layout: post
+title:  Reference - AiiDA - Automated Interactive Infrastructure and Database for Computational Science
+date:   2016-12-26 14:33
+categories: references
+---
+
+Pizzi et al. describe an Automated Interactive Infrastructure an Database for 
+Computational Science, (AiiDA), \[Pizzi, 2015]. While the primary driver for
+AiiDA has been scientific workflows related to material science, Pizzi et al.
+describe the general extensibility of the system. In particular, the present
+its broader applicability to scientific problems that require 
+high-performance computing resources for so-called ``high-throughput 
+computations" where many small jobs are required for parameter studies or 
+optimization.
+
+Pizzi et al. present in the same paper the Automation, Data, Environment, and
+Sharing (ADES) model for computational science that guided the development of
+AiiDA. It is also notable that the provenance model for AiiDA is inspired by
+the Open Provenance Model (OPM), but ultimately not based on it. The AiiDA
+open source release ships with extensive support for Quantum Espresso.
+
+AiiDA is similar to many other workflow management systems in 
+high-performance computing in that it uses a simple plugin-based extension
+mechanism that relies on inheritance and annotations. Pizzi et al. also express
+the challenges associated with creating a system that can handle complex
+workflows while remaining easy to use, which is similar to challenges exressed
+by other authors. However, unlike other systems in this space, AiiDA is 
+completely driven by the command line interface. It also supports executing 
+Python scripts that define the workflow. This is driven by the need for running
+high-throughput workflows because streamlined graphical tools for such
+problems have not been developed, either in AiiDA or other frameworks, to the
+best knowledge of the author.
+
+### Full Citation
+_Pizzi, Giovanni, Andrea Cepellotti, Riccardo Sabatini, Nicola Marzari, and Boris Kozinsky. “AiiDA: Automated Interactive Infrastructure and Database for Computational Science.” Computational Materials Science 111 (January 2016): 218–30. doi:10.1016/j.commatsci.2015.09.013._
+
+

@@ -362,11 +362,11 @@ Eclipse will not include the Vaadin library in the "Deployment Assembly" by defa
 The "Compile Vaadin Theme" tool does not copy the stylesheets into the correct place after compiling the SCSS file. These files can be found in the project in the
 src/main/java/resources/webapp/VAADIN directory. Copying the VAADIN directory into the project's WebContent directory and adding it to the Deployment Assembly as a Folder mapped to "/" will fix the problem.
 
+### INFO: Requested resource [/VAADIN/widgetsets/com.vaadin.DefaultWidgetSet/com.vaadin.DefaultWidgetSet.nocache.js] not found from filesystem or through class loader. Add widgetset and/or theme JAR to your classpath or add files to WebContent/VAADIN folder.
+
+The vaadin-client-compiled-*.jar bundle must be added to the myapplication bundle's class path.
+
 [deployment]: http://www.jayjaybillings.com/thesis/eclipse/2016/12/14/equinox-on-tomcat.html
 [servletError]: http://stackoverflow.com/questions/15794473/cannot-run-vaadin-project-in-eclipse-juno-with-tomcat-7-throws-classnotfoundexc
 [boadas_2016]: https://examples.javacodegeeks.com/enterprise-java/vaadin/vaadin-osgi-example/
 [generation]: https://vaadin.com/docs/-/part/framework/getting-started/getting-started-first-project.html#getting-started.first-project.creation
-
-### INFO: Requested resource [/VAADIN/widgetsets/com.vaadin.DefaultWidgetSet/com.vaadin.DefaultWidgetSet.nocache.js] not found from filesystem or through class loader. Add widgetset and/or theme JAR to your classpath or add files to WebContent/VAADIN folder.
-
-The vaadin-client-compiled-*.jar bundle must be added to the myapplication bundle's class path.
