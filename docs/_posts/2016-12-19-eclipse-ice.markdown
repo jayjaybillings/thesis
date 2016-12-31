@@ -4,11 +4,27 @@ title:  "The Eclipse Integrated Computational Environment"
 date:   2016-12-19 21:19
 address: 'Oak Ridge National Laboratory, PO Box 2008 MS6016 Oak Ridge TN 37830'
 categories: eclipse
+authors:
+- Jay Jay Billings
 ---
 
 _This article is to be submitted to the Journal "Software X" and is thus presented in the journal's required format. Mostly._
 
-# Abstract
+Notice of Copyright
+===========================
+
+This manuscript has been authored by UT-Battelle, LLC under Contract No. 
+DEAC05-00OR22725 with the U.S. Department of Energy. The United States 
+Government retains and the publisher, by accepting the article for publication, 
+acknowledges that the United States Government retains a nonexclusive, paid-up, 
+irrevocable, world-wide license to publish or reproduce the published form of 
+this manuscript, or allow others to do so, for United States Government 
+purposes. The Department of Energy will provide public access to these results 
+of federally sponsored research in accordance with the DOE Public Access Plan 
+(http://energy.gov/downloads/doe-public-access-plan ).
+
+Abstract
+===========================
 
 FIXME!
 
@@ -25,7 +41,9 @@ understandable, given the field, but it leaves the rest of us to figure out how
 to actually use the software in a way that scales for a much larger set of
 users, many of whom may be novices or migrate between software packages regularly.
 
-** REMOVE or merge with text below!** In previous work, Billings et. al., discovered through requirements gathering
+** REMOVE or merge with text below!** 
+
+In previous work, Billings et. al., discovered through requirements gathering
 interviews that many of the difficulties using high performance modeling and
 simulation software fall broadly into five distinct categories,
 \cite{billings_cbhpc}. This includes input generation and preprocessing (also
@@ -52,19 +70,16 @@ development required.
 
 It is not clear that one of these solutions is better than the others.
 Practical requirements will ultimately dictate which way projects go. This work
-considers the middle ground solution and presents the Eclipse Integrated
+considers a middle ground solution and presents the Eclipse Integrated
 Computational Environment (ICE) as proof that it is possible to create such a
 system. Specifically, we show
-* an architecture for such a workflow system that accomplishes all five of
-the required activities outlined above in a simple, extensible way, \ref{}.
+* an architecture for such a workflow system that satisfies the model of
+workflows presented below in an extensible way.
 * that such a system can be cross-platform for workstations and
-simultaneously deployable on the web, \ref{}.
+simultaneously deployable on the web.
 * that smart design decisions enable not only authoring code for simulation
 software, but also make it possible for the system to extend itself, thereby
-enabling heavy customization, \ref{}.
-* that the system can be easily integrated with other tools, including the
-general-purpose workflow engines and single-focus tools on opposite ends of this
-tool space, \ref{}.
+enabling heavy customization.
 
 **FIXME! Needs to transition smoothly!** 
 
@@ -87,7 +102,7 @@ codes is to string the activities together: the user's workflow is to create
 the input, launch the job, perform some analysis and manage their data, 
 possibly modifying their code in the process. There are many other combinations
 though, such as re-running jobs with conditions or modifications or analyzing 
-someone else's data.<sup>1</sup>
+someone else's data. (See footnote <sup>1</sup>.)
 
 **Creating input** is the process of describing the physical model or state
 of a system that will be simulated. This could include creating an input file
@@ -167,57 +182,148 @@ directly but can be easily manipulated by hand.
 This model of workflows differs significantly from those of similar efforts in 
 workflow science because it defines workflows in terms of activities. Others in
 the literature define a workflow as a collection of computing processes. For 
-example, Yu and Buyya define workflows as ... FIXME! ..., \[Yu, 2005]. Others 
-such as Pizzi et al. subscribe to the same definition, \[Pizzi, 2015]. This 
-"process" view is acceptable where the workflow is static and does not require 
-additional human input or "human in the loop" behavior after the all the 
-initial human input is provided. That is, a "process-oriented" definition is 
-acceptable where all human input is provided in advance. However, workflows 
-within ICE are fully interactive with regular call-backs to humans. It is 
-simpler to discuss "activities" than it is to create a distinction between 
-"human processes" and "computer processes." Focusing on "activities" over 
-processes (human or computer) also has the benefit of removing concrete 
-elements such as hardware properties or software details that distract from 
-details of workflows and WMSes per se. That is, considerations such as memory 
-usage and raw performance are important, but questions about the abstract 
-workflow or what the WMS should do are far more important.
+example, Yu and Buyya define grid workflows as "a collection of tasks that are
+processed on distributed resources in a wel-defined order to accomplish a 
+specific goal," \[Yu, 2005]. Others such as Pizzi et al. subscribe to similar
+definitions, \[Pizzi, 2015]. This "process" view is acceptable where the 
+workflow is static and does not require additional human input or "human in 
+the loop" behavior after the all the initial human input is provided. That is, 
+a "process-oriented" definition is acceptable where all human input is provided
+in advance. However, workflows within ICE are fully interactive with regular 
+call-backs to humans. It is simpler to discuss "activities" than it is to 
+create a distinction between "human processes" and "computer processes." 
+Focusing on "activities" over processes (human or computer) also has the 
+benefit of removing concrete elements such as hardware properties or software 
+details that distract from details of workflows and WMSes per se. That is, 
+considerations such as memory usage and raw performance are important, but 
+questions about the abstract workflow or what the WMS should do are far more 
+important.
 
-# Software Description
+Software Description
+=====================
 
-a sdfasdfa
+ICE was specifically created to address the workflow model described above, 
+which is to say that it was created specifically to address hands-on workflows 
+for computational scientists. Users download and execute ICE locally and it 
+orchestrates workflows locally or remotely as required. It provides a 
+comprehensive workbench for modeling and simulation that includes
+tools for workflows, visualization, data management, and software development.
 
+Software Architecture
+------------------------
 
-## Software Architecture
+Workflows and tasks in ICE are not explicitly treated as trees - 
+Directed Acyclic Graphs, (DAGS) - as is common with grid workflow tools, 
+\[Yu, 2005]. Instead, ICE's design is inspired by Representational State 
+Transfer (REST), \[Fielding, 2000]. 
 
-ICE's architecture is the standard architecture of Eclipse RCP applications,
-which is to say a plugin-based OSGi application.
+Users initiate requests to create, edit, update or delete workflows from the 
+_ICE Client_ (the workbench). The list of available workflow that can be 
+created is provided dynamically to the _ICE Client_ by the _ICE Core_, which 
+acts as a kind of server. This information is provided dynamically since it 
+often changes as run time based on the configuration of available workflow
+components in the registry and on persisted workflows that users have saved in
+their workspace. Information about workflows are provided from the Core to the
+Client through _stateless Forms_ that describe the workflow and provide all the
+necessary information to understand _what_ should process the workflow, (but 
+not _how_ it should be processed). Once users modify the description of the
+workflow in the Form to provide their specific details, the Client dispatches
+a request to the Core to modify or process the workflow. The Core then uses
+the information in the Form to perform a service lookup for _what_ should 
+process the workflow. 
 
-WORKSPACE
+Workflows in ICE are encoded in and processed by _Items_ and each workflow type
+is a subclass of Item. Items are registered dynamically through a service 
+registry in ICE, (see section \ref{framework}), and provide the Forms
+for the ICE Core and Client. Since ICE's design is highly object oriented, it
+is easiest to think of the Item class as a description of an abstract workflow
+and an Item object (an instance of the class) as a concrete workflow with all
+required execution details provided by its Form.
 
-SELF-HOSTING
+Individual components of workflows, i.e. - workflow "tasks" or "nodes" - are 
+either encoded directly in the workflow's subclass of Item or provided as 
+_Actions_ that are dynamically registered with an _Action Factory_ and
+obtained at runtime. Table 1. describes the differences between Items, Actions,
+and Forms. (See footnote <sup>2</sup>.)
 
-SYSTEM-CALLS
+Table 1: Class Descriptions for Items, Forms and Actions
 
-ITEM-STATES
+| Class | Class Description | Object Description |
+|-------|-------------------|--------------------|
+| Item  | Java class with code to execute an abstract workflow. Provides a Form. | Concrete workflow executor. |  
+| Form  | Description and template of the data needed for the Item to process the workflow. | User-modified workflow data. |
+| Action | Java class for executing a specific task in the workflow. Used by Items. | Concrete workflow task executor. | 
 
-The architecture of ICE was originally based on a minimal set of use cases that 
-were derived from extensive requirements gathering efforts and upfront design, 
-in response to needs of the Nuclear Energy Advanced Modeling and Simulation
-program, \[Billings, 2009]. 
+### WORKSPACES AND PERSISTENCE
+
+### ITEM-STATES
+
+### SYSTEM-CALLS
+
+### ABSTRACT v CONCRETE
+
+### SERVER MODE
+
+### JYTHON SHELL FOR LARGE JOBS
+
+### ENCODED WORKFLOWS
+
+### VISUALIZATION
+
+### SELF-HOSTING
+
+### Framework
+
+ICE is an Eclipse Rich Client Platform (RCP) application and is therefore
+based on Equixno, the reference implementation of the Open Service Gateway 
+Initiative (OSGi) framework specification, \[McAffer, 2010].
+
+PULLING FROM ECLIPSE (NOT a subsection)
+
+### Comparison to Grid Workflow Management Systems
 
 Software Functionalities
 ------------------------
 
+ICE is used in the following scenarios... 
 
-Sample code snippets analysis (optional)
+* Rapid deployment of workbenches
+* Rapid deployment of domain-specific development tools
+* ...
+
+Sample Code
 ----------------------------------------
+
+Workflow Item examples: https://github.com/eclipse/ice/tree/master/org.eclipse.ice.demo
+
+Scripting examples: https://github.com/eclipse/ice/tree/master/examples
+
 
 Illustrative Examples
 =====================
 
+VIBE
+BJM
+REFLECTIVITY
+MOOSE
+
+Figure 1 shows an
+example of the ICE workbench for a simple structural mechanics problem solved 
+with the MOOSE framework, \[Gaston, 2009].
+
+![ice-moose]({{ site.url }}/{{site.baseurl}}/images/ice-moose.png)
+
+
+JADE
+
+Example of how far it can be customized - Reactor Analyzer (
+
 Impact
 ======
 
+UI work limiting adoption
+
+Moving to the web5i
 
 Conclusions
 ===========
@@ -226,6 +332,25 @@ Conclusions
 Acknowledgements {#acknowledgements .unnumbered}
 ================
 
+The authors are grateful for the assistance and support of the following people
+and institutions without which this work would not have been possible.
+
+**FIXME!**
+
+**PAST ICE DEVS**
+**NEAMS Colleagues**
+**CASL colleagues**
+**Eclipse colleagues and the community**
+
+This work has been supported by the US Department of Energy, Offices of Nuclear
+Energy (DOE-NE) and Energy Efficiency and Renewable Energy (DOE-EERE), and by
+the ORNL Undergraduate Research Participation Program, which is sponsored by
+ORNL and administered jointly by ORNL and the Oak Ridge Institute for Science
+and Education (ORISE). This work was also supported in part by the Oak Ridge
+National Laboratory Director's Research and Development Fund. ORNL is managed by
+UT-Battelle, LLC, for the US Department of Energy under contract no.
+DE-AC05-00OR22725. ORISE is managed by Oak Ridge Associated Universities for
+the US Department of Energy under contract no. DE-AC05-00OR22750.
 
 Required Metadata {#required-metadata .unnumbered}
 =================
@@ -233,36 +358,27 @@ Required Metadata {#required-metadata .unnumbered}
 Current code version {#current-code-version .unnumbered}
 ====================
 
-
-  **Nr.**   **Code metadata description**                                     **Please fill in this column**
-  --------- ----------------------------------------------------------------- --------------------------------------------------------
-  C1        Current code version                                              For example v42
-  C2        Permanent link to code/repository used for this code version      For example: $https://github.com/mozart/mozart2$
-  C3        Legal Code License                                                List one of the approved licenses
-  C4        Code versioning system used                                       For example svn, git, mercurial, etc. put none if none
-  C5        Software code languages, tools, and services used                 For example C++, python, r, MPI, OpenCL, etc.
-  C6        Compilation requirements, operating environments & dependencies   
-  C7        If available Link to developer documentation/manual               For example: $http://mozart.github.io/documentation/$
-  C8        Support email for questions                                       
-
-  : Code metadata (mandatory)<span data-label=""></span>
+| --------- | :-----------------------------------------------------------------: | :-------------------------------------------------------- : |
+| C1 | Current Code Version | 'next' |
+| C2 | Permanent link to code/repository used for this code version | https://github.com/eclipse/ice/tree/next |
+| C3 | Legal Code License | Eclipse Public License 1.0 |
+| C4 | Code versioning system use | Git |
+| C5 | Software code languages, tools, and services used | Java, OSGi, Eclipse Rich Client Platform, and Maven |
+| C6 | Compilation requirements, operating environments & dependencies | Java 1.8 or greater, Maven, and an internet connection for dependencies |
+| C7 | If available Link to developer documentation/manual  | https://wiki.eclipse.org/ICE |
+| C8 | Support email for questions | ice-dev@eclipse.org |
 
 Current executable software version {#current-executable-software-version .unnumbered}
 ===================================
 
-
-  **Nr.**   **(Executable) software metadata description**                                                                           **Please fill in this column**
-  --------- ------------------------------------------------------------------------------------------------------------------------ -----------------------------------------------------------------------------------------------------------------
-  S1        Current software version                                                                                                 For example 1.1, 2.4 etc.
-  S2        Permanent link to executables of this version                                                                            For example: $https://github.com/combogenomics/$ $DuctApe/releases/tag/DuctApe-0.16.4$
-  S3        Legal Software License                                                                                                   List one of the approved licenses
-  S4        Computing platforms/Operating Systems                                                                                    For example Android, BSD, iOS, Linux, OS X, Microsoft Windows, Unix-like , IBM z/OS, distributed/web based etc.
-  S5        Installation requirements & dependencies                                                                                 
-  S6        If available, link to user manual - if formally published include a reference to the publication in the reference list   For example: $http://mozart.github.io/documentation/$
-  S7        Support email for questions                                                                                              
-
-  : Software metadata (optional)<span data-label=""></span>
-
+| --------- | :-----------------------------------------------------------------: | :-------------------------------------------------------- : |
+| S1 | Current Code Version | 2.2.1 |
+| S2 | Permanent link to executables of this version | http://www.eclipse.org/downloads/download.php?file=/ice/builds/2.2.1/ |
+| S3 | Legal Software License | Eclipse Public License 1.0 |
+| S4 | Computing platforms/Operating Systems  | Windows (32/64-bit), Mac OS/X, Linux (32/64-bit) |
+| S5 | Installation requirements & dependencies | Java 1.8 or greater |
+| S6 | If available, link to user manual - if formally published include a reference to the publication in the reference list  | https://wiki.eclipse.org/ICE |
+| S7 | Support email for questions | ice-users@eclipse.org |
 
 References
 ====================================
@@ -275,8 +391,22 @@ Pizzi, Giovanni et al. “AiiDA: Automated Interactive Infrastructure and Databa
 
 The Nek5000 Team. “Nek5000 \| A Spectral Element Code for CFD.” Nek5000 Website. 22 Oct. 2014. Web. 29 Dec. 2016.
 
+McAffer, Jeff, Paul VanderLei, and Simon Archer. OSGi and Equinox. Boston: Addison-Wesley, 2010. Print.
 
+Gaston, Derek et al. “MOOSE: A Parallel Computational Framework for Coupled Systems of Nonlinear Equations.” Nuclear Engineering and Design 239.10 (2009): n. pag. Print.
+
+Fielding, Roy Thomas. “Architectural Styles and the Design of Network-Based Software Architectures.” University of California, Irvine, 2000. Print.
+
+Burke, Bill. RESTful Java with JAX-RS. California: O-Reilly, 2010. Print.
+
+Footnotes
+====================================
 
 1: The authors have identified many different combinations of these activities 
 that define workflow "classes." When possible, every effort is made to give the 
 classes funny names such as "The Re-Run" or "The Graduate Student."
+
+2: An upcoming update to the API will see the formal introduction of IWorkflow, 
+IWorkflowTask, and IWorkflowEngine interfaces to bring ICE's API language 
+closer to other systems. This must be done with care to satisfy backwards
+compatibility requirements on the present API.
