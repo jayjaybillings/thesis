@@ -1,0 +1,483 @@
+\emph{This article is to be submitted to the Journal ``Software X'' and
+is thus presented in the journal's required format. Mostly.}
+
+\section{Notice of Copyright}\label{notice-of-copyright}
+
+This manuscript has been authored by UT-Battelle, LLC under Contract No.
+DEAC05-00OR22725 with the U.S. Department of Energy. The United States
+Government retains and the publisher, by accepting the article for
+publication, acknowledges that the United States Government retains a
+nonexclusive, paid-up, irrevocable, world-wide license to publish or
+reproduce the published form of this manuscript, or allow others to do
+so, for United States Government purposes. The Department of Energy will
+provide public access to these results of federally sponsored research
+in accordance with the DOE Public Access Plan
+(http://energy.gov/downloads/doe-public-access-plan ).
+
+\section{Abstract}\label{abstract}
+
+FIXME!
+
+FIXME! - keyword 1 ,keyword 2 ,keyword 3
+
+\section{Motivation and Significance}\label{motivation-and-significance}
+
+High performance modeling and simulation software is hard to use. Much
+of the challenge comes from the inherent nature of the science under
+consideration, but perhaps just as much of the problem comes from
+focusing very heavily on raw compute performance. Focusing on
+performance is understandable, given the field, but it leaves the rest
+of us to figure out how to actually use the software in a way that
+scales for a much larger set of users, many of whom may be novices or
+migrate between software packages regularly.
+
+** REMOVE or merge with text below!**
+
+In previous work, Billings et. al., discovered through requirements
+gathering interviews that many of the difficulties using high
+performance modeling and simulation software fall broadly into five
+distinct categories, \cite{billings_cbhpc}. This includes input
+generation and preprocessing (also called ``model setup''); job
+execution and monitoring; postprocessing, visualization and data
+analysis; data management; and customizing the software. There are many
+tools that address these problems individually, but the same work found
+that the excess number and specialization of these tools also contribute
+to the learning curve.
+
+Efforts to address these five issues typically fall in with general
+purpose scientific workflow tools like Kepler, \cite{kepler}, or are
+reduced to myopic tools that satisfy some set of requirements for a
+single piece of software or platform. That is, the proposed solution to
+this problem is often to shoe-horn it into existing workflow tools that
+are so general that they focus on nothing in particular or to ignore the
+general problem entirely and deploy a completely tailored solution for
+the given application. These are opposing extremes, but a
+middle-of-the-road solution is also possible. A workflow engine could be
+developed that limits its scope to High-Performance Computing (HPC) and
+to the set of possible workflows that come from the previously mentioned
+five activities. A rich enough Application Programming Interface (API)
+could be exposed so that highly customized solutions could still be made
+based on this limited workflow engine with only a relatively minor
+amount of additional development required.
+
+It is not clear that one of these solutions is better than the others.
+Practical requirements will ultimately dictate which way projects go.
+This work considers a middle ground solution and presents the Eclipse
+Integrated Computational Environment (ICE) as proof that it is possible
+to create such a system. Specifically, we show * an architecture for
+such a workflow system that satisfies the model of workflows presented
+below in an extensible way. * that such a system can be cross-platform
+for workstations and simultaneously deployable on the web. * that smart
+design decisions enable not only authoring code for simulation software,
+but also make it possible for the system to extend itself, thereby
+enabling heavy customization.
+
+\textbf{FIXME! Needs to transition smoothly!}
+
+\subsubsection{Workflow Model}\label{workflow-model}
+
+Computational scientists perform a variety of tasks with respect to
+modeling and simulation that can be abstracted into a lightweight
+theoretical framework broadly based on five high-level
+\emph{activities}: creating input, executing jobs, analyzing results,
+managing data, and modifying code. The same computational scientist
+would most likely find these activities difficult for all codes with
+which they lack experience, whereas with their own codes or those with
+which they are most familiar these tasks may be so easy that they are
+taken for granted. Any particular combination of these activities across
+one or more scientific software packages or codes results in a unique
+\emph{workflow}. Such a workflow is normally, but not always, requested
+by a human user and orchestrated by a \emph{Workflow Management System
+(WMS)}.
+
+The most obvious workflow for any individual simulation code or
+collection of codes is to string the activities together: the user's
+workflow is to create the input, launch the job, perform some analysis
+and manage their data, possibly modifying their code in the process.
+There are many other combinations though, such as re-running jobs with
+conditions or modifications or analyzing someone else's data. (See
+footnote 1.)
+
+\textbf{Creating input} is the process of describing the physical model
+or state of a system that will be simulated. This could include creating
+an input file or file(s), but could also include external calls to a
+process to configure a running program. In most situations a
+computational scientist will modify existing input or create new input
+from a template. ``Input'' generally includes runtime parameters for the
+simulation framework (tolerances, etc.); configuration options (data
+locations, output locations, module configurations, etc.); material
+properties for the materials that will be simulated; and a
+discretization of the simulation space (mesh, grid, particle
+distribution, etc.). The collection of all required input can be quite
+large and may go by many names such as ``input set,'' ``input package,''
+``problem,'' or, simply, ``input.'' Often the set of input files will be
+described in a ``main'' input file that acts as a kind of manifest,
+describing and providing links to all necessary information for the
+given problem.
+
+In this work, it should be assumed unless otherwise noted that ``input''
+refers to the entire set of input, not a single file.
+
+\textbf{Executing jobs} or ``running the workflow'' in this context is
+the process of performing some calculation based on the input with a
+simulation code or framework. Modeling and simulation codes are normally
+run locally for small jobs or development. Large simulations typically
+require equally large hardware resources that are utilized remotely
+through Secure Shell (SSH) connections or similar protocols. Remote
+execution requires moving the input in advance of the execution and
+copying or moving the output to the user's machine, if possible and
+desirable. (In many cases the output cannot be moved because it is too
+large.)
+
+Local and remote jobs are often monitored in one or more ways to
+ascertain the status of job. This can include simply checking whether or
+not execution has finished or monitoring the output of individual
+quantities to examine the calculation state. The latter is often used to
+detect calculation errors that will result in incorrect results. If such
+results are found, the job is typically cancelled (``killed'') to save
+compute resources and re-run later.
+
+In this work, it should be assumed unless otherwise noted that
+``executing a job'' includes monitoring that job in one or more ways,
+possibly including real-time updates to visualizations.
+
+\textbf{Analyzing results} includes executing special jobs to transform
+data in one or more prescribed ways and producing artifacts with
+scientific significance from the transformed data. This may include, for
+example, post-processing results and visualizing the new data with
+dedicated visualization tools. For many types of scientific computing
+this includes viewing the results of a simulation on a mesh or grid and
+extracting publication quality images or movies from that data. Other
+cases may include analyzing results in preparation for follow
+simulations or performing feature extraction, classification or
+activities for machine learning and data mining.
+
+While this has many similarities to executing a job, it is distinctly
+different because the activity changes focus to satisfy the needs of a
+human operator. Simple data reduction where the exact reduction is known
+certainly qualifies as executing a job, but analysis of modeling and
+simulation results is far from simple data reduction. It is generally a
+far more interactive process for computational scientists.
+
+\textbf{Managing data} includes moving, copying, storing, sharing or
+otherwise interacting with data for or from simulations. This activity
+is the most pervasive of all the activities because each of the others
+requires interacting with data in some way. In many cases though, data
+is still managed its own purposes, without performing a simulation,
+generating new input, or analysing results. Examples include archiving
+data, packaging data for publications, and updating values manually
+(often in light of new information from publications).
+
+\textbf{Modifying code} is not typically considered a part of a
+scientific computing workflow. However, modeling and simulation use
+cases often require users to explicitly modify code before execution,
+such as with the computational fluid dynamics code Nek5000,
+{[}Nek5000{]}; or to issue special re-build instructions. Many
+computational scientists consider ``their workflow'' to be re-running
+software after modifications for purely exploratory purposes. This may
+be required if the model the author is manipulating can not be
+configured as part of the input directly but can be easily manipulated
+by hand.
+
+\subsubsection{Comparison to Other
+Models}\label{comparison-to-other-models}
+
+This model of workflows differs significantly from those of similar
+efforts in workflow science because it defines workflows in terms of
+activities. Others in the literature define a workflow as a collection
+of computing processes. For example, Yu and Buyya define grid workflows
+as ``a collection of tasks that are processed on distributed resources
+in a wel-defined order to accomplish a specific goal,'' {[}Yu, 2005{]}.
+Others such as Pizzi et al. subscribe to similar definitions, {[}Pizzi,
+2015{]}. This ``process'' view is acceptable where the workflow is
+static and does not require additional human input or ``human in the
+loop'' behavior after the all the initial human input is provided. That
+is, a ``process-oriented'' definition is acceptable where all human
+input is provided in advance. However, workflows within ICE are fully
+interactive with regular call-backs to humans. It is simpler to discuss
+``activities'' than it is to create a distinction between ``human
+processes'' and ``computer processes.'' Focusing on ``activities'' over
+processes (human or computer) also has the benefit of removing concrete
+elements such as hardware properties or software details that distract
+from details of workflows and WMSes per se. That is, considerations such
+as memory usage and raw performance are important, but questions about
+the abstract workflow or what the WMS should do are far more important.
+
+\section{Software Description}\label{software-description}
+
+ICE was specifically created to address the workflow model described
+above, which is to say that it was created specifically to address
+hands-on workflows for computational scientists. Users download and
+execute ICE locally and it orchestrates workflows locally or remotely as
+required. It provides a comprehensive workbench for modeling and
+simulation that includes tools for workflows, visualization, data
+management, and software development.
+
+\subsection{Software Architecture}\label{software-architecture}
+
+Workflows and tasks in ICE are not explicitly treated as trees -
+Directed Acyclic Graphs, (DAGS) - as is common with grid workflow tools,
+{[}Yu, 2005{]}. Instead, ICE's design is inspired by Representational
+State Transfer (REST), {[}Fielding, 2000{]}.
+
+Users initiate requests to create, edit, update or delete workflows from
+the \emph{ICE Client} (the workbench). The list of available workflow
+that can be created is provided dynamically to the \emph{ICE Client} by
+the \emph{ICE Core}, which acts as a kind of server. This information is
+provided dynamically since it often changes as run time based on the
+configuration of available workflow components in the registry and on
+persisted workflows that users have saved in their workspace.
+Information about workflows are provided from the Core to the Client
+through \emph{stateless Forms} that describe the workflow and provide
+all the necessary information to understand \emph{what} should process
+the workflow, (but not \emph{how} it should be processed). Once users
+modify the description of the workflow in the Form to provide their
+specific details, the Client dispatches a request to the Core to modify
+or process the workflow. The Core then uses the information in the Form
+to perform a service lookup for \emph{what} should process the workflow.
+
+Workflows in ICE are encoded in and processed by \emph{Items} and each
+workflow type is a subclass of Item. Items are registered dynamically
+through a service registry in ICE, (see section \ref{framework}), and
+provide the Forms for the ICE Core and Client. Since ICE's design is
+highly object oriented, it is easiest to think of the Item class as a
+description of an abstract workflow and an Item object (an instance of
+the class) as a concrete workflow with all required execution details
+provided by its Form.
+
+Individual components of workflows, i.e. - workflow ``tasks'' or
+``nodes'' - are either encoded directly in the workflow's subclass of
+Item or provided as \emph{Actions} that are dynamically registered with
+an \emph{Action Factory} and obtained at runtime. Table 1. describes the
+differences between Items, Actions, and Forms. (See footnote 2.)
+
+Table 1: Class Descriptions for Items, Forms and Actions
+
+\begin{longtable}[c]{@{}lll@{}}
+\toprule
+Class & Class Description & Object Description\tabularnewline
+\midrule
+\endhead
+Item & Java class with code to execute an abstract workflow. Provides a
+Form. & Concrete workflow executor.\tabularnewline
+Form & Description and template of the data needed for the Item to
+process the workflow. & User-modified workflow data.\tabularnewline
+Action & Java class for executing a specific task in the workflow. Used
+by Items. & Concrete workflow task executor.\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{WORKSPACES AND
+PERSISTENCE}\label{workspaces-and-persistence}
+
+ICE persists permanent copies of Forms to disk when workflows are
+created and modified in a special directory called a \emph{workspace}.
+Workspaces can contain projects, folders and files, including data,
+code, input and output. ICE automatically manages local and remote (or
+even local \emph{to} remote) transfers of data files when executing
+workflows if the files are detected in the same directory of the
+workspace as the workflow itself. For example, when executing a remote
+job, ICE will automatically move the input file if it is specified in
+the workflow and available in the project directory of the workspace.
+All paths in ICEIf a workflow uses a relative link to a file in the
+workspace, ICE will au Workflow persistence is managed in ICE by a
+\emph{persistence provider} fordefault persistence provider uses JAX-RS,
+{[}Burke, 2009{]}, to write
+
+\subsubsection{ITEM-STATES}\label{item-states}
+
+\subsubsection{SYSTEM-CALLS}\label{system-calls}
+
+\subsubsection{SERVER MODE}\label{server-mode}
+
+\subsubsection{JYTHON SHELL FOR LARGE
+JOBS}\label{jython-shell-for-large-jobs}
+
+\subsubsection{ENCODED WORKFLOWS}\label{encoded-workflows}
+
+\subsubsection{VISUALIZATION}\label{visualization}
+
+\subsubsection{DEVELOPMENT AND
+SELF-HOSTING}\label{development-and-self-hosting}
+
+TESTS!
+
+\subsubsection{Framework}\label{framework}
+
+ICE is an Eclipse Rich Client Platform (RCP) application and is
+therefore based on Equixno, the reference implementation of the Open
+Service Gateway Initiative (OSGi) framework specification, {[}McAffer,
+2010{]}.
+
+Resources bundle for workspace
+
+PULLING FROM ECLIPSE (NOT a subsection)
+
+\subsubsection{Comparison to Grid Workflow Management
+Systems}\label{comparison-to-grid-workflow-management-systems}
+
+\paragraph{ABSTRACT v CONCRETE}\label{abstract-v-concrete}
+
+OO. Workspace files
+
+\subsection{Software Functionalities}\label{software-functionalities}
+
+ICE is used in the following scenarios\ldots{}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Rapid deployment of workbenches
+\item
+  Rapid deployment of domain-specific development tools
+\item
+  \ldots{}
+\end{itemize}
+
+\subsection{Sample Code}\label{sample-code}
+
+Workflow Item examples:
+https://github.com/eclipse/ice/tree/master/org.eclipse.ice.demo
+
+Scripting examples: https://github.com/eclipse/ice/tree/master/examples
+
+\section{Illustrative Examples}\label{illustrative-examples}
+
+VIBE BJM REFLECTIVITY MOOSE
+
+Figure 1 shows an example of the ICE workbench for a simple structural
+mechanics problem solved with the MOOSE framework, {[}Gaston, 2009{]}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{\{\{ site.url \}\}/\{\{site.baseurl\}\}/images/ice-moose.png}
+\caption{ice-moose}
+\end{figure}
+
+JADE
+
+Example of how far it can be customized - Reactor Analyzer (
+
+\section{Impact}\label{impact}
+
+UI work limiting adoption
+
+Moving to the web5i
+
+\section{Future Work}\label{future-work}
+
+JAX-RS API issues
+
+\section{Conclusions}\label{conclusions}
+
+\section*{Acknowledgements}\label{acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgements}
+
+The authors are grateful for the assistance and support of the following
+people and institutions without which this work would not have been
+possible.
+
+\textbf{FIXME!}
+
+\textbf{PAST ICE DEVS} \textbf{NEAMS Colleagues} \textbf{CASL
+colleagues} \textbf{Eclipse colleagues and the community}
+
+This work has been supported by the US Department of Energy, Offices of
+Nuclear Energy (DOE-NE) and Energy Efficiency and Renewable Energy
+(DOE-EERE), and by the ORNL Undergraduate Research Participation
+Program, which is sponsored by ORNL and administered jointly by ORNL and
+the Oak Ridge Institute for Science and Education (ORISE). This work was
+also supported in part by the Oak Ridge National Laboratory Director's
+Research and Development Fund. ORNL is managed by UT-Battelle, LLC, for
+the US Department of Energy under contract no. DE-AC05-00OR22725. ORISE
+is managed by Oak Ridge Associated Universities for the US Department of
+Energy under contract no. DE-AC05-00OR22750.
+
+\section*{Required Metadata}\label{required-metadata}
+\addcontentsline{toc}{section}{Required Metadata}
+
+\section*{Current code version}\label{current-code-version}
+\addcontentsline{toc}{section}{Current code version}
+
+--------- \textbar{}
+:-----------------------------------------------------------------:
+\textbar{} :-------------------------------------------------------- :
+\textbar{}\\C1 \textbar{} Current Code Version \textbar{} `next'
+\textbar{}\\C2 \textbar{} Permanent link to code/repository used for
+this code version \textbar{} https://github.com/eclipse/ice/tree/next
+\textbar{}\\C3 \textbar{} Legal Code License \textbar{} Eclipse Public
+License 1.0 \textbar{}\\C4 \textbar{} Code versioning system use
+\textbar{} Git \textbar{}\\C5 \textbar{} Software code languages, tools,
+and services used \textbar{} Java, OSGi, Eclipse Rich Client Platform,
+and Maven \textbar{}\\C6 \textbar{} Compilation requirements, operating
+environments \& dependencies \textbar{} Java 1.8 or greater, Maven, and
+an internet connection for dependencies \textbar{}\\C7 \textbar{} If
+available Link to developer documentation/manual \textbar{}
+https://wiki.eclipse.org/ICE \textbar{}\\C8 \textbar{} Support email for
+questions \textbar{} ice-dev@eclipse.org \textbar{}
+
+\section*{Current executable software
+version}\label{current-executable-software-version}
+\addcontentsline{toc}{section}{Current executable software version}
+
+--------- \textbar{}
+:-----------------------------------------------------------------:
+\textbar{} :-------------------------------------------------------- :
+\textbar{}\\S1 \textbar{} Current Code Version \textbar{} 2.2.1
+\textbar{}\\S2 \textbar{} Permanent link to executables of this version
+\textbar{}
+http://www.eclipse.org/downloads/download.php?file=/ice/builds/2.2.1/
+\textbar{}\\S3 \textbar{} Legal Software License \textbar{} Eclipse
+Public License 1.0 \textbar{}\\S4 \textbar{} Computing
+platforms/Operating Systems \textbar{} Windows (32/64-bit), Mac OS/X,
+Linux (32/64-bit) \textbar{}\\S5 \textbar{} Installation requirements \&
+dependencies \textbar{} Java 1.8 or greater \textbar{}\\S6 \textbar{} If
+available, link to user manual - if formally published include a
+reference to the publication in the reference list \textbar{}
+https://wiki.eclipse.org/ICE \textbar{}\\S7 \textbar{} Support email for
+questions \textbar{} ice-users@eclipse.org \textbar{}
+
+\section{References}\label{references}
+
+Yu, Jia, and Rajkumar Buyya. ``A Taxonomy of Workflow Management Systems
+for Grid Computing.'' Journal of Grid Computing 3.3--4 (2005): 171--200.
+link.springer.com. Web.
+
+Billings, Jay J. et al. ``Designing a Component-Based Architecture for
+the Modeling and Simulation of Nuclear Fuels and Reactors.'' Proceedings
+of the 2009 Workshop on Component-Based High Performance Computing. New
+York, NY, USA: ACM, 2009. 6:1--6:4. ACM Digital Library. Web. 25 May
+2016. CBHPC '09.
+
+Pizzi, Giovanni et al. ``AiiDA: Automated Interactive Infrastructure and
+Database for Computational Science.'' Computational Materials Science
+111 (2016): 218--230. ScienceDirect. Web.
+
+The Nek5000 Team. ``Nek5000 \textbar{} A Spectral Element Code for
+CFD.'' Nek5000 Website. 22 Oct. 2014. Web. 29 Dec. 2016.
+
+McAffer, Jeff, Paul VanderLei, and Simon Archer. OSGi and Equinox.
+Boston: Addison-Wesley, 2010. Print.
+
+Gaston, Derek et al. ``MOOSE: A Parallel Computational Framework for
+Coupled Systems of Nonlinear Equations.'' Nuclear Engineering and Design
+239.10 (2009): n. pag. Print.
+
+Fielding, Roy Thomas. ``Architectural Styles and the Design of
+Network-Based Software Architectures.'' University of California,
+Irvine, 2000. Print.
+
+Burke, Bill. RESTful Java with JAX-RS. California: O-Reilly, 2010.
+Print.
+
+\section{Footnotes}\label{footnotes}
+
+1: The authors have identified many different combinations of these
+activities that define workflow ``classes.'' When possible, every effort
+is made to give the classes funny names such as ``The Re-Run'' or ``The
+Graduate Student.''
+
+2: An upcoming update to the API will see the formal introduction of
+IWorkflow, IWorkflowTask, and IWorkflowEngine interfaces to bring ICE's
+API language closer to other systems. This must be done with care to
+satisfy backwards compatibility requirements on the present API.
