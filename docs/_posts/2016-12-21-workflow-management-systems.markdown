@@ -5,9 +5,9 @@ date:   2016-12-21 17:53
 category: workflows
 ---
 
-# List of Workflow Management Systems
+# List of Workflow Management Systems and Projects
 
-* AiiDa (Sp?)
+* AiiDA
 * Eclipse ICE
 * Fireworks
 * GridFlow
@@ -15,3 +15,12 @@ category: workflows
 * Pegasus
 * Ptolemy
 * Triquetrum
+* Taverna
+* Triana
+* GridNexus
+* DiscoveryNet
+* BioWBI
+* GridBus
+* ICENI
+* Magenta
+* WEEP
