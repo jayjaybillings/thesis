@@ -2,7 +2,7 @@
 layout: post
 title:  "Running Equinox in Tomcat"
 date:   2016-12-14 19:49
-categories: eclipse
+category: eclipse
 ---
 
 Equinox is the reference implementation of the [Open Service Gateway Initiative (OSGi) framework][osgi]. The service infrastructure of the OSGi makes it useful in many

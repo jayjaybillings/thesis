@@ -2,12 +2,12 @@
 layout: post
 title:  Workflows and Workflow Management Systems
 date:   2016-12-21 17:53
-categories: workflows
+category: workflows
 ---
 
 # List of Workflow Management Systems
 
-* Aiada (Sp?)
+* AiiDa (Sp?)
 * Eclipse ICE
 * Fireworks
 * GridFlow

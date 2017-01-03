@@ -2,7 +2,7 @@
 layout: post
 title:  "Running Vaadin with OSGi"
 date:   2016-12-14 20:55
-categories: eclipse
+category: eclipse
 ---
 
 Vaadin is a web framework for business applications with Java and HTML programming interfaces. It can be used to provide web interfaces for OSGi applications by 

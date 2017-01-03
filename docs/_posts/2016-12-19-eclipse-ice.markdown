@@ -3,7 +3,7 @@ layout: post
 title:  "The Eclipse Integrated Computational Environment"
 date:   2016-12-19 21:19
 address: 'Oak Ridge National Laboratory, PO Box 2008 MS6016 Oak Ridge TN 37830'
-categories: eclipse
+category: workflows
 author: 
 - Jay Jay Billings (1,2),&nbsp;
 - Andrew R. Bennett (1,3),&nbsp;

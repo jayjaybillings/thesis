@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  Reference - The Future of Scientific Workflows
+title:  The Future of Scientific Workflows
 date:   2016-12-26 15:33
-categories: references
+category: references
 ---
 
 The U.S. Department of Energy sponsored the _DOE NGNS/CS Scientific Workflows 
