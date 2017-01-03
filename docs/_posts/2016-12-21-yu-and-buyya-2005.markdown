@@ -19,7 +19,9 @@ others, such as "Workflow QoS Constraints" would appear to be grid-specific at
 present. Their work also shows how thirteen common grid workflow management 
 systems, such as Pegasus and Kepler, are covered by the taxonomy.
 
-Notes: pR87. pR107. pR84. pR25.
+### Notes
+
+References 25, 84, 87, and 107 may be of interest.
 
 ### Full Citation
 _Yu, Jia, and Rajkumar Buyya. “A Taxonomy of Workflow Management Systems for Grid Computing.” Journal of Grid Computing 3, no. 3–4 (September 1, 2005): 171–200. doi:10.1007/s10723-005-9010-8._
