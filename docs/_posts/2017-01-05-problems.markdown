@@ -1,0 +1,134 @@
+---
+layout: post
+title:  Interoperability Problems
+date:   2017-01-05 9:44
+category: background
+---
+
+The previous review and discussion of Eclipse ICE illustrated the diverse
+nature of scientific workflows. There are many problems that arise from this
+diversity that would greatly benefit the scientific community if they could be
+addressed. However, it should be clear from the previous sections that there
+are two significant problems facing the workflow science community:
+* Everyone has their own workflow tools, and no two tool chains are the same.
+* There is very little interoperability in the workflow tool space. 
+
+The following sections elaborate on community drivers for providing
+interoperability between workflow management systems.
+
+# A Buildings Block Approach
+
+For many reasons, the traditional approach for building workflow systems has
+been to build as much of the required capability as possible into the system
+itself, relying very little on external services or even third party code. This
+does not track will with the course of history though since high-level 
+functionality tends to slowly creep down the software stack and into kernels
+and kernel services. Jha and Turilli discuss this trend as it relates to 
+workflows from a cyber infrastructure perspective and to existing large scale
+scientific workflow efforts, \[Jha, 2016]. They propose that, while 
+historically successful, monolithic workflow systems present many problems for
+users, developers, and maintainers. Instead, they propose that a new "Lego 
+style" approach might work better where individual "building blocks" of 
+capability are assembled into the final workflow product. These building blocks
+would includes things like programming interfaces to queuing systems, 
+programmable pilot systems for scheduling jobs, workload balancers, and the
+ensemble execution tools, among others.
+
+Jha and Turilli provide an ambiguous definition of workflows, stating that 
+workflows are both comprised of tasks and provide a description of the 
+resources and constraints for each task. The ambiguity rises from the
+definition of "tasks." If tasks are compute processes, then their definition is
+equivalent to that of grid workflows. However, if a task could include human 
+interaction during execution, then they have a much broader definition than 
+what is normally found in the grid literature, and their definition more
+closely resembles a business workflow. Building blocks, on the other hand, 
+are concretely defined as those pieces of middleware that are self-sufficient,
+interoperable, composable, and extensible, (with detailed definitions of each
+provided). The RADICAL-Cybertools suite of software modules from Jha's group is
+presented as a sample set of building blocks and two case studies where these
+tools were successfully as such are presented.
+
+# SOS20 Discussion on Workflows
+
+Session IV of the Twentieth Anniversary Meeting of the SOS Workshop (SOS20),
+\[SOS20, 2016], focused on workflow and workflow management system development
+activities of the three participating institutions, namely Sandia National
+Laboratory, Oak Ridge National Laboratory, and the Swiss National
+Supercomputing Centre. Multiple presenters illustrated the challenges in facing
+the workflow science community and organized a separate, spontaneous "Birds of
+Feather" (BOF) session at the end of the event. The BOF attendees widely agreed
+after a thorough discussion that no one single workflow management system could
+satisfy all the needs of those present, but that the community as a whole would
+be served best by seeking to enable interoperability. This discussion led to a
+wider engagement of the community when the BOF attendees decided that it would
+be best to engage in an open public forum so that other groups could join the
+effort, \[Billings, 2016].  
+
+# High-Performance Computing Drivers
+
+The large number of workflow management systems and lack of interoperability is
+a significant barrier to their adoption in High-Performance Computing such as
+the U.S. Department of Energy's Leadership Computing Facilities. The High
+Performance Computing Facility Operational Assessment 2015: Oak Ridge
+Leadership Computing Facility report, \[Barker, 2017], illustrates the problem
+that such facilities face,
+
+```
+These discussions concluded with the observation that the current proliferation
+of workflow systems in response to perceived domain-specific needs of 
+scientific workflows makes it difficult to choose a site-wide operational
+workflow manager, particularly for the leadership-class machines. However,
+there are opportunities where facilities can centralize workflow technology 
+offerings to reduce anticipated fragmentation. This is especially true if a 
+facility attempts to develop, deploy, and operate each and every workflow 
+solution requested by the user community. Through these evaluations, the OLCF
+seeks to identify interesting intersections that are of the most value to OLCF
+stakeholders.
+```  
+
+The Oak Ridge Leadership Computing Facility (OLCF) is not alone in this as
+other Leadership Computing Facilities that face the same problem. Few of these
+facilities have discussed the possibility they may end up supporting different
+workflows systems entirely such that workflows at one facility can not be run
+at another without significant work to install an additional workflow
+management system!
+
+Developing interoperability layers based on common building blocks with
+standard service interfaces would address both of these problems by allowing
+facilities to run various workflows on the system that worked best for their
+hardware and software configuration.
+
+# Energy Science Drivers
+
+The Future of Scientific Workflows report by Deelman et al. illustrates the
+idea of the "large-scale science campaign," \[Deelman, 2016]. Such a campaign
+integrates multiple workflows to perform data acquisition from experimental
+equipment, modeling and analysis with supercomputers, and data analysis with
+either grids computing or supercomputers. This is, in essence, the same problem
+that PanDA/BigPanDA solves for the Large Hadron Collider. So, while it is not a
+new problem, it is increasingly common. One solution to this problem is to 
+support all the possible workflow management systems, but that becomes quickly
+unsustainable, as the OLCF learned through experience. Enabling
+interoperability is a much more sustainable solution.
+
+An interesting case study is the ICEMAN project at Oak Ridge National
+Laboratory, on which the author is a co-principal investigator. ICE man seeks
+to use a combination of instruments from the Spallation Neutron Source, OLCF 
+compute resources such as the Titan supercomputer, the Laboratory's Compute
+Advanced Data Environment for Science (CADES), Eclipse ICE, and AiiDA (c.f. -
+\[Pizzi et al.]) to automate the analysis of quasielastic neutron scattering
+data and provide a comprehensive problem solving environment for scientists.
+
+# References
+
+_Billings, Jay Jay. [Science-Iwg] Workflows, Workflows and More Workflows. E-mail._
+
+_Barker, Ashley D. et al. High Performance Computing Facility Operational Assessment 2015: Oak Ridge Leadership Computing Facility. Oak Ridge National Lab. (ORNL), Oak Ridge, TN (United States). Oak Ridge Leadership Computing Facility (OLCF), 2016. www.osti.gov. Web. 5 Jan. 2017._
+
+_Deelman, Ewa et al. The Future of Scientific Workflows. U.S. Department of Energy, 2015. Web. 26 Dec. 2016._
+
+_Pizzi, Giovanni et al. “AiiDA: Automated Interactive Infrastructure and Database for Computational Science.” Computational Materials Science 111 (2016): 218–230. ScienceDirect. Web._
+
+_Jha, Shantenu, and Matteo Turilli. “A Building Blocks Approach towards Domain Specific Workflow Systems?” arXiv:1609.03484 [cs] (2016): n. pag. arXiv.org. Web. 14 Dec. 2016._
+
+_“SOS20.” http://www.csm.ornl.gov/SOS20/agenda.html, n.d. Web. 5 Jan. 2017._

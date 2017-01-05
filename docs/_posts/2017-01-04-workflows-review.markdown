@@ -232,9 +232,6 @@ with other workflow engines. This and other qualities of the system are why it
 is revisited later as a proposed platform for testing an interoperability
 layer.
 
-<h2><a class="post-link" href="workflows/2016/12/19/eclipse-ice.html">Continue to: The Eclipse Integrated Computational Environment</a></h2>
-<h2><a class="post-link" href="background/2017/01/04/introduction.html">Return to: Introduction</a></h2>
-
 # References
 
 _Van Der Aalst, W. M. P. “The Application of Petri Nets to Workflow Management.” Journal of Circuits, Systems and Computers 08.01 (1998): 21–66. worldscientific.com (Atypon). Web._
