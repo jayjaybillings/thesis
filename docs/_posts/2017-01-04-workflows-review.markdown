@@ -195,12 +195,45 @@ or ensembles of whole workflows to quantify uncertainty in simulation results.
 Montoya et al. also provide a detailed mapping of each workflow type to optimal
 hardware resources for the APEX program.
 
+The U.S. Department of Energy sponsored the _DOE NGNS/CS Scientific Workflows 
+Workshop_ on April 20-21st 2015. In the report, Deelman et al. describe the
+requirements and research directions for scientific workflows for the exascale
+environment, [Deelman, 2015]. The report broadly covers the requirements of the
+DOE Complex, although often with too much of a focus on performance and 
+grid-computing workflows, the latter being very uncommon in the DOE community.
+The report describes scientific workflows primarily by three application types:
+Simulations, Instruments, and Collaborations. The findings of the workshop are
+comprehensive and encouraging, with recommendations for research priorities in
+Application Requirements, Hardware Systems, System Software, WMS Design and 
+Execution, Programming and Usability, Provenance Capture, Validation, and 
+Workflow Science. 
+
+The definitions of a "workflow" and "workflow management systems" are 
+thoroughly explored and put into context for the purposes of the workshop. The
+authors of the report are very careful to define workflows not just as a 
+collection of managed processes, which is common, but in such a way that it is
+clear that reproducibility, mobility and some degree of generality are 
+required by both the description of the workflow and the management system.
+(The report appears to provides three separate definitions for "workflow" on 
+pages 6, 9 and 10.)
+
+The brief summary of different workflow models above is a sample of the
+confusion in the "marketplace" and illustrates the lack of a coherent
+understanding of workflows.
+
 The next section presents the workflow model, system architecture and
 applications of the Eclipse Integrated Computational Environment. This model
 limits its scope to high-performance computing (HPC) and to the set of possible
 workflows that come from input generation and preprocessing (also called
 ``model setup''); job execution and monitoring; postprocessing, visualization
-and data analysis; data management; and customizing the software.
+and data analysis; data management; and customizing the software. However, as
+"limited" as ICE's model may be, it shows significant ability to interoperate
+with other workflow engines. This and other qualities of the system are why it
+is revisited later as a proposed platform for testing an interoperability
+layer.
+
+<h2><a class="post-link" href="workflows/2016/12/19/eclipse-ice.html">Continue to: The Eclipse Integrated Computational Environment</a></h2>
+<h2><a class="post-link" href="background/2017/01/04/introduction.html">Return to: Introduction</a></h2>
 
 # References
 
