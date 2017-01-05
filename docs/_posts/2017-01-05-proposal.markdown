@@ -1,59 +1,81 @@
 ---
 layout: post
-title:  Introduction
-date:   2017-01-04 10:21
-category: background
+title:  An ontology for workflows to enable interoperability
+date:   2017-01-05 10:54
+category: proposal
 ---
 
-The study of workflows, workflow management systems, and the broader topics of
-so-called "workflow science" has revolutionized the way humans automate
-activities in business, science, medicine and many others fields, greatly 
-improving efficiency in each. Our dependence on workflow tools and technology
-is so great that some of the most common questions in technical discussions are
-arguably "How do we automate that?" and "How are you going to handle your 
-workflow?" Workflow tools have even "invaded" our homes by becoming so easy to
-use that children can use them to clandestinely stock up on cookies, doll 
-houses, and Pokemon, \[Mail Online, 2016]\[Williams, 2017]!
+This work has shown that there is significant ambiguity in the definition of
+``scientific workflows'' and that a pressing need exists to leverage the
+different types of systems that exist to address scientific challenges. While
+the idea of creating a single, unifying workflow management system that
+addresses all of the needs of the community is tempting, it is likely
+impossible. On the other hand, facilitating interoperability between these
+systems has been shown to work with Eclipse ICE and Triquetrum as well as other
+tools, such as Kepler and Pegasus, \[Mandal, 2007].
 
-However, there are many unresolved problems in workflow science that will 
-seriously limit the continued utility of these tools for interdisciplinary 
-research. There are many practical problems, some of which are shared with
-other fields, but the largest issues are those of a fundamental, theoretical 
-nature that have never been investigated across the entire field. For example, 
-what is a "workflow" and what is a "workflow management system?" Are workflows
-in modeling and simulation the same as workflows in grid computing? Are 
-scientific workflows actually the same as business workflows given the right
-theoretical abstraction? There are no generally accepted answers for these 
-questions and, indeed, every relevant reference for this work provided a 
-different definition of a workflow, (albeit some of the definitions were 
-similar). 
+Therefore this work proposes the following tasks to
 
-These basic, fundamental questions have significant implications for long-term 
-sustainability, interoperability, and (workflow) reproducibility. 
-Interoperability in particular is interesting because of the opportunity to
-leverage existing capabilities and workflows in different systems without
-reproducing either the components or the workflows in the second system. In 
-practice, this is rarely possible. Few workflow systems will work together 
-because most systems are developed with different or custom approaches, or, in
-many cases, were never developed to be interoperable at all and there are no
-obvious ways to "just make it work."
+* develop a comprehensive ontology of workflows and workflow management
+systems to show the complex relationships and similarities between the tools,
+thereby revealing the means to enable interoperability.
+* demonstrate the utility of this ontology by creating an interoperability
+layer between several workflow management systems using the common building
+blocks approach of Jha et al., \[Jha, 2016], language translation tools such as
+Extensible Stylesheet Language Transformations (XSLT), and other means as
+required.
+* deploy this layer as a common building block itself through a scalable web
+service.
+* demonstrate the utility of the interoperability layer by executing
+complex, multi-system workflows across hardware types for problems relevant to
+energy science, including the ICEMAN and VIBE projects. 
 
-In this work, we propose that the solution to these problems stems from the
-lack of a comprehensive ontology for workflow science. Specifically, we
+It is interesting to ask why an ontology is necessary in lieu of a taxonomy, a
+controlled vocabulary, or another mechanism of modeling the workflow science
+space. The primary benefit of an ontology over these other mechanisms is that
+onotologies are neither controlled (vocabularies) nor hierarchical
+(taxonomies).
 
-* provide a brief literature review of workflows and efforts to develop
-taxonomies (not ontologies) for workflows and workflow management systems, and
-describe why a classic taxonomy may be insufficient.
-* present the Eclipse Integrated Computational Environment as an appropriate
-test bed for these ideas and contextualize it in the broader workflows tool 
-space.
-* describe challenges the workflows community is currently facing that
-would be solved by the development of an ontology that facilitated 
-interoperability.
-* enummerate the necessary tasks and challenges of such an effort. 
+Hierarchy and control constrain and bias models in unnecessary ways, especially
+when the relationships between most types of information are not directed,
+\[Weinberger, 2008]. Ontologies show relationships between elements without
+imposing order and are much easier to extend because new elements with new
+characteristics do not require modifying the architecture and layout of the
+taxonomy. For example, a taxonomy would require that all workflow systems
+derive, ultimately, from one or more parent workflow system types, and that the
+properties of each system be drawn from one or more controlled vocabularies
+that are supported by the taxonomy. This simply may not be the case and,
+instead, an ontology would not impose such an organization, but produce a list
+of the properties of each system and an undirected graph of the relationships
+between ontological elements.
+
+One important thing to keep in mind about ontologies is that it is important to
+describe how they map to or extend existing ontologies. There are many ways to
+produce these mappings by leveraging the extensive body of literature available
+from the library and informational sciences community, \[Allemang, 2008].
+
+The necessity of producing the interoperability layer as a scalable web service
+cannot be overstated. All of the workflow management systems cited in this
+work publish scalable web services and interact with other webservices in one
+or more ways. Their are several additional advantages presented by the
+accepting this technology for this work, but perhaps the largest is that it
+will make it possible for the interoperability layer itself to be integrated as
+yet another workflow element in workflow management systems.
+
+Producing the ontology and interoperability layer for this work will require a
+survey of workflows and workflow management systems in the community. For the
+latter and for the energy science demonstrations, virtual ``containers'' such
+as Docker will be used to work with the systems in practice on the Compute And
+Data Environment for Science at Oak Ridge National Laboratory. In addition to
+making it possible to study these systems, using containers will also preserve
+this work for others who may seek to reproduce it in the future.
 
 # References
 
-“6-Year-Old Girl Used Sleeping Mom’s Fingerprints to Buy Pokemon Gifts.” Mail Online. N.p., 27 Dec. 2016. Web. 4 Jan. 2017.
+_Mandal, Nandita et al. “Integrating Existing Scientific Workflow Systems: The Kepler/Pegasus Example.” Proceedings of the 2nd Workshop on Workflows in Support of Large-Scale Science. New York, NY, USA: ACM, 2007. 21–28. ACM Digital Library. Web. 20 Dec. 2016. WORKS ’07._
 
-Williams, Grace. “6-Year-Old Accidentally Orders High-End Treats with Amazon’s Alexa.” Text.Article. FoxNews.com. N.p., 3 Jan. 2017. Web. 4 Jan. 2017.
+_Jha, Shantenu, and Matteo Turilli. “A Building Blocks Approach towards Domain Specific Workflow Systems?” arXiv:1609.03484 [cs] (2016): n. pag. arXiv.org. Web. 14 Dec. 2016._
+
+_Weinberger, David. Everything Is Miscellaneous: The Power of the New Digital Disorder. New York, NY, USA: Henry Holt and Co., Inc., 2008. Print._
+
+_Allemang, Dean, and James A. Hendler. Semantic Web for the Working Ontologist: Modeling in RDF, RDFS and OWL. Amsterdam: Morgan Kaufmann/Elsevier, 2008. Print._

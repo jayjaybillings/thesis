@@ -16,13 +16,7 @@ layout: default
   <h2><a class="post-link" href="background/2017/01/05/problems.html">Problems</a></h2>
   
   <h1>Proposal</h1>
-  {% for post in site.posts %}
-      {% if post.category contains 'proposal' %}
-      <h2>
-        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-      </h2>
-      {% endif %}
-  {% endfor %}
+  <h2><a class="post-link" href="proposal/2017/01/05/proposal.html">An ontology for workflows to enable interoperability</a></h2>
 
   <h1>Select References</h1>
   {% for post in site.posts %}
