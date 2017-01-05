@@ -10,7 +10,7 @@ layout: default
 
   <h1>Background</h1>
   {% for post in site.posts %}
-      {% if post.category contains 'workflows' %}
+      {% if post.category contains 'background' or post.category contains 'workflows' %}
       <h2>
         <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
       </h2>

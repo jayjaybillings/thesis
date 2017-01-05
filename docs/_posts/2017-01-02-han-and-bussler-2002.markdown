@@ -6,7 +6,7 @@ category: references
 ---
 
 Human involvement is critical in some workflows which requires adaptive
-management, as shown by Han and Bussler, \[Han, 2002]. Their work considers
+management, as shown by Han and Bussler, \[Han, 1998]. Their work considers
 adaptive workflow management in the context of healthcare workflows and
 argues that workflow technology in 2002 was incapable of adapting sufficiently
 to meet the unexpected needs of medical personnel. Along with unexpected needs
