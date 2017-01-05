@@ -108,10 +108,10 @@ Practical requirements will ultimately dictate which way projects go. This work
 considers a middle ground solution and presents the Eclipse Integrated
 Computational Environment (ICE) as proof that it is possible to create such a
 system. Specifically, we show
-* an architecture for such a workflow system that satisfies the model of
-workflows presented below in an extensible way.
-* that such a system can be cross-platform for workstations and
-simultaneously deployable on the web.
+* an architecture for such a workflow system that satisfies such a "limited"
+workflow model in an extensible way.
+* that such a system can be cross-platform for workstations, engage distributed
+resources and alternatively be deployed as a web service.
 * that smart design decisions enable not only authoring code for simulation
 software, but also make it possible for the system to extend itself, thereby
 enabling heavy customization.

@@ -1,0 +1,27 @@
+---
+layout: post
+title:  APEX Workflows
+date:   2017-01-04 23:27
+category: references
+---
+
+Montoya et al. discuss workflows needs for the Alliance for Application 
+Performance at Extreme Scale (APEX), \[APEX, 2017], and describe three main
+classes of workflows: Simulation Science, Uncertainty Quantification (UQ), and
+High Throughput Computing (HTC), \[Montoya, 2016]. HTC workflows start with the
+collection of data from experiments that is in turn transported to large
+compute facilities for processing. Many grid workflows are HTC workflows, but
+not all HTC workflows are grid workflows since some HTC workflows, such as
+those those presented by Montoya et al., maybe be run on large resources that
+are not traditionally "grid machines." Simulation science workflows, referred
+to above as modeling and simulation workflows, are those workflows that are
+primarily focused on modeling and simulation activities. UQ workflows build on
+modeling and simulation workflows by, essentially, executing ensembles of jobs
+or ensembles of whole workflows to quantify uncertainty in simulation results.
+Montoya et al. also provide a detailed mapping of each workflow type to optimal
+hardware resources for the APEX program.
+
+### Full Citation
+
+_Montoya, David. “APEX Workflows.” N.p., n.d. Web. 23 Dec. 2016._
+

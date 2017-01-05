@@ -8,14 +8,11 @@ layout: default
   
   {{ content }}
 
+  <h2><a class="post-link" href="background/2017/01/04/introduction.html">Introduction</a></h2>
+
   <h1>Background</h1>
-  {% for post in site.posts %}
-      {% if post.category contains 'background' or post.category contains 'workflows' %}
-      <h2>
-        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-      </h2>
-      {% endif %}
-  {% endfor %}
+  <h2><a class="post-link" href="background/2017/01/04/workflows-review.html">A review of workflows and taxonomies</a></h2>
+  <h2><a class="post-link" href="workflows/2016/12/19/eclipse-ice.html">The Eclipse Integrated Computational Environment</a></h2>
   
   <h1>Proposal</h1>
   {% for post in site.posts %}
@@ -26,7 +23,7 @@ layout: default
       {% endif %}
   {% endfor %}
 
-  <h1>References</h1>
+  <h1>Select References</h1>
   {% for post in site.posts %}
       {% if post.category contains 'references' %}
       <h2>

@@ -41,15 +41,15 @@ obvious ways to "just make it work."
 In this work, we propose that the solution to these problems stems from the
 lack of a comprehensive ontology for workflow science. Specifically, we
 
-* provide a brief literature review of efforts to develop taxonomies (not
-ontologies) for workflows and workflow management systems, and describe why
-they are limited.
-* describe challenges the workflows community is currently facing that
-would be solved by the development of an ontology that facilitated 
-interoperability.
+* provide a brief literature review of workflows and efforts to develop
+taxonomies (not ontologies) for workflows and workflow management systems, and
+describe why a classic taxonomy may be insufficient.
 * present the Eclipse Integrated Computational Environment as an appropriate
 test bed for these ideas and contextualize it in the broader workflows tool 
 space.
+* describe challenges the workflows community is currently facing that
+would be solved by the development of an ontology that facilitated 
+interoperability.
 * enummerate the necessary tasks and challenges of such an effort. 
 
 # References

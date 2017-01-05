@@ -34,7 +34,7 @@ Actors are re-usable independent blocks of computation, such as: Web Services,
 database calls, etc.
 ```
 
-Jha and Turilli. have proposed using independent "building blocks" as an 
+Jha and Turilli have proposed using independent "building blocks" as an 
 approach to scientific workflows which espouses a similar relationship to 
 infrastructure services, \[Jha, 2016]. The similarity is notable and the exact
 relationship between Jha's blocks and Actor-Oriented Programming should be

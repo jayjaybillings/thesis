@@ -5,8 +5,8 @@ date:   2016-12-21 17:26
 category: references
 ---
 
-Yu's and Buyya's developed a taxonomy for workflow management systems on grids 
-that sought to capture the architectural style while identifying comparison 
+Yu and Buyya developed a taxonomy for workflow management systems on grids that
+sought to capture the architectural style while identifying comparison 
 criteria, \[Yu, 2005]. "Grid Computing" in this sense is the integration of 
 "large-scale, distributed and heterogenous resources." Their work is notable 
 because it largely avoids a discussion of applications and focuses purely on 
@@ -17,7 +17,9 @@ workflow scheduling, fault tolerance, and data movement. While many of the
 properties and taxonomic elements they describe seem common to all systems,
 others, such as "Workflow QoS Constraints" would appear to be grid-specific at
 present. Their work also shows how thirteen common grid workflow management 
-systems, such as Pegasus and Kepler, are covered by the taxonomy.
+systems, such as Pegasus and Kepler, are covered by the taxonomy. Like other 
+authors, Yu and Buyya cite the lack of standardized workflow syntax and
+language as sources of interoperability issues.
 
 ### Notes
 

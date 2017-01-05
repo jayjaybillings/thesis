@@ -40,6 +40,7 @@ specific to the scientific domain under consideration. This necessarily leads
 to a diverse ecosystem of workflow systems.
 
 ### Full Citation
+
 _Han, Yanbo, Amit Sheth, and Christoph Bussler. “A Taxonomy of Adaptive Workflow Management.” Workshop of the 1998 ACM Conference on Computer Supported Cooperative Work. N.p., 1998. Google Scholar. Web. 20 Dec. 2016._
 
 
