@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  An ontology for workflows to enable interoperability
+title:  Work Proposal
 date:   2017-01-05 10:54
 category: proposal
 ---
