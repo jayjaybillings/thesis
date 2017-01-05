@@ -40,6 +40,7 @@ obvious ways to "just make it work."
 
 In this work, we propose that the solution to these problems stems from the
 lack of a comprehensive ontology for workflow science. Specifically, we
+
 * provide a brief literature review of efforts to develop taxonomies (not
 ontologies) for workflows and workflow management systems, and describe why
 they are limited.
