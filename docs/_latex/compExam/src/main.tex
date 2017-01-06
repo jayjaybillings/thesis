@@ -1,0 +1,38 @@
+%%This is a very basic article template.
+%%There is just one section and two subsections.
+\documentclass{report}
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{supertabular}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage[autostyle]{csquotes}
+\usepackage{listings}
+\lstset{
+basicstyle=\small\ttfamily,
+columns=flexible
+}
+\usepackage{url}
+
+\title{A Proposal on Workflows and the Interoperability of Workflow
+Management Systems}
+\author{Jay Jay Billings}
+\date{January 11, 2017}
+
+\begin{document}
+
+\maketitle
+
+\input{introduction}
+\input{workflows-review}
+\input{eclipse-ice}
+\input{problems}
+\input{proposal}
+
+\bibliographystyle{unsrt}
+\bibliography{bib}
+
+\end{document}

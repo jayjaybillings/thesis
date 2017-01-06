@@ -1,0 +1,77 @@
+\chapter{Work Proposal}
+
+This work has shown that there is significant ambiguity in the
+definition of ``scientific workflows'' and that a pressing need exists
+to leverage the different types of systems that exist to address
+scientific challenges. While the idea of creating a single, unifying
+workflow management system that addresses all of the needs of the
+community is tempting, it is likely impossible. On the other hand,
+facilitating interoperability between these systems has been shown to
+work with Eclipse ICE and Triquetrum as well as other tools, such as
+Kepler and Pegasus, \cite{mandal_integrating_2007}.
+
+Therefore this work proposes the following tasks to
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  develop a comprehensive ontology of workflows and workflow management
+  systems to show the complex relationships and similarities between the
+  tools, thereby revealing the means to enable interoperability.
+\item
+  demonstrate the utility of this ontology by creating an
+  interoperability layer between several workflow management systems
+  using the common building blocks approach of Jha et al.,
+  \cite{jha_building_2016}, language translation tools such as Extensible Stylesheet Language Transformations (XSLT), and other means as required.
+\item
+  deploy this layer as a common building block itself through a scalable
+  web service.
+\item
+  demonstrate the utility of the interoperability layer by executing
+  complex, multi-system workflows across hardware types for problems
+  relevant to energy science, including the ICEMAN and VIBE projects.
+\end{itemize}
+
+It is interesting to ask why an ontology is necessary in lieu of a
+taxonomy, a controlled vocabulary, or another mechanism of modeling the
+workflow science space. The primary benefit of an ontology over these
+other mechanisms is that onotologies are neither controlled
+(vocabularies) nor hierarchical (taxonomies).
+
+Hierarchy and control constrain and bias models in unnecessary ways,
+especially when the relationships between most types of information are
+not directed, \cite{weinberger_everything_2008}. Ontologies show relationships
+between elements without imposing order and are much easier to extend
+because new elements with new characteristics do not require modifying
+the architecture and layout of the taxonomy. For example, a taxonomy
+would require that all workflow systems derive, ultimately, from one or
+more parent workflow system types, and that the properties of each
+system be drawn from one or more controlled vocabularies that are
+supported by the taxonomy. This simply may not be the case and, instead,
+an ontology would not impose such an organization, but produce a list of
+the properties of each system and an undirected graph of the
+relationships between ontological elements.
+
+One important thing to keep in mind about ontologies is that it is
+important to describe how they map to or extend existing ontologies.
+There are many ways to produce these mappings by leveraging the
+extensive body of literature available from the library and
+informational sciences community, \cite{allemang_semantic_2008}.
+
+The necessity of producing the interoperability layer as a scalable web
+service cannot be overstated. All of the workflow management systems
+cited in this work publish scalable web services and interact with other
+webservices in one or more ways. Their are several additional advantages
+presented by the accepting this technology for this work, but perhaps
+the largest is that it will make it possible for the interoperability
+layer itself to be integrated as yet another workflow element in
+workflow management systems.
+
+Producing the ontology and interoperability layer for this work will
+require a survey of workflows and workflow management systems in the
+community. For the latter and for the energy science demonstrations,
+virtual ``containers'' such as Docker will be used to work with the
+systems in practice on the Compute And Data Environment for Science at
+Oak Ridge National Laboratory. In addition to making it possible to
+study these systems, using containers will also preserve this work for
+others who may seek to reproduce it in the future.

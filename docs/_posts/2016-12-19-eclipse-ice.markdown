@@ -68,55 +68,51 @@ well as its impact on the community.
 Motivation and Significance
 ===========================
 
-High performance modeling and simulation software is hard to use. Much of the
-challenge comes from the inherent nature of the science
-under consideration, but perhaps just as much of the problem comes from
-focusing very heavily on raw compute performance. Focusing on performance is
-understandable, given the field, but it leaves the rest of us to figure out how
-to actually use the software in a way that scales for a much larger set of
-users, many of whom may be novices or migrate between software packages regularly.
+In previous work, Billings et. al., discovered through requirements
+gathering interviews that many of the difficulties using high
+performance modeling and simulation software fall broadly into five
+distinct categories, @billings_designing_2009. These activities,
+detailed in section [workflow-model], creating input, executing jobs,
+analyzing results, managing data, and modifying code. There are many
+tools that address these problems individually, but the same work found
+that the excess number and specialization of these tools also contribute
+to the learning curve.
 
-** REMOVE or merge with text below!** 
-
-In previous work, Billings et. al., discovered through requirements gathering
-interviews that many of the difficulties using high performance modeling and
-simulation software fall broadly into five distinct categories,
-\cite{billings_cbhpc}. This includes input generation and preprocessing (also
-called ``model setup''); job execution and monitoring; postprocessing,
-visualization and data analysis; data management; and customizing the software.
-There are many tools that address these problems individually, but the same
-work found that the excess number and specialization of these tools also
-contribute to the learning curve.
-
-Efforts to address these five issues typically fall in with general purpose
-scientific workflow tools like Kepler, \cite{kepler}, or are reduced to myopic
-tools that satisfy some set of requirements for a single piece of software or
-platform. That is, the proposed solution to this problem is often to shoe-horn
-it into existing workflow tools that are so general that they focus on nothing
-in particular or to ignore the general problem entirely and deploy a completely
-tailored solution for the given application. These are opposing extremes, but a
-middle-of-the-road solution is also possible. A workflow engine could be
-developed that limits its scope to High-Performance Computing (HPC) and to the
-set of possible workflows that come from the previously mentioned five
-activities. A rich enough Application Programming Interface (API) could be
-exposed so that highly customized solutions could still be made based on this
-limited workflow engine with only a relatively minor amount of additional
-development required.
+Efforts to address these five issues typically fall in with general
+purpose scientific workflow tools like Kepler,
+@ludascher_scientific_2006, or are reduced to myopic tools that satisfy
+some set of requirements for a single piece of software or platform.
+These are opposing extremes, but a middle-of-the-road solution is also
+possible. A workflow engine could be developed that limits its scope to
+High-Performance Computing (HPC) and to the set of possible workflows
+that come from the previously mentioned five activities. A rich enough
+Application Programming Interface (API) could be exposed so that highly
+customized solutions could still be made based on this limited workflow
+engine with only a relatively minor amount of additional development
+required.
 
 It is not clear that one of these solutions is better than the others.
-Practical requirements will ultimately dictate which way projects go. This work
-considers a middle ground solution and presents the Eclipse Integrated
-Computational Environment (ICE) as proof that it is possible to create such a
-system. Specifically, we show
-* an architecture for such a workflow system that satisfies such a "limited"
-workflow model in an extensible way.
-* that such a system can be cross-platform for workstations, engage distributed
-resources and alternatively be deployed as a web service.
-* that smart design decisions enable not only authoring code for simulation
-software, but also make it possible for the system to extend itself, thereby
-enabling heavy customization.
+Practical requirements will ultimately dictate which way projects go.
+This work considers a middle ground solution and presents the Eclipse
+Integrated Computational Environment (ICE) as proof that it is possible
+to create such a system. Specifically, we show
 
-**FIXME! Needs to transition smoothly!** 
+-   that modeling and simulation activities can be described in a
+    succinct workflow model, (see "Workflow Model").
+
+-   an architecture for such a workflow system that satisfies the model
+    of workflows presented below in an extensible way, (see "Software 
+    Architecture").
+
+-   that such a system is applicable to a suite of problems in energy
+    science, including virtual battery simulations, additive
+    manufacturing and other areas, (See "Illlustrative Examples.").
+
+This section concludes with an introduction of the workflow model
+addressed by ICE. "Software Description" presents the details of
+the software from an architecture perspective while the "Illustrative 
+Examples" section provides a set of comprehensive examples. Finally,
+this paper concludes with a presentation of the impact and sample code.
 
 ### Workflow Model
 
@@ -549,6 +545,10 @@ companies, ICE source code has been used in two spin-off projects: EAVP
 (mentioned earlier) for advanced visualizations and the Eclipse January 
 project for scientific data structures, \[Graham, 2016]. ICE was also one of
 the founding projects of the Eclipse Science Working Group. 
+
+Eclipse ICE is an open source project and the authors welcome and encourage
+engagement and contributions from readers. Interested parties my inquire by
+contacting the corresponding author or visiting the website.
 
 Sample Code, Tutorials and Other Resources
 ================

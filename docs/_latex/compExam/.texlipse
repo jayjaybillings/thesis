@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Thu Jan 05 16:11:45 EST 2017
+markTmpDer=true
+builderNum=2
+outputDir=bin
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=main.tex
+outputFile=billings_comp.pdf
+langSpell=en
+markDer=true
+srcDir=src
