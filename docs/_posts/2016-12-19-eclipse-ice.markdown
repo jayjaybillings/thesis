@@ -115,24 +115,24 @@ this paper concludes with a presentation of the impact and sample code.
 
 ### Workflow Model
 
-Computational scientists perform a variety of tasks with respect to modeling
+Computational scientists perform a variety of tasks in modeling
 and simulation that can be abstracted into a lightweight theoretical framework 
-broadly based on five high-level _activities_: creating input, executing jobs, 
-analyzing results, managing data, and modifying code. The same computational 
+based broadly on five high-level _activities_: (1) creating input, (2) executing jobs, 
+(3) analyzing results, (4) managing data, and (5) modifying code. Those same computational 
 scientist would most likely find these activities difficult for all codes with 
-which they lack experience, whereas with their own codes or those with which 
-they are most familiar these tasks may be so easy that they are taken for 
+which they lack experience, whereas with their own codes---or those with which 
+they are most familiar---these tasks may be so simple that they are taken for 
 granted. Any particular combination of these activities across one or more 
-scientific software packages or codes results in a unique _workflow_. Such a 
+scientific software package or code results in a unique _workflow_. Such a 
 workflow is normally, but not always, requested by a human user and 
 orchestrated by a _Workflow Management System (WMS)_.
 
 The most obvious workflow for any individual simulation code or collection of
 codes is to string the activities together: the user's workflow is to create
-the input, launch the job, perform some analysis and manage their data, 
-possibly modifying their code in the process. There are many other combinations
-though, such as re-running jobs with conditions or modifications or analyzing 
-someone else's data. (See footnote <sup>1</sup>.)
+the input, launch the job, perform some analysis, and manage the data---possibly 
+modifying the code in the process. There are many other combinations
+however, including re-running jobs with conditions or modifications or analyzing 
+someone else's data (See footnote <sup>1</sup>).
 
 **Creating input** is the process of describing the physical model or state
 of a system that will be simulated. This could include creating an input file
