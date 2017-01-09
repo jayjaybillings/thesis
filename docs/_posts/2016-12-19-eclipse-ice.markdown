@@ -56,121 +56,123 @@ Abstract
 Problems in modeling and simulation require significantly different workflow
 management technologies than standard grid-based workflow management systems.
 Computational scientists typically interact with simulation software in a
-feedback driven way were solutions and workflows are developed iteratively and
-simultaneously. This work describes common activities in workflows and how 
-combinations of these activities form unique workflows. It presents the Eclipse
+feedback-driven way where solutions and workflows are developed iteratively and
+simultaneously. This work describes common activities in workflows, how 
+combinations of these activities form unique workflows, and presents the Eclipse
 Integrated Computational Environment as a workflow management system and
 development environment for the modeling and simulation community. Examples of
-the Environment's applicability to problems in energy science, general 
-multiphysics simulations, quantum computing and other areas are presented as
-well as its impact on the community.
+the environment's applicability to problems in energy science, general 
+multiphysics simulations, quantum computing, and other areas are presented along 
+with the environment's impact on the community and user base.
 
 Motivation and Significance
 ===========================
 
 In previous work, Billings et. al., discovered through requirements
-gathering interviews that many of the difficulties using high
-performance modeling and simulation software fall broadly into five
+gathering interviews that many of the difficulties using high-performance 
+modeling and simulation software fall broadly into five
 distinct categories, @billings_designing_2009. These activities,
-detailed in section [workflow-model], creating input, executing jobs,
-analyzing results, managing data, and modifying code. There are many
-tools that address these problems individually, but the same work found
+detailed in section [workflow-model], include (1) creating input, (2) executing jobs,
+(3) analyzing results, (4) managing data, and (5) modifying code. There are many
+tools that address these problems individually, but the same research found
 that the excess number and specialization of these tools also contribute
 to the learning curve.
 
-Efforts to address these five issues typically fall in with general
-purpose scientific workflow tools like Kepler,
-@ludascher_scientific_2006, or are reduced to myopic tools that satisfy
-some set of requirements for a single piece of software or platform.
+Efforts to address these five issues have previously resulted in general
+purpose scientific workflow tools like Kepler
+@ludascher_scientific_2006 or myopic tools that only satisfy
+a single set of requirements for a single piece of software or platform.
 These are opposing extremes, but a middle-of-the-road solution is also
 possible. A workflow engine could be developed that limits its scope to
-High-Performance Computing (HPC) and to the set of possible workflows
-that come from the previously mentioned five activities. A rich enough
-Application Programming Interface (API) could be exposed so that highly
-customized solutions could still be made based on this limited workflow
-engine with only a relatively minor amount of additional development
-required.
+high-performance computing (HPC) and to the set of possible workflows
+associated with the five previously mentioned activities. With only 
+minor additional development, a rich application programming interface (API) 
+could be exposed so that highly-customized solutions could still be 
+made based on this limited workflow engine.
 
-It is not clear that one of these solutions is better than the others.
-Practical requirements will ultimately dictate which way projects go.
+It is not clear which, if any, of these solutions is better than the others, and
+practical requirements will ultimately dictate the path of a project's progress.
 This work considers a middle ground solution and presents the Eclipse
 Integrated Computational Environment (ICE) as proof that it is possible
-to create such a system. Specifically, we show
+to create such a system. Specifically, the work described here shows that:
 
--   that modeling and simulation activities can be described in a
+-   Modeling and simulation activities can be described in a
     succinct workflow model, (see "Workflow Model").
 
--   an architecture for such a workflow system that satisfies the model
-    of workflows presented below in an extensible way, (see "Software 
+-   An architecture for such a workflow system can satisfy the model
+    of workflows in an extensible way, (see "Software 
     Architecture").
 
--   that such a system is applicable to a suite of problems in energy
+-   Such a system is applicable to a suite of problems in energy
     science, including virtual battery simulations, additive
-    manufacturing and other areas, (See "Illlustrative Examples.").
+    manufacturing and other areas, (see "Illlustrative Examples").
 
 This section concludes with an introduction of the workflow model
 addressed by ICE. "Software Description" presents the details of
-the software from an architecture perspective while the "Illustrative 
+the software from an architecture perspective, while the "Illustrative 
 Examples" section provides a set of comprehensive examples. Finally,
 this paper concludes with a presentation of the impact and sample code.
 
 ### Workflow Model
 
-Computational scientists perform a variety of tasks with respect to modeling
+Computational scientists perform a variety of tasks in modeling
 and simulation that can be abstracted into a lightweight theoretical framework 
-broadly based on five high-level _activities_: creating input, executing jobs, 
-analyzing results, managing data, and modifying code. The same computational 
+based broadly on five high-level _activities_: (1) creating input, (2) executing jobs, 
+(3) analyzing results, (4) managing data, and (5) modifying code. Those same computational 
 scientist would most likely find these activities difficult for all codes with 
-which they lack experience, whereas with their own codes or those with which 
-they are most familiar these tasks may be so easy that they are taken for 
+which they lack experience, whereas with their own codes&mdash;or those with which 
+they are most familiar&mdash;these tasks may be so simple that they are taken for 
 granted. Any particular combination of these activities across one or more 
-scientific software packages or codes results in a unique _workflow_. Such a 
+scientific software package or code results in a unique _workflow_. Such a 
 workflow is normally, but not always, requested by a human user and 
 orchestrated by a _Workflow Management System (WMS)_.
 
 The most obvious workflow for any individual simulation code or collection of
 codes is to string the activities together: the user's workflow is to create
-the input, launch the job, perform some analysis and manage their data, 
-possibly modifying their code in the process. There are many other combinations
-though, such as re-running jobs with conditions or modifications or analyzing 
-someone else's data. (See footnote <sup>1</sup>.)
+the input, launch the job, perform some analysis, and manage the data&mdash;possibly 
+modifying the code in the process. There are many other combinations
+however, including re-running jobs with conditions or modifications or analyzing 
+someone else's data (See footnote <sup>1</sup>).
 
 **Creating input** is the process of describing the physical model or state
-of a system that will be simulated. This could include creating an input file
-or file(s), but could also include external calls to a process to configure a
-running program. In most situations a computational scientist will modify 
+of a system that will be simulated. This could include creating an input file(s) 
+or making calls to an external process to configure a
+running program. In most situations, a computational scientist will modify 
 existing input or create new input from a template. "Input" generally includes
-runtime parameters for the simulation framework (tolerances, etc.); 
-configuration options (data locations, output locations, module configurations,
-etc.); material properties for the materials that will be simulated; and a 
-discretization of the simulation space (mesh, grid, particle distribution, 
-etc.). The collection of all required input can be quite large and may go by
-many names such as "input set," "input package," "problem," or, simply, 
-"input." Often the set of input files will be described in a "main" input file
+runtime parameters for the simulation framework (e.g., tolerances); 
+configuration options (e.g., data locations, output locations, module configurations); 
+properties of the materials to be simulated; and a 
+discretization of the simulation space (e.g., mesh, grid, particle distribution). 
+The collection of all required input can be quite large and may go by
+many names, including "input set," "input package," "problem," or, simply, 
+"input." Often, the set of input files will be described in a "main" input file
 that acts as a kind of manifest, describing and providing links to all 
-necessary information for the given problem. 
+necessary information for a given problem. 
 
-In this work, it should be assumed unless otherwise noted that "input"
-refers to the entire set of input, not a single file.
+In this work, it should be assumed&mdash;unless otherwise noted&mdash;that "input"
+refers to the entire set of input, not to a single file.
 
-**Executing jobs** or "running the workflow" in this context is the process 
-of performing some calculation based on the input with a simulation code or
-framework. Modeling and simulation codes are normally run locally for small
-jobs or development. Large simulations typically require equally large
-hardware resources that are utilized remotely through Secure Shell (SSH)
+[comment]: # (The following sub-subsection got a good workover; make sure I didn't overstep. stc)
+**Executing jobs**, or "running the workflow" in this context, is the process 
+of performing calculations using a simulation code or framework 
+based on known variables&mdash;the input. 
+Models and simulation codes are typically run locally for small
+jobs or for development. Large simulations, on the other hand, 
+typically require a large amount of hardware resources; these resources 
+are usually off site (i.e., physically unavailable to the user)
+and are accessed remotely remotely through Secure Shell (SSH)
 connections or similar protocols. Remote execution requires moving the input
 in advance of the execution and copying or moving the output to the user's 
-machine, if possible and desirable. (In many cases the output cannot be moved
-because it is too large.) 
+machine. In many cases, though, the output is too large to move to the user's local machine.
 
-Local and remote jobs are often monitored in one or more ways to ascertain the 
-status of job. This can include simply checking whether or not execution has 
-finished or monitoring the output of individual quantities to examine the 
+Local and remote jobs are often monitored to ascertain a job's status. 
+This monitoring may be a simple check as to whether or not the execution has 
+completed, or it may involve monitoring the output of individual quantities to examine the 
 calculation state. The latter is often used to detect calculation errors that 
-will result in incorrect results. If such results are found, the job is 
-typically cancelled ("killed") to save compute resources and re-run later. 
+will result in incorrect results. If such problems are found, the job is 
+typically cancelled ("killed") to save compute resources and is then re-run later. 
 
-In this work, it should be assumed unless otherwise noted that "executing a 
+In this work, it should be assumed&mdash;unless otherwise noted&mdash;that "executing a 
 job" includes monitoring that job in one or more ways, possibly including
 real-time updates to visualizations.
 
@@ -178,44 +180,44 @@ real-time updates to visualizations.
 or more prescribed ways and producing artifacts with scientific significance
 from the transformed data. This may include, for example, post-processing 
 results and visualizing the new data with dedicated visualization tools. For
-many types of scientific computing this includes viewing the results of a 
+many types of scientific computing, this includes viewing the results of a 
 simulation on a mesh or grid and extracting publication quality images or 
 movies from that data. Other cases may include analyzing results in preparation
-for follow simulations or performing feature extraction, classification or 
+for follow simulations or performing feature extraction, classification, or 
 activities for machine learning and data mining. 
 
 While this has many similarities to executing a job, it is distinctly different 
 because the activity changes focus to satisfy the needs of a human operator. 
-Simple data reduction where the exact reduction is known certainly qualifies as
-executing a job, but analysis of modeling and simulation results is far from
-simple data reduction. It is generally a far more interactive process for
+Simple data reduction, where the exact reduction is known, certainly qualifies as
+executing a job; however, analysis of model and simulation results is far from
+simple data reduction, and is generally far more interactive for
 computational scientists.
 
-**Managing data** includes moving, copying, storing, sharing or otherwise 
+**Managing data** includes moving, copying, storing, sharing, or otherwise 
 interacting with data for or from simulations. This activity is the most 
-pervasive of all the activities because each of the others requires interacting
-with data in some way. In many cases though, data is still managed its own
-purposes, without performing a simulation, generating new input, or analysing
+pervasive because each of the other activities requires interacting
+with data in some way. In many cases, though, data is still managed for its own
+purposes, without performing a simulation, generating new input, or analyzing
 results. Examples include archiving data, packaging data for publications, and 
 updating values manually (often in light of new information from publications).
 
 **Modifying code** is not typically considered a part of a scientific computing
 workflow. However, modeling and simulation use cases often require users to 
 explicitly modify code before execution, such as with the computational fluid
-dynamics code Nek5000, \[Nek5000]; or to issue special re-build instructions. Many 
+dynamics code Nek5000, \[Nek5000], or to issue special re-build instructions. Many 
 computational scientists consider "their workflow" to be re-running software 
 after modifications for purely exploratory purposes. This may be required if 
-the model the author is manipulating can not be configured as part of the input
-directly but can be easily manipulated by hand.
+the model that the author is manipulating cannot be configured directly as 
+part of the input but can be easily manipulated by hand.
 
 ### Comparison to Other Models
 
 This model of workflows differs significantly from those of similar efforts in 
-workflow science because it defines workflows in terms of activities. Others in
-the literature define a workflow as a collection of computing processes. For 
+workflow science because it defines workflows in terms of activities. Other workflow 
+models in the literature define a workflow as a collection of computing processes. For 
 example, Yu and Buyya define grid workflows as "a collection of tasks that are
-processed on distributed resources in a wel-defined order to accomplish a 
-specific goal," \[Yu, 2005]. Others such as Pizzi et al. subscribe to similar
+processed on distributed resources in a well-defined order to accomplish a 
+specific goal," \[Yu, 2005]. Others, such as Pizzi et al., subscribe to similar
 definitions, \[Pizzi, 2015]. This "process" view is acceptable where the 
 workflow is static and does not require additional human input or "human in 
 the loop" behavior after the all the initial human input is provided. That is, 
@@ -225,10 +227,12 @@ call-backs to humans. It is simpler to discuss "activities" than it is to
 create a distinction between "human processes" and "computer processes." 
 Focusing on "activities" over processes (human or computer) also has the 
 benefit of removing concrete elements such as hardware properties or software 
-details that distract from details of workflows and WMSes per se. That is, 
+details that distract from details of workflows and WMSes. That is, 
 considerations such as memory usage and raw performance are important, but 
 questions about the abstract workflow or what the WMS should do are far more 
 important.
+
+[comment]: # (Please define the WMS acronym in its first instance in the paragraph above.)
 
 Software Description
 =====================
