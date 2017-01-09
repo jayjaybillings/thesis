@@ -1,0 +1,9 @@
+bib.bib
+eclipse-ice.tex
+images
+introduction.tex
+main.tex
+manifest.txt
+problems.tex
+proposal.tex
+workflows-review.tex

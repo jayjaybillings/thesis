@@ -1,0 +1,1790 @@
+---
+layout: post
+title:  Full document
+date:   2017-01-09 21:56
+category: references
+---
+<div class="maketitle">
+
+<h2 class="titleHead">A Proposal on Workflows and the Interoperability
+of Workflow Management Systems</h2>
+ <div class="author" ><span 
+class="cmr-12">Jay Jay Billings</span></div><br />
+<div class="date" ><span 
+class="cmr-12">January 11, 2017</span></div>
+                                                                  
+
+                                                                  
+   </div>
+                                                                  
+
+                                                                  
+   <h2 class="chapterHead"><span class="titlemark">Chapter&#x00A0;1</span><br /><a 
+ id="x1-10001"></a>Introduction</h2>
+<!--l. 3--><p class="noindent" >The study of workflows, workflow management systems, and the broader topics of
+so-called &#8220;workflow science&#8221; has revolutionized the way humans automate activities
+in business, science, medicine and many others fields, greatly improving efficiency in
+each. Our dependence on workflow tools and technology is so great that some of the
+most common questions in technical discussions are arguably &#8220;How do we automate
+that?&#8221; and &#8220;How are you going to handle your workflow?&#8221; Workflow tools have
+even &#8220;invaded&#8221; our homes by becoming so easy to use that children can
+use them to clandestinely stock up on cookies, doll houses, and Pokemon,
+<span class="cite">[<a 
+href="#X_6-year-old_2016">1</a>]</span><span class="cite">[<a 
+href="#Xwilliams_6-year-old_2017">2</a>]</span>!
+<!--l. 14--><p class="indent" >   However, there are many unresolved problems in workflow science that will
+seriously limit the continued utility of these tools for interdisciplinary research. There
+are many practical problems, some of which are shared with other fields, but the
+largest issues are those of a fundamental, theoretical nature that have never been
+investigated across the entire field. For example, what is a &#8220;workflow&#8221; and what is a
+&#8220;workflow management system?&#8221; Are workflows in modeling and simulation the same
+as workflows in grid computing? Are scientific workflows actually the same as
+business workflows given the right theoretical abstraction? There are no generally
+accepted answers for these questions and, indeed, every relevant reference for this
+work provided a different definition of a workflow, (albeit some of the definitions were
+similar).
+<!--l. 28--><p class="indent" >   These basic, fundamental questions have significant implications for long-term
+sustainability, interoperability, and (workflow) reproducibility. Interoperability in
+particular is interesting because of the opportunity to leverage existing capabilities
+and workflows in different systems without reproducing either the components or
+the workflows in the second system. In practice, this is rarely possible. Few
+workflow systems will work together because most systems are developed with
+different or custom approaches, or, in many cases, were never developed
+to be interoperable at all and there are no obvious ways to &#8220;just make it
+work.&#8221;
+<!--l. 39--><p class="indent" >   In this work, we propose that the solution to these problems stems from the lack
+of a comprehensive ontology for workflow science. Specifically, we
+     <ul class="itemize1">
+     <li class="itemize">provide  a  brief  literature  review  of  workflows  and  efforts  to  develop
+     taxonomies  (not  ontologies)  for  workflows  and  workflow  management
+     systems, and describe why a classic taxonomy may be insufficient.
+     </li>
+     <li class="itemize">present  the  Eclipse  Integrated  Computational  Environment  as  an
+     appropriate test bed for these ideas and contextualize it in the broader
+     workflows tool space.
+     </li>
+     <li class="itemize">describe  challenges  the  workflows  community  is  currently  facing  that
+     would  be  solved  by  the  development  of  an  ontology  that  facilitated
+     interoperability.
+     </li>
+                                                                  
+
+                                                                  
+     <li class="itemize">enummerate the necessary tasks and challenges of such an effort.</li></ul>
+                                                                  
+
+                                                                  
+   <h2 class="chapterHead"><span class="titlemark">Chapter&#x00A0;2</span><br /><a 
+ id="x1-20002"></a>A review of workflows and taxonomies</h2>
+   <h3 class="sectionHead"><span class="titlemark">2.1   </span> <a 
+ id="x1-30002.1"></a>Workflows</h3>
+<!--l. 5--><p class="noindent" >As mentioned previously, one of the most challenging aspects of studying workflows is
+the way the vocabulary has been overloaded unintentionally. It is somewhat clearer
+to understand them by considering the historial perspective.
+<!--l. 10--><p class="indent" >   The use and study of workflows and the initial implementation of workflow
+management systems developed in the business world with the need to automate
+business processes. Lud�scher et al. ascribe the origins of workflows and workflow
+management systems to &#8220;office automation&#8221; trends in the 1970s, <span class="cite">[<a 
+href="#Xludascher_scientific_2006">3</a>]</span>. Van Der Aalst
+argues that &#8220;workflows&#8221; arose from the needs of businesses to not only execute tasks,
+but &#8220;to manage the flow of work through the organization,&#8221; and that managing
+workflows is the natural evolution from the monolithic applications of the 1960s to
+applications that rely on external functionality in the 1990s, <span class="cite">[<a 
+href="#Xvan_der_aalst_application_1998">4</a>]</span>. (One might
+argue that Van Der Aalst&#8217;s depiction continues today with the growth of the
+&#8220;microservices&#8221; architectural movement.) By 1995, in the presence of many workflow
+tools, the Workflow Management Coalition had developed a &#8220;standard&#8221; definition of
+workflows, <span class="cite">[<a 
+href="#Xhollingsworth_workflow_1993">5</a>]</span>,
+<!--l. 26--><p class="indent" >
+     <!--l. 26--><p class="noindent" >A Workflow is the automation of a business process, in whole or part,
+     during which documents, information or tasks are passed from one
+     participant (a resource; human or machine) to another for action,
+     according a set of procedural rules.
+<!--l. 32--><p class="indent" >   In the early 2000s, workflow systems started finding use in scientific contexts
+where process automation was required for scientific uses instead of traditional
+business uses. The focus of scientific workflows, at the time, also shifted to focus
+primarily on data processing for large &#8220;grids&#8221; of networked services, <span class="cite">[<a 
+href="#Xyu_taxonomy_2005">6</a>]</span>. Yu and
+Buyya define a workflow as
+<!--l. 40--><p class="indent" >
+     <!--l. 40--><p class="noindent" >... a collection of tasks that are processed on distributed resources
+     in a well-defined order to accomplish a specific goal.
+<!--l. 44--><p class="indent" >   This definition is important because of what is missing: the human element. For
+many in the scientific workflows community this has become the standard
+definition of a workflow and the involvement of humans results not in a single
+workflow, but two workflows spanned by a human. Machines or instruments are
+absent from the definition as well, but in practice many modern scientific
+workflows are launched automatically when data &#8220;comes off&#8221; of instruments
+because they remain the primary source of data in grid workflows, (c.f. -
+<span class="cite">[<a 
+href="#Xmegino_panda:_2015">7</a>]</span>).
+                                                                  
+
+                                                                  
+<!--l. 53--><p class="indent" >   In addition to &#8220;grid workflows,&#8221; the scientific community started exploring
+&#8220;modeling and simulation&#8221; workflows which focus not on data flow, but on the
+orchestration of activities related to modeling and simulation instead, sometimes on
+small local computers, but often on the largest of the world&#8217;s &#8220;Leadership Class&#8221;
+supercomputers. These workflows typically fall into a subset of their more general
+cousins that can be found in the grid or business communities, but unlike grid
+workflows they tend to require human interaction in one way or another. Some of
+these workflows are defined in the context of a particular way of working, such as the
+Automation, Data, Environment, and Sharing (ADES) model of Pizzi et al., <span class="cite">[<a 
+href="#Xpizzi_aiida:_2016">8</a>]</span>, the
+&#8220;Design-to-Analysis&#8221; model of Clay et al., <span class="cite">[<a 
+href="#Xclay_incorporating_2015">9</a>]</span>, or the model of Billings et al.
+presented later in this work during the discussion on the Eclipse Integrated
+Computational Environment. However, many scientific workflows, while
+exceptionally well defined, remain hard coded into dedicated environments
+developed for the sole purpose of executing that single or at most a few related
+workflows.
+<!--l. 71--><p class="indent" >   Additional types of workflows in the scientific community include workflows that
+process ensembles of calculations, <span class="cite">[<a 
+href="#Xmontoya_apex_2016">10</a>]</span>, and workflows that are used for testing
+software.
+<!--l. 76--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">2.2   </span> <a 
+ id="x1-40002.2"></a>Taxonomies and Classification</h3>
+<!--l. 78--><p class="noindent" >There have been several efforts to classify, survey or develop taxonomies for
+workflows. Yu and Buyya are the only source that provides what can be truly
+considered a &#8220;taxonomy,&#8221; by showing the hierarchical relationships between workflow
+concepts. Most of the other efforts discussed below, while claiming to produce
+taxonomies, in fact produce controlled vocabularies.
+<!--l. 85--><p class="indent" >   Human involvement is critical in some workflows which require adaptive
+management, as shown by Han and Bussler, <span class="cite">[<a 
+href="#Xhan_taxonomy_1998">11</a>]</span>. Their work considers adaptive
+workflow management in the context of healthcare workflows and argues that
+workflow technology in 2002 was incapable of adapting sufficiently to meet the
+unexpected needs of medical personnel. Along with unexpected needs (&#8220;changing
+environment&#8221;), they cite the evolution of software systems (&#8220;technical advances&#8221;) as
+another critical area that leads to required changes in workflow management
+systems.
+<!--l. 95--><p class="indent" >   Han and Bussler discuss situations that lead to &#8220;ad-hoc derivation&#8221; of workflows.
+&#8220;Ad-hoc derivation&#8221; in this case means generating extra workflow steps or details,
+such as converting from an abstract to a concrete workflow as Pegasus and other grid
+workflow systems do. Specifically, Han and Bussler cite dynamic refinement, user
+involvement, unpredictable events and erroneous situations as systems that
+require the workflow to behave in an unplanned way, and for which workflow
+managements systems should be prepared. Meta-models, open-point (more
+commonly known as &#8220;extension point&#8221;) or hybrid approaches are proposed as
+solutions.
+<!--l. 106--><p class="indent" >   It is important to note that Han and Bussler consider only business workflows and
+                                                                  
+
+                                                                  
+management systems, not scientific workflows and management systems. In this
+context they also share some important wisdom that is, arguably, of equal
+importance to scientific workflows:
+<!--l. 112--><p class="indent" >
+     <!--l. 112--><p class="noindent" >Workflow systems do not exist for their own purposes. They are a
+     constituent component of a business system. A business system is
+     usually domain specific.
+<!--l. 117--><p class="indent" >   This is an important consideration for scientific workflows because the &#8220;business
+logic&#8221; of scientific workflows is &#8220;domain logic&#8221; that is highly specific to the scientific
+domain under consideration. This necessarily leads to a diverse ecosystem of workflow
+systems.
+<!--l. 122--><p class="indent" >   Yu and Buyya developed a taxonomy for workflow management systems on grids
+that sought to capture the architectural style while identifying comparison criteria,
+<span class="cite">[<a 
+href="#Xyu_taxonomy_2005">6</a>]</span>. Their work is notable because it largely avoids a discussion of applications and
+focuses purely on the functional properties of the workflow management systems as
+they exist on the grids. Yu and Buyya root their taxonomy on five core elements of
+grid-based workflow management systems: workflow design, information retrieval,
+workflow scheduling, fault tolerance, and data movement. While many of the
+properties and taxonomic elements they describe seem common to all systems, others
+would appear to be grid-specific at present, such as &#8220;Workflow QoS Constraints&#8221;.
+Their work also shows how thirteen common grid workflow management
+systems, including Pegasus and Kepler, are covered by the taxonomy. Like
+other authors, Yu and Buyya cite the lack of standardized workflow syntax
+and language as sources of interoperability issues. Yu&#8217;s and Buyya&#8217;s work
+is extremely detailed and a very helpful resource for understanding grid
+workflows.
+<!--l. 139--><p class="indent" >   Scientific workflow management systems have flourished since their inception,
+although not without significant overlap and duplication of effort. The survey of
+scientific workflow management systems by Barker and Hemert illustrates both
+the growth and problems while also providing important observations and
+recommendations on the topic, <span class="cite">[<a 
+href="#Xbarker_scientific_2007">12</a>]</span>.
+<!--l. 146--><p class="indent" >   Barker and Hemert also provide key insights into the history of workflow
+management systems as an important part of business automation. The authors
+make an important comparison between traditional business workflow management
+systems and their scientific counterparts, citing in particular that traditional business
+workflow tools employ the wrong abstraction for scientists They define workflows
+using the &#8220;standard&#8221; definition from the Workflow Management Coalition, previously
+mentioned above.
+<!--l. 155--><p class="indent" >   The discussion points that Barker and Hemert raise are important because of
+their continuing importance and relevance today, particularly the need to enable
+programmability through standard languages instead of custom, proprietary
+languages. (The reader is encouraged to read the entire paper for more details.)
+                                                                  
+
+                                                                  
+Sticking to standards is also important and perhaps illustrated best by Barker&#8217;s and
+Hemert&#8217;s statement that
+<!--l. 164--><p class="indent" >
+     <!--l. 164--><p class="noindent" >If  software  development  and  tool  support  terminates  on  one
+     proprietary framework, workflows will need to be re-implemented
+     from scratch.
+<!--l. 168--><p class="indent" >   This is an important point even for workflow tools that do not use proprietary
+standards, but &#8220;roll their own&#8221; solutions. What can be done to support those tools
+and reproduce those workflows once support for continued development
+ends?
+<!--l. 173--><p class="indent" >   Notably, in their discussion about the Kepler workflow management system,
+Barker and Hemert state that
+<!--l. 177--><p class="indent" >
+     <!--l. 177--><p class="noindent" >Actors are re-usable independent blocks of computation, such as:
+     Web Services, database calls, etc.
+<!--l. 181--><p class="indent" >   Jha and Turilli have proposed using independent &#8220;building blocks&#8221; as an
+approach to scientific workflows which espouses a similar relationship to
+infrastructure services, <span class="cite">[<a 
+href="#Xjha_building_2016">13</a>]</span>. The similarity is notable and the exact relationship
+between Jha&#8217;s blocks and Actor-Oriented Programming merit further investigation.
+Jha and Turilli provide an ambiguous definition of workflows, stating that workflows
+are both comprised of tasks and provide a description of the resources and
+constraints for each task. The ambiguity rises from the definition of &#8220;tasks.&#8221; If tasks
+are compute processes, then their definition is equivalent to that of grid workflows.
+However, if a task could include human interaction during execution, then they
+have a much broader definition than what is normally found in the grid
+literature, and their definition more closely resembles a business workflow.
+Building blocks, on the other hand, are concretely defined as those pieces of
+middleware that are self-sufficient, interoperable, composable, and extensible, (with
+detailed definitions of each provided). The RADICAL-Cybertools suite of
+software modules from Jha&#8217;s group is presented as a sample set of building
+blocks and two case studies where these tools were successfully as such are
+presented.
+<!--l. 201--><p class="indent" >   Montoya et al. discuss workflows needs for the Alliance for Application
+Performance at Extreme Scale (APEX), <span class="cite">[<a 
+href="#Xnersc_apex_2016">14</a>]</span>, and describe three main classes of
+workflows: Simulation Science, Uncertainty Quantification (UQ), and High
+Throughput Computing (HTC), <span class="cite">[<a 
+href="#Xmontoya_apex_2016">10</a>]</span>. HTC workflows start with the collection of data
+from experiments that is in turn transported to large compute facilities for
+processing. Many grid workflows are HTC workflows, but not all HTC workflows are
+grid workflows since some HTC workflows, such as those those presented by Montoya
+                                                                  
+
+                                                                  
+et al., maybe be run on large resources that are not traditionally &#8220;grid machines.&#8221;
+Simulation science workflows, referred to above as modeling and simulation
+workflows, are those workflows that are primarily focused on modeling and
+simulation activities. UQ workflows build on modeling and simulation workflows by
+executing ensembles of jobs or ensembles of whole workflows to quantify
+uncertainty in simulation results. Montoya et al. also provide a detailed
+mapping of each workflow type to optimal hardware resources for the APEX
+program.
+<!--l. 219--><p class="indent" >   The U.S. Department of Energy sponsored the <span 
+class="cmti-10">DOE NGNS/CS Scientific</span>
+<span 
+class="cmti-10">Workflows Workshop </span>on April 20-21st 2015. In the report, Deelman et al. describe
+the requirements and research directions for scientific workflows for the exascale
+environment, <span class="cite">[<a 
+href="#Xdeelman_future_2015">15</a>]</span>. The report describes scientific workflows primarily by three
+application types: Simulations, Instruments, and Collaborations. The findings of the
+workshop are comprehensive and encouraging, with recommendations for research
+priorities in Application Requirements, Hardware Systems, System Software, WMS
+Design and Execution, Programming and Usability, Provenance Capture, Validation,
+and Workflow Science.
+<!--l. 230--><p class="indent" >   The definitions of a &#8220;workflow&#8221; and &#8220;workflow management systems&#8221; are
+thoroughly explored and put into context for the purposes of the workshop.
+The authors of the report are very careful to define workflows not just as a
+collection of managed processes, which is common, but in such a way that
+it is clear that reproducibility, mobility and some degree of generality are
+required by both the description of the workflow and the management system.
+<span class="footnote-mark"><a 
+href="main2.html#fn1x3"><sup class="textsuperscript">1</sup></a></span><a 
+ id="x1-4001f1"></a>
+<!--l. 239--><p class="indent" >   The brief summary of different workflow models above is a sample of the
+confusion in the &#8220;marketplace&#8221; and illustrates the lack of a coherent understanding of
+workflows.
+<!--l. 243--><p class="indent" >   The next section presents the workflow model, system architecture and
+applications of the Eclipse Integrated Computational Environment. This model limits
+its scope to high-performance computing (HPC) and to the set of possible workflows
+that come creating input, executing jobs, analyzing results, managing data, and
+modifying code. However, as &#8220;limited&#8221; as ICE&#8217;s model may be, it shows significant
+ability to interoperate with other workflow engines. This and other qualities of the
+system are why it is revisited later as a proposed platform for testing an
+interoperability layer.
+                                                                  
+
+                                                                  
+   <h2 class="chapterHead"><span class="titlemark">Chapter&#x00A0;3</span><br /><a 
+ id="x1-50003"></a>The Eclipse Integrated Computational Environment</h2>
+<!--l. 3--><p class="noindent" >Problems in modeling and simulation require significantly different workflow
+management technologies than standard grid-based workflow management systems.
+Computational scientists typically interact with simulation software in a
+feedback driven way were solutions and workflows are developed iteratively and
+simultaneously. This work describes common activities in workflows and how
+combinations of these activities form unique workflows. It presents the Eclipse
+Integrated Computational Environment as a workflow management system and
+development environment for the modeling and simulation community. Examples of
+the Environment&#8217;s applicability to problems in energy science, general multiphysics
+simulations, quantum computing and other areas are presented as well as its impact
+on the community.
+   <h3 class="sectionHead"><span class="titlemark">3.1   </span> <a 
+ id="x1-60003.1"></a>Motivation and Significance</h3>
+<!--l. 18--><p class="noindent" >High performance modeling and simulation software is hard to use. Much of the
+challenge comes from the inherent nature of the science under consideration, but
+perhaps just as much of the problem comes from focusing very heavily on raw
+compute performance. Focusing on performance is understandable, given the field,
+but producing highly usable software is advantageous for a variety of reasons as well,
+especially when enabling novices or users who migrate between codes often to address
+new scientific questions.
+<!--l. 27--><p class="indent" >   In previous work, Billings et. al., discovered through requirements gathering
+interviews that many of the difficulties using high performance modeling and
+simulation software fall broadly into five distinct categories, <span class="cite">[<a 
+href="#Xbillings_designing_2009">16</a>]</span>. These activities,
+detailed in section <a 
+href="#x1-70003.1.1">3.1.1<!--tex4ht:ref: workflow-model --></a>, creating input, executing jobs, analyzing results, managing
+data, and modifying code. There are many tools that address these problems
+individually, but the same work found that the excess number and specialization of
+these tools also contribute to the learning curve.
+<!--l. 37--><p class="indent" >   Efforts to address these five issues typically fall in with general purpose scientific
+workflow tools like Kepler, <span class="cite">[<a 
+href="#Xludascher_scientific_2006">3</a>]</span>, or are reduced to myopic tools that satisfy some set of
+requirements for a single piece of software or platform. These are opposing extremes,
+but a middle-of-the-road solution is also possible. A workflow engine could be
+developed that limits its scope to High-Performance Computing (HPC) and to the
+set of possible workflows that come from the previously mentioned five activities. A
+rich enough Application Programming Interface (API) could be exposed so
+that highly customized solutions could still be made based on this limited
+workflow engine with only a relatively minor amount of additional development
+required.
+<!--l. 49--><p class="indent" >   It is not clear that one of these solutions is better than the others. Practical
+requirements will ultimately dictate which way projects go. This work considers a
+middle ground solution and presents the Eclipse Integrated Computational
+Environment (ICE) as proof that it is possible to create such a system. Specifically,
+we show
+     <ul class="itemize1">
+     <li class="itemize">that modeling and simulation activities can be described in a succinct
+                                                                  
+
+                                                                  
+     workflow model, (section <a 
+href="#x1-70003.1.1">3.1.1<!--tex4ht:ref: workflow-model --></a>).
+     </li>
+     <li class="itemize">an architecture for such a workflow system that satisfies the model of
+     workflows presented below in an extensible way, (section <a 
+href="#x1-100003.2.1">3.2.1<!--tex4ht:ref: software-architecture --></a>).
+     </li>
+     <li class="itemize">that such a system is applicable to a suite of problems in energy science,
+     including virtual battery simulations, additive manufacturing and other
+     areas, (section <a 
+href="#x1-150003.3">3.3<!--tex4ht:ref: illustrative-examples --></a>).</li></ul>
+<!--l. 65--><p class="indent" >   This section concludes with an introduction of the workflow model addressed by
+ICE. Section <a 
+href="#x1-90003.2">3.2<!--tex4ht:ref: software-description --></a> presents the details of the software from an architecture perspective
+while section <a 
+href="#x1-150003.3">3.3<!--tex4ht:ref: illustrative-examples --></a> provides a set of comprehensive examples. Finally, this paper
+concludes with a presentation of the impact, (section <a 
+href="#x1-220003.4">3.4<!--tex4ht:ref: impact --></a>), and sample code, (section
+<a 
+href="#x1-230003.5">3.5<!--tex4ht:ref: sample-code-tutorials-and-other-resources --></a>).
+<!--l. 72--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">3.1.1   </span> <a 
+ id="x1-70003.1.1"></a>Workflow Model</h4>
+<!--l. 74--><p class="noindent" >Computational scientists perform a variety of tasks with respect to modeling and
+simulation that can be abstracted into a lightweight theoretical framework broadly
+based on five high-level <span 
+class="cmti-10">activities</span>: creating input, executing jobs, analyzing results,
+managing data, and modifying code. The same computational scientist would most
+likely find these activities difficult for all codes with which they lack experience,
+whereas with their own codes or those with which they are most familiar these tasks
+may be so easy that they are taken for granted. Any particular combination
+of these activities across one or more scientific software packages or codes
+results in a unique <span 
+class="cmti-10">workflow</span>. Such a workflow is normally, but not always,
+requested by a human user and orchestrated by a <span 
+class="cmti-10">Workflow Management System</span>
+<span 
+class="cmti-10">(WMS)</span>.
+<!--l. 88--><p class="indent" >   The most obvious workflow for any individual simulation code or collection of
+codes is to string the activities together: the user&#8217;s workflow is to create the input,
+launch the job, perform some analysis and manage their data, possibly modifying
+their code in the process. There are many other combinations though, such as
+re-running jobs with conditions or modifications or analyzing someone else&#8217;s
+data.<span class="footnote-mark"><a 
+href="main3.html#fn1x4"><sup class="textsuperscript">1</sup></a></span><a 
+ id="x1-7001f1"></a> 
+<!--l. 98--><p class="indent" >   <span 
+class="cmbx-10">Creating input </span>is the process of describing the physical model or state of a
+system that will be simulated. This could include creating an input file or file(s),
+but could also include external calls to a process to configure a running
+program. In most situations a computational scientist will modify existing input
+or create new input from a template. &#8220;Input&#8221; generally includes runtime
+                                                                  
+
+                                                                  
+parameters for the simulation framework (tolerances, etc.); configuration
+options (data locations, output locations, module configurations, etc.); material
+properties for the materials that will be simulated; and a discretization of the
+simulation space (mesh, grid, particle distribution, etc.). The collection of all
+required input can be quite large and may go by many names such as &#8220;input
+set,&#8221; &#8220;input package,&#8221; &#8220;problem,&#8221; or, simply, &#8220;input.&#8221; Often the set of input
+files will be described in a &#8220;main&#8221; input file that acts as a kind of manifest,
+describing and providing links to all necessary information for the given
+problem.
+<!--l. 115--><p class="indent" >   In this work, it should be assumed unless otherwise noted that &#8220;input&#8221; refers to
+the entire set of input, not a single file.
+<!--l. 118--><p class="indent" >   <span 
+class="cmbx-10">Executing jobs </span>or &#8220;running the workflow&#8221; in this context is the process of
+performing some calculation based on the input with a simulation code or framework.
+Modeling and simulation codes are normally run locally for small jobs or
+development. Large simulations typically require equally large hardware resources
+that are utilized remotely through Secure Shell (SSH) connections or similar
+protocols. Remote execution requires moving the input in advance of the execution
+and copying or moving the output to the user&#8217;s machine, if possible and
+desirable. (In many cases the output cannot be moved because it is too
+large.)
+<!--l. 129--><p class="indent" >   Local and remote jobs are often monitored in one or more ways to ascertain the
+status of job. This can include simply checking whether or not execution has finished
+or monitoring the output of individual quantities to examine the calculation state.
+The latter is often used to detect calculation errors that will result in incorrect
+results. If such results are found, the job is typically cancelled (&#8220;killed&#8221;) to save
+compute resources and re-run later.
+<!--l. 137--><p class="indent" >   In this work, it should be assumed unless otherwise noted that &#8220;executing a job&#8221;
+includes monitoring that job in one or more ways, possibly including real-time
+updates to visualizations.
+<!--l. 141--><p class="indent" >   <span 
+class="cmbx-10">Analyzing results </span>includes executing special jobs to transform data in one or
+more prescribed ways and producing artifacts with scientific significance from the
+transformed data. This may include, for example, post-processing results and
+visualizing the new data with dedicated visualization tools. For many types of
+scientific computing this includes viewing the results of a simulation on a mesh or
+grid and extracting publication quality images or movies from that data. Other cases
+may include analyzing results in preparation for follow simulations or performing
+feature extraction, classification or activities for machine learning and data
+mining.
+<!--l. 152--><p class="indent" >   While this has many similarities to executing a job, it is distinctly different
+because the activity changes focus to satisfy the needs of a human operator. Simple
+data reduction where the exact reduction is known certainly qualifies as executing a
+job, but analysis of modeling and simulation results is far from simple data
+reduction. It is generally a far more interactive process for computational
+scientists.
+<!--l. 159--><p class="indent" >   <span 
+class="cmbx-10">Managing data </span>includes moving, copying, storing, sharing or otherwise
+interacting with data for or from simulations. This activity is the most pervasive of
+                                                                  
+
+                                                                  
+all the activities because each of the others requires interacting with data in some
+way. In many cases though, data is still managed its own purposes, without
+performing a simulation, generating new input, or analysing results. Examples
+include archiving data, packaging data for publications, and updating values
+manually (often in light of new information from publications).
+<!--l. 168--><p class="indent" >   <span 
+class="cmbx-10">Modifying code </span>is not typically considered a part of a scientific computing
+workflow. However, modeling and simulation use cases often require users to
+explicitly modify code before execution, such as with the computational fluid
+dynamics code Nek5000, <span class="cite">[<a 
+href="#Xthe_nek5000_team_nek5000_2014">17</a>]</span>; or to issue special re-build instructions. Many
+computational scientists consider &#8220;their workflow&#8221; to be re-running software after
+modifications for purely exploratory purposes. This may be required if the model the
+author is manipulating can not be configured as part of the input directly but can be
+easily manipulated by hand.
+   <h5 class="subsubsectionHead"><a 
+ id="x1-80003.1.1"></a>Comparison to Other Models</h5>
+<!--l. 182--><p class="noindent" >This model of workflows differs significantly from those of similar efforts in workflow
+science because it defines workflows in terms of activities. Others in the literature
+define a workflow as a collection of computing processes. For example, Yu and Buyya
+define grid workflows as &#8220;a collection of tasks that are processed on distributed
+resources in a wel-defined order to accomplish a specific goal,&#8221; <span class="cite">[<a 
+href="#Xyu_taxonomy_2005">6</a>]</span>. Others such as
+Pizzi et al. subscribe to similar definitions, <span class="cite">[<a 
+href="#Xpizzi_aiida:_2016">8</a>]</span>. This &#8220;process&#8221; view is acceptable
+where the workflow is static and does not require additional human input or &#8220;human
+in the loop&#8221; behavior after the all the initial human input is provided. That
+is, a &#8220;process-oriented&#8221; definition is acceptable where all human input is
+provided in advance. However, workflows within ICE are fully interactive with
+regular call-backs to humans. It is simpler to discuss &#8220;activities&#8221; than it is to
+create a distinction between &#8220;human processes&#8221; and &#8220;computer processes.&#8221;
+Focusing on &#8220;activities&#8221; over processes (human or computer) also has the
+benefit of removing concrete elements such as hardware properties or software
+details that distract from details of workflows and WMSes per se. That is,
+considerations such as memory usage and raw performance are important, but
+questions about the abstract workflow or what the WMS should do are far more
+important.
+<!--l. 202--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">3.2   </span> <a 
+ id="x1-90003.2"></a>Software Description</h3>
+<!--l. 204--><p class="noindent" >ICE was specifically created to address the workflow model described above, which is
+to say that it was created specifically to address hands-on workflows for
+computational scientists. Users download and execute ICE locally and it orchestrates
+workflows locally or remotely as required. It provides a comprehensive workbench for
+modeling and simulation that includes tools for workflows, visualization, data
+management, and software development.
+                                                                  
+
+                                                                  
+<!--l. 212--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">3.2.1   </span> <a 
+ id="x1-100003.2.1"></a>Software Architecture</h4>
+<!--l. 214--><p class="noindent" >Workflows and tasks in ICE are not explicitly treated as trees - Directed Acyclic
+Graphs, (DAGS) - as is common with grid workflow tools, <span class="cite">[<a 
+href="#Xyu_taxonomy_2005">6</a>]</span>. Instead, ICE&#8217;s design
+is inspired by Representational State Transfer (REST), <span class="cite">[<a 
+href="#Xfielding_architectural_2000">18</a>]</span>.
+<!--l. 219--><p class="indent" >   Users initiate requests to create, edit, update or delete workflows from the <span 
+class="cmti-10">ICE</span>
+<span 
+class="cmti-10">Client </span>(the workbench). The list of available workflow that can be created is
+provided dynamically to the <span 
+class="cmti-10">ICE Client </span>by the <span 
+class="cmti-10">ICE Core</span>, which acts as a kind
+of server. This information is provided dynamically since it often changes
+as run time based on the configuration of available workflow components
+in the registry and on persisted workflows that users have saved in their
+workspace. Information about workflows are provided from the Core to the
+Client through <span 
+class="cmti-10">stateless Forms </span>that describe the workflow and provide all the
+necessary information to understand <span 
+class="cmti-10">what </span>should process the workflow, (but
+not <span 
+class="cmti-10">how </span>it should be processed). Once users modify the description of the
+workflow in the Form to provide their specific details, the Client dispatches a
+request to the Core to modify or process the workflow. The Core then uses the
+information in the Form to perform a service lookup for <span 
+class="cmti-10">what </span>should process the
+workflow.
+<!--l. 235--><p class="indent" >   Workflows in ICE are encoded in and processed by <span 
+class="cmti-10">Items </span>and each workflow type
+is a subclass of Item. Items are registered dynamically through a service registry in
+ICE, (see section <span 
+class="cmbx-10">??</span>), and provide the Forms for the ICE Core and Client. Since
+ICE&#8217;s design is highly object oriented, it is easiest to think of the Item class as a
+description of an abstract workflow and an Item object (an instance of the class)
+as a concrete workflow with all required execution details provided by its
+Form.
+<!--l. 244--><p class="indent" >   Individual components of workflows, i.e. - workflow &#8220;tasks&#8221; or &#8220;nodes&#8221; - are
+either encoded directly in the workflow&#8217;s subclass of Item or provided as
+<span 
+class="cmti-10">Actions </span>that are dynamically registered with an <span 
+class="cmti-10">Action Factory </span>and obtained
+at runtime. Table 1. describes the differences between Items, Actions, and
+Forms.<span class="footnote-mark"><a 
+href="main4.html#fn2x4"><sup class="textsuperscript">2</sup></a></span><a 
+ id="x1-10001f2"></a> 
+<!--l. 253--><p class="indent" >   Table 1: Class Descriptions for Items, Forms and Actions
+                                                                  
+
+                                                                  
+<!--l. 255--><p class="indent" >   <a 
+ id="x1-100021"></a><hr class="float"><div class="float" 
+>
+                                                                  
+
+                                                                  
+ <table id="TBL-4" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-4-1g"><col 
+id="TBL-4-1"></colgroup><colgroup id="TBL-4-2g"><col 
+id="TBL-4-2"></colgroup><colgroup id="TBL-4-3g"><col 
+id="TBL-4-3"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-1-"><td  style="white-space:nowrap; text-align:left;" id="TBL-4-1-1"  
+class="td11"> Class   </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-1-2"  
+class="td11"> <!--l. 265--><p class="noindent" >Class Description          </td><td  style="white-space:nowrap; text-align:left;" id="TBL-4-1-3"  
+class="td11"> Object Description                     </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-4-2-1"  
+class="td11"> Item    </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-2-2"  
+class="td11"> <!--l. 265--><p class="noindent" >Java  class  with  code
+  to  execute  an  abstract
+  workflow.   Provides   a
+  Form.                         </td><td  style="white-space:nowrap; text-align:left;" id="TBL-4-2-3"  
+class="td11"> Concrete workflow executor.        </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-4-3-1"  
+class="td11"> Form    </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-3-2"  
+class="td11"> <!--l. 265--><p class="noindent" >Description           and
+  template  of  the  data
+  needed for the Item to
+  process the workflow.     </td><td  style="white-space:nowrap; text-align:left;" id="TBL-4-3-3"  
+class="td11"> User-modified workflow data.       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-4-4-1"  
+class="td11"> Action  </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-4-2"  
+class="td11"> <!--l. 265--><p class="noindent" >Java class for executing
+  a    specific    task    in
+  the  workflow.  Used  by
+  Items.                         </td><td  style="white-space:nowrap; text-align:left;" id="TBL-4-4-3"  
+class="td11"> Concrete workflow task executor.  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-5-"><td  style="white-space:nowrap; text-align:left;" id="TBL-4-5-1"  
+class="td11">        </td></tr></table>
+ <div class="caption" 
+><span class="id">Table&#x00A0;3.1: </span><span  
+class="content">Class Descriptions for Items, Forms and Actions</span></div><!--tex4ht:label?: x1-100021 -->
+                                                                  
+
+                                                                  
+   </div><hr class="endfloat" />
+<!--l. 269--><p class="indent" >   In addition to running as a desktop workbench, ICE can be run as a headless web
+server with a remote service interface and a web Application Programming Interface
+(API). The web API is also used as the primary means of providing real-time
+feedback and monitoring support in ICE.
+   <h5 class="subsubsectionHead"><a 
+ id="x1-110003.2.1"></a>Item States</h5>
+<!--l. 277--><p class="noindent" >All Items in ICE are finite state machines where the states represent the abstract
+state of the workflow. For example, when an Item is first created, it enters the &#8220;Form
+Ready&#8221; state to indicate that it could, in theory, be processed after a user reviews it.
+After that review it enters the &#8220;Ready to Process&#8221; state before and the
+&#8220;Processed&#8221; state after it is processed. There are several additional states for
+errors.
+<!--l. 284--><p class="indent" >   This design is very important. First, it means that all workflows in ICE,
+regardless of their actual details and function, can only behave in a specific set
+of known, predictable ways. This greatly simplifies the way that the Core
+manages and interacts with Items. Second, it explicitly delineates which
+workflows can be executed from those that must still receive some configuration
+because it formalizes state and error checks. Finally, it allows developers
+implementing Items and Actions to specify by contract what is required before
+proceeding to the next task, processing the workflow, or declaring a successful
+execution.
+<!--l. 295--><p class="noindent" >
+   <h5 class="subsubsectionHead"><a 
+ id="x1-120003.2.1"></a>Persistence and Workspaces</h5>
+<!--l. 297--><p class="noindent" >ICE persists permanent copies of Forms to disk when workflows are created and
+modified in a special directory called a <span 
+class="cmti-10">workspace</span>. Workspaces can contain projects,
+folders and files, including data, code, input and output. ICE automatically manages
+local and remote (or even local <span 
+class="cmti-10">to </span>remote) transfers of data files when executing
+workflows if the files are detected in the same directory of the workspace as the
+workflow itself. For example, when executing a remote job, ICE will automatically
+move the input file if it is specified in the workflow and available in the project
+directory of the workspace. Likewise, if output is small enough, ICE will
+automatically move it back to local directory. By conventional, all paths in ICE&#8217;s
+Forms are relative to the workspace root path. Workspace directories are specified by
+the user.
+<!--l. 311--><p class="indent" >   ICE handles persistence using a <span 
+class="cmti-10">persistence provider</span>. The only default
+persistence provider uses JAX-RS, <span class="cite">[<a 
+href="#Xburke_restful_2010">19</a>]</span>, to write Forms to XML. In principle other
+persistence providers could replace the XML-based provider since it is registered
+as a dynamic service, and in the past a JAX-P based provider has been
+used.
+                                                                  
+
+                                                                  
+<!--l. 318--><p class="noindent" >
+   <h5 class="subsubsectionHead"><a 
+ id="x1-130003.2.1"></a>Extending the Framework to Add Custom Workflows</h5>
+<!--l. 320--><p class="noindent" >ICE is an Eclipse Rich Client Platform (RCP) application, <span class="cite">[<a 
+href="#Xmcaffer_eclipse_2010">20</a>]</span>. It has a plugin
+architecture based on Equinox, the reference implementation of the Open Service
+Gateway Initiative (OSGi) framework specification, <span class="cite">[<a 
+href="#Xmcaffer_osgi_2010">21</a>]</span>. It uses over 1200 additional
+packages from the Eclipse ecosystem to provide services such as language support
+and visualization to users. Each unique element of ICE described in this work,
+including the client, core, all Items, data structures and many others are provided as
+plugins to Equinox. Most plugins are dynamically managed and provided as services
+that can be obtained from a service registry. All file I/O in ICE, with only a
+few exceptions, interacts with the RCP&#8217;s Resources plugin. This includes
+remote resources that are managed with the Eclipse Parallel Tools Platform,
+<span class="cite">[<a 
+href="#Xtibbitts_integrated_2009">22</a>]</span>.
+<!--l. 333--><p class="indent" >   It is not possible to graphically create new Items in ICE. Users can only use the
+workflow Items provided with their version of ICE unless they provide their own
+plugin to the framework. This can seem like an onerous task to the novice user
+especially if they do not know Java, but this design was chosen because it is, in the
+opinion of the authors, a far more sophisticated and sustainable way to create
+workflows than through wiring diagram.
+<!--l. 341--><p class="indent" >   ICE provides built-in development tools to auto-generate &#8220;stubs&#8221; of plugins that
+can then be installed into the framework. This &#8220;self-hosting&#8221; makes it possible for
+new users to create complex, sophisticated workflows very quickly because they are
+not required to know how to interact with the framework. Furthermore, ICE
+provides a rich API, documentation, tutorials, and tools to further simply the
+process.
+<!--l. 349--><p class="indent" >   There are many situations where graphically configuring workflows is
+unacceptable, such as when a very large number of workflows will be executed or the
+type of information required is very fine-grained. In these cases, it is often necessary
+to provide scripts to the workflow management system. ICE includes the Eclipse
+Advanced Scripting Environment, <span class="cite">[<a 
+href="#Xpontesegger_eclipse_2015">23</a>]</span>, (EASE), for scripting because it provides a
+native way to script Eclipse RCP projects in Javascript, Jython, and Python. This
+also makes it possible to extend the environment by adding Items in these
+languages.
+<!--l. 359--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">3.2.2   </span> <a 
+ id="x1-140003.2.2"></a>Software Functionalities</h4>
+<!--l. 361--><p class="noindent" >The most important function of ICE is to serve as an easily extended workflow
+management system for computational scientists in support of the activities
+described above. In practice, it is most often used as a combination of workflow
+management system and development environment since it contains a significant
+amount of Eclipse&#8217;s software development tooling in addition to the workflow tools.
+The project has many users, but it is most heavily used by the development team to
+support workflow science and software development for energy science projects. The
+development team regularly uses the platform to quickly deploy new domain-specific
+                                                                  
+
+                                                                  
+workbenches in a matter of hours for small collections of workflows that are easy to
+encode.
+<!--l. 373--><p class="indent" >   Outside of the development team, ICE is commonly deployed as a sophisticated
+user environment for computational science projects (see &#8220;Impact&#8221; below) and as a
+visualization tool. ICE originally a significant amount of visualization support, but at
+the request of users in the community that support was &#8220;spun off&#8221; in early 2016 as a
+separate visualization project, the Eclipse Advanced Visualization Project, EAVP,
+<span class="cite">[<a 
+href="#Xbillings_eclipse_2015">24</a>]</span>.
+<!--l. 381--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">3.3   </span> <a 
+ id="x1-150003.3"></a>Illustrative Examples</h3>
+<!--l. 383--><p class="noindent" >The role that ICE plays as a workflow tool is best illustrated by the various ways
+that it has been deployed.
+<!--l. 387--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">3.3.1   </span> <a 
+ id="x1-160003.3.1"></a>Virtual Battery Simulations</h4>
+<!--l. 389--><p class="noindent" >Pannala et al. developed a Virtual Integrated Battery Environment (VIBE) as part
+of their research into safety and performance characteristics of lithium ion batteries,
+<span class="cite">[<a 
+href="#Xpannala_multiscale_2015">25</a>]</span>. VIBE provides ICE to users as part of its distribution. New workflows were
+added to ICE to create multiple types of input, configure the simulation software,
+and launch simulations of virtual batteries. Interactive 3D visualizations of the
+results were embedded in the launcher so that users would quickly find their results.
+Figure 1 shows the results from a temperature distribution of a prismatic cell battery
+simulated during discharge.
+<!--l. 399--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                  
+
+                                                                  
+<a 
+ id="x1-160011"></a>
+                                                                  
+
+                                                                  
+
+<!--l. 401--><p class="noindent" ><img 
+src="images/vibe_20151016.png" alt="PIC"  
+>
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;3.1: </span><span  
+class="content">ICE workbench for VIBE analysis.</span></div><!--tex4ht:label?: x1-160011 -->
+                                                                  
+
+                                                                  
+<!--l. 403--><p class="indent" >   </div><hr class="endfigure">
+<!--l. 405--><p class="indent" >   VIBE 1.0 is available as a virtual machine in which the simulation software
+and ICE are provided side by side. More recent efforts for VIBE 1.1 by the
+VIBE development team include providing the simulation software in Docker
+containers so that users can download the latest, native version of ICE for their
+machine while simultaneously benefiting from a smaller virtual machine for the
+simulator.
+   <h4 class="subsectionHead"><span class="titlemark">3.3.2   </span> <a 
+ id="x1-170003.3.2"></a>Multiphysics Simulations with MOOSE</h4>
+<!--l. 415--><p class="noindent" >The MOOSE Framework is a powerful, easy to use multiphysics framework developed
+at the Idaho National Laboratory, <span class="cite">[<a 
+href="#Xgaston_moose:_2009">26</a>]</span>. ICE provides workflow tools for
+MOOSE as well as specialized class generation utilities for developing custom
+MOOSE kernels. Many of the MOOSE tools in ICE were developed closely with
+the MOOSE team to closely reproduce various aspects of MOOSE&#8217;s user
+interface, Peacock. Figure 2 shows an example of the ICE workbench for a
+simple structural mechanics problem solved with the MOOSE framework,
+<span class="cite">[<a 
+href="#Xmccaskey_scientific_2015">27</a>]</span>.
+<!--l. 424--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                  
+
+                                                                  
+<a 
+ id="x1-170012"></a>
+                                                                  
+
+                                                                  
+
+<!--l. 426--><p class="noindent" ><img 
+src="images/ice-moose.png" alt="PIC"  
+>
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;3.2: </span><span  
+class="content">ICE workbench for MOOSE workflows.</span></div><!--tex4ht:label?: x1-170012 -->
+                                                                  
+
+                                                                  
+<!--l. 428--><p class="indent" >   </div><hr class="endfigure">
+<!--l. 430--><p class="indent" >   There are over three hundred MOOSE-based applications and it is very easy to
+create new MOOSE applications. The ICE development team uses ICE and
+MOOSE to quickly solve energy science problems with high-performance
+computing resources and deploy domain specific workbenches. ICE includes
+support for automatically downloading and building MOOSE from its GitHub
+project, which then makes it possible to immediately begin developing complex
+multiphysics applications using the Eclipse C Development Tools, which are
+pre-installed in ICE to facilitate this interaction. Once the new MOOSE-based
+application is built, it will automatically work with the MOOSE workflow tools
+in ICE, although developers can also create customized workflow tools as
+needed.
+   <h4 class="subsectionHead"><span class="titlemark">3.3.3   </span> <a 
+ id="x1-180003.3.3"></a>Binder Jet Modeling</h4>
+<!--l. 444--><p class="noindent" >Solid-state sintering of parts printed using binder jetting significantly increases
+part strength by decreasing the part porosity and eliminating voids. The
+downside of this process is that it causes the part to shrink and warp. An
+ideal near-net-shape process that combined binder jetting with solid-state
+sintering would thus consider warpage and deformation due to sintering
+in the design phase of the part. Figure 3 shows an ICE-based workbench
+for perform simulations of this process with visualizations of the pre- and
+post-simulation properties of a central body with eight cantilevers. The primary
+deformation in this type of geometry is bending or drooping of the cantilevers,
+and ICE currently calls a custom MOOSE-based application (which was
+written in ICE as described above) for simulating the deformation of the
+cantilevers.
+<!--l. 458--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                  
+
+                                                                  
+<a 
+ id="x1-180013"></a>
+                                                                  
+
+                                                                  
+
+<!--l. 460--><p class="noindent" ><img 
+src="images/ice-bjm.png" alt="PIC"  
+>
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;3.3: </span><span  
+class="content">ICE workbench for binder jet modeling.</span></div><!--tex4ht:label?: x1-180013 -->
+                                                                  
+
+                                                                  
+<!--l. 462--><p class="indent" >   </div><hr class="endfigure">
+<!--l. 464--><p class="indent" >   The full application for this work is expected to be released near the end of
+2017.
+   <h4 class="subsectionHead"><span class="titlemark">3.3.4   </span> <a 
+ id="x1-190003.3.4"></a>Neutron Reflectivity</h4>
+<!--l. 469--><p class="noindent" >ICE includes a small utility for simulating neutron reflectivity and comparing the
+results to data, <span class="cite">[<a 
+href="#Xbillings_brand_2015">28</a>]</span>. This was developed in collaboration with colleagues at the
+Spallation Neutron Source to replace an older utility written in Visual Basic and
+distributed via Excel macros. The newer utility in ICE is capable of processing a
+single workflow and is shown in figure 4.
+<!--l. 476--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                  
+
+                                                                  
+<a 
+ id="x1-190014"></a>
+                                                                  
+
+                                                                  
+
+<!--l. 478--><p class="noindent" ><img 
+src="images/reflectivity-screenshot.png" alt="PIC"  
+>
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;3.4: </span><span  
+class="content">ICE workbench for neutron reflectivity.</span></div><!--tex4ht:label?: x1-190014 -->
+                                                                  
+
+                                                                  
+<!--l. 480--><p class="indent" >   </div><hr class="endfigure">
+   <h4 class="subsectionHead"><span class="titlemark">3.3.5   </span> <a 
+ id="x1-200003.3.5"></a>Quantum Computing</h4>
+<!--l. 484--><p class="noindent" >As quantum computing grows, so to does the need for sophisticated software that can
+utilize quantum hardware or perform calculations on simulated quantum hardware.
+Humble et al. created a simulator for adiabatic quantum computers where workflows
+were added to ICE to support interaction with the simulator, but also to process
+large sets of quadratic binary optimimzation problems, <span class="cite">[<a 
+href="#Xhumble_integrated_2014">29</a>]</span>. Figure 5 shows the
+workbench for this project.
+<!--l. 492--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                  
+
+                                                                  
+<a 
+ id="x1-200015"></a>
+                                                                  
+
+                                                                  
+
+<!--l. 494--><p class="noindent" ><img 
+src="images/jaded.png" alt="PIC"  
+>
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;3.5: </span><span  
+class="content">ICE workbench in JADE for quantum computing simulations.</span></div><!--tex4ht:label?: x1-200015 -->
+                                                                  
+
+                                                                  
+<!--l. 496--><p class="indent" >   </div><hr class="endfigure">
+<!--l. 498--><p class="indent" >   ICE also supports other quantum computing projects, including the eXtreme-scale
+ACCelerator (XACC) programming framework, <span class="cite">[<a 
+href="#Xmccaskey_ornl-qci/xacc_2016">30</a>]</span>. XACC is a programming
+framework for extreme-scale, post-exascale accelerator architectures that integrates
+alongside existing conventional applications.
+   <h4 class="subsectionHead"><span class="titlemark">3.3.6   </span> <a 
+ id="x1-210003.3.6"></a>Nuclear Energy</h4>
+<!--l. 506--><p class="noindent" >There are many examples of ICE&#8217;s role in modeling and simulation projects for
+nuclear energy, but readers are referred to the work in <span class="cite">[<a 
+href="#Xbillings_domain-specific_2015">31</a>]</span> for an extreme example of
+the level of customization that is possible in ICE. Support for the &#8220;Reactor
+Analyzer&#8221; was dropped in ICE 2.1.8, but it demonstrated ICE&#8217;s ability to integrate
+many different nuclear energy tools for complex analysis.
+<!--l. 513--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">3.4   </span> <a 
+ id="x1-220003.4"></a>Impact</h3>
+<!--l. 515--><p class="noindent" >The impact of software tools such as ICE are hard to quantify. However, there are
+several places where ICE has significantly assisted its development team and
+others.
+<!--l. 519--><p class="indent" >   One pressing area of interest and impact is that of interoperability between
+workflow systems. There is significant prior art in combining large workflow
+management systems, such as that Mandal et al., <span class="cite">[<a 
+href="#Xmandal_integrating_2007">32</a>]</span>, but the end goal of gaining the
+greatest advantage by using the best capabilities from multiple systems remains
+elusive. ICE&#8217;s unique perspective on workflows and its well-defined API make it
+possible to integrate multiple systems in a straightforward way. This allows it to
+connect to other workflow environments, such as Triquetrum, quite easily,
+<span class="cite">[<a 
+href="#Xbrooks_introducing_2016">33</a>]</span>. Triquetrum, (like Kepler in <span class="cite">[<a 
+href="#Xmandal_integrating_2007">32</a>]</span>), is a Ptolemy-based workflow engine,
+<span class="cite">[<a 
+href="#Xbrooks_triquetrum:_2015">34</a>]</span>. Several of the authors of this paper are using it to investigate these
+issues.
+<!--l. 532--><p class="indent" >   It is widely known that tools that make researchers more productive tend to
+improve the pursuit of existing research. The high extensibility of ICE and
+the tools that it combines from the larger Eclipse ecosystem have made it
+possible for researchers on the development team to quickly deploy new
+simulation environments for problems, such as the binder jet modeler and
+reflectivity tools mentioned earlier. Other tools create with ICE may not
+radically invent something new, but they tend to streamline interactions with
+those tools. Many ICE users (and certainly the development team!) have
+experienced improvements in software development activities because of
+the tools that ICE provides or learned new technologies because access to
+new tooling was a simple as installing more plugins through the Eclipse
+Marketplace.
+<!--l. 545--><p class="indent" >   The ICE development team does not track ICE&#8217;s user base, as useful as that
+would be, because of the extra work involved. However, various sources such as the
+                                                                  
+
+                                                                  
+VIBE mailing list, ICE&#8217;s own mailing lists, and website download statistics
+suggest that ICE has been used by over 350 people at one time or another
+and currently has about twenty &#8220;superusers,&#8221; including the development
+team.
+<!--l. 552--><p class="indent" >   A new cloud based development tool based on ICE is under development by
+RNET LLC out of Dayton, Ohio in response to an SBIR award from the
+U.S. Department of Energy. This web based version of ICE will continue
+ICE&#8217;s support for nuclear energy and integrate with cloud services such
+as Amazon Web Services and Oak Ridge National Laboratory&#8217;s Compute
+and Data Environment for Science (CADES). Additionally, while ICE has
+not led to the development of &#8220;spin-off&#8221; companies, ICE source code has
+been used in two spin-off projects: EAVP (mentioned earlier) for advanced
+visualizations and the Eclipse January project for scientific data structures, <span class="cite">[<a 
+href="#Xgraham_eclipse_2016">35</a>]</span>.
+ICE was also one of the founding projects of the Eclipse Science Working
+Group.
+<!--l. 564--><p class="indent" >   Eclipse ICE is an open source project and the authors welcome and encourage
+engagement and contributions from readers. Interested parties my inquire by
+contacting the corresponding author or visiting the website.
+<!--l. 569--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">3.5   </span> <a 
+ id="x1-230003.5"></a>Sample Code, Tutorials and Other Resources</h3>
+<!--l. 571--><p class="noindent" >The quintessential resource for information on ICE is the projects web page, <span class="cite">[<a 
+href="#Xbillings_eclipse_2016">36</a>]</span>.
+The &#8220;Resources&#8221; menu includes links to detailed tutorials and documentation of
+multiple types. Examples of how to create new workflow Items are available at
+<a 
+href="https://github.com/eclipse/ice/tree/master/org.eclipse.ice.demo" class="url" ><span 
+class="cmtt-10">https://github.com/eclipse/ice/tree/master/org.eclipse.ice.demo</span></a>.
+Examples of how to use the scripting engine (in this case for neutron reflectivity) are
+available at <a 
+href="https://github.com/eclipse/ice/tree/master/examples" class="url" ><span 
+class="cmtt-10">https://github.com/eclipse/ice/tree/master/examples</span></a>. ICE
+includes an extensive test suite of unit, integration, and UI tests and these are also
+excellent examples of how to work with the platform.
+<!--l. 582--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">3.6   </span> <a 
+ id="x1-240003.6"></a>Conclusions</h3>
+<!--l. 584--><p class="noindent" >Workflows for computational scientists in modeling and simulation differ greatly from
+experimentalists or those who primarily interact with grid-based workflow
+management systems. This work presented the Eclipse Integrated Computational
+Environment (ICE) and described how its has been used to address interdisciplinary
+problems in modeling and simulation for energy science. One interesting avenue for
+future exploration is coupling or integrating ICE with other workflow tools such as
+Aiida, Triquetrum, Kepler and Pegasus. It remains as abundantly clear now as it was
+in Mandal&#8217;s 2007 paper that the best of all workflow management tools will be
+needed to address high-performance computing problems at the exascale and
+beyond.
+                                                                  
+
+                                                                  
+<!--l. 596--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-250003.6"></a>Acknowledgements</h3>
+<a 
+ id="Q1-1-32"></a>
+<!--l. 599--><p class="noindent" >The authors are grateful for the assistance and support of the following people and
+institutions without which this work would not have been possible. This includes
+many people who directly contributed to the project, either in its early days as
+&#8220;NiCE&#8221; or once it moved to Eclipse, including: Ronald Allen, Andrew Belt, Tim
+Bohn, David E. Bernholdt, Erica Grant, Mike Guidry, Forest Hull, Eric J. Lingerfelt,
+Sebastien Jourdain, JiSoo Kim, Allison Koenecke, Fangzhou Lin, Greg Lyon, Tony
+McCrary, John M. Hetrick III, Elizabeth Piersall, Neeti Pokhriyal, Adrian Sanchez,
+Claire Saunders, Nick Stanish, Matthew Wang, Scott Wittenberg. The support of
+both the NEAMS and CASL programs is greatly appreciated. The authors
+would like to acknowledge the special contribution of the Eclipse Foundation,
+the Eclipse Community, the Eclipse Science Working Group and our many
+colleagues who use and contribute to open source projects in the Eclipse
+ecosystem.
+<!--l. 614--><p class="indent" >   Finally, the development team is especially grateful to Barney Maccabe, David
+Pointer and John Turner of Oak Ridge National Laboratory for their endless support
+and advocacy for this work.
+<!--l. 618--><p class="indent" >   This work has been supported by the US Department of Energy, Offices of
+Nuclear Energy (DOE-NE) and Energy Efficiency and Renewable Energy
+(DOE-EERE), and by the ORNL Undergraduate Research Participation Program,
+which is sponsored by ORNL and administered jointly by ORNL and the Oak Ridge
+Institute for Science and Education (ORISE). This work was also supported in part
+by the Oak Ridge National Laboratory Director&#8217;s Research and Development Fund.
+ORNL is managed by UT-Battelle, LLC, for the US Department of Energy
+under contract no. DE-AC05-00OR22725. ORISE is managed by Oak Ridge
+Associated Universities for the US Department of Energy under contract no.
+DE-AC05-00OR22750.
+<!--l. 629--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-260003.6"></a>Required Metadata</h3>
+<a 
+ id="Q1-1-34"></a>
+<!--l. 632--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-270003.6"></a>Current code version</h3>
+<a 
+ id="Q1-1-36"></a>
+<!--l. 635--><p class="noindent" >See Table <a 
+href="#x1-270012">3.2<!--tex4ht:ref: codeTable --></a>.
+                                                                  
+
+                                                                  
+<!--l. 637--><p class="indent" >   <a 
+ id="x1-270012"></a><hr class="float"><div class="float" 
+>
+                                                                  
+
+                                                                  
+ <table id="TBL-7" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-7-1g"><col 
+id="TBL-7-1"></colgroup><colgroup id="TBL-7-2g"><col 
+id="TBL-7-2"></colgroup><colgroup id="TBL-7-3g"><col 
+id="TBL-7-3"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-7-1-"><td  style="white-space:nowrap; text-align:left;" id="TBL-7-1-1"  
+class="td11"> C1  </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-1-2"  
+class="td11"> <!--l. 653--><p class="noindent" >Current Code Version            </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-1-3"  
+class="td11"> <!--l. 653--><p class="noindent" >&#8216;next&#8217;                                  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-7-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-7-2-1"  
+class="td11"> C2   </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-2-2"  
+class="td11"> <!--l. 653--><p class="noindent" >Permanent         link         to
+  code/repository used for this
+  code version                         </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-2-3"  
+class="td11"> <!--l. 653--><p class="noindent" ><a 
+href="https://github.com/eclipse/ice/tree/next" class="url" ><span 
+class="cmtt-10">https://github.com/eclipse/ice/tree/next</span></a> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-7-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-7-3-1"  
+class="td11"> C3   </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-3-2"  
+class="td11"> <!--l. 653--><p class="noindent" >Legal Code License                </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-3-3"  
+class="td11"> <!--l. 653--><p class="noindent" >Eclipse Public License 1.0       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-7-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-7-4-1"  
+class="td11"> C4   </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-4-2"  
+class="td11"> <!--l. 653--><p class="noindent" >Code versioning system use     </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-4-3"  
+class="td11"> <!--l. 653--><p class="noindent" >Git                                     </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-7-5-"><td  style="white-space:nowrap; text-align:left;" id="TBL-7-5-1"  
+class="td11"> C5   </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-5-2"  
+class="td11"> <!--l. 653--><p class="noindent" >Software    code    languages,
+  tools, and services used          </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-5-3"  
+class="td11"> <!--l. 653--><p class="noindent" >Java,   OSGi,   Eclipse   Rich
+  Client Platform, and Maven    </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-7-6-"><td  style="white-space:nowrap; text-align:left;" id="TBL-7-6-1"  
+class="td11"> C6   </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-6-2"  
+class="td11"> <!--l. 653--><p class="noindent" >Compilation     requirements,
+  operating    environments    &amp;
+  dependencies                        </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-6-3"  
+class="td11"> <!--l. 653--><p class="noindent" >Java  1.8  or  greater,  Maven,
+  and an internet connection for
+  dependencies                        </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-7-7-"><td  style="white-space:nowrap; text-align:left;" id="TBL-7-7-1"  
+class="td11"> C7   </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-7-2"  
+class="td11"> <!--l. 653--><p class="noindent" >If available Link to developer
+  documentation/manual           </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-7-3"  
+class="td11"> <!--l. 653--><p class="noindent" ><a 
+href="https://wiki.eclipse.org/ICE" class="url" ><span 
+class="cmtt-10">https://wiki.eclipse.org/ICE</span></a> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-7-8-"><td  style="white-space:nowrap; text-align:left;" id="TBL-7-8-1"  
+class="td11"> C8   </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-8-2"  
+class="td11"> <!--l. 653--><p class="noindent" >Support email for questions     </td><td  style="white-space:wrap; text-align:left;" id="TBL-7-8-3"  
+class="td11"> <!--l. 653--><p class="noindent" >ice-dev@eclipse.org                </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-7-9-"><td  style="white-space:nowrap; text-align:left;" id="TBL-7-9-1"  
+class="td11">     </td></tr></table>
+ <div class="caption" 
+><span class="id">Table&#x00A0;3.2: </span><span  
+class="content">Current Code Version</span></div><!--tex4ht:label?: x1-270012 -->
+                                                                  
+
+                                                                  
+   </div><hr class="endfloat" />
+   <h3 class="likesectionHead"><a 
+ id="x1-280003.6"></a>Current executable software version</h3>
+<a 
+ id="Q1-1-39"></a>
+<!--l. 662--><p class="noindent" >See Table <a 
+href="#x1-280013">3.3<!--tex4ht:ref: execTable --></a>.
+                                                                  
+
+                                                                  
+<!--l. 664--><p class="indent" >   <a 
+ id="x1-280013"></a><hr class="float"><div class="float" 
+>
+                                                                  
+
+                                                                  
+ <table id="TBL-10" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-10-1g"><col 
+id="TBL-10-1"></colgroup><colgroup id="TBL-10-2g"><col 
+id="TBL-10-2"></colgroup><colgroup id="TBL-10-3g"><col 
+id="TBL-10-3"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-1-"><td  style="white-space:nowrap; text-align:left;" id="TBL-10-1-1"  
+class="td11"> S1  </td><td  style="white-space:wrap; text-align:left;" id="TBL-10-1-2"  
+class="td11"> <!--l. 680--><p class="noindent" >Current Code Version             </td><td  style="white-space:wrap; text-align:left;" id="TBL-10-1-3"  
+class="td11"> <!--l. 680--><p class="noindent" >2.2.1                                   </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-10-2-1"  
+class="td11"> S2   </td><td  style="white-space:wrap; text-align:left;" id="TBL-10-2-2"  
+class="td11"> <!--l. 680--><p class="noindent" >ermanent  link  to  executables
+  of this version                       </td><td  style="white-space:wrap; text-align:left;" id="TBL-10-2-3"  
+class="td11"> <!--l. 680--><p class="noindent" ><a 
+href="https://www.eclipse.org/downloads/download.php?file=/ice/builds/2.2.1/" class="url" ><span 
+class="cmtt-10">https://www.eclipse.org/downloads/download.php?file=/ice/builds/2.2.1/</span></a> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-10-3-1"  
+class="td11"> S3   </td><td  style="white-space:wrap; text-align:left;" id="TBL-10-3-2"  
+class="td11"> <!--l. 680--><p class="noindent" >Legal Software License           </td><td  style="white-space:wrap; text-align:left;" id="TBL-10-3-3"  
+class="td11"> <!--l. 680--><p class="noindent" >Eclipse Public License 1.0       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-10-4-1"  
+class="td11"> S4   </td><td  style="white-space:wrap; text-align:left;" id="TBL-10-4-2"  
+class="td11"> <!--l. 680--><p class="noindent" >Computing
+  platforms/Operating Systems   </td><td  style="white-space:wrap; text-align:left;" id="TBL-10-4-3"  
+class="td11"> <!--l. 680--><p class="noindent" >Windows   (32/64-bit),   Mac
+  OS/X, Linux (32/64-bit)         </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-5-"><td  style="white-space:nowrap; text-align:left;" id="TBL-10-5-1"  
+class="td11"> S5   </td><td  style="white-space:wrap; text-align:left;" id="TBL-10-5-2"  
+class="td11"> <!--l. 680--><p class="noindent" >Installation   requirements   &amp;
+  dependencies                        </td><td  style="white-space:wrap; text-align:left;" id="TBL-10-5-3"  
+class="td11"> <!--l. 680--><p class="noindent" >Java 1.8 or greater                 </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-6-"><td  style="white-space:nowrap; text-align:left;" id="TBL-10-6-1"  
+class="td11"> S6   </td><td  style="white-space:wrap; text-align:left;" id="TBL-10-6-2"  
+class="td11"> <!--l. 680--><p class="noindent" >If   available,   link   to   user
+  manual - if formally published
+  include   a   reference   to   the
+  publication  in  the  reference
+  list                                     </td><td  style="white-space:wrap; text-align:left;" id="TBL-10-6-3"  
+class="td11"> <!--l. 680--><p class="noindent" ><a 
+href="https://wiki.eclipse.org/ICE" class="url" ><span 
+class="cmtt-10">https://wiki.eclipse.org/ICE</span></a> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-7-"><td  style="white-space:nowrap; text-align:left;" id="TBL-10-7-1"  
+class="td11"> S7   </td><td  style="white-space:wrap; text-align:left;" id="TBL-10-7-2"  
+class="td11"> <!--l. 680--><p class="noindent" >Support email for questions     </td><td  style="white-space:wrap; text-align:left;" id="TBL-10-7-3"  
+class="td11"> <!--l. 680--><p class="noindent" >ice-users@eclipse.org              </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-10-8-"><td  style="white-space:nowrap; text-align:left;" id="TBL-10-8-1"  
+class="td11">     </td></tr></table>
+ <div class="caption" 
+><span class="id">Table&#x00A0;3.3: </span><span  
+class="content">Current Executable Software</span></div><!--tex4ht:label?: x1-280013 -->
+                                                                  
+
+                                                                  
+   </div><hr class="endfloat" />
+   <h3 class="sectionHead"><span class="titlemark">3.7   </span> <a 
+ id="x1-290003.7"></a>Additional Authors</h3>
+<!--l. 687--><p class="noindent" >This chapter is taken from a paper that was primarily written by the author.
+However, both the paper and the development of Eclipse ICE have included many
+coauthors and they are given credit here: Andrew R. Bennett (1,3), Jordan Deyton
+(1,4), Kasper Gammeltoft (1,5), Jonah Graham (6), Dasha Gorin (1,7),
+Hari Krishnan (8), Menghan Li (9), Alexander J. McCaskey (1), Taylor
+Patterson (1,10), Robert Smith (1), Gregory R. Watson (1), Anna Wojtowicz
+(1,11)
+<!--l. 694--><p class="indent" >   Their affiliations are as follows:
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-29002x1">Oak Ridge National Laboratory PO Box 2008 MS6173 Oak Ridge TN
+     37830
+     </li>
+     <li 
+  class="enumerate" id="x1-29004x2">The  Bredesen  Center  for  Interdisciplinary  Research  and  Graduate
+     Education, The University of Tennessee, 444 Greve Hall, 821 Volunteer
+     Blvd. Knoxville, TN 37996-3394 3.
+     </li>
+     <li 
+  class="enumerate" id="x1-29006x3">University of Washington, Seattle, WA 98105
+     </li>
+     <li 
+  class="enumerate" id="x1-29008x4">General Electric Company, 3200 North Grandview Blvd Waukesha, WI
+     53188-1678 5.
+     </li>
+     <li 
+  class="enumerate" id="x1-29010x5">Georgia Institute of Technology North Avenue, Atlanta, GA 30332
+     </li>
+     <li 
+  class="enumerate" id="x1-29012x6">Kichwa Coders Ltd. 1 Plomer Green Avenue Downley, High Wycombe
+     HP13 5LN United Kingdom 7. Northwestern University 633 Clark Street
+     Evanston, IL 60208
+     </li>
+     <li 
+  class="enumerate" id="x1-29014x7">Lawrence Berkeley National Laboratory, 1 Cyclotron Rd, Berkeley, CA
+     94720
+     </li>
+     <li 
+  class="enumerate" id="x1-29016x8">Department of Computer Science, and Department of Biological Sciences,
+     </li>
+     <li 
+  class="enumerate" id="x1-29018x9">Purdue University, West Lafayette, IN 47906 10.
+                                                                  
+
+                                                                  
+     </li>
+     <li 
+  class="enumerate" id="x1-29020x10">Acato Information Management, LLC 114 Union Valley Rd. Oak Ridge,
+     TN 37830
+     </li>
+     <li 
+  class="enumerate" id="x1-29022x11">Colorado State University Fort Collins, CO 80523</li></ol>
+                                                                  
+
+                                                                  
+   <h2 class="chapterHead"><span class="titlemark">Chapter&#x00A0;4</span><br /><a 
+ id="x1-300004"></a>Problems</h2>
+<!--l. 3--><p class="noindent" >The previous review of workflows and workflow management systems as well as the
+discussion of Eclipse ICE illustrated the diverse nature of scientific workflows. There
+are many problems that arise from this diversity the community would stand to
+benefit if they could be addressed. However, it should be clear from the previous
+sections that there are two significant problems facing the workflow science
+community:
+     <ul class="itemize1">
+     <li class="itemize">Everyone has their own workflow tools, and no two tool chains are the
+     same.
+     </li>
+     <li class="itemize">There is very little interoperability in the workflow tool space.</li></ul>
+<!--l. 14--><p class="indent" >   The following sections elaborate on community drivers for providing
+interoperability between workflow management systems.
+   <h3 class="sectionHead"><span class="titlemark">4.1   </span> <a 
+ id="x1-310004.1"></a>A Buildings Block Approach</h3>
+<!--l. 19--><p class="noindent" >For many reasons, the traditional approach for building workflow systems has been to
+build as much of the required capability as possible into the system itself, relying
+very little on external services or even third party code. This does not track will with
+the course of history since high-level functionality tends to slowly creep down the
+software stack and into kernels, kernel services, and system libraries. Jha and Turilli
+discuss this trend as it relates to workflows from a cyber infrastructure perspective
+and to existing large scale scientific workflow efforts, <span class="cite">[<a 
+href="#Xjha_building_2016">13</a>]</span>. They propose that, while
+historically successful, monolithic workflow systems present many problems for users,
+developers, and maintainers. Instead, they propose that a new &#8220;Lego style&#8221; approach
+might work better where individual &#8220;building blocks&#8221; of capability are assembled into
+the final workflow product. These building blocks would include things like
+programming interfaces to queuing systems, programmable pilot systems for
+scheduling jobs, workload balancers, and ensemble execution tools, among
+others.
+<!--l. 36--><p class="indent" >   This approach would greatly improve both interoperability and sustainability
+because it would standardize the programming interfaces and backends used by
+workflow management systems. Jha et al. are developing a white paper to address
+this further, <span class="cite">[<a 
+href="#Xjha_towards_2016">37</a>]</span>.
+<!--l. 42--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">4.2   </span> <a 
+ id="x1-320004.2"></a>SOS20 Discussion on Workflows</h3>
+<!--l. 44--><p class="noindent" >Session IV of the Twentieth Anniversary Meeting of the SOS Workshop (SOS20)
+focused on workflow and workflow management system development activities of the
+three participating institutions: Sandia National Laboratory, Oak Ridge National
+Laboratory, and the Swiss National Supercomputing Centre, <span class="cite">[<a 
+href="#Xpack_sos20_2016">38</a>]</span>. Multiple presenters
+illustrated the challenges facing the workflow science community and organized a
+                                                                  
+
+                                                                  
+separate, spontaneous &#8220;Birds of a Feather&#8221; (BOF) session at the end of the event.
+The BOF attendees widely agreed after a thorough discussion that no one single
+workflow management system could satisfy all the needs of those present, but
+that the community as a whole would be served best by seeking to enable
+interoperability where possible. This discussion led to a wider engagement of
+the community by BOF attendees who decided that it would be best to
+engage in an open public forum so that other groups could join the effort,
+<span class="cite">[<a 
+href="#Xbillings_[science-iwg]_2016">39</a>]</span>.
+<!--l. 59--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">4.3   </span> <a 
+ id="x1-330004.3"></a>High-Performance Computing Drivers</h3>
+<!--l. 61--><p class="noindent" >The large number of workflow management systems and lack of interoperability is a
+significant barrier to their adoption in high-performance computing facilities such as
+the U.S. Department of Energy&#8217;s Leadership Computing Facilities. The high
+performance computing Facility Operational Assessment 2015: Oak Ridge Leadership
+Computing Facility report, <span class="cite">[<a 
+href="#Xbarker_scientific_2007">12</a>]</span>, illustrates the problem that such facilities
+face,
+<!--l. 70--><p class="indent" >
+     <!--l. 70--><p class="noindent" >These   discussions   concluded   with   the   observation   that   the
+     current proliferation of workflow systems in response to perceived
+     domain-specific  needs  of  scientific  workflows  makes  it  difficult  to
+     choose a site-wide operational workflow manager, particularly for
+     the  leadership-class  machines.  However,  there  are  opportunities
+     where  facilities  can  centralize  workflow  technology  offerings  to
+     reduce  anticipated  fragmentation.  This  is  especially  true  if  a
+     facility attempts to develop, deploy, and operate each and every
+     workflow solution requested by the user community. Through these
+     evaluations, the OLCF seeks to identify interesting intersections that
+     are of the most value to OLCF stakeholders.
+<!--l. 82--><p class="indent" >   The Oak Ridge Leadership Computing Facility (OLCF) is not alone in this as
+other Leadership Computing Facilities face the same problem. Few of these
+facilities have discussed the possibility they may end up supporting different
+workflows systems entirely such that workflows at one facility can not be run at
+another without significant work to install an additional workflow management
+system!
+<!--l. 89--><p class="indent" >   Developing interoperability layers based on common building blocks with
+standard service interfaces would address both of these problems by allowing facilities
+to run various workflows on the system that worked best for their hardware and
+software configuration.
+                                                                  
+
+                                                                  
+<!--l. 94--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">4.4   </span> <a 
+ id="x1-340004.4"></a>Energy Science Drivers</h3>
+<!--l. 96--><p class="noindent" >The Future of Scientific Workflows report by Deelman et al. illustrates the idea of the
+&#8220;large-scale science campaign,&#8221; <span class="cite">[<a 
+href="#Xdeelman_future_2015">15</a>]</span>. Such a campaign integrates multiple workflows
+to perform data acquisition from experimental equipment, modeling and
+analysis with supercomputers, and data analysis with either grids computing or
+supercomputers. This is, in essence, the same problem that PanDA/BigPanDA solves
+for the Large Hadron Collider. So, while it is not a new problem, it is increasingly
+common. One solution to this problem is to support all the possible workflow
+management systems, but that becomes quickly unsustainable, as the OLCF learned
+through experience. Enabling interoperability is a much more sustainable
+solution.
+<!--l. 108--><p class="indent" >   An interesting case study is the ICEMAN project at Oak Ridge National
+Laboratory, on which the author is a co-principal investigator. ICEMAN seeks to use
+a combination of instruments from the Spallation Neutron Source, OLCF compute
+resources such as the Titan supercomputer, the Laboratory&#8217;s Compute Advanced
+Data Environment for Science (CADES), Eclipse ICE, and AiiDA (c.f. - <span class="cite">[<a 
+href="#Xpizzi_aiida:_2016">8</a>]</span>) to
+automate the analysis of quasielastic neutron scattering data and provide a
+comprehensive problem solving environment for scientists.
+                                                                  
+
+                                                                  
+   <h2 class="chapterHead"><span class="titlemark">Chapter&#x00A0;5</span><br /><a 
+ id="x1-350005"></a>Work Proposal</h2>
+<!--l. 3--><p class="noindent" >This work has shown that there is significant ambiguity in the definition of &#8220;scientific
+workflows&#8221; and that a pressing need exists to leverage the different types of systems
+that exist to address scientific challenges. While the idea of creating a single, unifying
+workflow management system that addresses all of the needs of the community is
+tempting, it is likely impossible because of the diversity of the community.
+On the other hand, facilitating interoperability between these systems has
+been shown to work with Eclipse ICE and Triquetrum as well and with
+<span class="cite">[<a 
+href="#Xmandal_integrating_2007">32</a>]</span>.
+<!--l. 14--><p class="indent" >   Therefore this work proposes the following tasks to
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-35002x1">develop a comprehensive ontology of workflows and workflow management
+     systems to show the complex relationships and similarities between the
+     tools, thereby revealing the means to enable interoperability.
+     </li>
+     <li 
+  class="enumerate" id="x1-35004x2">demonstrate the utility of this ontology by creating an interoperability
+     layer between several workflow management systems using the common
+     building blocks approach of Jha et al., <span class="cite">[<a 
+href="#Xjha_building_2016">13</a>]</span>, language translation tools such
+     as Extensible Stylesheet Language Transformations (XSLT), and other
+     means as required.
+     </li>
+     <li 
+  class="enumerate" id="x1-35006x3">deploy this layer as a common building block itself through a scalable web
+     service.
+     </li>
+     <li 
+  class="enumerate" id="x1-35008x4">demonstrate the utility of the interoperability layer by executing complex,
+     multi-system workflows across hardware types for problems relevant to
+     energy science, including the ICEMAN and VIBE projects.</li></ol>
+<!--l. 36--><p class="indent" >   It is interesting to ask why an ontology is necessary instead of a taxonomy, a
+controlled vocabulary, or another mechanism for modeling the workflow science
+space. The primary benefit of an ontology over these other mechanisms is that
+onotologies are neither controlled (vocabularies) nor hierarchical (taxonomies).
+Ontologies show all relationships.
+<!--l. 43--><p class="indent" >   Hierarchy and control constrain and bias models in unnecessary ways, especially
+when the relationships between most types of information are not directed, <span class="cite">[<a 
+href="#Xweinberger_everything_2008">40</a>]</span>.
+Ontologies show relationships between elements without imposing order and are
+much easier to extend because new elements with new characteristics do not require
+modifying the architecture and layout of the taxonomy. For example, a taxonomy
+would require that all workflow systems derive, ultimately, from one or more
+parent workflow system types, and that the properties of each system be
+drawn from one or more controlled vocabularies that are supported by the
+taxonomy. This simply may not be the case and, instead, an ontology would not
+impose such an organization, but produce a list of the properties of each
+system and an undirected graph of the relationships between ontological
+elements.
+<!--l. 57--><p class="indent" >   One important thing to keep in mind about ontologies is that it is important to
+                                                                  
+
+                                                                  
+describe how they map to or extend existing ontologies. There are many ways to
+produce these mappings by leveraging the extensive body of literature available from
+the library and informational sciences community, <span class="cite">[<a 
+href="#Xallemang_semantic_2008">41</a>]</span>.
+<!--l. 63--><p class="indent" >   The necessity of producing the interoperability layer as a scalable web service
+cannot be overstated. All of the workflow management systems cited in this
+work publish scalable web services and interact with other web services in
+one or more ways. Their are several additional advantages, but perhaps the
+largest is that it will make it possible for the interoperability layer itself to
+be integrated as yet another workflow element in workflow management
+systems.
+<!--l. 71--><p class="indent" >   Producing the ontology and interoperability layer for this work will require a
+survey of workflows and workflow management systems used by the community. For
+the latter and for the energy science demonstrations, virtual &#8220;containers&#8221; such as
+Docker will be used to work with the systems on the Compute And Data
+Environment for Science at Oak Ridge National Laboratory. In addition to making it
+possible to study these systems, using containers will also preserve this work for
+others who may seek to reproduce it in the future.
+<!--l. 80--><p class="indent" >   Because of its mature API and ability to integrate well with other workflow tools,
+Eclipse ICE will be used as a test bed for developing and deploying the workflow
+interoperability layer. Much like its successful &#8220;spin-offs&#8221; for data structures and
+visualization, ICE can foster the development of the interoperability layer and act as
+a launching platform for a service that eventually stands alone. Likewise, ICE already
+contains all the necessary code to connect to common building blocks, containers,
+and web services.
+                                                                  
+
+                                                                  
+   <h2 class="likechapterHead"><a 
+ id="x1-360005"></a>Bibliography</h2>
+    <div class="thebibliography">
+    <p class="bibitem" ><span class="biblabel">
+  [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="X_6-year-old_2016"></a>6-year-old girl used sleeping mom&#8217;s fingerprints to buy Pokemon gifts,
+    December 2016.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+  [2]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xwilliams_6-year-old_2017"></a>Grace Williams.   6-year-old accidentally orders high-end treats with
+    Amazon&#8217;s Alexa, January 2017.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+  [3]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xludascher_scientific_2006"></a>Bertram Ludscher, Ilkay Altintas, Chad Berkley, Dan Higgins, Efrat
+    Jaeger,  Matthew  Jones,  Edward&#x00A0;A.  Lee,  Jing  Tao,  and  Yang  Zhao.
+    Scientific  workflow  management  and  the  Kepler  system.   <span 
+class="cmti-10">Concurrency</span>
+    <span 
+class="cmti-10">Computat.: Pract. Exper.</span>, 18(10):1039&#8211;1065, August 2006.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+  [4]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xvan_der_aalst_application_1998"></a>W.&#x00A0;M.&#x00A0;P. Van Der&#x00A0;Aalst.  The application of petri nets to workflow
+    management. <span 
+class="cmti-10">J CIRCUIT SYST COMP</span>, 08(01):21&#8211;66, February 1998.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+  [5]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xhollingsworth_workflow_1993"></a>David Hollingsworth and U.&#x00A0;K. Hampshire.   Workflow management
+    coalition the workflow reference model.  <span 
+class="cmti-10">Workflow Management Coalition</span>,
+    68:26, 1993.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+  [6]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xyu_taxonomy_2005"></a>Jia Yu and Rajkumar Buyya.  A Taxonomy of Workflow Management
+    Systems  for  Grid  Computing.     <span 
+class="cmti-10">J  Grid  Computing</span>,  3(3-4):171&#8211;200,
+    September 2005.
+    </p>
+                                                                  
+
+                                                                  
+    <p class="bibitem" ><span class="biblabel">
+  [7]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xmegino_panda:_2015"></a>Fernando&#x00A0;Barreiro Megino, Kaushik De, Jose Caballero, John Hover,
+    Alexei Klimentov, Tadashi Maeno, Paul Nilsson, Danila Oleynik, Sergey
+    Padolski, Sergey Panitkin, Artem Petrosyan, and Torre Wenaus.  PanDA:
+    Evolution  and  Recent  Trends  in  LHC  Computing.   <span 
+class="cmti-10">Procedia Computer</span>
+    <span 
+class="cmti-10">Science</span>, 66:439&#8211;447, January 2015.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+  [8]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xpizzi_aiida:_2016"></a>Giovanni Pizzi, Andrea Cepellotti, Riccardo Sabatini, Nicola Marzari,
+    and  Boris  Kozinsky.   AiiDA:  automated  interactive  infrastructure  and
+    database  for  computational  science.   <span 
+class="cmti-10">Computational  Materials  Science</span>,
+    111:218&#8211;230, January 2016.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+  [9]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xclay_incorporating_2015"></a>Robert&#x00A0;L. Clay.  Incorporating Workflow for V&amp;v/Uq in the Sandia
+    Analysis Workbench. Technical Report SAND2015-1556C, Sandia National
+    Laboratories (SNL-CA), Livermore, CA (United States), March 2015.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [10]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xmontoya_apex_2016"></a>David Montoya. APEX Workflows, 2016.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [11]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xhan_taxonomy_1998"></a>Yanbo  Han,  Amit  Sheth,  and  Christoph  Bussler.   A  taxonomy  of
+    adaptive workflow management. In <span 
+class="cmti-10">Workshop of the 1998 ACM Conference</span>
+    <span 
+class="cmti-10">on Computer Supported Cooperative Work</span>, 1998.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [12]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xbarker_scientific_2007"></a>Adam Barker and Jano&#x00A0;van Hemert.  Scientific Workflow: A Survey
+    and Research Directions. In <span 
+class="cmti-10">Parallel Processing and Applied Mathematics</span>,
+    pages  746&#8211;753.  Springer,  Berlin,  Heidelberg,  September  2007.    DOI:
+    10.1007/978-3-540-68111-3_78.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [13]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xjha_building_2016"></a>Shantenu Jha and Matteo Turilli. A Building Blocks Approach towards
+    Domain  Specific  Workflow  Systems?   <span 
+class="cmti-10">arXiv:1609.03484 [cs]</span>,  September
+    2016. arXiv: 1609.03484.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [14]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xnersc_apex_2016"></a>NERSC. APEX, 2016.
+                                                                  
+
+                                                                  
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [15]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xdeelman_future_2015"></a>Ewa  Deelman,  Tom  Peterka,  Ilkay  Altintas,  Christopher  Carothers,
+    Kerstin Kleese&#x00A0;van Dam, Kenneth Moreland, Lavanya Ramakrishnan, and
+    Jeffrey  Vetter.    The  Future  of  Scientific  Workflows.    Workshop,  U.S.
+    Department of Energy, April 2015.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [16]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xbillings_designing_2009"></a>Jay&#x00A0;J. Billings, Wael&#x00A0;R. Elwasif, Lee&#x00A0;M. Hively, David&#x00A0;E. Bernholdt,
+    John&#x00A0;M.  Hetrick,  III,  and  Tim  Bohn.   Designing  a  Component-based
+    Architecture  for  the  Modeling  and  Simulation  of  Nuclear  Fuels  and
+    Reactors. In <span 
+class="cmti-10">Proceedings of the 2009 Workshop on Component-Based High</span>
+    <span 
+class="cmti-10">Performance Computing</span>, CBHPC &#8217;09, pages 6:1&#8211;6:4, New York, NY, USA,
+    2009. ACM.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [17]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xthe_nek5000_team_nek5000_2014"></a>The Nek5000 Team.   Nek5000 <span 
+class="cmsy-10">| </span>A Spectral Element code for CFD,
+    October 2014.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [18]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xfielding_architectural_2000"></a>Roy&#x00A0;Thomas  Fielding.     <span 
+class="cmti-10">Architectural  Styles  and  the  Design  of</span>
+    <span 
+class="cmti-10">Network-based Software Architectures</span>. PhD thesis, University of California,
+    Irvine, 2000. AAI9980887.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [19]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xburke_restful_2010"></a>Bill Burke. <span 
+class="cmti-10">RESTful Java with JAX-RS</span>. O-Reilly, California, 2010.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [20]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xmcaffer_eclipse_2010"></a>Jeff McAffer, Jean-Michel Lemieux, and Chris Aniszczyk. <span 
+class="cmti-10">Eclipse Rich</span>
+    <span 
+class="cmti-10">Client Platform Second Edition</span>. Addison-Wesley, Boston, 2010.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [21]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xmcaffer_osgi_2010"></a>Jeff McAffer, Paul VanderLei, and Simon Archer.  <span 
+class="cmti-10">OSGi and Equinox</span>.
+    Addison-Wesley, Boston, 2010.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [22]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xtibbitts_integrated_2009"></a>Beth&#x00A0;R. Tibbitts, Gregory&#x00A0;R. Watson, and Craig&#x00A0;E. Rasmussen.  An
+    integrated  approach  to  improving  the  parallel  application  development
+    process. In <span 
+class="cmti-10">2009 IEEE International Symposium on Parallel &amp; Distributed</span>
+                                                                  
+
+                                                                  
+    <span 
+class="cmti-10">Processing  (IPDPS)</span>,  pages  1&#8211;8,  Los  Alamitos,  CA,  USA,  2009.  IEEE
+    Computer Society.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [23]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xpontesegger_eclipse_2015"></a>Christian Pontesegger. Eclipse Advanced Scripting Environment, 2015.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [24]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xbillings_eclipse_2015"></a>Jay&#x00A0;Jay Billings.  Eclipse Advanced Visualization Project, December
+    2015.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [25]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xpannala_multiscale_2015"></a>S.&#x00A0;Pannala,   J.&#x00A0;A.   Turner,   S.&#x00A0;Allu,   W.&#x00A0;R.   Elwasif,   S.&#x00A0;Kalnaus,
+    S.&#x00A0;Simunovic,   A.&#x00A0;Kumar,   J.&#x00A0;J.   Billings,   H.&#x00A0;Wang,   and   J.&#x00A0;Nanda.
+    Multiscale modeling and characterization for performance and safety of
+    lithium-ion batteries.  <span 
+class="cmti-10">Journal of Applied Physics</span>, 118(7):072017, August
+    2015.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [26]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xgaston_moose:_2009"></a>Derek            Gaston,            Chris            Newman,            Glen
+    Hansen, and Damien Lebrun-Grandie. MOOSE: A parallel computational
+    framework for coupled systems of nonlinear equations. <span 
+class="cmti-10">Nuclear Engineering</span>
+    <span 
+class="cmti-10">and Design</span>, 239(10), October 2009.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [27]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xmccaskey_scientific_2015"></a>McCaskey.   Scientific Simulation with Eclipse - From Zero Code to
+    Running on Lots of Cores in 10 Minutes. In <span 
+class="cmti-10">EclipseCon NA 2016</span>, Reston
+    VA, November 2015. Eclipse Foundation.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [28]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xbillings_brand_2015"></a>Jay&#x00A0;Jay Billings.   The brand new Neutron Reflectivity Simulator in
+    Eclipse ICE and what it took to make it.   In <span 
+class="cmti-10">EclipseCon Europe 2015</span>,
+    Ludwigsburg Germany, July 2015. Eclipse Foundation.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [29]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xhumble_integrated_2014"></a>T.&#x00A0;S. Humble, A.&#x00A0;J. McCaskey, R.&#x00A0;S. Bennink, J.&#x00A0;J. Billings, E.&#x00A0;F.
+    DAzevedo, B.&#x00A0;D. Sullivan, C.&#x00A0;F. Klymko, and H.&#x00A0;Seddiqi. An integrated
+    programming   and   development   environment   for   adiabatic   quantum
+    optimization. <span 
+class="cmti-10">Comput. Sci. Disc.</span>, 7(1):015006, 2014.
+                                                                  
+
+                                                                  
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [30]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xmccaskey_ornl-qci/xacc_2016"></a>Alex McCaskey. ORNL-QCI/xacc, 2016.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [31]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xbillings_domain-specific_2015"></a>Jay&#x00A0;Jay  Billings,  Jordan&#x00A0;H.  Deyton,  S.&#x00A0;Forest  Hull&#x00A0;III,  Eric&#x00A0;J.
+    Lingerfelt,  and  Anna  Wojtowicz.    A  domain-specific  analysis  system
+    for  examining  nuclear  reactor  simulation  data  for  light-water  and
+    sodium-cooled  fast  reactors.    <span 
+class="cmti-10">Annals  of  Nuclear  Energy</span>,  85:856&#8211;868,
+    November 2015.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [32]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xmandal_integrating_2007"></a>Nandita  Mandal,  Ewa  Deelman,  Gaurang  Mehta,  Mei-Hui  Su,  and
+    Karan  Vahi.    Integrating  Existing  Scientific  Workflow  Systems:  The
+    Kepler/Pegasus  Example.     In  <span 
+class="cmti-10">Proceedings  of  the  2nd  Workshop  on</span>
+    <span 
+class="cmti-10">Workflows in Support of Large-scale Science</span>, WORKS &#8217;07, pages 21&#8211;28,
+    New York, NY, USA, 2007. ACM.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [33]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xbrooks_introducing_2016"></a>Christopher Brooks and Jay&#x00A0;Jay Billings.  Introducing Triquetrum, A
+    Possible Future for Kepler and Ptolemy II.  <span 
+class="cmti-10">Procedia Computer Science</span>,
+    80:2449&#8211;2454, 2016.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [34]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xbrooks_triquetrum:_2015"></a>Christopher   Brooks.      Triquetrum:   Models   of   Computation   for
+    Workflows, December 2015.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [35]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xgraham_eclipse_2016"></a>Jonah Graham. Eclipse January, April 2016.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [36]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xbillings_eclipse_2016"></a>Jay&#x00A0;Jay Billings. Eclipse ICE, October 2016.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [37]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xjha_towards_2016"></a>Shantenu Jha. Towards the Science of Workflows, 2016.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [38]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xpack_sos20_2016"></a>Daniel Pack. SOS20, March 2016.
+                                                                  
+
+                                                                  
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [39]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xbillings_[science-iwg]_2016"></a>Jay&#x00A0;Jay  Billings.     [science-iwg]  Workflows,  workflows  and  more
+    workflows, April 2016.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [40]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xweinberger_everything_2008"></a>David Weinberger. <span 
+class="cmti-10">Everything Is Miscellaneous: The Power of the New</span>
+    <span 
+class="cmti-10">Digital Disorder</span>. Henry Holt and Co., Inc., New York, NY, USA, 2008.
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ [41]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xallemang_semantic_2008"></a>Dean  Allemang  and  James&#x00A0;A.  Hendler.     <span 
+class="cmti-10">Semantic  web  for  the</span>
+    <span 
+class="cmti-10">working  ontologist:  modeling  in  RDF,  RDFS  and  OWL</span>.     Morgan
+    Kaufmann/Elsevier, Amsterdam, 2008. OCLC: 184925396.
+</p>
+    </div>
+    
+</body></html> 
+
+                                                                  
+
+

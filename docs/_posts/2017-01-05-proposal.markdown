@@ -10,31 +10,30 @@ This work has shown that there is significant ambiguity in the definition of
 different types of systems that exist to address scientific challenges. While
 the idea of creating a single, unifying workflow management system that
 addresses all of the needs of the community is tempting, it is likely
-impossible. On the other hand, facilitating interoperability between these
-systems has been shown to work with Eclipse ICE and Triquetrum as well as other
-tools, such as Kepler and Pegasus, \[Mandal, 2007].
+impossible because of the diversity of the community. On the other hand, facilitating interoperability between these
+systems has been shown to work with Eclipse ICE and Triquetrum and with such as Kepler and Pegasus, \[Mandal, 2007].
 
 Therefore this work proposes the following tasks to
 
-* develop a comprehensive ontology of workflows and workflow management
+1. develop a comprehensive ontology of workflows and workflow management
 systems to show the complex relationships and similarities between the tools,
 thereby revealing the means to enable interoperability.
-* demonstrate the utility of this ontology by creating an interoperability
+2. demonstrate the utility of this ontology by creating an interoperability
 layer between several workflow management systems using the common building
 blocks approach of Jha et al., \[Jha, 2016], language translation tools such as
 Extensible Stylesheet Language Transformations (XSLT), and other means as
 required.
-* deploy this layer as a common building block itself through a scalable web
+3. deploy this layer as a common building block itself through a scalable web
 service.
-* demonstrate the utility of the interoperability layer by executing
+4. demonstrate the utility of the interoperability layer by executing
 complex, multi-system workflows across hardware types for problems relevant to
 energy science, including the ICEMAN and VIBE projects. 
 
-It is interesting to ask why an ontology is necessary in lieu of a taxonomy, a
-controlled vocabulary, or another mechanism of modeling the workflow science
+It is interesting to ask why an ontology is necessary instead of a taxonomy, a
+controlled vocabulary, or another mechanism for modeling the workflow science
 space. The primary benefit of an ontology over these other mechanisms is that
 onotologies are neither controlled (vocabularies) nor hierarchical
-(taxonomies).
+(taxonomies). Ontologies show all relationships.
 
 Hierarchy and control constrain and bias models in unnecessary ways, especially
 when the relationships between most types of information are not directed,
@@ -56,19 +55,27 @@ from the library and informational sciences community, \[Allemang, 2008].
 
 The necessity of producing the interoperability layer as a scalable web service
 cannot be overstated. All of the workflow management systems cited in this
-work publish scalable web services and interact with other webservices in one
-or more ways. Their are several additional advantages presented by the
-accepting this technology for this work, but perhaps the largest is that it
+work publish scalable web services and interact with other web services in one
+or more ways. Their are several additional advantages, but perhaps the largest is that it
 will make it possible for the interoperability layer itself to be integrated as
 yet another workflow element in workflow management systems.
 
 Producing the ontology and interoperability layer for this work will require a
-survey of workflows and workflow management systems in the community. For the
+survey of workflows and workflow management systems used by the community. For the
 latter and for the energy science demonstrations, virtual ``containers'' such
-as Docker will be used to work with the systems in practice on the Compute And
+as Docker will be used to work with the systems on the Compute And
 Data Environment for Science at Oak Ridge National Laboratory. In addition to
 making it possible to study these systems, using containers will also preserve
 this work for others who may seek to reproduce it in the future.
+
+Because of its mature API and ability to integrate well with other workflow
+tools, Eclipse ICE will be used as a test bed for developing and deploying the
+workflow interoperability layer. Much like its successful "spin-offs" for data
+structures and visualization, ICE can foster the development of the
+interoperability layer and act as a launching platform for service that
+eventually stands alone. Likewise, ICE already contains all the
+necessary code to connect to common building blocks, containers, and web
+services.
 
 # References
 
