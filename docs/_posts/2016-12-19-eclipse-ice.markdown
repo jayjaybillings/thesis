@@ -164,7 +164,7 @@ connections or similar protocols. Remote execution requires moving the input
 in advance of the execution and copying or moving the output to the user's 
 machine. In many cases, though, the output is too large to move to the user's local machine.
 
-Local and remote jobs are often monitored to ascertain the jobs' status. 
+Local and remote jobs are often monitored to ascertain a job's status. 
 This monitoring may be a simple check as to whether or not the execution has 
 completed, or it may involve monitoring the output of individual quantities to examine the 
 calculation state. The latter is often used to detect calculation errors that 
