@@ -69,48 +69,47 @@ Motivation and Significance
 ===========================
 
 In previous work, Billings et. al., discovered through requirements
-gathering interviews that many of the difficulties using high
-performance modeling and simulation software fall broadly into five
+gathering interviews that many of the difficulties using high-performance 
+modeling and simulation software fall broadly into five
 distinct categories, @billings_designing_2009. These activities,
-detailed in section [workflow-model], creating input, executing jobs,
-analyzing results, managing data, and modifying code. There are many
-tools that address these problems individually, but the same work found
+detailed in section [workflow-model], include (1) creating input, (2) executing jobs,
+(3) analyzing results, (4) managing data, and (5) modifying code. There are many
+tools that address these problems individually, but the same research found
 that the excess number and specialization of these tools also contribute
 to the learning curve.
 
-Efforts to address these five issues typically fall in with general
-purpose scientific workflow tools like Kepler,
-@ludascher_scientific_2006, or are reduced to myopic tools that satisfy
-some set of requirements for a single piece of software or platform.
+Efforts to address these five issues have previously resulted in general
+purpose scientific workflow tools like Kepler
+@ludascher_scientific_2006 or myopic tools that only satisfy
+a single set of requirements for a single piece of software or platform.
 These are opposing extremes, but a middle-of-the-road solution is also
 possible. A workflow engine could be developed that limits its scope to
-High-Performance Computing (HPC) and to the set of possible workflows
-that come from the previously mentioned five activities. A rich enough
-Application Programming Interface (API) could be exposed so that highly
-customized solutions could still be made based on this limited workflow
-engine with only a relatively minor amount of additional development
-required.
+high-performance computing (HPC) and to the set of possible workflows
+associated with the five previously mentioned activities. With only 
+minor additional development, a rich application programming interface (API) 
+could be exposed so that highly-customized solutions could still be 
+made based on this limited workflow engine.
 
-It is not clear that one of these solutions is better than the others.
-Practical requirements will ultimately dictate which way projects go.
+It is not clear which, if any, of these solutions is better than the others, and
+practical requirements will ultimately dictate the path of a project's progress.
 This work considers a middle ground solution and presents the Eclipse
 Integrated Computational Environment (ICE) as proof that it is possible
-to create such a system. Specifically, we show
+to create such a system. Specifically, the work described here shows that:
 
--   that modeling and simulation activities can be described in a
+-   Modeling and simulation activities can be described in a
     succinct workflow model, (see "Workflow Model").
 
--   an architecture for such a workflow system that satisfies the model
-    of workflows presented below in an extensible way, (see "Software 
+-   An architecture for such a workflow system can satisfy the model
+    of workflows in an extensible way, (see "Software 
     Architecture").
 
--   that such a system is applicable to a suite of problems in energy
+-   Such a system is applicable to a suite of problems in energy
     science, including virtual battery simulations, additive
-    manufacturing and other areas, (See "Illlustrative Examples.").
+    manufacturing and other areas, (see "Illlustrative Examples").
 
 This section concludes with an introduction of the workflow model
 addressed by ICE. "Software Description" presents the details of
-the software from an architecture perspective while the "Illustrative 
+the software from an architecture perspective, while the "Illustrative 
 Examples" section provides a set of comprehensive examples. Finally,
 this paper concludes with a presentation of the impact and sample code.
 
