@@ -149,7 +149,7 @@ many names, including "input set," "input package," "problem," or, simply,
 that acts as a kind of manifest, describing and providing links to all 
 necessary information for a given problem. 
 
-In this work, it should be assumed, unless otherwise noted, that "input"
+In this work, it should be assumed&mdash;unless otherwise noted&mdash;that "input"
 refers to the entire set of input, not to a single file.
 
 **Executing jobs** or "running the workflow" in this context is the process 
