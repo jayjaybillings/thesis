@@ -135,22 +135,22 @@ however, including re-running jobs with conditions or modifications or analyzing
 someone else's data (See footnote <sup>1</sup>).
 
 **Creating input** is the process of describing the physical model or state
-of a system that will be simulated. This could include creating an input file
-or file(s), but could also include external calls to a process to configure a
-running program. In most situations a computational scientist will modify 
+of a system that will be simulated. This could include creating an input file(s) 
+or making calls to an external process to configure a
+running program. In most situations, a computational scientist will modify 
 existing input or create new input from a template. "Input" generally includes
-runtime parameters for the simulation framework (tolerances, etc.); 
-configuration options (data locations, output locations, module configurations,
-etc.); material properties for the materials that will be simulated; and a 
-discretization of the simulation space (mesh, grid, particle distribution, 
-etc.). The collection of all required input can be quite large and may go by
-many names such as "input set," "input package," "problem," or, simply, 
-"input." Often the set of input files will be described in a "main" input file
+runtime parameters for the simulation framework (e.g., tolerances); 
+configuration options (e.g., data locations, output locations, module configurations); 
+properties of the materials to be simulated; and a 
+discretization of the simulation space (e.g., mesh, grid, particle distribution). 
+The collection of all required input can be quite large and may go by
+many names, including "input set," "input package," "problem," or, simply, 
+"input." Often, the set of input files will be described in a "main" input file
 that acts as a kind of manifest, describing and providing links to all 
-necessary information for the given problem. 
+necessary information for a given problem. 
 
-In this work, it should be assumed unless otherwise noted that "input"
-refers to the entire set of input, not a single file.
+In this work, it should be assumed, unless otherwise noted, that "input"
+refers to the entire set of input, not to a single file.
 
 **Executing jobs** or "running the workflow" in this context is the process 
 of performing some calculation based on the input with a simulation code or
