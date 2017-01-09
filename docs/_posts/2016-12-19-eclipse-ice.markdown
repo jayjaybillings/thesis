@@ -120,8 +120,8 @@ and simulation that can be abstracted into a lightweight theoretical framework
 based broadly on five high-level _activities_: (1) creating input, (2) executing jobs, 
 (3) analyzing results, (4) managing data, and (5) modifying code. Those same computational 
 scientist would most likely find these activities difficult for all codes with 
-which they lack experience, whereas with their own codes---or those with which 
-they are most familiar---these tasks may be so simple that they are taken for 
+which they lack experience, whereas with their own codes&mdash;or those with which 
+they are most familiar&mdash;these tasks may be so simple that they are taken for 
 granted. Any particular combination of these activities across one or more 
 scientific software package or code results in a unique _workflow_. Such a 
 workflow is normally, but not always, requested by a human user and 
@@ -129,7 +129,7 @@ orchestrated by a _Workflow Management System (WMS)_.
 
 The most obvious workflow for any individual simulation code or collection of
 codes is to string the activities together: the user's workflow is to create
-the input, launch the job, perform some analysis, and manage the data---possibly 
+the input, launch the job, perform some analysis, and manage the data&mdash;possibly 
 modifying the code in the process. There are many other combinations
 however, including re-running jobs with conditions or modifications or analyzing 
 someone else's data (See footnote <sup>1</sup>).
