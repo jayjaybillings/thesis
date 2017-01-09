@@ -193,31 +193,31 @@ executing a job; however, analysis of model and simulation results is far from
 simple data reduction, and is generally far more interactive for
 computational scientists.
 
-**Managing data** includes moving, copying, storing, sharing or otherwise 
+**Managing data** includes moving, copying, storing, sharing, or otherwise 
 interacting with data for or from simulations. This activity is the most 
-pervasive of all the activities because each of the others requires interacting
-with data in some way. In many cases though, data is still managed its own
-purposes, without performing a simulation, generating new input, or analysing
+pervasive because each of the other activities requires interacting
+with data in some way. In many cases, though, data is still managed for its own
+purposes, without performing a simulation, generating new input, or analyzing
 results. Examples include archiving data, packaging data for publications, and 
 updating values manually (often in light of new information from publications).
 
 **Modifying code** is not typically considered a part of a scientific computing
 workflow. However, modeling and simulation use cases often require users to 
 explicitly modify code before execution, such as with the computational fluid
-dynamics code Nek5000, \[Nek5000]; or to issue special re-build instructions. Many 
+dynamics code Nek5000, \[Nek5000], or to issue special re-build instructions. Many 
 computational scientists consider "their workflow" to be re-running software 
 after modifications for purely exploratory purposes. This may be required if 
-the model the author is manipulating can not be configured as part of the input
-directly but can be easily manipulated by hand.
+the model that the author is manipulating cannot be configured directly as 
+part of the input but can be easily manipulated by hand.
 
 ### Comparison to Other Models
 
 This model of workflows differs significantly from those of similar efforts in 
-workflow science because it defines workflows in terms of activities. Others in
-the literature define a workflow as a collection of computing processes. For 
+workflow science because it defines workflows in terms of activities. Other workflow 
+models in the literature define a workflow as a collection of computing processes. For 
 example, Yu and Buyya define grid workflows as "a collection of tasks that are
-processed on distributed resources in a wel-defined order to accomplish a 
-specific goal," \[Yu, 2005]. Others such as Pizzi et al. subscribe to similar
+processed on distributed resources in a well-defined order to accomplish a 
+specific goal," \[Yu, 2005]. Others, such as Pizzi et al., subscribe to similar
 definitions, \[Pizzi, 2015]. This "process" view is acceptable where the 
 workflow is static and does not require additional human input or "human in 
 the loop" behavior after the all the initial human input is provided. That is, 
@@ -227,10 +227,12 @@ call-backs to humans. It is simpler to discuss "activities" than it is to
 create a distinction between "human processes" and "computer processes." 
 Focusing on "activities" over processes (human or computer) also has the 
 benefit of removing concrete elements such as hardware properties or software 
-details that distract from details of workflows and WMSes per se. That is, 
+details that distract from details of workflows and WMSes. That is, 
 considerations such as memory usage and raw performance are important, but 
 questions about the abstract workflow or what the WMS should do are far more 
 important.
+
+[comment]: # (Please define the WMS acronym in its first instance in the paragraph above.)
 
 Software Description
 =====================
