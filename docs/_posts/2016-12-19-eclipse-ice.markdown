@@ -152,24 +152,26 @@ necessary information for a given problem.
 In this work, it should be assumed&mdash;unless otherwise noted&mdash;that "input"
 refers to the entire set of input, not to a single file.
 
-**Executing jobs** or "running the workflow" in this context is the process 
-of performing some calculation based on the input with a simulation code or
-framework. Modeling and simulation codes are normally run locally for small
-jobs or development. Large simulations typically require equally large
-hardware resources that are utilized remotely through Secure Shell (SSH)
+**Executing jobs**, or "running the workflow" in this context, is the process 
+of performing calculations using a simulation code or framework 
+based on known variables&mdash;the input. 
+Models and simulation codes are typically run locally for small
+jobs or for development. Large simulations, on the other hand, 
+typically require a large amount of hardware resources; these resources 
+are usually off site (i.e., physically unavailable to the user)
+and are accessed remotely remotely through Secure Shell (SSH)
 connections or similar protocols. Remote execution requires moving the input
 in advance of the execution and copying or moving the output to the user's 
-machine, if possible and desirable. (In many cases the output cannot be moved
-because it is too large.) 
+machine. In many cases, though, the output is too large to move to the user's local machine.
 
-Local and remote jobs are often monitored in one or more ways to ascertain the 
-status of job. This can include simply checking whether or not execution has 
-finished or monitoring the output of individual quantities to examine the 
+Local and remote jobs are often monitored to ascertain the jobs' status. 
+This monitoring may be a simple check as to whether or not the execution has 
+completed, or it may involve monitoring the output of individual quantities to examine the 
 calculation state. The latter is often used to detect calculation errors that 
-will result in incorrect results. If such results are found, the job is 
-typically cancelled ("killed") to save compute resources and re-run later. 
+will result in incorrect results. If such problems are found, the job is 
+typically cancelled ("killed") to save compute resources and is then re-run later. 
 
-In this work, it should be assumed unless otherwise noted that "executing a 
+In this work, it should be assumed&mdash;unless otherwise noted&mdash;that "executing a 
 job" includes monitoring that job in one or more ways, possibly including
 real-time updates to visualizations.
 
