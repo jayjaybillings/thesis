@@ -152,6 +152,7 @@ necessary information for a given problem.
 In this work, it should be assumed&mdash;unless otherwise noted&mdash;that "input"
 refers to the entire set of input, not to a single file.
 
+[comment]: # (The following sub-subsection got a good workover; make sure I didn't overstep. stc)
 **Executing jobs**, or "running the workflow" in this context, is the process 
 of performing calculations using a simulation code or framework 
 based on known variables&mdash;the input. 
@@ -179,17 +180,17 @@ real-time updates to visualizations.
 or more prescribed ways and producing artifacts with scientific significance
 from the transformed data. This may include, for example, post-processing 
 results and visualizing the new data with dedicated visualization tools. For
-many types of scientific computing this includes viewing the results of a 
+many types of scientific computing, this includes viewing the results of a 
 simulation on a mesh or grid and extracting publication quality images or 
 movies from that data. Other cases may include analyzing results in preparation
-for follow simulations or performing feature extraction, classification or 
+for follow simulations or performing feature extraction, classification, or 
 activities for machine learning and data mining. 
 
 While this has many similarities to executing a job, it is distinctly different 
 because the activity changes focus to satisfy the needs of a human operator. 
-Simple data reduction where the exact reduction is known certainly qualifies as
-executing a job, but analysis of modeling and simulation results is far from
-simple data reduction. It is generally a far more interactive process for
+Simple data reduction, where the exact reduction is known, certainly qualifies as
+executing a job; however, analysis of model and simulation results is far from
+simple data reduction, and is generally far more interactive for
 computational scientists.
 
 **Managing data** includes moving, copying, storing, sharing or otherwise 
