@@ -56,14 +56,14 @@ Abstract
 Problems in modeling and simulation require significantly different workflow
 management technologies than standard grid-based workflow management systems.
 Computational scientists typically interact with simulation software in a
-feedback driven way were solutions and workflows are developed iteratively and
-simultaneously. This work describes common activities in workflows and how 
-combinations of these activities form unique workflows. It presents the Eclipse
+feedback-driven way where solutions and workflows are developed iteratively and
+simultaneously. This work describes common activities in workflows, how 
+combinations of these activities form unique workflows, and presents the Eclipse
 Integrated Computational Environment as a workflow management system and
 development environment for the modeling and simulation community. Examples of
-the Environment's applicability to problems in energy science, general 
-multiphysics simulations, quantum computing and other areas are presented as
-well as its impact on the community.
+the environment's applicability to problems in energy science, general 
+multiphysics simulations, quantum computing, and other areas are presented along 
+with the environment's impact on the community and user base.
 
 Motivation and Significance
 ===========================
