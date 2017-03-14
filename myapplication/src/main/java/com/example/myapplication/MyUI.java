@@ -28,7 +28,15 @@ import com.vaadin.ui.VerticalLayout;
 @Theme("mytheme")
 public class MyUI extends UI {
 
-    static private HttpService httpService;
+    /**
+	 * A serialization ID - if you remove this, OSGI DS will fail!
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * The HttpService Reference for the OSGI framework.
+	 */
+	static private HttpService httpService;
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)

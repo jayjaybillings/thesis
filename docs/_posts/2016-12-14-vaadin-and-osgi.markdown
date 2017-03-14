@@ -5,14 +5,14 @@ date:   2016-12-14 20:55
 category: eclipse
 ---
 
-Vaadin is a web framework for business applications with Java and HTML programming interfaces. It can be used to provide web interfaces for OSGi applications by 
+Vaadin is a web framework for business applications with Java and HTML programming interfaces. It can be used to provide web interfaces for OSGi applications by
 deploying an OSGi framework, such as Equinox, [in a servlet container.][deployment]
 
 Same code showing it running the OSGi framework is available in [myapplication directory of the thesis repository.](https://github.com/jayjaybillings/thesis/tree/master/myapplication)
 
 ## Prerequisites
 
-The Vaadin development team has provided code generators and other utilities for working with the framework in the Eclipse IDE. It is best to install these tools in either the "Java EE" or "JavaScript and Web" versions of Eclipse that also includes all WST packages, all JST packages, and the Eclipse Java Web Developer Tools. The author configured a version of Eclipse with all of these packages and the Java EE and web tools. 
+The Vaadin development team has provided code generators and other utilities for working with the framework in the Eclipse IDE. It is best to install these tools in either the "Java EE" or "JavaScript and Web" versions of Eclipse that also includes all WST packages, all JST packages, and the Eclipse Java Web Developer Tools. The author configured a version of Eclipse with all of these packages and the Java EE and web tools.
 
 ## Creating a Basic Vaadin 7 Project
 
@@ -48,7 +48,7 @@ Vaadin projects are now [generated using Maven][generation], whereas Boadas' art
 
 and the application, when launched in the server will, appear at http://localhost:8080/myapplication. The "myapplication" root is specified in the MANIFEST.MF file. By default, the Vaadin libraries are not exported by the Eclipse project, which will result in a "ClassNotFound" error, (see below).
 
-Boadas' article describes the basic steps to compile CSS assets, but they must be manually copied to the WebContent directory in Eclipse to be picked up by the server. 
+Boadas' article describes the basic steps to compile CSS assets, but they must be manually copied to the WebContent directory in Eclipse to be picked up by the server.
 
 ## Create a basic run configuration
 
@@ -161,42 +161,50 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 /**
- * This UI is the application entry point. A UI may either represent a browser window 
+ * This UI is the application entry point. A UI may either represent a browser window
  * (or tab) or some part of a html page where a Vaadin application is embedded.
  * <p>
- * The UI is initialized using {@link #init(VaadinRequest)}. This method is intended to be 
+ * The UI is initialized using {@link #init(VaadinRequest)}. This method is intended to be
  * overridden to add component to the user interface and initialize non-component functionality.
  */
 @Theme("mytheme")
 public class MyUI extends UI {
 
-    private HttpService httpService;
+      /**
+  	 * A serialization ID - if you remove this, OSGI DS will fail!
+  	 */
+  	private static final long serialVersionUID = 1L;
+
+  	/**
+  	 * The HttpService Reference for the OSGI framework.
+  	 */
+  	static private HttpService httpService;
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
     }
-    
+
 	@Override
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout layout = new VerticalLayout();
-        
+
         final TextField name = new TextField();
         name.setCaption("Type your name here:");
 
         Button button = new Button("Click Me");
         button.addClickListener( e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
+            layout.addComponent(new Label("Thanks " + name.getValue()
                     + ", it works!"));
         });
-        
+
         layout.addComponents(name, button);
         layout.setMargin(true);
         layout.setSpacing(true);
-        
+
         setContent(layout);
     }
-    
+
     /**
      * OSGi bundle activator with annotation instead of activator class.
      * @param context
@@ -211,7 +219,7 @@ public class MyUI extends UI {
 			e.printStackTrace();
 		}		
 	}
-    
+
     public void setService(HttpService httpService) {
     	this.httpService = httpService;
     }   
@@ -295,7 +303,7 @@ Vaadin should now run correctly in an OSGi framework. The output should look rou
 2016-12-17 16:01:12.114:INFO::Start Level: Equinox Container: f0b67ef0-9bc4-0016-19b5-b5f160b29616: Logging initialized @933ms
 osgi> VAADIN bundle started.
 Dec 17, 2016 4:01:12 PM com.vaadin.server.DefaultDeploymentConfiguration checkProductionMode
-WARNING: 
+WARNING:
 =================================================================
 Vaadin is running in DEBUG MODE.
 Add productionMode=true to web.xml to disable debug features.
@@ -332,7 +340,7 @@ The result should be viewable at http://localhost:8082 or whatever port is speci
 
 ![Image of Vaadin running in OSGi]({{ site.url }}/{{site.baseurl}}/images/vaadin_osgi_20161216.png)
 
-Finally, note that the MyUI class does all of its OSGi work in the activator and that the HttpService will not be available when MyUI.init() is called. Vaadin calls its own instance of MyUI.init() each time the site is accessed, so OSGi services must be stored as static members or retrieved separately on the Vaadin thread if they need to be used outside of the activator. 
+Finally, note that the MyUI class does all of its OSGi work in the activator and that the HttpService will not be available when MyUI.init() is called. Vaadin calls its own instance of MyUI.init() each time the site is accessed, so OSGi services must be stored as static members or retrieved separately on the Vaadin thread if they need to be used outside of the activator.
 
 ## Possible Errors
 
@@ -346,11 +354,11 @@ If the servlet class is not configured correctly in web.xml, the server will not
 
 ```xml
 <servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
-``` 
+```
 
 ### The servlets named [VaadinOsgi] and [MyUIServlet] are both mapped to the url-pattern [/*] which is not permitted
 
-Boadas' article uses a different name for the tutorial project than the default name used by the newer Maven project generator. It is possible - and, indeed, likely - 
+Boadas' article uses a different name for the tutorial project than the default name used by the newer Maven project generator. It is possible - and, indeed, likely -
 that the name in the generated servlet does not match that in the WebContent/WEB-INF/web.xml. This will lead to an error where the server reports two servlets mapped to the same URL.
 
 ### java.lang.NoClassDefFoundError: com/vaadin/server/VaadinServlet
@@ -370,3 +378,30 @@ The vaadin-client-compiled-*.jar bundle must be added to the myapplication bundl
 [servletError]: http://stackoverflow.com/questions/15794473/cannot-run-vaadin-project-in-eclipse-juno-with-tomcat-7-throws-classnotfoundexc
 [boadas_2016]: https://examples.javacodegeeks.com/enterprise-java/vaadin/vaadin-osgi-example/
 [generation]: https://vaadin.com/docs/-/part/framework/getting-started/getting-started-first-project.html#getting-started.first-project.creation
+
+### Could not load implementation object class
+
+In some cases, an error like the following will occur:
+```java
+!MESSAGE [org.eclipse.ice.client.vaadin(0)] Could not load implementation object class com.example.myapplication.MyUI
+!STACK 0
+java.lang.ClassNotFoundException: com.example.myapplication.MyUI cannot be found by myapplication_1.0.0.qualifier
+```
+
+This is a rather uninformative error message posted by the Apache Felix SCR module used during Declarative Service Registration. It happens when, for whatever reason, the class in question cannot be resolved due to errors or warnings. The Felix SCR module is far more strict than the original Equinox DS module, so even warnings must be removed. In this case, the MyUI class had a warning that showed on the class itself:
+```
+The serializable class MyUIServlet does not declare a static final serialVersionUID field of type long
+```
+which was fixed by adding the following member variable:
+```java
+      /**
+  	 * A serialization ID - if you remove this, OSGI DS will fail!
+  	 */
+  	private static final long serialVersionUID = 1L;
+```
+
+This error will appear even in the case of an unresolved compilation error, which can be tested by breaking the MyUI class in any number of ways.
+
+### Referenced file contains errors (http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd).
+
+This error would appear randomly. The solution seemed to be to get Eclipse to reload and resolve the file by changing javaee and 3.0/3_0 to j2ee or 3.1/3_1. Cleaning and rebuilding the bundle a few times was necessary too. The error would then disappear just as randomly.
