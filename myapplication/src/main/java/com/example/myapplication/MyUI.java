@@ -1,8 +1,5 @@
 package com.example.myapplication;
 
-import java.util.Dictionary;
-import java.util.Hashtable;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 
@@ -31,7 +28,7 @@ import com.vaadin.ui.VerticalLayout;
 @Theme("mytheme")
 public class MyUI extends UI {
 
-    private HttpService httpService;
+    static private HttpService httpService;
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
@@ -74,7 +71,7 @@ public class MyUI extends UI {
 	}
     
     public void setService(HttpService httpService) {
-    	this.httpService = httpService;
+    	MyUI.httpService = httpService;
     }
     
 }
