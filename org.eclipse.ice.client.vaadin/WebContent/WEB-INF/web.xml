@@ -13,7 +13,7 @@
   	</servlet>
   	<servlet-mapping>
     	<servlet-name>EclipseICEUIServlet</servlet-name>
-    	<url-pattern>/*</url-pattern>
+    	<url-pattern>/ice/forms/*</url-pattern>
   	</servlet-mapping>
 	<context-param>
 	  <description>Eclipse ICE Vaadin Client</description>

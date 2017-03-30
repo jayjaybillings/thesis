@@ -38,6 +38,8 @@ Import-Package: javax.el,
  javax.servlet.jsp.tagext,
  org.eclipse.ice.core.iCore,
  org.eclipse.ice.datastructures.ICEObject,
+ org.eclipse.ice.datastructures.entry,
+ org.eclipse.ice.datastructures.form,
  org.osgi.framework;version="1.8.0",
  org.osgi.service.component.annotations;version="1.2.0",
  org.osgi.service.http

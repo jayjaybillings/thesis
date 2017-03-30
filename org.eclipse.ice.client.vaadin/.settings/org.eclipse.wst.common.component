@@ -5,7 +5,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-resources/gwt"/>
-        <wb-resource deploy-path="/" source-path="/src/main/webapp/VAADIN"/>
+        <wb-resource deploy-path="/" source-path="/WebContent/VAADIN"/>
         <property name="java-output-path" value="/org.eclipse.ice.client.vaadin/target/classes"/>
         <property name="context-root" value="/ice"/>
     </wb-module>
