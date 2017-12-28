@@ -1,0 +1,12 @@
+[submodule "pubs/workflows-paper"]
+	path = pubs/workflows-paper
+	url = https://github.com/jayjaybillings/workflows-paper
+	branch = master
+[submodule "pubs/workflows-ontology-paper"]
+	path = pubs/workflows-ontology-paper
+	url = https://github.com/jayjaybillings/workflows-ontology-paper
+	branch = master
+[submodule "pubs/ice-softwarex-2017"]
+	path = pubs/ice-softwarex-2017
+	url = https://github.com/jayjaybillings/ice-softwarex-2017
+	branch = master
