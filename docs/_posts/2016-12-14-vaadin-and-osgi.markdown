@@ -400,7 +400,7 @@ which was fixed by adding the following member variable:
   	private static final long serialVersionUID = 1L;
 ```
 
-This error will appear even in the case of an unresolved compilation error, which can be tested by breaking the MyUI class in any number of ways.
+This error will appear even in the case of an unresolved compilation error, which can be tested by breaking the MyUI class in any number of ways. This error also appeared in one case where a Vaadin @Theme annotation could not resolve the theme for the class in question (which was like MyUI, but more complicated).
 
 ### Referenced file contains errors (http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd).
 
