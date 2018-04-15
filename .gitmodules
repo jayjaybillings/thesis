@@ -10,3 +10,7 @@
 	path = pubs/ice-softwarex-2017
 	url = https://github.com/jayjaybillings/ice-softwarex-2017
 	branch = master
+[submodule "pubs/billings-workflows-blockchain"]
+	path = pubs/billings-workflows-blockchain
+	url = https://github.com/jayjaybillings/billings-workflows-blockchain
+	branch = master
