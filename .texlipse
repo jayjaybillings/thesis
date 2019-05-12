@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Sat May 11 15:50:15 EDT 2019
+markTmpDer=false
+builderNum=2
+outputDir=bin/
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=main.tex
+outputFile=billings-thesis.pdf
+langSpell=
+markDer=false
+srcDir=

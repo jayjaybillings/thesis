@@ -46,6 +46,7 @@
 \usepackage{mathrsfs}                   % additional math scripts
 \usepackage[titletoc]{appendix}			% format appendix correctly
 \usepackage{pdflscape}					% to produce landscape pages if necessary
+\usepackage{thesistools}				% my thesis tools package for cramming all these papers together
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This section formats landscape pages properly with the correct page number.
@@ -104,10 +105,10 @@
     \include{front-matter}
     \include{chapters/chapter-1}
     \include{chapters/2-ontologies}
-    \include{chapters/chapter-3}
-    \include{chapters/chapter-4}
+    \include{chapters/3-commonBuildingBlocks}
+    \include{chapters/4-ice}
     \include{chapters/chapter-5}
-    \include{chapters/chapter-6}
+    \include{chapters/6-blockchain}
     \include{chapters/chapter-7}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % BIBLIOGRAPHY
@@ -119,7 +120,7 @@
 % bibliography style - recommend using apalike-doi as it hyperlinks DOIs
 % Be sure to run BibTeX in order to generate the bibliography correctly.
 
-\utbiblio{#1}{apalike}{references-dissertation}
+\utbiblio{#1}{apalike}{bib}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % APPENDIX - OPTIONAL - COMMENT OUT IF NOT NEEDED
