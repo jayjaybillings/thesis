@@ -82,10 +82,12 @@
 \def\degree#1{\gdef\@degree{#1}}%
 \def\university#1{\gdef\@university{#1}}%
 % initialize macros
-\def\@title{My Title}
-\def\@author{My Name}
-\def\@graduationMonth{May}
-\def\@copyrightYear{2017}
+\def\@title{Ontological Considerations for
+Interoperability in Scientific
+Workflows}
+\def\@author{Jay Jay Billings}
+\def\@graduationMonth{XXXXXX}
+\def\@copyrightYear{2019}
 \def\@degree{Doctor of Philosophy}	% degree type
 \def\@university{The University  of Tennessee, Knoxville}	% school
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
