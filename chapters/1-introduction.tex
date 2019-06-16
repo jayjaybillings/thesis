@@ -37,21 +37,77 @@ previously cumbersome activities repeatable and highly efficient. This class sol
 of tools found in this space.
 
 This work examines workflow problems and assocciated technology under two
-assumptions that can be seen in parallel with the earlier lesson, and broader
+assumptions that can be seen in parallel with the earlier lesson and broader
 computing ecosystem. Specifically it considers that 1) there are no preferred
-universal languages or common building blocks, and 2) ``non-standard''
-software solutions are common because they are beneficial. Based on these
-assumptions, this work shows that 
+universal languages or common building blocks, and 2) a lack of standardization
+in software solutions is common because it is beneficial. Based
+on these assumptions, this work shows that 
 \begin{itemize}
   \item the workflow technology space is well covered by different types
-  of systems
-  \item that ontological considerations can be used to create a map of
-  workflows and workflow management systems
-  \item and that this map can be used for interesting work, such as
-  interoperability and decision making
+  of systems,
+  \item that an ontological treatment can be used to create a map of
+  workflows and workflow management systems,
+  \item and that this map can be used for next generation
+  challenges such system interoperability and decision making.
 \end{itemize}
 
-POINT 1
+The present chapter provides a thorough introduction of the workflow problem
+space as well as some philosopical background to prepare the reader. Chapter
+\ref{ch:ontologies} discusses ontologies, associated tools, and ontological
+models relevant to workflows. Interoperability enabled solely through
+ontological considerations is presented in chapter
+\ref{ch:interoperability}. Chapter \ref{ch:eclipse-ice} introduces the
+Eclipse Integrated Computational Environment (Eclipse ICE), which acted as the
+primary model and served as a starting point for much of the
+ontological and technical work. Chapter \ref{ch:blockchain} details a new model
+data management and provenance capture for scientific workflows that embodies
+the principles shared herein. A final summary and discussion of the
+value of and opportunities for future work are presented in chapter
+\ref{ch:conclusions}.
+
+\subsubsection{Content source}
+
+The content in this document is largely based on separately published papers
+that were collected, expanded, and edited for the purposes of better supporting
+the argumentative stance of a thesis, and the formatting requirements of
+the graduate school. The introductory text in this chapter is largely based on
+work published previously in the Open Source Supercomputing workshop,
+\cite{billings_toward_2017}. The content of chapter \ref{ch:eclipse-ice} was
+adapted from a manuscript in the journal Software X,
+\cite{billings_eclipse_2017}. The data management system in chapter
+\ref{ch:blockchain} includes work presented as an invited talk at the First
+International Workshop on Practical Reproducible Evaluation of Computer Systems
+(P-RECS'18) with additional content on new work and the software system, the
+\textit{Basic Artifact Tracking System (BATS)}, which has entered production
+use. Additional content has been adapted from slides presented at international
+conferences and workshops, as well as committee meetings.
+
+The ontological and classification work presented in chapters
+\ref{ch:ontologies} and \ref{ch:interoperability} is completely new, and at
+time of this writing has not been published in manuscript form in
+workshop, conference, or journal. However, the full source of the ontologies
+and code has been made available on Github.com in the Eclipse ICE repository,
+\cite{billings_ice}.
+
+\todo{FIX the Eclipse ICE reference needs to be updated to
+point to Software X}
+\todo{the GitHub Eclipse ICE reference needs to be checked}
+
+\section{Workflows}
+
+\todo{Review CBB section}
+\textit{The role that CBBs can play are at a system level. The section can be
+reframed based on that.}
+
+\baseInclude{pubs/workflows-paper/src/introduction}
+\baseInclude{pubs/workflows-paper/src/workflows-review}
+\baseInclude{pubs/workflows-paper/src/experience}
+\baseInclude{pubs/workflows-paper/src/common}
+\baseInclude{pubs/workflows-paper/src/buildingblocks}
+\baseInclude{pubs/workflows-paper/src/discussion}
+\baseInclude{pubs/workflows-paper/src/ack}
+
+ POINT 1
 
 FORWARD references including remainder of this chapter.
 
