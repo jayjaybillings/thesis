@@ -1,4 +1,6 @@
 \chapter{Introduction} \label{ch:introduction}
+\todo{Need a statement somewhere that more work has gone into systems than
+workflows per se.}
 
 Many civilizations tell an origin story of the diversity of human language. The
 common thread in different versions of this story is that humanity
@@ -10,36 +12,38 @@ tower, he punishes the builders by confusing them, and then spreads them across
 the world. The tower is left unfinished, heaven is left untouched, and the
 builders are left speaking different languages.
 
-Modern linguistics has demonstrated the low likelihood of an original, single
-human language, but the story still offers an important lesson: While it may be
-ideal to use the same language and common building blocks to build great
-things, the world simply does not work that way.
+Through an amount of research effort roughly equally to the work required
+to build a sky-high tower, modern linguistics has demonstrated the low
+likelihood of an original, single human language. However, the insights gained
+about the nature of language, human anatomy, learning and neuroscience from this
+effort were very valuable in their own right because of what they enabled or
+revealed in other research efforts.
 
-Computer science may represent the ultimate realization of this lesson with new
-languages and tools under constant, continuous development. Language and tool
-diversity is a benefit to computing because each new language or tool is
-designed purposely to solve a new problem, or to solve an old problem in a new
-way. This allows for the entire technology stack to  be layered, optimized,
-and deployed in ways specifically designed to exploit favorable conditions in
-complex systems. Case in point, older programming languages such as Fortran and
-Kobol did not lose popularity because of divine intervention. They lost
-popularity because of economic forces that drove the development and adoption
-of more portable and expressive system languages, such as C. Fortran and Kobol
-are still used in places where they make sense, including high performance
-computing and finance, but better tools are used where Fortran and Kobol are
-less than optimal.
+As complex as human language may be, computer science may represent the ultimate
+test of our ability to study diverse ecosystems with new languages and tools
+under constant, continuous development. Language and tool diversity is a
+benefit to computing because each new language or tool is designed purposely to
+solve a new problem, or to solve an old problem in a new way. This allows for
+the entire technology stack to  be layered, optimized, and deployed in ways
+specifically designed to exploit favorable conditions in complex systems. Case
+in point, older programming languages such as Fortran and Kobol did not lose
+popularity because of divine intervention. They lost popularity because of
+economic forces that drove the development and adoption of more portable and
+expressive system languages, such as C. Fortran and Kobol are still used in
+places where they make sense, including high performance computing and finance,
+but better tools are used where Fortran and Kobol are less than optimal.
 
 One important class of programming languages and tools includes those that
-can be combined with data to streamline and, in many cases, automate the execution
-of tasks and processes. The major advantage of these tools is that they make
-previously cumbersome activities repeatable and highly efficient. This class solves
-\textit{workflow problems}, and is especially noteworthy because of the panoply
-of tools found in this space.
+can be combined with data to streamline and, in many cases, automate the
+execution of tasks and processes. The major advantage of these tools is that
+they make previously cumbersome activities repeatable and highly efficient.
+This class solves \textit{workflow problems}, and is especially noteworthy
+because of the poorly understood panoply of tools found in this space.
 
 This work examines workflow problems and assocciated technology under two
-assumptions that can be seen in parallel with the earlier lesson and broader
+assumptions that can be seen in parallel with broader
 computing ecosystem. Specifically it considers that 1) there are no preferred
-universal languages or common building blocks, and 2) a lack of standardization
+universal languages or tools, and 2) a lack of standardization
 in software solutions is common because it is beneficial. Based
 on these assumptions, this work shows that 
 \begin{itemize}
@@ -104,12 +108,32 @@ reframed based on that.}
 \baseInclude{pubs/workflows-paper/src/experience}
 \baseInclude{pubs/workflows-paper/src/common}
 \baseInclude{pubs/workflows-paper/src/buildingblocks}
-\baseInclude{pubs/workflows-paper/src/discussion}
-\baseInclude{pubs/workflows-paper/src/ack}
 
- POINT 1
+\section{Next Steps}
 
-FORWARD references including remainder of this chapter.
+The previous sections illustrate the complexity and diversity of workflow
+technologies. Having amassed such data on the topic, it is tempting to develop
+a new or adopt an existing definition of ``workflow'' and ``workflow system.''
+However, settling on a single, simple definition has not worked well in the past
+for a wide enough cross section of the community to meet future needs as workflows
+begin to integrate experimental, computational, and analytical processes at
+larger scales. Even more rigorous methods that attempt to create relevant
+taxonomies are restricted to a single community, such as grid workflows in the
+case of Yu and Buyya.
+
+It is highly desirable to develop a deeper understanding of the similarities and
+differences between workflows and related systems for several reasons. First, if
+unnecessary duplication can be avoided and a greater understanding gained, they
+should be to help with decision making and resource allocation. Second, a
+deeper understanding may make it possible to do new, highly desirable things
+with workflow management systems. Finally, it may reveal new ways to improve or
+use related technologies including data management, machine learning, and
+artificial intelligence.
+
+Ontologies are efficient tools for gaining such an understanding as they
+can formally catalog all of the different properties relevant to gaining
+knowledge in a given topical area. This can be done in both human and machine
+readable ways. The following chapters provide just such an analysis.
 
 \section{Notes}
 
@@ -132,34 +156,33 @@ Optimization - AM or QC?
 
 \section{Writing}
 
-\textbf{So what do you know?}
-
-I know there are three broad types of scientific workflows. I lump testing workflows into high-throughput workflows.
-
-Define a workflow problem as any problem that is solved by the execution of a workflow. I know that a workflow problem of any type can be decomposed into three required components: the workflow description, the engine that executes that description, and the data required for the problem. The latter can be further decomposed into metadata, bulk data, and provenance. 
-
-A workflow may be defined as a collection of tasks that are executed in some order by human and non-human actors. A workflow problem can then be defined as any problem that is solved the the execution of a specific workflow. Many systems exist that can execute workflows encoded in one or more \textit{description formats} for both business and scientific problems. There are predominantly three types of scientific workflows: High-throughput \cite{}, Modeling and Simulation \cite{}, and Analysis \cite{}.
-
-Workflow problems of any of type can be decomposed into three required components: The workflow description, the \textit{workflow engine} that executes the workflow based on the description, and the data required to fully describe and execute the workflow. The latter may include - but does not necessarily require - metadata that describes the contents of the data itself, bulk data including values and quantities of interest used in the workflow. (For the purposes of this work, it is sufficient to consider provenance information as a type of metadata.)
-
-Open questions: 
-
-*How can this be written in plain text, without invoking RDF?
-
-*What is an ontology?
-
-*Why do ontologies matter here?
-
-*What does this look like in RDF?
-
-*What is RDF?
-
-*How does this jive with scientific workflows?
-
+Open question:
 *How do cyclic, hierarchical, and multi-facility workflows fit into this?
 
-*What about conceptual workflows?
+\textbf{So what do you know?}
 
-*What are the conceptual differences between the three workflow types?
+I know there are three broad types of scientific workflows. I lump testing
+workflows into high-throughput workflows.
 
-*What types of workflows fall into each of these three categories? 
+Define a workflow problem as any problem that is solved by the execution of a
+workflow. I know that a workflow problem of any type can be decomposed into
+three required components: the workflow description, the engine that executes
+that description, and the data required for the problem. The latter can be
+further decomposed into metadata, bulk data, and provenance.
+
+A workflow may be defined as a collection of tasks that are executed in some
+order by human and non-human actors. A workflow problem can then be defined as
+any problem that is solved the the execution of a specific workflow. Many
+systems exist that can execute workflows encoded in one or more
+\textit{description formats} for both business and scientific problems. There
+are predominantly three types of scientific workflows: High-throughput \cite{},
+Modeling and Simulation \cite{}, and Analysis \cite{}.
+
+Workflow problems of any of type can be decomposed into three required
+components: The workflow description, the \textit{workflow engine} that
+executes the workflow based on the description, and the data required to fully
+describe and execute the workflow. The latter may include - but does not
+necessarily require - metadata that describes the contents of the data itself,
+bulk data including values and quantities of interest used in the workflow.
+(For the purposes of this work, it is sufficient to consider provenance
+information as a type of metadata.)
