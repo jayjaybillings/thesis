@@ -80,6 +80,7 @@ pennies from a bank would contain fifty pennies, all of which would be objects
 or insances of the Penny base class.
 
 \subsection{Ontological Openess}
+\label{ont-openess}
 
 Ontological openess is the quality of a graph to be left open to modification.
 Open ontologies are capable of describing knowledge from multiple perspectives
@@ -269,27 +270,98 @@ ontological standards have been developed.
 The Web Ontology Language (OWL) and related languages are used for this work to
 capture ontological details in a machine readable way without sacrificing any
 formality that is also useful to the human reader. OWL is based on the Resource
-Description Framework Schema (RDFS), which is in turn based on the Resource
-Description Framework(RDF).
+Description Framework Schema, which is in turn based on the Resource
+Description Framework.
 
 Summaries of these languages are provided below based on the most recent
-langauge specifications and other sources, \cite{allemang}. These summaries also
-include practical findings from the author who as a user of these languages
+langauge specifications and other sources, \cite{allemang_semantic_2008}. These
+summaries also include practical findings from the author who as a user of these languages
 discovered a number of pitfalls that are not commonly or widely discussed in the
 extant literature.
 
 \subsection{The Resource Description Framework}
 
-*What is RDF?\\
-Statements\\
-Form of statements\\
-Serializataions\\
-IRIs/Resource names\\
-Resources pointing to resources\\
-literals\\
+The Resource Description Framework (RDF) is  W3C Standard for exchanging data
+across the internet, \cite{rdf-w3c,rdf-concepts-syntax}. It forms the basis of a
+so-called \textit{semantic web} where data resources are both linked and
+self-describing, thus making large knowledge graphs that can be easily walked
+to understand and find meaning in data.
+
+The key concept in RDF is that statements can be made about uniquely
+identifiable \textit{resources} in human and machine readable ways. Resources
+are uniquely identified with Internationalized Resource Identifiers (IRI) that
+extend the Universal Resource Identifier standard by adding support for
+non-English characters and non-ASCII character sets. Resource names can be
+anything from simple names that are locally unique to fully qualified globally
+unique names.
+
+Descriptions of resources are made with statements. Statements in RDF are
+similar to sentences in the English language. Each statement contains a subject,
+predicate, and object. The predicate describes the relationship of the subject
+to the object in an RDF statement just as the predicate (verb) ``is`` links the
+subject ``color'' (or ``ballColor'') to the object ``red'' in ``The color of
+the ball is red.'' This type of statement is called a \textit{triple}.
+
+RDF triples are represented as full graph data structures in memory, and
+serialized to any one of a number of file formats, including an XML-based format
+and several formats that are easier for humans to read, \cite{rdf-wikipedia}.
+Most of the supported formats for RDF are standardized, although several formats
+add support for additional features not found in the standard. This includes the
+JSON Linked Data (JSON-LD) and Notation3 (Notation3) formats. Unless otherwise
+specified, the remainder of this document will use a very readable and common
+serialization called the Terse RDF Triple Language (TURTL), \cite{turtl}. This
+format is signifcantly easier to understand than others for humans, and has the added
+advantage of being succinct in written text. For example, the statement ``The
+color of the ball is red'' would be rendered as a TURTLE triple with
+\begin{lstlisting}
+<#ball>
+    hasColor <red>.
+\end{lstlisting}
+where as an RDF/XML triple it would be
+\begin{lstlisting}[language=XML]
+<?xml version="1.0"?>
+<RDF>
+  <Description about="ball">
+    <hasColor>red</hasColor>
+  </Description>
+</RDF>
+\end{lstlisting}
+
+Statements about resources can be distributed, including outside of the
+present graph. In the RDF literature, this is described by the
+phrase ``Anyone can say anything about anything'' (AAA). This means that for any
+given resource, any other resource can be included in triples. This is akin to
+the ontological openess described in \S \ref{ont-openess}. This also means that
+without human intervention it is very hard to establish the origin of data
+for which there are numerous distributed triples, unless one of those
+triples provides such a description. Within the current graph, resource
+descriptions can be segmented for clarity. If a statement such as ``Jay Jay
+Billings works at Oak Ridge National Laboratory, a DOE facility,'' is made,
+instead of writing a single TURTL triple that captures all the facts, it
+could be written as
+\begin{lstlisting}
+<#JayJayBillings>
+    worksAt <#ORNL>.
+<#ORNL>
+    a <#NationalLaboratory>;
+    hasName ``Oak Ridge National Laboratory''^^xsd:string.    
+\end{lstlisting})
+which uses references to other triples and links them into the original
+triple about the author.
+
+Notice the previous listing includes the term
+\begin{lstlisting}
+    hasName ``Oak Ridge National Laboratory''^^xsd:string.
+\end{lstlisting}
+This term assigns a \textit{literal} value of ``Oak Ridge National Laboratory''
+to the subject of the triple. The additional characters at the end -
+``^^xsd:string'' - set the type of the literal to an XML Schema Definition
+String. Literal values can be set for many different types of data, including
+most primitives such as integers and floating point numbers found in standard
+programming languages.
+
 More on inferencing\\
 GET NOTES FROM NOTEBOOK!!!!\\
-RDFS language reference\\
 
 \todo{Do I need a section on SPARQL queries?}
 
@@ -312,7 +384,7 @@ I love Ada
 
 Built on RDF and RDFS\\
 >> What does it get?\\
-OWL as an ontology language is largely geared toward inference and knowledge
+OWL as an ontology language is largely geared toward inferencing and knowledge
 extraction\\
 Extension\\
 Relationship to OO modeling langauges such as UML\\
@@ -324,9 +396,16 @@ OWL language reference\\
 
 \subsection{Useful Tools}
 
+\subsubsection{Protege}
+\subsubsection{Apache Jena}
+\subsubsection{Eclipse}
+TURTL editor
+XML editor
+\subsubsection{SPARQL}
+
 \subsection{Our case study in RDF and OWL}
 
-\section{A Workflow Ontology}
+\section{Summary - A Workflow Ontology}
 
 A workflow may be defined as a collection of tasks that are executed in some
 order by human and non-human actors. A workflow problem can then be defined as
