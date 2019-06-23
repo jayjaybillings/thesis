@@ -360,10 +360,29 @@ String. Literal values can be set for many different types of data, including
 most primitives such as integers and floating point numbers found in standard
 programming languages.
 
-More on inferencing\\
-GET NOTES FROM NOTEBOOK!!!!\\
+\S \ref{case-study} briefly mentioned the process of inference. Basic RDF is
+straightforward: it describes resources. However, it is possible to include data
+on the resources that establishes the relationships between them and thus makes
+it possible to infer facts that are not explicitly written,
+\cite{allemang_semantic_2008}. This can include data shaping to conform to a
+particular set of information, type restriction, or classification information.
+These capabilities are provided as languages built on top of RDF, including the
+RDF Schema and OWL.
 
-\todo{Do I need a section on SPARQL queries?}
+\todo{GET NOTES FROM NOTEBOOK!!!!\\}
+
+\subsubsection{Containers}
+
+RDF containers several \textit{containers} that can hold sets of data,
+\cite{rdf-syntax}. These include rdfs:Container, rdf:Bag, rdf:Seq, and rdf:Alt.
+These containers are considered open and additional data can be added.
+Alternative closed containers called \textit{collections} represent sets of data
+that cannot be modified and which are ordered from first to last element. The
+only supported collection in the RDF specification is rdf:List.
+
+Containers and collections are signficantly different than similarly named
+structures in object-oriented programming languages, especially where generic
+and templated programming is concerned.
 
 \subsection{RDF Schema (RDFS)}
 
@@ -396,6 +415,7 @@ OWL language reference\\
 
 \subsection{Useful Tools}
 
+\subsubsection{LinkedData ES}
 \subsubsection{Protege}
 \subsubsection{Apache Jena}
 \subsubsection{Eclipse}
