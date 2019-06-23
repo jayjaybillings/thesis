@@ -268,17 +268,61 @@ ontological standards have been developed.
 
 The Web Ontology Language (OWL) and related languages are used for this work to
 capture ontological details in a machine readable way without sacrificing any
-formality that is also useful to the human reader. OWL is based on two earlier
-languages, the Resource Description Framework (RDF), and the Resource
-Description Framework Schema (RDFS).
+formality that is also useful to the human reader. OWL is based on the Resource
+Description Framework Schema (RDFS), which is in turn based on the Resource
+Description Framework(RDF).
+
+Summaries of these languages are provided below based on the most recent
+langauge specifications and other sources, \cite{allemang}. These summaries also
+include practical findings from the author who as a user of these languages
+discovered a number of pitfalls that are not commonly or widely discussed in the
+extant literature.
 
 \subsection{The Resource Description Framework}
 
-*What is RDF?
+*What is RDF?\\
+Statements\\
+Form of statements\\
+Serializataions\\
+IRIs/Resource names\\
+Resources pointing to resources\\
+literals\\
+More on inferencing\\
+GET NOTES FROM NOTEBOOK!!!!\\
+RDFS language reference\\
+
+\todo{Do I need a section on SPARQL queries?}
 
 \subsection{RDF Schema (RDFS)}
 
+Need for/Use of schema languages\\
+``RDFS is about sets'' - discuss as a recast of the above line about the use and
+formalize as a discussion about class instances\\
+>>rdfs:Class \& rdf:type\\
+Inheritance\\
+Domains and Ranges\\
+Set operations - unions, etc.\\
+Imports \& Common Schemas\\
+Comments: rdf:label\\
+RDFS language reference\\
+
+I love Ada
+
 \subsection{Web Ontology Language (OWL)}
+
+Built on RDF and RDFS\\
+>> What does it get?\\
+OWL as an ontology language is largely geared toward inference and knowledge
+extraction\\
+Extension\\
+Relationship to OO modeling langauges such as UML\\
+>> Is there a note on transitivity here? - The should be more about how
+properties can have properties in OWL, such as owl:TransitiveProperty, which is
+normally reserved for only class-typed properties in OO languages.\\
+OWL Lite, OWL DS, OWL, etc.\\
+OWL language reference\\
+
+\subsection{Useful Tools}
 
 \subsection{Our case study in RDF and OWL}
 
