@@ -384,20 +384,91 @@ Containers and collections are signficantly different than similarly named
 structures in object-oriented programming languages, especially where generic
 and templated programming is concerned.
 
-\subsection{RDF Schema (RDFS)}
+\subsection{RDF Schema}
 
-Need for/Use of schema languages\\
-``RDFS is about sets'' - discuss as a recast of the above line about the use and
-formalize as a discussion about class instances\\
->>rdfs:Class \& rdf:type\\
-Inheritance\\
-Domains and Ranges\\
-Set operations - unions, etc.\\
-Imports \& Common Schemas\\
-Comments: rdf:label\\
-RDFS language reference\\
+While programming languages have preset grammars, data languages are often
+left without a language that describes in machine readable terms the allowed
+values and entries in an data file. This information is provided for users in
+a format specification for the data language, but not in a way that can be
+programmatically enforced. 
 
-I love Ada
+The Resource Description Framework Schema (RDFS) provides this capability for
+RDF, \cite{rdf-schema, allemang_semantic_2008}. RDFS supports describing sets
+of RDF resources in a machine readable way that can subsequently be used for
+validation and inference. RDFS is itself defined in RDF, so the sets, or
+classes, of resources defined by the schema are described in a standard RDF
+file, just like instance files containing data that conforms to the schema.
+
+Classes in RDFS are described by the rdfs:class descriptor in a triple. For
+example,
+\begin{lstlisting}
+<#cat>
+    rdf:type rdfs:Class;
+\end{lstlisting}
+defines a type of class called Cat. The rdf:type predicate is a special
+statement that indicates the type of the resource is specified by the
+object. 
+
+RDFS classes also support inheritance, and ``Cat'' could inherit from
+``Mammal'' or ``Feline,'' as expected. The following TURTL triple illustrates
+that:
+\begin{lstlisting}
+<#cat>
+    rdfs:subClassOf <Mammal>.
+\end{lstlisting}
+It is also possible for properties to inherit from other properties using the
+rdfs:subPropertyOf relation.
+
+Likewise, individuals can be declared to be of a particular type. The TURTL
+triple
+\begin{lstlisting}
+<#garfield>
+    rdf:type <#cat>;
+    hasName  ``Garfield''^^xsd:string.
+\end{lstlisting}
+describes a cat named Garfield which we can infer to be a mammal as well.
+
+The rdfs:subClassOf term used for inheritance is actually a property. To put
+this differently, the subject of a triple with the predicate rdfs:subClassOf
+has the property that it is a subclass of the other class. 
+
+Triples are are in general just maps of subjects and objects via properties.
+Sometimes it is necessary to restrict what type of subject relates to a
+particular type of object in this mapping. In this case the rdfs:domain and
+rdfs:range properties can be used to restrict the types of the root property.
+The rdfs:domain property restricts the type of a subject, while the rdfs:range
+property restricts the type of an object. It is possible to simultaneously
+define rdfs:domain and rdfs:range for a property.
+
+A select number of logic operations are supported by RDFS, including unions and
+intersections. Special relations exist for the logic operations for classes and
+properties alike.
+
+Many schemas exist for reuse on the internet, and are available for
+public download through sites like Linked Data Applications,
+\cite{linkedDataES}. These schemas can be included through an approriate import
+call in the RDF file. In TURTL, imports are handled with the ``@prefix''
+statement, as shown below
+\begin{lstlisting}
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#banana>
+    rdf:type rdfs:Class;
+    foaf:knows ``Spongebob''.
+\end{lstlisting}
+where \textit{rdfs} and \textit{foaf} are imported schemas.
+
+One nice feature of RDFS that is completely non-functional but useful
+nonetheless is the addition of rdfs:Comment and rdfs:Label relations that make
+it possible to provide detailed comments describing the data, as well as a
+user-friendly label that can be substituted for default or missing data by the
+display.
+
+RDFS adds powerful features to the RDF language stack. However, as powerful as
+it is, many different types of relations are missing, which restricts its
+utility for more complex data relationships. Luckily, these and more are
+available in OWL.
 
 \subsection{Web Ontology Language (OWL)}
 
