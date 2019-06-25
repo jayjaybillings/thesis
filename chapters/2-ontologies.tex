@@ -446,7 +446,7 @@ properties alike.
 
 Many schemas exist for reuse on the internet, and are available for
 public download through sites like Linked Data Applications,
-\cite{linkedDataLOV}. These schemas can be included through an approriate import
+\cite{lov}. These schemas can be included through an approriate import
 call in the RDF file. In TURTL, imports are handled with the ``@prefix''
 statement, as shown below
 \begin{lstlisting}
@@ -512,18 +512,57 @@ during inferencing, \cite{owl-syntax}.
 
 \subsection{Useful Tools}
 
-Good tooling is absolultely critical for successful deployment of ontological
-methods. \ldots
+There are numerous tools, many of which are exceptional, for working with linked
+data and semantic web technologies. This section provides a summary of some of
+these tools, not as an endorsement but as a reference for the interested reader.
 
-\subsubsection{LinkedData ES}
-\subsubsection{Protege}
+\subsubsection{Linked Open Vocabularies}
+
+The Linked Open Vocabularies (LOV) project is a repository for ontologies from
+the Ontology Engineering Group, \cite{lov}. The site provides up-to-date
+information on ontologies and vocabularies for a large number of projects, all
+of which is searchable and can be examined with a friendly web interface. This
+repository can be used to find high-quality, well-tested resources instead of
+writing new ones from scratch.
+
+\subsubsection{Prot\'eg\'e}
+
+Prot\'eg\'e is an open source ontology editor created by Stanford Center for
+Biomedical Informatics Research at the Stanford University School of Medicine,
+\cite{protege}. Ontologies can be managed as individual files or as part of
+version control repositories. In addition to providing general creation and
+editorial support for ontologies, Prot\'eg\'e includes a large number of plugins
+that provide extra tools such as visualization engines and documentation
+exporters.
+
+All of the ontologies in this work were created using Protege, with only minor
+edits and some initial learning work performed in different tools. This includes
+the original versions of graphs shown later in the text.
+
 \subsubsection{Apache Jena}
 \subsubsection{Eclipse}
-TURTL editor
-XML editor
+
+The Eclipse Platform is an open source platform with over three hundred projects
+that is managed by the Eclipse Foundation, \cite{eclipse}. The platform includes
+many different tools, including editors a generic XML editor that is very good
+for RDF/XML files and a TURTL editor, which is available as a third party
+plugin, \cite{}. The platform includes additional tools for managing basic file
+manipulation for ontologies and RDF data. It also includes tools for managing
+software and data repositories. The majority of this thesis was written using
+the Texlipse plugin to Eclipse, \cite{texlipse}.
+
 \subsubsection{SPARQL}
 
 \subsection{Our case study in RDF and OWL}
+
+The previous sections have provided all that is needed to create a simple,
+formal, machine readable ontology for the example at the beginning of this
+chapter. As a pedagogical tools that example is fine, but as an example of a
+real ontology it suffers from being written by just another guy in his arm
+chair! Using the tools of the previous section, it can be turned into something
+very similar to what will be developed for scientific workflows.
+
+\ldots
 
 \section{Summary - A Workflow Ontology}
 
@@ -543,3 +582,4 @@ necessarily require - metadata that describes the contents of the data itself,
 bulk data including values and quantities of interest used in the workflow.
 (For the purposes of this work, it is sufficient to consider provenance
 information as a type of metadata.)
+
