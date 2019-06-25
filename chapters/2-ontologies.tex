@@ -446,7 +446,7 @@ properties alike.
 
 Many schemas exist for reuse on the internet, and are available for
 public download through sites like Linked Data Applications,
-\cite{linkedDataES}. These schemas can be included through an approriate import
+\cite{linkedDataLOV}. These schemas can be included through an approriate import
 call in the RDF file. In TURTL, imports are handled with the ``@prefix''
 statement, as shown below
 \begin{lstlisting}
@@ -470,21 +470,50 @@ it is, many different types of relations are missing, which restricts its
 utility for more complex data relationships. Luckily, these and more are
 available in OWL.
 
-\subsection{Web Ontology Language (OWL)}
+\subsection{Web Ontology Language}
 
-Built on RDF and RDFS\\
->> What does it get?\\
-OWL as an ontology language is largely geared toward inferencing and knowledge
-extraction\\
-Extension\\
-Relationship to OO modeling langauges such as UML\\
->> Is there a note on transitivity here? - The should be more about how
-properties can have properties in OWL, such as owl:TransitiveProperty, which is
-normally reserved for only class-typed properties in OO languages.\\
-OWL Lite, OWL DS, OWL, etc.\\
-OWL language reference\\
+The Web Ontology Langauge (OWL) builds on the RDF and RDFS to add additional
+features for inferencing and formal ontological syntax, \cite{owl-2}. The major
+addition to OWL over RDFS is a set of properties that describe inverse,
+transitive, symmetric, and equivalent relationships,
+\cite{allemang_semantic_2008}. Unlike RDF and RDFS, the primary purpose of OWL
+it to provide enough semantic constructs that inferencing can be greatly
+expanded for well-described data. This makes it possible for instance data that
+follows an OWL ontology to be understood very well based solely on the provided
+data set and the ontology.
+
+OWL's set of default properties can be extended very easily to create new
+ontological constructs by mixing the default properties in new ways. Since OWL
+is serialized using RDF, (which is not a strict requirement), extension is
+performed simply by creating a new RDF triple that links the relevant terms.
+
+Modeling ontologies with OWL is different than modeling in languages such as the
+Unified Modeling Language (UML), \cite{UML}. There are many subtle differences
+between the two languages, but UML is more general. In fact, the OWL language is
+defined in part with UML models. One additional difference of particular
+importance is that classes in UML can have member variables that are tied
+directly to a single class. It is possible to emulate this behavior in OWL
+through object properties and the rdfs:domain and rdfs:range properties that
+restrict the type subject and predicate types, but without these restrictions
+object properties can be used by any class. Additionally, complex members
+may require pointer-like object properties linking them to their class. OWL also
+allows properties to have properties, including transitive properties, which is
+generally only reserved for classes in object-oriented languages.
+
+There are several different types of OWL that can be selected based on the
+preferred inference needs of the client. Since general graphs can be
+computationally costly to search thoroughly, ``lighter'' versions of the
+specifications with properties removed can be much faster if the data will allow
+it. The complete version of OWL is commonly called OWL Full or just OWL. The two
+sublanguages of OWL are OWL Lite and OWL DL. OWL Lite is a lightweight subset
+of OWL on which inferencing models can be run very quickly. OWL DL
+is a middle ground in terms feature richness and performance
+during inferencing, \cite{owl-syntax}.
 
 \subsection{Useful Tools}
+
+Good tooling is absolultely critical for successful deployment of ontological
+methods. \ldots
 
 \subsubsection{LinkedData ES}
 \subsubsection{Protege}
