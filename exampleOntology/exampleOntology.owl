@@ -6,12 +6,12 @@
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:workflows="https://www.eclipse.org/ice/workflows#">
+     xmlns:workflows="https://www.example.org/committee#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/bkj/ontologies/2019/5/untitled-ontology-19"/>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Object Properties
@@ -19,42 +19,42 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
 
 
-    <!-- https://www.eclipse.org/ice/workflows#hasSon -->
 
-    <owl:ObjectProperty rdf:about="https://www.eclipse.org/ice/workflows#hasSon">
+    <!-- https://www.example.org/committee#hasSon -->
+
+    <owl:ObjectProperty rdf:about="https://www.example.org/committee#hasSon">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
     </owl:ObjectProperty>
-    
 
 
-    <!-- https://www.eclipse.org/ice/workflows#isAdjProf -->
 
-    <owl:ObjectProperty rdf:about="https://www.eclipse.org/ice/workflows#isAdjProf">
+    <!-- https://www.example.org/committee#isAdjProf -->
+
+    <owl:ObjectProperty rdf:about="https://www.example.org/committee#isAdjProf">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
     </owl:ObjectProperty>
-    
 
 
-    <!-- https://www.eclipse.org/ice/workflows#isFullProf -->
 
-    <owl:ObjectProperty rdf:about="https://www.eclipse.org/ice/workflows#isFullProf">
+    <!-- https://www.example.org/committee#isFullProf -->
+
+    <owl:ObjectProperty rdf:about="https://www.example.org/committee#isFullProf">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
     </owl:ObjectProperty>
-    
 
 
-    <!-- https://www.eclipse.org/ice/workflows#isResProf -->
 
-    <owl:ObjectProperty rdf:about="https://www.eclipse.org/ice/workflows#isResProf">
+    <!-- https://www.example.org/committee#isResProf -->
+
+    <owl:ObjectProperty rdf:about="https://www.example.org/committee#isResProf">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
     </owl:ObjectProperty>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Classes
@@ -62,48 +62,48 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
 
 
-    <!-- https://www.eclipse.org/ice/workflows#Businessman -->
 
-    <owl:Class rdf:about="https://www.eclipse.org/ice/workflows#Businessman">
-        <rdfs:subClassOf rdf:resource="https://www.eclipse.org/ice/workflows#Person"/>
+    <!-- https://www.example.org/committee#Businessman -->
+
+    <owl:Class rdf:about="https://www.example.org/committee#Businessman">
+        <rdfs:subClassOf rdf:resource="https://www.example.org/committee#Person"/>
     </owl:Class>
-    
 
 
-    <!-- https://www.eclipse.org/ice/workflows#Guitarist -->
 
-    <owl:Class rdf:about="https://www.eclipse.org/ice/workflows#Guitarist">
-        <rdfs:subClassOf rdf:resource="https://www.eclipse.org/ice/workflows#Person"/>
+    <!-- https://www.example.org/committee#Guitarist -->
+
+    <owl:Class rdf:about="https://www.example.org/committee#Guitarist">
+        <rdfs:subClassOf rdf:resource="https://www.example.org/committee#Person"/>
     </owl:Class>
-    
 
 
-    <!-- https://www.eclipse.org/ice/workflows#Person -->
 
-    <owl:Class rdf:about="https://www.eclipse.org/ice/workflows#Person"/>
-    
+    <!-- https://www.example.org/committee#Person -->
+
+    <owl:Class rdf:about="https://www.example.org/committee#Person"/>
 
 
-    <!-- https://www.eclipse.org/ice/workflows#Pilot -->
 
-    <owl:Class rdf:about="https://www.eclipse.org/ice/workflows#Pilot">
-        <rdfs:subClassOf rdf:resource="https://www.eclipse.org/ice/workflows#Person"/>
+    <!-- https://www.example.org/committee#Pilot -->
+
+    <owl:Class rdf:about="https://www.example.org/committee#Pilot">
+        <rdfs:subClassOf rdf:resource="https://www.example.org/committee#Person"/>
     </owl:Class>
-    
 
 
-    <!-- https://www.eclipse.org/ice/workflows#Professor -->
 
-    <owl:Class rdf:about="https://www.eclipse.org/ice/workflows#Professor">
-        <rdfs:subClassOf rdf:resource="https://www.eclipse.org/ice/workflows#Person"/>
+    <!-- https://www.example.org/committee#Professor -->
+
+    <owl:Class rdf:about="https://www.example.org/committee#Professor">
+        <rdfs:subClassOf rdf:resource="https://www.example.org/committee#Person"/>
     </owl:Class>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Individuals
@@ -111,75 +111,75 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
 
 
-    <!-- https://www.eclipse.org/ice/workflows#Arjun -->
 
-    <owl:NamedIndividual rdf:about="https://www.eclipse.org/ice/workflows#Arjun">
-        <rdf:type rdf:resource="https://www.eclipse.org/ice/workflows#Professor"/>
-        <workflows:isAdjProf rdf:resource="https://www.eclipse.org/ice/workflows#True"/>
+    <!-- https://www.example.org/committee#Arjun -->
+
+    <owl:NamedIndividual rdf:about="https://www.example.org/committee#Arjun">
+        <rdf:type rdf:resource="https://www.example.org/committee#Professor"/>
+        <committee:isAdjProf rdf:resource="https://www.example.org/committee#True"/>
     </owl:NamedIndividual>
-    
 
 
-    <!-- https://www.eclipse.org/ice/workflows#Jack -->
 
-    <owl:NamedIndividual rdf:about="https://www.eclipse.org/ice/workflows#Jack">
-        <rdf:type rdf:resource="https://www.eclipse.org/ice/workflows#Professor"/>
-        <workflows:isFullProf rdf:resource="https://www.eclipse.org/ice/workflows#True"/>
+    <!-- https://www.example.org/committee#Jack -->
+
+    <owl:NamedIndividual rdf:about="https://www.example.org/committee#Jack">
+        <rdf:type rdf:resource="https://www.example.org/committee#Professor"/>
+        <committee:isFullProf rdf:resource="https://www.example.org/committee#True"/>
     </owl:NamedIndividual>
-    
 
 
-    <!-- https://www.eclipse.org/ice/workflows#JohnD -->
 
-    <owl:NamedIndividual rdf:about="https://www.eclipse.org/ice/workflows#JohnD">
-        <rdf:type rdf:resource="https://www.eclipse.org/ice/workflows#Professor"/>
-        <workflows:isResProf rdf:resource="https://www.eclipse.org/ice/workflows#True"/>
+    <!-- https://www.example.org/committee#JohnD -->
+
+    <owl:NamedIndividual rdf:about="https://www.example.org/committee#JohnD">
+        <rdf:type rdf:resource="https://www.example.org/committee#Professor"/>
+        <committee:isResProf rdf:resource="https://www.example.org/committee#True"/>
     </owl:NamedIndividual>
-    
 
 
-    <!-- https://www.eclipse.org/ice/workflows#JohnT -->
 
-    <owl:NamedIndividual rdf:about="https://www.eclipse.org/ice/workflows#JohnT">
-        <rdf:type rdf:resource="https://www.eclipse.org/ice/workflows#Guitarist"/>
-        <rdf:type rdf:resource="https://www.eclipse.org/ice/workflows#Professor"/>
-        <workflows:isAdjProf rdf:resource="https://www.eclipse.org/ice/workflows#True"/>
+    <!-- https://www.example.org/committee#JohnT -->
+
+    <owl:NamedIndividual rdf:about="https://www.example.org/committee#JohnT">
+        <rdf:type rdf:resource="https://www.example.org/committee#Guitarist"/>
+        <rdf:type rdf:resource="https://www.example.org/committee#Professor"/>
+        <committee:isAdjProf rdf:resource="https://www.example.org/committee#True"/>
     </owl:NamedIndividual>
-    
 
 
-    <!-- https://www.eclipse.org/ice/workflows#Mike -->
 
-    <owl:NamedIndividual rdf:about="https://www.eclipse.org/ice/workflows#Mike">
-        <rdf:type rdf:resource="https://www.eclipse.org/ice/workflows#Businessman"/>
-        <rdf:type rdf:resource="https://www.eclipse.org/ice/workflows#Guitarist"/>
-        <rdf:type rdf:resource="https://www.eclipse.org/ice/workflows#Pilot"/>
-        <rdf:type rdf:resource="https://www.eclipse.org/ice/workflows#Professor"/>
-        <workflows:hasSon rdf:resource="https://www.eclipse.org/ice/workflows#MikeJr"/>
-        <workflows:isFullProf rdf:resource="https://www.eclipse.org/ice/workflows#True"/>
+    <!-- https://www.example.org/committee#Mike -->
+
+    <owl:NamedIndividual rdf:about="https://www.example.org/committee#Mike">
+        <rdf:type rdf:resource="https://www.example.org/committee#Businessman"/>
+        <rdf:type rdf:resource="https://www.example.org/committee#Guitarist"/>
+        <rdf:type rdf:resource="https://www.example.org/committee#Pilot"/>
+        <rdf:type rdf:resource="https://www.example.org/committee#Professor"/>
+        <committee:hasSon rdf:resource="https://www.example.org/committee#MikeJr"/>
+        <committee:isFullProf rdf:resource="https://www.example.org/committee#True"/>
     </owl:NamedIndividual>
-    
 
 
-    <!-- https://www.eclipse.org/ice/workflows#MikeJr -->
 
-    <owl:NamedIndividual rdf:about="https://www.eclipse.org/ice/workflows#MikeJr">
-        <rdf:type rdf:resource="https://www.eclipse.org/ice/workflows#Person"/>
-        <workflows:isFullProf rdf:resource="https://www.eclipse.org/ice/workflows#True"/>
+    <!-- https://www.example.org/committee#MikeJr -->
+
+    <owl:NamedIndividual rdf:about="https://www.example.org/committee#MikeJr">
+        <rdf:type rdf:resource="https://www.example.org/committee#Person"/>
+        <committee:isFullProf rdf:resource="https://www.example.org/committee#True"/>
     </owl:NamedIndividual>
-    
 
 
-    <!-- https://www.eclipse.org/ice/workflows#True -->
 
-    <owl:NamedIndividual rdf:about="https://www.eclipse.org/ice/workflows#True"/>
-    
+    <!-- https://www.example.org/committee#True -->
+
+    <owl:NamedIndividual rdf:about="https://www.example.org/committee#True"/>
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // General axioms
@@ -190,9 +190,9 @@
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointProperties"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://www.eclipse.org/ice/workflows#isAdjProf"/>
-            <rdf:Description rdf:about="https://www.eclipse.org/ice/workflows#isFullProf"/>
-            <rdf:Description rdf:about="https://www.eclipse.org/ice/workflows#isResProf"/>
+            <rdf:Description rdf:about="https://www.example.org/committee#isAdjProf"/>
+            <rdf:Description rdf:about="https://www.example.org/committee#isFullProf"/>
+            <rdf:Description rdf:about="https://www.example.org/committee#isResProf"/>
         </owl:members>
     </rdf:Description>
 </rdf:RDF>
@@ -200,4 +200,3 @@
 
 
 <!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
-

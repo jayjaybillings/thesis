@@ -313,12 +313,11 @@ serialization called the Terse RDF Triple Language (TURTL), \cite{turtl}. This
 format is signifcantly easier to understand than others for humans, and has the added
 advantage of being succinct in written text. For example, the statement ``The
 color of the ball is red'' would be rendered as a TURTLE triple with
-\begin{lstlisting}
+\begin{lstlisting}[language=TURTL]
 <#ball>
     hasColor <red>.
 \end{lstlisting}
-where as an RDF/XML triple it would be
-%\begin{minted}{xml}
+where as for an RDF/XML triple it would be
 \begin{lstlisting}[language=XML]
 <?xml version="1.0"?>
 <RDF>
@@ -327,8 +326,7 @@ where as an RDF/XML triple it would be
   </Description>
 </RDF>
 \end{lstlisting}
-%\end{minted}
-\\
+
 Statements about resources can be distributed, including outside of the
 present graph. In the RDF literature, this is described by the
 phrase ``Anyone can say anything about anything'' (AAA). This means that for any
@@ -341,18 +339,18 @@ descriptions can be segmented for clarity. If a statement such as ``Jay Jay
 Billings works at Oak Ridge National Laboratory, a DOE facility,'' is made,
 instead of writing a single TURTL triple that captures all the facts, it
 could be written as
-\begin{lstlisting}
+\begin{lstlisting}[language=TURTL]
 <#JayJayBillings>
     worksAt <#ORNL>.
 <#ORNL>
     a <#NationalLaboratory>;
     hasName ``Oak Ridge National Laboratory''^^xsd:string.    
-\end{lstlisting})
+\end{lstlisting}
 which uses references to other triples and links them into the original
 triple about the author.
 
 Notice the previous listing includes the term
-\begin{lstlisting}
+\begin{lstlisting}[language=TURTL]
     hasName ``Oak Ridge National Laboratory''^^xsd:string.
 \end{lstlisting}
 This term assigns a \textit{literal} value of ``Oak Ridge National Laboratory''
@@ -406,7 +404,7 @@ file, just like instance files containing data that conforms to the schema.
 
 Classes in RDFS are described by the rdfs:class descriptor in a triple. For
 example,
-\begin{lstlisting}
+\begin{lstlisting}[language=TURTL]
 <#cat>
     rdf:type rdfs:Class;
 \end{lstlisting}
@@ -417,7 +415,7 @@ object.
 RDFS classes also support inheritance, and ``Cat'' could inherit from
 ``Mammal'' or ``Feline,'' as expected. The following TURTL triple illustrates
 that:
-\begin{lstlisting}
+\begin{lstlisting}[language=TURTL]
 <#cat>
     rdfs:subClassOf <Mammal>.
 \end{lstlisting}
@@ -426,7 +424,7 @@ rdfs:subPropertyOf relation.
 
 Likewise, individuals can be declared to be of a particular type. The TURTL
 triple
-\begin{lstlisting}
+\begin{lstlisting}[language=TURTL]
 <#garfield>
     rdf:type <#cat>;
     hasName  ``Garfield''^^xsd:string.
@@ -454,7 +452,7 @@ public download through sites like Linked Data Applications,
 \cite{lov}. These schemas can be included through an approriate import
 call in the RDF file. In TURTL, imports are handled with the ``@prefix''
 statement, as shown below
-\begin{lstlisting}
+\begin{lstlisting}[language=TURTL]
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
@@ -561,47 +559,67 @@ The Eclipse Platform is an open source platform with over three hundred projects
 that is managed by the Eclipse Foundation, \cite{eclipse}. The platform includes
 many different tools, including editors a generic XML editor that is very good
 for RDF/XML files and a TURTL editor, which is available as a third party
-plugin, \cite{}. The platform includes additional tools for managing basic file
-manipulation for ontologies and RDF data. It also includes tools for managing
-software and data repositories. The majority of this thesis was written using
-the Texlipse plugin to Eclipse, \cite{texlipse}.
+plugin, \cite{xturtl}. The platform includes additional tools for managing basic
+file manipulation for ontologies and RDF data. It also includes tools for
+managing software and data repositories. The majority of this thesis was
+written using the Texlipse plugin to Eclipse, \cite{texlipse}.
+
+\subsubsection{Graphviz}
+
+Graphviz is a powerful graph visualization tool that supports the Dot language,
+\cite{graphviz}. Nodes in graphs are drawn as circles with labels and
+connections between the nodes are drawn as curves with annotations that describe
+their connection type. This is very useful for RDF graphs where both the node
+types and connections vary depending on the details of the triple.
 
 \subsection{Our case study in RDF and OWL}
-
-The previous sections have provided all that is needed to create a simple,
-formal, machine readable ontology for the example at the beginning of this
-chapter. As a pedagogical tools that example is fine, but as an example of a
-real ontology it suffers from being written by just another guy in his arm
-chair! Using the tools of the previous section, it can be turned into something
-very similar to what will be developed for scientific workflows.
-
-\ldots
 
 \begin{figure}[htbp]
 \centering
 \baseIncludegraphics{exampleOntology/exampleOntology.png}
-\caption{FIXME!!!!!}
+\caption{Graphviz plot of the combined thesis committee ontology and its
+individuals.}
 \label{example-ont-graphic}
 \end{figure}
 
-%\inputminted{xml}{/home/bkj/thesis/exampleOntology/exampleOntology.owl}
-\baseInclude{exampleOntology/exampleOntology.owl}
+The previous sections have provided all that is needed to create a simple,
+formal, machine readable ontology for the thesis committee example at the
+beginning of this chapter. As a pedagogical tool that example is fine, but as
+an example of a real ontology it suffers from being written by just another guy
+in his arm chair! Using the tools of the previous section, it can be turned
+into something very similar to what will be developed for scientific workflows,
+as well as ontologies commonly available in the Linked Open Vocabularies
+repository. Figure \S \ref{example-ont-graphic} shows the committee ontology and
+its individuals rendered in a single Graphviz graph. Listing \S
+\ref{example-ont-listing} shows the same content as the graph, but in its
+formal TURTL serialization.
 
-\section{Summary - A Workflow Ontology}
+\lstinputlisting[language=TURTL,caption=The complete OWL ontology
+for the example problem.,label=example-ont-listing]{/home/bkj/thesis/exampleOntology/exampleOntology.turtl.owl}
 
-A workflow may be defined as a collection of tasks that are executed in some
-order by human and non-human actors. A workflow problem can then be defined as
-any problem that is solved the the execution of a specific workflow. Many
-systems exist that can execute workflows encoded in one or more
-\textit{description formats} for both business and scientific problems. There
-are predominantly three types of scientific workflows: High-throughput \cite{},
-Modeling and Simulation \cite{}, and Analysis \cite{}.
+The ontology and its individuals were created completely in Prot\'eg\'e using an
+in-memory representation of the graph. Exports were created for both the
+Graphviz plot and the TURTL file. Apache Jena can readily consume the TURTL file
+for further processing.
 
-Workflow problems of any of type can be decomposed into three required
-components: The workflow description, the \textit{workflow engine} that
-executes the workflow based on the description, and the data required to fully
-describe and execute the workflow. The latter may include - but does not
-necessarily require - metadata that describes the contents of the data itself,
-bulk data including values and quantities of interest used in the workflow.
-(For the purposes of this work, it is sufficient to consider provenance
-information as a type of metadata.)
+\section{Summary}
+
+This chapter introduced the concept of an ontology, including its common
+features and the fundamental differences between ontologies and taxonomies. A
+simple example was presented that showed how even simple relationship can be
+difficult to capture without the formalism and reasoning abilities of
+ontological tools.
+
+The RDF-based languages for working with RDF, RDFS, and OWL were described with
+a particular focus on those features that are most useful to this work. Useful
+tools for creating ontologies and RDF models were also presented.
+
+Finally, the original committee example was revisited using the tools and
+techniques described for the RDF-based languages. This introduced formality,
+structure, and machine-readable properties that put the example, as simple as it
+was, on par with ontologies of much broader appeal.
+
+Using the languages and tools presented in this chapter, and the description of
+scientific workflows and workflow engines provided elsewhere in this work, it is
+now possible to pursue the goal of creating an ontology that accurately
+describes the phantasmagoria of scientific workflows.

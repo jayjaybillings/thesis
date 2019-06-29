@@ -53,7 +53,60 @@
 \usepackage{array}						% array-listing package
 \usepackage{tabu}						% alternate table package
 \usepackage{listings}					% listings package for code listings, etc.
-\usepackage{minted}						% minted syntax highlighter
+\usepackage{color}						% Color package for working with the listing package
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% lstlisting settings for syntax highlighting
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Color definitions
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{maroon}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+
+% Basic setup
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color
+  basicstyle=\footnotesize,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking
+  breakatwhitespace=false,         % allow breaking in character space
+  linewidth=\textwidth,			   % make sure the listings are \textwidth wide
+  captionpos=tb,                    % sets the caption-position to top
+  commentstyle=\color{mygreen},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{mymauve},     % string literal style
+}
+
+% XML redefinition
+\lstdefinelanguage{XML} {
+  basicstyle=\ttfamily,
+  morestring=[s]{"}{"},
+  morecomment=[s]{?}{?},
+  morecomment=[s]{!--}{--},
+  commentstyle=\color{darkgreen},
+  moredelim=[s][\color{black}]{>}{<},
+  moredelim=[s][\color{red}]{\ }{=},
+  stringstyle=\color{blue},
+  identifierstyle=\color{maroon}
+}
+
+% TURTLE definition
+\lstdefinelanguage{TURTL} {
+  basicstyle=\ttfamily,
+%  morestring=[s]{"}{"},
+%  morecomment=[s]{?}{?},
+%  morecomment=[s]{\#\#\#}{\\n},
+%  commentstyle=\color{darkgreen},
+  %moredelim=[s][\color{red}]{@prefi}{x},
+  %moredelim=[s][\color{blue}]{rdf}{:},
+%  stringstyle=\color{blue},
+  identifierstyle=\color{maroon}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This section formats landscape pages properly with the correct page number.
@@ -112,8 +165,8 @@
     \include{front-matter}
     \include{chapters/1-introduction}
     \include{chapters/2-ontologies}
-    %\include{chapters/3-commonBuildingBlocks}
     \include{chapters/3-ice}
+    \include{chapters/4-workflowsOntology}
     \include{chapters/chapter-5}
     \include{chapters/6-blockchain}
     \include{chapters/chapter-7}

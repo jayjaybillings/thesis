@@ -1,0 +1,452 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="#" xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:dc11="http://purl.org/dc/elements/1.1/"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:ice-wf="https://www.eclipse.org/ice/workflows#"
+	xmlns:ice-data="https://www.eclipse.org/ice/data#">
+		<!-- /////////////////////////////////////////////////////////////////////////////////////// 
+		// // Classes // /////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+
+	<!-- https://www.eclipse.org/ice/data#Identifiable -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/data#Identifiable" />
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#Action -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#Action">
+		<rdfs:comment xml:lang="en">This is an action that can be
+			executed in a task of the workflow.</rdfs:comment>
+		<rdfs:label xml:lang="en">Action</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#ActionType -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#ActionType">
+		<rdfs:comment>This resource defines the type of the action that will
+			be executed. It distinguishes between types of actions such as shell
+			functions, user input, waiting, etc.</rdfs:comment>
+		<rdfs:label>Action Type</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#BasicActionType -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#BasicActionType">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#ActionType" />
+		<rdfs:comment>The Basic Action Type is the base class for basic
+			actions that are typically considered native actions of workflow
+			engines that execute workflows. This includes actions such as moving
+			files or doing simple reductions.</rdfs:comment>
+		<rdfs:label>Basic Action Type</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#BooleanCondition -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#BooleanCondition">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#Condition" />
+		<rdfs:comment>Boolean Conditions evaluate boolean statements, such as
+			&quot;if&quot; statements.</rdfs:comment>
+		<rdfs:label>Boolean Condition</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#CWLTool -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#CWLTool">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#ShellScript" />
+		<rdfs:comment>This node represents a Common Workflow Language (CWL)
+			Tool, which is a description of a command line tool used in CWL
+			workflows.</rdfs:comment>
+		<rdfs:label>Common Workflow Language Tool</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#Condition -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#Condition">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#ActionType" />
+		<rdfs:comment>Conditional Actions Types indicate that the action
+			described by this type executes for the purpose of evaluating some
+			logical condition, such as a boolean statement, a loop, a cycle, or
+			waiting (polling, checking) for feedback from an external agent.
+		</rdfs:comment>
+		<rdfs:label>Condition</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#ConditionalAction -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#ConditionalAction">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#Action" />
+		<rdfs:comment>Conditional Actions are actions that execute
+			conditionally for either conditional tasks (i.e. - as part of the
+			workflow) or as alternative execution flows when the task enters a
+			different state.
+
+			Conditional actions assigned to tasks indicate that the primary action of the
+			task should be executed according to the conditional action type
+			until the condition action evaluates to true.
+		</rdfs:comment>
+		<rdfs:label>Conditional Action</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#Cycle -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#Cycle">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#Condition" />
+		<rdfs:comment>A Cycle describes an action that exits when a condition
+			describing the end of a cycle has been met. Where a loop action type
+			describes execution over a range, a cyclic action type checks for the
+			completion of a task cycle.</rdfs:comment>
+		<rdfs:label>Cycle</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#Executable -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#Executable">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#ActionType" />
+		<rdfs:comment>The Executable Action Type is the base class for actions
+			that require executing generic programs on the system.</rdfs:comment>
+		<rdfs:label>Generic Executable</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#ExternalAgent -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#ExternalAgent">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#Condition" />
+		<rdfs:comment>The External Agent Condition describes an action that
+			waits conditionally on feedback from an external agent, including a
+			human or an external service. Tasks can block themselves to wait on
+			feedback, but in some cases an explicit task may exist for a user can
+			that can be described and explicitly executed in the workflow.
+		</rdfs:comment>
+		<rdfs:label>External Agent Condition</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#FortranFunction -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#FortranFunction">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#LanguageInvocation" />
+		<rdfs:comment>The Fortran Function Action Type is the base class for
+			actions that require executing a function in the Fortran programming
+			language.</rdfs:comment>
+		<rdfs:label>Fortran Function</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#JavaClass -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#JavaClass">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#LanguageInvocation" />
+		<rdfs:comment>The Java Class Action Type is the base class for actions
+			that require executing a class in the Java programming language.
+			Action Targets for this type should point to a single method in the
+			class that will create all necessary state and configure the system
+			before executing. Thus, to execute a class Car, it may make sense to
+			call a builder class such as &quot;CarBuilder.runCar&quot; instead.
+		</rdfs:comment>
+		<rdfs:label>Java Class</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#LanguageInvocation -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#LanguageInvocation">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#ActionType" />
+		<rdfs:comment>This action type represents actions to invocation
+			language-specific calls or executions as part of the workflow. This
+			could include, for example, executing a method on a native Java
+			class, or a Fortran function or subroutine, or an R function.
+		</rdfs:comment>
+		<rdfs:label>Language Invocation</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#Loop -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#Loop">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#Condition" />
+		<rdfs:comment>The Loop describes an action that exits when a condition
+			describing the end of a loop has been met. The loop executes over a
+			range, and differs from a cyclic action type because the latter
+			checks for the completion of a task cycle.</rdfs:comment>
+		<rdfs:label>Loop</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#ParallelLoop -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#ParallelLoop">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#Loop" />
+		<rdfs:comment>A Parallel Loop Condition indicates that the loop may be
+			executed in parallel (i.e. - that the iterations of the loop are
+			independent).</rdfs:comment>
+		<rdfs:label>Parallel Loop</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#PythonScript -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#PythonScript">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#LanguageInvocation" />
+		<rdfs:comment>The Python Script Action Type is the base class for
+			actions that require executing a script in the Python programming
+			language.</rdfs:comment>
+		<rdfs:label>Python Script</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#RESTfulService -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#RESTfulService">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#WebService" />
+		<rdfs:comment>This action types describes Representational State
+			Transfer (RESTful) web services.</rdfs:comment>
+		<rdfs:label>RESTful Web Service</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#SOAPService -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#SOAPService">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#WebService" />
+		<rdfs:comment>This action types describes Simple Object Access
+			Protocol (SOAP) web services.</rdfs:comment>
+		<rdfs:label>SOAP Web Service</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#ShellScript -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#ShellScript">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#ActionType" />
+		<rdfs:comment>The Shell Script action type is for actions that require
+			executing shell scripts on systems that support shells.
+		</rdfs:comment>
+		<rdfs:label>Shell Script</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#StateChangeAction -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#StateChangeAction">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#ConditionalAction" />
+		<rdfs:comment>A State Change is executed under the condition that a
+			task experiences a state change.</rdfs:comment>
+		<rdfs:label>State Change</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#Task -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#Task">
+		<rdfs:comment>Tasks are executed by workflows. They are modeled as the
+			combination of an action and properties defining the way that action
+			should be executed.
+
+			Tasks may also be assigned conditional actions that evaluate when a
+			certain condition has been met based on the execution of the primary
+			action with its properties.
+		</rdfs:comment>
+		<rdfs:label>Task</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#WSDLService -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#WSDLService">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#WebService" />
+		<rdfs:comment>This action types describes Web Service Description
+			Language (WSDL) web services.</rdfs:comment>
+		<rdfs:label>WSDL Web Service</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#WebService -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#WebService">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/workflows#ActionType" />
+		<rdfs:comment>The Web Service Action Type is the base class for
+			actions that require executing remote web services.</rdfs:comment>
+		<rdfs:label>Web Service</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- https://www.eclipse.org/ice/workflows#WorkflowDescription -->
+
+	<owl:Class
+		rdf:about="https://www.eclipse.org/ice/workflows#WorkflowDescription">
+		<rdfs:subClassOf
+			rdf:resource="https://www.eclipse.org/ice/data#Identifiable" />
+		<rdfs:comment xml:lang="en">This class provides a description
+			of the data and tasks that make up a workflow. It describes a
+			collections of tasks that are executed to accomplish an activity with
+			certain goals according to various properties and possibly using some
+			data.</rdfs:comment>
+		<rdfs:label xml:lang="en">Workflow Description</rdfs:label>
+	</owl:Class>
+
+
+
+	<!-- /////////////////////////////////////////////////////////////////////////////////////// 
+		// // General axioms // /////////////////////////////////////////////////////////////////////////////////////// -->
+
+	<rdf:Description>
+		<rdf:type
+			rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses" />
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#BasicActionType" />
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#Condition" />
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#Executable" />
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#LanguageInvocation" />
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#ShellScript" />
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#WebService" />
+		</owl:members>
+	</rdf:Description>
+	<rdf:Description>
+		<rdf:type
+			rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses" />
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#BasicActionType" />
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#Executable" />
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#LanguageInvocation" />
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#ShellScript" />
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#WebService" />
+		</owl:members>
+	</rdf:Description>
+	<rdf:Description>
+		<rdf:type
+			rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses" />
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#BooleanCondition" />
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#Cycle" />
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#ExternalAgent" />
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#Loop" />
+		</owl:members>
+	</rdf:Description>
+	<rdf:Description>
+		<rdf:type
+			rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses" />
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#FortranFunction" />
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#JavaClass" />
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#PythonScript" />
+		</owl:members>
+	</rdf:Description>
+	<rdf:Description>
+		<rdf:type
+			rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses" />
+		<owl:members rdf:parseType="Collection">
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#RESTfulService" />
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#SOAPService" />
+			<rdf:Description
+				rdf:about="https://www.eclipse.org/ice/workflows#WSDLService" />
+		</owl:members>
+	</rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
