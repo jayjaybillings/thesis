@@ -1,0 +1,87 @@
+\chapter{The Eclipse Integrated Computational Environment} \label{ch:eclipse-ice}
+
+The previous chapter described two assumptions about workflow management
+systems, namely that 1) there are no preferred universal languages or tools,
+and 2) a lack of standardization in software solutions is common because it is
+beneficial. Further, that chapter also asserted that an ontological approach
+could be used to develop a map of workflow management systems. Those assumptions
+and the idea of a scientific workflow ontology arose from nearly a decade of
+research into the topic as part of the effort to develop workflow tools for
+high-performance modeling and simulation applications. One key realization
+during this work was that the system could aggregate and share other workflow
+engines relatively easily and without significant changes to the code base,
+\cite{brooks_introducing_2016}. This suggested that it was possible to develop a
+more general, possibly common understanding of workflows and workflow management
+systems. That system, the Eclipse Integrated Computational Environment, is
+discussed in detail below to introduce concepts that will be necessary in the
+development of a scientific workflow ontology in later chapters.
+
+\baseInclude{pubs/ice-softwarex-2017/src/content}
+
+\section{Compatibility and Other Issues with the Eclipse Integrated
+Computational Environment}
+
+\todo{This should be moved to a later chapter.}
+
+Practical systems exhibit many properties not found in theoretical systems. It
+is possible to see examples of these properties and differences by examining
+the development of the Eclipse Integrated Computational Environment (Eclipse
+ICE) version 3.0 compared to the existing version 2.0 framework. An existing
+system, such as Eclipse ICE 2.0 likely has a large number of features,
+requirements, bug fixes, and - if we are being completely honest - ``hacks''
+that were necessary to acheive desired functionality. These could be very
+obvious, such as the fact that Eclipse ICE 2.0 does not use the Resource
+Description Framework (RDF) whereas version 3.0 does. Several examples of these
+types of problems are discussed below to illustrate the nature of compability
+issues between systems, including systems developed by the same authors.
+
+\subsection{Changes in data structure design}
+
+The aforementioned example of ICE 3.0 using RDF to describe its data structures
+is an obvious example of a difference between it and a legacy system such as ICE
+2.0. At a design level, this means that ICE 3.0 has data structures that are
+described completely declaratively and ontologically in RDF, the RDF Schema
+languages (RDFS), or the Web Ontology Language (OWL). The definitions of the
+data structures are defined in OWL, which itself is defined in RDF, and
+\textit{instances} of these data structures are defined in RDF as well. The
+ontology exists in one OWL-RDF file, and the instances exist in their own files
+that import the base ontology.
+
+ICE 3.0 not only has different data structures, but it also uses uses a third
+party library, Apache Jena, to implement these data structures and provide
+useful services, such as mapping to HTTP/HTTPS servers or reading and writing
+to disks. ICE 2.0 used a custom implementation of its data structures, which
+were originally transcoded from UML to Java and updated subsequently by hand.
+
+Other differences are far more subtle and demanding in their detail. Data
+structures in ICE 2.0 manage their own notifications. Observers can
+\textit{register} as listeners to a data structure in ICE 2.0 and that data
+structure will notify the observer when it changes. This is a very low-level
+implementation of the implementation of the observer pattern that was designed
+to 1) facilitate live updates in user interfaces, and 2) to manage dependencies
+between data structures asynchronously. The latter case made it possible for a
+data structure to change its own value in response to a change made to a second
+data structure that was observing that was modified in the user interface. Both
+data structures would then asynchronously update their own observers and the
+user interface would finally update dynamically. Such a complicated case as
+this is commonly used in ICE 2.0, but live updates to the user interface happen
+with every workflow task.
+
+RDF and OWL models in Apache Jena (and thus ICE 3.0) are only available at the
+highest level of the data model and they are very coarse grained: they only say
+that the model changed, not what data structure in the model changed. This is a
+completely valid way to handle update notifications, but in contrast to the
+model of ICE 2.0 it requires a full reload of the data structures by clients,
+including user interfaces. It has the distinct advantage of using far less
+resources than the ICE 2.0 model, namely that it does not launch separate
+threads for each update, but it comes at the possible cost of an expensive
+reload with every significant update. However, there are numerous strategies
+for mitigating the performance cost of a large reload.
+
+The implications of a subtle change like this can be far reaching. For example,
+ICE 2.0 workflows that execute in ICE 3.0 will need to be broken into smaller
+pieces that divide any regions of dependency management into distinct steps.
+Alternatively, a Decorator pattern could be implemented around the model to
+capture function calls and thereby identify which elements of the data model
+updated. This would, in effect, acheive the properties of the ICE 2.0 model
+using the new model provided through Apache Jena.

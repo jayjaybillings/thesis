@@ -86,7 +86,7 @@
 Interoperability in Scientific
 Workflows}
 \def\@author{Jay Jay Billings}
-\def\@graduationMonth{XXXXXX}
+\def\@graduationMonth{December}
 \def\@copyrightYear{2019}
 \def\@degree{Doctor of Philosophy}	% degree type
 \def\@university{The University  of Tennessee, Knoxville}	% school

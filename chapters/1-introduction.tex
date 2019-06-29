@@ -2,7 +2,7 @@
 \todo{Need a statement somewhere that more work has gone into systems than
 workflows per se.}
 
-Many civilizations tell an origin story of the diversity of human language. The
+Many civilizations tell an origin story for the diversity of human language. The
 common thread in different versions of this story is that humanity
 originally spoke a single language and united together to build a tower so tall
 that it could reach heaven. Some versions say that the builders used blocks of
@@ -109,7 +109,7 @@ reframed based on that.}
 \baseInclude{pubs/workflows-paper/src/common}
 \baseInclude{pubs/workflows-paper/src/buildingblocks}
 
-\section{Next Steps}
+\section{Summary}
 
 The previous sections illustrate the complexity and diversity of workflow
 technologies. Having amassed such data on the topic, it is tempting to develop
@@ -133,56 +133,9 @@ artificial intelligence.
 Ontologies are efficient tools for gaining such an understanding as they
 can formally catalog all of the different properties relevant to gaining
 knowledge in a given topical area. This can be done in both human and machine
-readable ways. The following chapters provide just such an analysis.
+readable ways. The following chapters provide just such an analysis. However,
+before turning to ontological considerations, and in an effort to better
+understand the origins of the questions at the core of this thesis, it is
+important to look at an interesting and somewhat unique workflow management
+system: The Eclipse Integrated Computational Environment.
 
-\section{Notes}
-
-History:
-What was the first appearance of the word workflow and in what context did it
-appear?
-
-Background:
-Workflows, etc. - Short, then point to longer discussion in the appendix.
-Ontologies - Semantic Web, {RDF,RDFS,OWL}, CWL, ICE data structures
-
-Results:
-Strategy - Merge CWL and ICE. Develop - if needed - optimization ontology components
-Discuss final product. Point to any additional appendices instead of including in the body.
-
-Case Studies:
-Data/Analysis - ICEMAN
-M\&S - AM?
-Optimization - AM or QC?
-
-\section{Writing}
-
-Open question:
-*How do cyclic, hierarchical, and multi-facility workflows fit into this?
-
-\textbf{So what do you know?}
-
-I know there are three broad types of scientific workflows. I lump testing
-workflows into high-throughput workflows.
-
-Define a workflow problem as any problem that is solved by the execution of a
-workflow. I know that a workflow problem of any type can be decomposed into
-three required components: the workflow description, the engine that executes
-that description, and the data required for the problem. The latter can be
-further decomposed into metadata, bulk data, and provenance.
-
-A workflow may be defined as a collection of tasks that are executed in some
-order by human and non-human actors. A workflow problem can then be defined as
-any problem that is solved the the execution of a specific workflow. Many
-systems exist that can execute workflows encoded in one or more
-\textit{description formats} for both business and scientific problems. There
-are predominantly three types of scientific workflows: High-throughput \cite{},
-Modeling and Simulation \cite{}, and Analysis \cite{}.
-
-Workflow problems of any of type can be decomposed into three required
-components: The workflow description, the \textit{workflow engine} that
-executes the workflow based on the description, and the data required to fully
-describe and execute the workflow. The latter may include - but does not
-necessarily require - metadata that describes the contents of the data itself,
-bulk data including values and quantities of interest used in the workflow.
-(For the purposes of this work, it is sufficient to consider provenance
-information as a type of metadata.)

@@ -1,9 +1,5 @@
 \chapter{Ontologies} \label{ch:ontologies}
 
-\todo{This is an easy story to tell if you walk through the
-slides from your last committee meeting, and then answer any remaining
-questions below.}
-
 A formal system for describing scientific workflows would be valuable for a
 variety of reasons. Perhaps most importantly, this includes being able to
 determine what types of systems need to be implemented to successfully execute
@@ -30,20 +26,6 @@ common set of tools for working with ontologies is presented to illustrate how
 ontologies are created in formal ways that are machine-readable, ready for
 distribution, and use in larger applications.
 
-*Why do ontologies matter here?
-
-*Ontology versus taxonomy
-
-*How can this be written in plain text, without invoking RDF?
-
-*What does this look like in RDF?
-
-*What is RDF?
-
-*What is the semantic web?
-
-*How does this jive with scientific workflows?
-
 \section{Features of Ontologies}
 
 Ontologies are commonly described using special ontology languages, such as the
@@ -61,11 +43,11 @@ including cost. Entities are connected to properties through relationships.
 
 \subsection{Objects and Classes}
 
-An object is a specific entity that has been initialized with some default.
-A simple equation $x = 5$ could be used to denote that the object $x$ has the
-value five. A set of objects is defined by a class. Objects may sometimes be
-called instances or individuals, and all three terms are used interchangeably
-herein.
+An object is a specific entity that has been initialized with some default
+configuration or value. A simple equation $x = 5$ could be used to denote that
+the object $x$ has the value $5$. A class describes a set of objects. Objects
+may sometimes be called instances or individuals, and all three terms are used
+interchangeably herein.
 
 Classes define the properties (or in some definitions links to properties) and
 required relationships for objects. One special relationship is the
@@ -275,9 +257,9 @@ Description Framework.
 
 Summaries of these languages are provided below based on the most recent
 langauge specifications and other sources, \cite{allemang_semantic_2008}. These
-summaries also include practical findings from the author who as a user of these languages
-discovered a number of pitfalls that are not commonly or widely discussed in the
-extant literature.
+summaries also include practical findings from the author who as a user of
+these languages discovered a number of pitfalls that are not commonly or widely
+discussed in the extant literature.
 
 \subsection{The Resource Description Framework}
 
@@ -310,9 +292,9 @@ add support for additional features not found in the standard. This includes the
 JSON Linked Data (JSON-LD) and Notation3 (Notation3) formats. Unless otherwise
 specified, the remainder of this document will use a very readable and common
 serialization called the Terse RDF Triple Language (TURTL), \cite{turtl}. This
-format is signifcantly easier to understand than others for humans, and has the added
-advantage of being succinct in written text. For example, the statement ``The
-color of the ball is red'' would be rendered as a TURTLE triple with
+format is signifcantly easier to understand than others for humans, and has the
+added advantage of being succinct in written text. For example, the statement
+``The color of the ball is red'' would be rendered as a TURTLE triple with
 \begin{lstlisting}[language=TURTL]
 <#ball>
     hasColor <red>.

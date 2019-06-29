@@ -24,13 +24,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Ontological Considerations for Interoperability in Scientific Workflows}	       	% title of thesis/dissertation
 \author{Jay Jay Billings}                			% author's name
-\copyrightYear{20xx}            				% copyright year of your thesis/dissertation
-\graduationMonth{YYY}           				% month of graduation for your thesis/dissertation
+\copyrightYear{2019}            				% copyright year of your thesis/dissertation
+\graduationMonth{December}           				% month of graduation for your
+% thesis/dissertation
 \degree{Doctor of Philosophy}	    			% degree: Doctor of Philosophy, Master of Science, Master of Engineering...
 \university{The University  of Tennessee, Knoxville}	% school name
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % LOAD SOME USEFUL PACKAGES. 
-% No need to change anything here, although if you'd like to add packages you can do that here. Note that packages preloaded with the utthesis class are: amsmath,amsthm,amssymb,setspace,geometry,hyperref,and color
+% No need to change anything here, although if you'd like to add packages you
+% can do that here. Note that packages preloaded with the utthesis class are:
+% amsmath,amsthm,amssymb,setspace,geometry,hyperref,and color
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{nomencl}                    % produces a nomenclature
 \usepackage{float}                      % figure floats
@@ -140,7 +143,8 @@
     \makeCopyrightPage % make the copyright page
     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%The dedication and acknowledgments are optional. If you wish not to include them, simply comment out both the "\addToPDF..." line and the "\include{...}" line for each.
+%The dedication and acknowledgments are optional. If you wish not to include
+% them, simply comment out both the "\addToPDF..." line and the "\include{...}" line for each.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \addToPDFBookmarks{1}{Dedication}{b} % add a pdf bookmark to the dedication page
     \include{front-matter/dedication} % include the dedication
@@ -164,8 +168,8 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \include{front-matter}
     \include{chapters/1-introduction}
-    \include{chapters/2-ontologies}
-    \include{chapters/3-ice}
+    \include{chapters/2-ice}
+    \include{chapters/3-ontologies}
     \include{chapters/4-workflowsOntology}
     \include{chapters/chapter-5}
     \include{chapters/6-blockchain}
@@ -176,9 +180,11 @@
     \makeBibliographyPage % make the bibliography title page
 \newpage
 
-% To make the bibliography, use \utbiblio{#1}{}{} command. Always use "#1" for the first entry. The second entry is your bibliography style, and the third entry is the name of your bibliography file (.bib file extension) 
-% bibliography style - recommend using apalike-doi as it hyperlinks DOIs
-% Be sure to run BibTeX in order to generate the bibliography correctly.
+% To make the bibliography, use \utbiblio{#1}{}{} command. Always use "#1" for
+% the first entry. The second entry is your bibliography style, and the third
+% entry is the name of your bibliography file (.bib file extension)
+% bibliography style - recommend using apalike-doi as it hyperlinks DOIs Be
+% sure to run BibTeX in order to generate the bibliography correctly.
 
 \utbiblio{#1}{apalike}{bib}
 
