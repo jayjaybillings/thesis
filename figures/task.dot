@@ -1,0 +1,10 @@
+digraph g {
+	"'Workflow Description'" -> "Task" [label="executes (Domain>Range)"]
+	"Task" -> "'Workflow Description'" [label="'depends On' (Domain>Range)"]
+	"Task" -> "'State Change'" [label="'on State Change' (Domain>Range)"]
+	"Task" -> "'Conditional Action'" [label="'has Condition' (Domain>Range)"]
+	"Task" -> "Task" [label="'depends On' (Domain>Range)"]
+	"Task" -> "Action" [label="'has Action' (Domain>Range)"]
+	"owl:Thing" -> "Task" [label="has subclass"]
+	"'Workflow Description'" -> "Task" [label="'depends On' (Domain>Range)"]
+}

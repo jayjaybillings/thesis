@@ -1,0 +1,10 @@
+digraph g {
+	"'Action Type'" -> "'Web Service'" [label="has subclass"]
+	"'Action Type'" -> "Condition" [label="has subclass"]
+	"'Action Type'" -> "'Generic Executable'" [label="has subclass"]
+	"'Action Type'" -> "'Language Invocation'" [label="has subclass"]
+	"owl:Thing" -> "'Action Type'" [label="has subclass"]
+	"'Action Type'" -> "'Shell Script'" [label="has subclass"]
+	"'Action Type'" -> "'Basic Action Type'" [label="has subclass"]
+	"Action" -> "'Action Type'" [label="'has Action Type' (Domain>Range)"]
+}

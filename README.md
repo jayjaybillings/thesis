@@ -26,3 +26,15 @@ For Texlipse, create bin/ and tmp/ directories. Git will ignore these. Texlipse 
 3) Copy the bib.bib file from the parent directory into the tmp directory
 4) Run bibtex
 5) Rebuild or tell Texlipse to rebuild
+
+## Building Graphs
+
+The graphs in the document were created using .dot file exports from the OntoGraf plugin in Protege. Dot files can be converted to images using Graphviz.
+
+1) Install Graphviz
+2) Enter the figures directory
+3) Run dot, e.g. -
+
+```bash
+dot -Tpng action.dot -o action.png
+```

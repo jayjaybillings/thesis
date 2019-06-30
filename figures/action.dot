@@ -1,0 +1,7 @@
+digraph g {
+	"'Conditional Action'" -> "Action" [label="'has Action' (Domain>Range)"]
+	"owl:Thing" -> "Action" [label="has subclass"]
+	"Task" -> "Action" [label="'has Action' (Domain>Range)"]
+	"Action" -> "'Conditional Action'" [label="has subclass"]
+	"Action" -> "'Action Type'" [label="'has Action Type' (Domain>Range)"]
+}

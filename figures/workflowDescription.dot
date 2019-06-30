@@ -1,0 +1,7 @@
+digraph g {
+	"'Workflow Description'" -> "'Workflow Description'" [label="'depends On' (Domain>Range)"]
+	"Task" -> "'Workflow Description'" [label="'depends On' (Domain>Range)"]
+	"'Workflow Description'" -> "Task" [label="executes (Domain>Range)"]
+	"Identifiable" -> "'Workflow Description'" [label="has subclass"]
+	"'Workflow Description'" -> "Task" [label="'depends On' (Domain>Range)"]
+}

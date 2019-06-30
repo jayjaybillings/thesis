@@ -1,7 +1,124 @@
 \chapter{Scientific Workflow Ontology}
+\label{ch:workflow-ontology}
 
+The tools, techniques, and background knowledge provided in the previous
+chapters makes it possible to answer important questions about eclectic mix of
+workflow technologies. These questions include ``What is a workflow?'' and
+``Are workflow management systems conceptually the same?,'' all with the goal
+of establishing whether the tools are varied or merely variegated. The first of
+this two questions - ``What is a workflow?'' - is of particular interest in this
+work because a better understanding of the different types of workflows will
+present the opportunity to examine problems that were previously too costly in
+manual labor or altogether impossible.
+
+The following sections present a workflow ontology, \S
+\ref{workflow-ont-section}, and the method used to develop it, \S
+\ref{workflow-ont-method}. Finally, conrete examples of the application of this
+ontology to workflows ```in the wild'' are provided to show its range as a
+decision making and scientific computing tool.
+
+\section{Methodology}
+\label{workflow-ont-method}
+
+The scientific workflow ontology presented below was developed by considering
+workflows in two environments including 1) the context of problems they solve,
+and 2) as entities that are executed by workflow management systems.
+
+\subsection{Workflow Problems}
+
+Workflows are most interesting in the context of problems that they solve. As
+chapter \ref{ch:introduction} demonstrates, because of the large number of these
+problems that exist, it can be very difficult to write an all-encompassing
+definition of a scientific workflow by only looking at the workflows directly. 
+
+One classic way to solve calculus problems without an obvious solution is the
+method of change of variables in which new variables related to the original
+variables by some relationship are used in place of the originals. Changing
+variables makes it possible to mask certain types of complexity to reveal direct
+methods of solving the problem. An analogy to this method can be used to study
+scientific workflows. Specifically, seeking a definition for workflow problems
+instead of workflows can make it possible to find a definition of scientific
+workflows by ``solving'' for it. 
+
+It is sufficient for the purpose of this work to build an ontological model
+based on the description of workflow management systems, workflows, and data in
+other chapters to define a workflow problem. A workflow problem is one that is
+solved by providing a workflow description to a workflow management system with
+all pertinent data in hand. Thus, by examining the set of workflow problems and
+workflow management systems, while allowing data to act as a kind of free
+variable, it is possible to describe a set of workflows. 
+
+This is an empirical way of thinking about workflows that results in an emergent
+definition, versus a prescribed one. This method accepts that the community will
+move as it sees fit, but asserts (quite strongly) that progress can still be
+made by considering what exists collectively. The method is also additive since
+any new workflow management system can be studied to learn about the
+workflows it supports, and the description of those workflows can be added to
+the model created by the original effort. As the model grows, it will enclose a
+larger area of the workflow space, resulting in the emergence of a new or
+updated description of the set of abstract workflows.
+
+This method responds well to a modeling treatment, and, indeed, may be described
+as a modling method. All the languages and tools of chapter \ref{ch:ontologies}
+can be applied.
+
+\subsection{Referenced Workflow Management Systems}
+
+Workflows from several workflow management systems were examined as part of this
+work. This include workflows from Eclipse ICE, Taverna \cite{taverna},
+Triquetrum \cite{triquetrum}, Pegasus \cite{pegasus}, the Common Workflow
+Language \cite{cwl}, Cylc \cite{cylc}, Chiron \cite{chiron}, Moteur
+\cite{Moteur}, and SAW \cite{SAW}. One unnamed heirarchical workflow management
+system from Argonne National Laboratory was reviewed as well.
+
+\section{Workflow Ontology}
+\label{workflow-ont-section}
+
+This section describes an ontology for scientific workflows created using the
+method and philosophy described in the previous section. Class, object
+properties, and data properties are listed below. The full OWL ontology,
+(created in Prot\'eg\'e), is provided as an TURTL file in Appendix
+\ref{app:full-ontology} to preserve space for the narrative here. The full
+TURTL file includes some axioms not discussed below. 
+
+Unlike the example in chapter \ref{ch:ontologies}, no individuals are described
+in this section. The figures shown below are Graphviz visualizations of
+subgraphs of the main ontology graph pulled from Prot\'eg\'e using its OntoGraf
+plugin. These figures illustrate the relationships between the core classes and
+properties of the ontology. Table \ref{ont-stats-table} summarizes numerous
+metrics of the ontology.
+
+\begin{table}[H]
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
+Triple count & 241 \tabularnewline\hline
+Axiom count	& 161	\tabularnewline\hline
+Logical axiom count	& 53	\tabularnewline\hline
+Declaration axioms count &	40	\tabularnewline\hline
+Class count	& 25	\tabularnewline\hline
+Object property count	& 9	\tabularnewline\hline
+Data property count	& 3	\tabularnewline\hline
+Individual count &	0	\tabularnewline\hline
+Annotation Property count	& 8 \tabularnewline\hline
+SubClassOf	& 21		\tabularnewline\hline
+DisjointClasses  &	5 \tabularnewline\hline
+SubObjectPropertyOf	& 3 \tabularnewline\hline
+ObjectPropertyDomain &	10	\tabularnewline\hline
+ObjectPropertyRange	& 7 \tabularnewline\hline
+SubDataPropertyOf	& 1 \tabularnewline\hline
+DataPropertyDomain	& 4	\tabularnewline\hline
+DataPropertyRange &	2 \tabularnewline\hline
+AnnotationAssertion	& 68 \tabularnewline\hline
+\end{tabularx}
+\caption{Ontology Statistics}
+\label{ont-stats-table}
+\end{table}
+
+The full ontology is also preserved in the Eclipse ICE GitHub repository,
+\cite{eclipse-ice-github}.
+
+%%% Include generated ontology text.
 \baseInclude{chapters/ice-workflows.out.tex}
-
 
 A workflow may be defined as a collection of tasks that are executed in some
 order by human and non-human actors. A workflow problem can then be defined as
@@ -19,6 +136,8 @@ necessarily require - metadata that describes the contents of the data itself,
 bulk data including values and quantities of interest used in the workflow.
 (For the purposes of this work, it is sufficient to consider provenance
 information as a type of metadata.)
+
+\section{Examples and Applications}
 
 \section{Notes}
 

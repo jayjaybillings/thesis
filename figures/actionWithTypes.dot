@@ -1,0 +1,17 @@
+digraph g {
+	"Task" -> "'State Change'" [label="'on State Change' (Domain>Range)"]
+	"'Action Type'" -> "'Web Service'" [label="has subclass"]
+	"'Action Type'" -> "Condition" [label="has subclass"]
+	"'Conditional Action'" -> "Action" [label="'has Action' (Domain>Range)"]
+	"'Action Type'" -> "'Generic Executable'" [label="has subclass"]
+	"owl:Thing" -> "Action" [label="has subclass"]
+	"'Conditional Action'" -> "'State Change'" [label="has subclass"]
+	"'Action Type'" -> "'Language Invocation'" [label="has subclass"]
+	"Task" -> "'Conditional Action'" [label="'has Condition' (Domain>Range)"]
+	"owl:Thing" -> "'Action Type'" [label="has subclass"]
+	"'Action Type'" -> "'Shell Script'" [label="has subclass"]
+	"'Action Type'" -> "'Basic Action Type'" [label="has subclass"]
+	"Action" -> "'Conditional Action'" [label="has subclass"]
+	"Task" -> "Action" [label="'has Action' (Domain>Range)"]
+	"Action" -> "'Action Type'" [label="'has Action Type' (Domain>Range)"]
+}
