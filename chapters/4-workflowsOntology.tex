@@ -40,13 +40,21 @@ scientific workflows. Specifically, seeking a definition for workflow problems
 instead of workflows can make it possible to find a definition of scientific
 workflows by ``solving'' for it. 
 
-It is sufficient for the purpose of this work to build an ontological model
-based on the description of workflow management systems, workflows, and data in
-other chapters to define a workflow problem. A workflow problem is one that is
-solved by providing a workflow description to a workflow management system with
-all pertinent data in hand. Thus, by examining the set of workflow problems and
-workflow management systems, while allowing data to act as a kind of free
-variable, it is possible to describe a set of workflows. 
+It is sufficient for the purpose of this work to define a workflow problem
+by building an ontological model based on the description of workflow
+management systems, workflows, and data in other chapters. Workflow problems of
+any of type can be decomposed into three required components: The workflow
+description, the workflow engine or management system that executes the
+workflow based on the description, and the data required to fully describe and
+execute the workflow. The latter may include - but does not necessarily require
+- metadata that describes the contents of the data itself, bulk data including
+values and quantities of interest used in the workflow. (For the purposes of
+this work, it is sufficient to consider provenance information as a type of
+metadata.) A workflow problem, then, is one that is solved by providing a
+workflow description to a workflow management system with all pertinent data in
+hand. Thus, by examining the set of workflow problems and workflow management
+systems, while allowing data to act as a kind of free variable, it is possible
+to describe the set of workflows completely.
 
 This is an empirical way of thinking about workflows that results in an emergent
 definition, versus a prescribed one. This method accepts that the community will
@@ -119,23 +127,6 @@ The full ontology is also preserved in the Eclipse ICE GitHub repository,
 
 %%% Include generated ontology text.
 \baseInclude{chapters/ice-workflows.out.tex}
-
-A workflow may be defined as a collection of tasks that are executed in some
-order by human and non-human actors. A workflow problem can then be defined as
-any problem that is solved the the execution of a specific workflow. Many
-systems exist that can execute workflows encoded in one or more
-\textit{description formats} for both business and scientific problems. There
-are predominantly three types of scientific workflows: High-throughput \cite{},
-Modeling and Simulation \cite{}, and Analysis \cite{}.
-
-Workflow problems of any of type can be decomposed into three required
-components: The workflow description, the \textit{workflow engine} that
-executes the workflow based on the description, and the data required to fully
-describe and execute the workflow. The latter may include - but does not
-necessarily require - metadata that describes the contents of the data itself,
-bulk data including values and quantities of interest used in the workflow.
-(For the purposes of this work, it is sufficient to consider provenance
-information as a type of metadata.)
 
 \section{Examples and Applications}
 

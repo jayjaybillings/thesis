@@ -179,35 +179,27 @@ It is possible to declare multiple instances of this object property such that o
 			has State
 			}
 			This data property describes the present state of the task or workflow.
-
-Initialized
-
-This pseudostate indicates that the state machine has fully initialized. In practice, full and successful initialization results in an immediate local transition to Ready.
-
-Failed
-
-This state indicates that an unexpected failure happened while executing the task.
-
-Reviewing
-
-The Reviewing state is entered when a task needs to spend a large amount of time to review information received for pre-, post-, or in-situ processing that is required to execute the task. Once the review is complete, the task will transition into the Executing state in the ideal primary flow.
-
-Waiting
-
-Tasks in the waiting state are waiting on resources to be properly allocated, including either compute or data resources.
-
-WaitingForInfo
-
-Tasks in the WaitingForInfo state are waiting on information from an external agent.
-
-Finished
-
-This is the terminal state for the task and indicates that it has been completely executed.
-
-Executing
-
-This state indicates that the task is presently executing the work assigned to it.
-
-Ready
-
-The ready state indicates that the task can be executed and that all initialization has completed, or that execution has finished and the task is ready to be executed again.
+			\begin{itemize}
+			  \item \textbf{Initialized} - This pseudostate indicates that the state
+			  machine has fully initialized. In practice, full and successful
+			  initialization results in an immediate local transition to Ready.
+			  \item \textbf{Failed} - This state indicates that an unexpected failure
+			  happened while executing the task.
+			  \item \textbf{Reviewing} - The Reviewing state is entered when a task
+			  needs to spend a large amount of time to review information received for
+			  pre-, post-, or in-situ processing that is required to execute the task.
+			  Once the review is complete, the task will transition into the Executing
+			  state in the ideal primary flow.
+			  \item \textbf{Waiting} - Tasks in the waiting state are waiting on
+			  resources to be properly allocated, including either compute or data
+			  resources.
+			  \item \textbf{WaitingForInfo} - Tasks in the WaitingForInfo state are
+			  waiting on information from an external agent.
+			  \item \textbf{Finished} - This is the terminal state for the task and
+			  indicates that it has been completely executed.
+			  \item \textbf{Executing} - This state indicates that the task is presently
+			  executing the work assigned to it.
+			  \item \textbf{Ready} - The ready state indicates that the task can be
+			  executed and that all initialization has completed, or that execution has
+			  finished and the task is ready to be executed again.
+			\end{itemize}
