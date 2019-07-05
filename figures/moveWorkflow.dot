@@ -1,0 +1,45 @@
+digraph{
+  charset="utf-8";
+
+  // Edges
+  "R#moveActionType" -> "Rice/workflows#JavaClass" [label="rdf:type"];
+  "R#moveActionType" -> "Lorg.eclipse.ice.actions.targets.MoveActionTarget.move" [label="xsd:string"];
+  "R#moveAction" -> "Rice/workflows#Action" [label="rdf:type"];
+  "R#moveAction" -> "R#moveActionType" [label=""];
+  "R#location" -> "Rhttp://www.w3.org/2002/07/owl#ObjectProperty" [label="rdf:type"];
+  "R#location" -> "LFile Location" [label="rdfs:label"];
+  "R#location" -> "Rhttp://www.w3.org/2002/07/owl#topObjectProperty" [label="rdfs:subPropertyOf"];
+  "R#location" -> "Rhttp://www.w3.org/2001/XMLSchema#string" [label="rdfs:range"];
+  "R#inputLocation" -> "R#location" [label="rdf:type"];
+  "R#outputLocation" -> "R#location" [label="rdf:type"];
+  "R#moveActionProperties" -> "Rhttp://www.w3.org/2002/07/owl#Class" [label="rdf:type"];
+  "R#moveActionProperties" -> "Ltest-in.txt" [label="input"];
+  "R#moveActionProperties" -> "Ltest-out.txt" [label="output"];
+  "R#moveTask" -> "Rice/workflows#Task" [label="rdf:type"];
+  "R#moveTask" -> "R#moveAction" [label=""];
+  "R#moveTask" -> "R#moveActionProperties" [label=""];
+  "R#moveWFD" -> "Rice/workflows#WorkflowDescription" [label="rdf:type"];
+  "R#moveWFD" -> "R#moveTask" [label="executes"];
+
+  // Nodes
+  "LFile Location" [label="File Location",shape=record];
+  "Lorg.eclipse.ice.actions.targets.MoveActionTarget.move" [label="org.eclipse.ice.actions.targets.MoveActionTarget.move",shape=record];
+  "Ltest-in.txt" [label="test-in.txt",shape=record];
+  "Ltest-out.txt" [label="test-out.txt",shape=record];
+  "R#inputLocation" [URL="#inputLocation",label="#inputLocation",shape=ellipse,color=blue];
+  "R#location" [URL="#location",label="#location",shape=ellipse,color=blue];
+  "R#moveAction" [URL="#moveAction",label="#moveAction",shape=ellipse,color=blue];
+  "R#moveActionProperties" [URL="#moveActionProperties",label="#moveActionProperties",shape=ellipse,color=blue];
+  "R#moveActionType" [URL="#moveActionType",label="#moveActionType",shape=ellipse,color=blue];
+  "R#moveTask" [URL="#moveTask",label="#moveTask",shape=ellipse,color=blue];
+  "R#moveWFD" [URL="#moveWFD",label="#moveWFD",shape=ellipse,color=blue];
+  "R#outputLocation" [URL="#outputLocation",label="#outputLocation",shape=ellipse,color=blue];
+  "Rhttp://www.w3.org/2001/XMLSchema#string" [URL="http://www.w3.org/2001/XMLSchema#string",label="xsd:string",shape=ellipse,color=blue];
+  "Rhttp://www.w3.org/2002/07/owl#Class" [URL="http://www.w3.org/2002/07/owl#Class",label="owl:Class",shape=ellipse,color=blue];
+  "Rhttp://www.w3.org/2002/07/owl#ObjectProperty" [URL="http://www.w3.org/2002/07/owl#ObjectProperty",label="owl:ObjectProperty",shape=ellipse,color=blue];
+  "Rhttp://www.w3.org/2002/07/owl#topObjectProperty" [URL="http://www.w3.org/2002/07/owl#topObjectProperty",label="owl:topObjectProperty",shape=ellipse,color=blue];
+  "Rice/workflows#Action" [URL="ice/workflows#Action",label="ice/workflows#Action",shape=ellipse,color=blue];
+  "Rice/workflows#JavaClass" [URL="ice/workflows#JavaClass",label="ice/workflows#JavaClass",shape=ellipse,color=blue];
+  "Rice/workflows#Task" [URL="ice/workflows#Task",label="ice/workflows#Task",shape=ellipse,color=blue];
+  "Rice/workflows#WorkflowDescription" [URL="ice/workflows#WorkflowDescription",label="ice/workflows#WorkflowDescription",shape=ellipse,color=blue];
+}

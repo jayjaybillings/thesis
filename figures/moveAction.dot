@@ -1,0 +1,20 @@
+digraph {
+  charset="utf-8";
+
+  // Edges
+  "Rhttp://www.example.org/#moveActionType" -> "Rhttps://www.eclipse.org/ice/workflows#JavaClass" [label="rdf:type"];
+  "Rhttp://www.example.org/#moveActionType" -> "LMove File Action" [label="rdfs:label"];
+  "Rhttp://www.example.org/#moveActionType" -> "Lorg.eclipse.ice.actions.targets.MoveActionTarget.move" [label="xsd:string"];
+  "Rhttp://www.example.org/#moveAction" -> "Rhttps://www.eclipse.org/ice/workflows#Action" [label="rdf:type"];
+  "Rhttp://www.example.org/#moveAction" -> "Rhttp://www.example.org/#moveActionType" [label=""];
+
+  // Nodes
+  "LMove File Action" [label="Move File Action",shape=record];
+  "Lorg.eclipse.ice.actions.targets.MoveActionTarget.move" [label="org.eclipse.ice.actions.targets.MoveActionTarget.move",shape=record];
+  "Rhttp://www.example.org/#moveAction" [URL="http://www.example.org/#moveAction",label="http://www.example.org/#moveAction",shape=ellipse,color=blue];
+  "Rhttp://www.example.org/#moveActionType" [URL="http://www.example.org/#moveActionType",label="http://www.example.org/#moveActionType",shape=ellipse,color=blue];
+  "Rhttps://www.eclipse.org/ice/workflows#Action" [URL="https://www.eclipse.org/ice/workflows#Action",label="https://www.eclipse.org/ice/workflows#Action",shape=ellipse,color=blue];
+  "Rhttps://www.eclipse.org/ice/workflows#JavaClass" [URL="https://www.eclipse.org/ice/workflows#JavaClass",label="https://www.eclipse.org/ice/workflows#JavaClass",shape=ellipse,color=blue];
+}
+
+

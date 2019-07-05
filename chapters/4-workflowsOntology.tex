@@ -130,6 +130,35 @@ The full ontology is also preserved in the Eclipse ICE GitHub repository,
 
 \section{Examples and Applications}
 
+This section shows examples and applications of workflows marked up as
+instances of the workflow ontology. The full RDF listings for all
+examples are provided in Appendix \ref{app:workflow-examples}.
+
+\subsection{Basic File Move}
+
+The first example is a very simple workflow, showing the move of a file from
+one location to another. The workflow description executes a single task, which
+is specialized to move a file using a dedicated action type. The action type
+uses a Java class as its target, and it uses simple string values for file name
+input and output.
+
+This example is important because it shows a simple it is to wire together a
+straightforward workflow. The relationships between workflow descriptions,
+tasks, and actions creates a directed acyclic graph for this type of workflow.
+However, it is also important because file transfer is a common task in many
+workflows, often occurring as a subworkflow that executes before and after
+other tasks or before and after the main workflow.
+
+Figure \ref{move-workflows} shows a version of this example that has been
+slightly edited to better fit the page.
+
+\begin{figure}[htbp]
+\centering
+\baseIncludegraphics{figures/moveWorkflow.png}
+\caption{Figure showing the basic file move workflow.}
+\label{move-workflows}
+\end{figure}
+
 \section{Notes}
 
 History:

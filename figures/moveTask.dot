@@ -1,0 +1,53 @@
+digraph {
+  charset="utf-8";
+
+  // Edges
+  "Rhttp://www.example.org/#moveActionType" -> "Rhttps://www.eclipse.org/ice/workflows#JavaClass" [label="rdf:type"];
+  "Rhttp://www.example.org/#moveActionType" -> "LMove File Action" [label="rdfs:label"];
+  "Rhttp://www.example.org/#moveActionType" -> "Lorg.eclipse.ice.actions.targets.MoveActionTarget.move" [label="xsd:string"];
+  "Rhttp://www.example.org/#moveAction" -> "Rhttps://www.eclipse.org/ice/workflows#Action" [label="rdf:type"];
+  "Rhttp://www.example.org/#moveAction" -> "Rhttp://www.example.org/#moveActionType" [label=""];
+  "Rhttp://www.example.org/#location" -> "Rhttp://www.w3.org/2002/07/owl#ObjectProperty" [label="rdf:type"];
+  "Rhttp://www.example.org/#location" -> "LFile Location" [label="rdfs:label"];
+  "Rhttp://www.example.org/#location" -> "LThe location of a file on the file system" [label="rdfs:comment"];
+  "Rhttp://www.example.org/#location" -> "Rhttp://www.w3.org/2002/07/owl#topObjectProperty" [label="rdfs:subPropertyOf"];
+  "Rhttp://www.example.org/#location" -> "Rhttp://www.w3.org/2001/XMLSchema#string" [label="rdfs:range"];
+  "Rhttp://www.example.org/#inputLocation" -> "Rhttp://www.example.org/#location" [label="rdf:type"];
+  "Rhttp://www.example.org/#outputLocation" -> "Rhttp://www.example.org/#location" [label="rdf:type"];
+  "Rhttp://www.example.org/#moveActionProperties" -> "Rhttp://www.w3.org/2002/07/owl#Class" [label="rdf:type"];
+  "Rhttp://www.example.org/#moveActionProperties" -> "LCollection of properties for moving a file." [label="rdfs:comment"];
+  "Rhttp://www.example.org/#moveActionProperties" -> "LMove Action Properties" [label="rdfs:label"];
+  "Rhttp://www.example.org/#moveActionProperties" -> "Ltest-in.txt" [label="input"];
+  "Rhttp://www.example.org/#moveActionProperties" -> "Ltest-out.txt" [label="output"];
+  "Rhttp://www.example.org/#moveTask" -> "Rhttps://www.eclipse.org/ice/workflows#Task" [label="rdf:type"];
+  "Rhttp://www.example.org/#moveTask" -> "LTest Task" [label="rdfs:label"];
+  "Rhttp://www.example.org/#moveTask" -> "LTest Task that will move a file" [label="rdfs:comment"];
+  "Rhttp://www.example.org/#moveTask" -> "Rhttp://www.example.org/#moveAction" [label=""];
+  "Rhttp://www.example.org/#moveTask" -> "Rhttp://www.example.org/#moveActionProperties" [label=""];
+
+  // Nodes
+  "LCollection of properties for moving a file." [label="Collection of properties for moving a file.",shape=record];
+  "LFile Location" [label="File Location",shape=record];
+  "LMove Action Properties" [label="Move Action Properties",shape=record];
+  "LMove File Action" [label="Move File Action",shape=record];
+  "LTest Task" [label="Test Task",shape=record];
+  "LTest Task that will move a file" [label="Test Task that will move a file",shape=record];
+  "LThe location of a file on the file system" [label="The location of a file on the file system",shape=record];
+  "Lorg.eclipse.ice.actions.targets.MoveActionTarget.move" [label="org.eclipse.ice.actions.targets.MoveActionTarget.move",shape=record];
+  "Ltest-in.txt" [label="test-in.txt",shape=record];
+  "Ltest-out.txt" [label="test-out.txt",shape=record];
+  "Rhttp://www.example.org/#inputLocation" [URL="http://www.example.org/#inputLocation",label="http://www.example.org/#inputLocation",shape=ellipse,color=blue];
+  "Rhttp://www.example.org/#location" [URL="http://www.example.org/#location",label="http://www.example.org/#location",shape=ellipse,color=blue];
+  "Rhttp://www.example.org/#moveAction" [URL="http://www.example.org/#moveAction",label="http://www.example.org/#moveAction",shape=ellipse,color=blue];
+  "Rhttp://www.example.org/#moveActionProperties" [URL="http://www.example.org/#moveActionProperties",label="http://www.example.org/#moveActionProperties",shape=ellipse,color=blue];
+  "Rhttp://www.example.org/#moveActionType" [URL="http://www.example.org/#moveActionType",label="http://www.example.org/#moveActionType",shape=ellipse,color=blue];
+  "Rhttp://www.example.org/#moveTask" [URL="http://www.example.org/#moveTask",label="http://www.example.org/#moveTask",shape=ellipse,color=blue];
+  "Rhttp://www.example.org/#outputLocation" [URL="http://www.example.org/#outputLocation",label="http://www.example.org/#outputLocation",shape=ellipse,color=blue];
+  "Rhttp://www.w3.org/2001/XMLSchema#string" [URL="http://www.w3.org/2001/XMLSchema#string",label="xsd:string",shape=ellipse,color=blue];
+  "Rhttp://www.w3.org/2002/07/owl#Class" [URL="http://www.w3.org/2002/07/owl#Class",label="owl:Class",shape=ellipse,color=blue];
+  "Rhttp://www.w3.org/2002/07/owl#ObjectProperty" [URL="http://www.w3.org/2002/07/owl#ObjectProperty",label="owl:ObjectProperty",shape=ellipse,color=blue];
+  "Rhttp://www.w3.org/2002/07/owl#topObjectProperty" [URL="http://www.w3.org/2002/07/owl#topObjectProperty",label="owl:topObjectProperty",shape=ellipse,color=blue];
+  "Rhttps://www.eclipse.org/ice/workflows#Action" [URL="https://www.eclipse.org/ice/workflows#Action",label="https://www.eclipse.org/ice/workflows#Action",shape=ellipse,color=blue];
+  "Rhttps://www.eclipse.org/ice/workflows#JavaClass" [URL="https://www.eclipse.org/ice/workflows#JavaClass",label="https://www.eclipse.org/ice/workflows#JavaClass",shape=ellipse,color=blue];
+  "Rhttps://www.eclipse.org/ice/workflows#Task" [URL="https://www.eclipse.org/ice/workflows#Task",label="https://www.eclipse.org/ice/workflows#Task",shape=ellipse,color=blue];
+}
