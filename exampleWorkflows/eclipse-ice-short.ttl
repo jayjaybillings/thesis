@@ -1,0 +1,63 @@
+@prefix : <#> .
+@prefix ice-wf:<https://www.eclipse.org/ice/workflows#> .
+@prefix ice-data:<https://www.eclipse.org/ice/data#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@base <http://www.example.org> .
+
+#####
+# Describe normal item tasks, including state changes: setup form, update form, etc
+#####
+
+# setupForm() Task
+:setupFormTask a ice-wf:Task;
+	ice-wf:hasAction :setupFormAction;
+	ice-wf:onStateChange :stateChangeAction;
+	ice-wf:hasProperties :workflowProperties .
+
+# loadInput()
+:loadInputTask a ice-wf:Task;
+	ice-wf:hasAction :loadInputAction;
+	ice-wf:hasProperties :workflowProperties;
+	ice-wf:onStateChange :stateChangeAction;
+	ice-wf:dependsOn :setupFormTask .
+
+# submitForm()
+:submitFormTask a ice-wf:Task;
+	ice-wf:hasAction :submitFormAction;
+	ice-wf:onStateChange :stateChangeAction;
+	ice-wf:hasProperties :workflowProperties .
+
+# reviewEntries()
+:reviewEntriesTask a ice-wf:Task;
+	ice-wf:hasAction :reviewEntriesAction;
+	ice-wf:hasProperties :workflowProperties;
+	ice-wf:onStateChange :stateChangeAction;
+	ice-wf:dependsOn :submitFormTask .
+
+# process()
+:processTask a ice-wf:Task;
+	ice-wf:hasAction :processAction;
+	ice-wf:onStateChange :stateChangeAction;
+	ice-wf:dependsOn :reviewEntriesTask ;
+	ice-wf:hasProperties :workflowProperties .
+
+#####
+# State change action & action type
+#####
+:stateChangeActionType a ice-wf:JavaClass.
+
+:stateChangeAction a ice-wf:Action.
+
+# Create actions mapped to the action types and tasks
+:setupFormAction a ice-wf:Action.
+
+:loadInputAction a ice-wf:Action.
+
+:submitFormAction a ice-wf:Action.
+
+:reviewEntriesAction a ice-wf:Action.
+
+:processAction a ice-wf:Action.

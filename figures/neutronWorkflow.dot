@@ -1,0 +1,35 @@
+digraph {
+  charset="utf-8";
+
+  // Edges
+  "R#designOfExperimentTask" -> "R#hpcModelingTask" [label=""];
+  "R#experimentTask" -> "R#hpcModelingTask" [label=""];
+  "R#experimentTask" -> "R#vizTask" [label=""];
+  "R#experimentTask" -> "R#designOfExperimentTask" [label=""];
+  "R#dataAcquisitionTask" -> "R#experimentTask" [label=""];
+  "R#dataReductionTask" -> "R#hpcModelingTask" [label=""];
+  "R#dataReductionTask" -> "R#dataAcquisitionTask" [label=""];
+  "R#dataAnalysisTask" -> "R#dataReductionTask" [label=""];
+  "R#dataAnalysisTask" -> "R#hpcModelingTask" [label=""];
+  "R#dataCurationTask" -> "R#dataAcquisitionTask" [label=""];
+  "R#dataCurationTask" -> "R#dataReductionTask" [label=""];
+  "R#dataCurationTask" -> "R#dataAnalysisTask" [label=""];
+  "R#hpcModelingTask" -> "R#dataAcquisitionTask" [label=""];
+  "R#hpcModelingTask" -> "R#dataReductionTask" [label=""];
+  "R#hpcModelingTask" -> "R#dataAnalysisTask" [label=""];
+  "R#hpcModelingTask" -> "R#dataCurationTask" [label=""];
+  "R#vizTask" -> "R#dataAcquisitionTask" [label=""];
+  "R#vizTask" -> "R#dataReductionTask" [label=""];
+  "R#vizTask" -> "R#dataAnalysisTask" [label=""];
+  "R#vizTask" -> "R#hpcModelingTask" [label=""];
+
+  // Nodes
+  "R#dataAcquisitionTask" [URL="#dataAcquisitionTask",label="#dataAcquisitionTask",shape=ellipse,color=blue];
+  "R#dataAnalysisTask" [URL="#dataAnalysisTask",label="#dataAnalysisTask",shape=ellipse,color=blue];
+  "R#dataCurationTask" [URL="#dataCurationTask",label="#dataCurationTask",shape=ellipse,color=blue];
+  "R#dataReductionTask" [URL="#dataReductionTask",label="#dataReductionTask",shape=ellipse,color=blue];
+  "R#designOfExperimentTask" [URL="#designOfExperimentTask",label="#designOfExperimentTask",shape=ellipse,color=blue];
+  "R#experimentTask" [URL="#experimentTask",label="#experimentTask",shape=ellipse,color=blue];
+  "R#hpcModelingTask" [URL="#hpcModelingTask",label="#hpcModelingTask",shape=ellipse,color=blue];
+  "R#vizTask" [URL="#vizTask",label="#vizTask",shape=ellipse,color=blue];
+}

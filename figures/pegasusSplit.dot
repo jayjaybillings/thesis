@@ -1,0 +1,66 @@
+digraph {
+  margin=0;  
+  charset="utf-8";
+
+   // Edges
+  "R#curlAction" -> "ice/workflows#Action" [label="rdf:type"];
+  "R#curlAction" -> "R#curlActionType" [label=""];
+  "R#curlActionType" -> "ice/workflows#ShellScript" [label="rdf:type"];
+  "R#curlTask" -> "ice/workflows#Task" [label="rdf:type"];
+  "R#curlTask" -> "R#curlAction" [label=""];
+  "R#curlTask" -> "R#curlActionProperties" [label=""];
+  "R#splitAction" -> "ice/workflows#Action" [label="rdf:type"];
+  "R#splitAction" -> "R#splitActionType" [label=""];
+  "R#splitActionType" -> "ice/workflows#ShellScript" [label="rdf:type"];
+  "R#splitTask" -> "ice/workflows#Task" [label="rdf:type"];
+  "R#splitTask" -> "R#splitAction" [label=""];
+  "R#splitTask" -> "R#splitActionProperties" [label=""];
+  "R#splitTask" -> "R#curlTask" [label="dependsOn"];
+  "R#wcAction" -> "ice/workflows#Action" [label="rdf:type"];
+  "R#wcAction" -> "R#wcActionType" [label=""];
+  "R#wcActionType" -> "ice/workflows#ShellScript" [label="rdf:type"];
+  "R#wcTaskA" -> "ice/workflows#Task" [label="rdf:type"];
+  "R#wcTaskA" -> "R#wcAction" [label=""];
+  "R#wcTaskA" -> "R#partAWCActionProperties" [label=""];
+  "R#wcTaskA" -> "R#splitTask" [label="dependsOn"];
+  "R#wcTaskB" -> "ice/workflows#Task" [label="rdf:type"];
+  "R#wcTaskB" -> "R#wcAction" [label=""];
+  "R#wcTaskB" -> "R#partBWCActionProperties" [label=""];
+  "R#wcTaskB" -> "R#splitTask" [label="dependsOn"];
+  "R#wcTaskC" -> "ice/workflows#Task" [label="rdf:type"];
+  "R#wcTaskC" -> "R#wcAction" [label=""];
+  "R#wcTaskC" -> "R#partCWCActionProperties" [label=""];
+  "R#wcTaskC" -> "R#splitTask" [label="dependsOn"];
+  "R#wcTaskD" -> "ice/workflows#Task" [label="rdf:type"];
+  "R#wcTaskD" -> "R#wcAction" [label=""];
+  "R#wcTaskD" -> "R#partDWCActionProperties" [label=""];
+  "R#wcTaskD" -> "R#splitTask" [label="dependsOn"];
+  "R#splitWFD" -> "ice/workflows#WorkflowDescription" [label="rdf:type"];
+  "R#splitWFD" -> "R#curlTask" [label="executes"];
+  "R#splitWFD" -> "R#splitTask" [label="executes"];
+  "R#splitWFD" -> "R#wcTaskA" [label="executes"];
+  "R#splitWFD" -> "R#wcTaskB" [label="executes"];
+  "R#splitWFD" -> "R#wcTaskC" [label="executes"];
+  "R#splitWFD" -> "R#wcTaskD" [label="executes"];
+
+  // Nodes
+  "R#curlActionProperties" [URL="#curlActionProperties",label="#curlActionProperties",shape=ellipse,color=blue];
+  "R#curlActionType" [URL="#curlActionType",label="#curlActionType",shape=ellipse,color=blue];
+  "R#curlAction" [URL="#curlAction",label="#curlAction",shape=ellipse,color=blue];
+  "R#curlTask" [URL="#curlTask",label="#curlTask",shape=ellipse,color=blue];
+  "R#partAWCActionProperties" [URL="#partAWCActionProperties",label="#partAWCActionProperties",shape=ellipse,color=blue];
+  "R#partBWCActionProperties" [URL="#partBWCActionProperties",label="#partBWCActionProperties",shape=ellipse,color=blue];
+  "R#partCWCActionProperties" [URL="#partCWCActionProperties",label="#partCWCActionProperties",shape=ellipse,color=blue];
+  "R#partDWCActionProperties" [URL="#partDWCActionProperties",label="#partDWCActionProperties",shape=ellipse,color=blue];
+  "R#splitAction" [URL="#splitAction",label="#splitAction",shape=ellipse,color=blue];
+  "R#splitActionProperties" [URL="#splitActionProperties",label="#splitActionProperties",shape=ellipse,color=blue];
+  "R#splitActionType" [URL="#splitActionType",label="#splitActionType",shape=ellipse,color=blue];
+  "R#splitTask" [URL="#splitTask",label="#splitTask",shape=ellipse,color=blue];
+  "R#splitWFD" [URL="#splitWFD",label="#splitWFD",shape=ellipse,color=blue];
+  "R#wcAction" [URL="#wcAction",label="#wcAction",shape=ellipse,color=blue];
+  "R#wcActionType" [URL="#wcActionType",label="#wcActionType",shape=ellipse,color=blue];
+  "R#wcTaskA" [URL="#wcTaskA",label="#wcTaskA",shape=ellipse,color=blue];
+  "R#wcTaskB" [URL="#wcTaskB",label="#wcTaskB",shape=ellipse,color=blue];
+  "R#wcTaskC" [URL="#wcTaskC",label="#wcTaskC",shape=ellipse,color=blue];
+  "R#wcTaskD" [URL="#wcTaskD",label="#wcTaskD",shape=ellipse,color=blue];
+}

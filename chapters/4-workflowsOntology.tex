@@ -129,10 +129,11 @@ The full ontology is also preserved in the Eclipse ICE GitHub repository,
 \baseInclude{chapters/ice-workflows.out.tex}
 
 \section{Examples and Applications}
+\label{workflow-ont-examples}
 
 This section shows examples and applications of workflows marked up as
 instances of the workflow ontology. The full RDF listings for all
-examples are provided in Appendix \ref{app:workflow-examples}.
+examples are provided in the appendices.
 
 \subsection{Basic File Move}
 
@@ -150,7 +151,8 @@ workflows, often occurring as a subworkflow that executes before and after
 other tasks or before and after the main workflow.
 
 Figure \ref{move-workflows} shows a version of this example that has been
-slightly edited to better fit the page.
+slightly edited to better fit the page. The full TURTL version of this workflow
+is available in the appendices, \S \ref{app:move-workflow}.
 
 \begin{figure}[htbp]
 \centering
@@ -158,6 +160,76 @@ slightly edited to better fit the page.
 \caption{Figure showing the basic file move workflow.}
 \label{move-workflows}
 \end{figure}
+
+\subsection{Pegasus Split Example}
+
+Notice comparison is flipped from original. Reason is dependency tracking versus
+flow tracking. ``Water came from'' versus ``water going to.''
+
+\begin{figure}[htbp]
+\centering
+\baseIncludegraphics{figures/pegasusSplit.png}
+\caption{A graph of only the most essential elements of the Pegasus split
+example as marked up in the workflow ontology. This level of detail - far
+removed from the full details - shows the high number of facts captured with
+semantic models.}
+\label{pegasus-split-workflow}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\baseIncludegraphics{figures/pegasus-comparison.png}
+\caption{The graph of figure \ref{pegasus-split-workflow} on the left with only
+the tasks shown, compared to the original Pegasus split example from the
+website on the right.}
+\label{pegasus-comparison}
+\end{figure}
+
+The full TURTL version of this workflow is available in the appendices, \S
+\ref{app:pegasus-workflow}.
+
+\subsection{Eclipse ICE II/III Task Model}
+
+Note flipped dependency model. Note shared dependency on workflow properties.
+Discuss states \& state changes - How to tasks go from task to task through
+state changes, etc.?
+
+Discuss similarities between hasCondition and dependsOn. In what cases are they
+the same?
+
+\begin{figure}[htbp]
+\centering
+\baseIncludegraphics{figures/iceWorkflow.png}
+\caption{The tasks, actions, and states of the standard workflow model of
+Eclipse ICE, as graphed using the workflow ontology.}
+\label{ice-workflow}
+\end{figure}
+
+The full TURTL version of this workflow is available in the appendices, \S
+\ref{app:ice-workflow}.
+
+\subsection{Neutron Scattering User Workflow and Data Pipeline}
+
+Depicting workflow of \ldots, as described in \cite{sns-hfir-data-review}. No
+need for actions because conceptual workflows describe tasks in the abstract.
+
+\begin{figure}[htbp]
+\centering
+\baseIncludegraphics{figures/neutronWorkflow.png}
+\caption{The conceptual neutron scattering user workflow and data pipeline.}
+\label{neutron-workflow}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\baseIncludegraphics{figures/neutronWorkflow-graph.png}
+\caption{The conceptual neutron scattering user workflow and data pipeline
+graphed in the workflow ontology.}
+\label{neutron-workflow-graph}
+\end{figure}
+
+The full TURTL version of this workflow is available in the appendices, \S
+\ref{app:neutron-workflow}.
 
 \section{Notes}
 

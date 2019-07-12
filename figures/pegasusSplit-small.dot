@@ -1,0 +1,19 @@
+digraph {
+  margin=0;  
+  charset="utf-8";
+
+   // Edges
+  "R#splitTask" -> "R#curlTask" [label="dependsOn"];
+  "R#wcTaskA" -> "R#splitTask" [label="dependsOn"];
+  "R#wcTaskB" -> "R#splitTask" [label="dependsOn"];
+  "R#wcTaskC" -> "R#splitTask" [label="dependsOn"];
+  "R#wcTaskD" -> "R#splitTask" [label="dependsOn"];
+
+  // Nodes
+  "R#curlTask" [URL="#curlTask",label="#curlTask",shape=ellipse,color=blue];
+  "R#splitTask" [URL="#splitTask",label="#splitTask",shape=ellipse,color=blue];
+  "R#wcTaskA" [URL="#wcTaskA",label="#wcTaskA",shape=ellipse,color=blue];
+  "R#wcTaskB" [URL="#wcTaskB",label="#wcTaskB",shape=ellipse,color=blue];
+  "R#wcTaskC" [URL="#wcTaskC",label="#wcTaskC",shape=ellipse,color=blue];
+  "R#wcTaskD" [URL="#wcTaskD",label="#wcTaskD",shape=ellipse,color=blue];
+}

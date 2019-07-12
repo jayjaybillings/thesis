@@ -1,0 +1,41 @@
+digraph {
+  charset="utf-8";
+
+  // Edges
+  "R#setupFormTask" -> "R#setupFormAction" [label=""];
+  "R#setupFormTask" -> "R#stateChangeAction" [label="onStateChange"];
+  "R#setupFormTask" -> "R#workflowProperties" [label=""];
+  "R#loadInputTask" -> "R#loadInputAction" [label=""];
+  "R#loadInputTask" -> "R#workflowProperties" [label=""];
+  "R#loadInputTask" -> "R#stateChangeAction" [label="onStateChange"];
+  "R#loadInputTask" -> "R#setupFormTask" [label="dependsOn"];
+  "R#submitFormTask" -> "R#submitFormAction" [label=""];
+  "R#submitFormTask" -> "R#stateChangeAction" [label="onStateChange"];
+  "R#submitFormTask" -> "R#workflowProperties" [label=""];
+  "R#reviewEntriesTask" -> "R#reviewEntriesAction" [label=""];
+  "R#reviewEntriesTask" -> "R#workflowProperties" [label=""];
+  "R#reviewEntriesTask" -> "R#stateChangeAction" [label="onStateChange"];
+  "R#reviewEntriesTask" -> "R#submitFormTask" [label="dependsOn"];
+  "R#processTask" -> "R#processAction" [label=""];
+  "R#processTask" -> "R#stateChangeAction" [label="onStateChange"];
+  "R#processTask" -> "R#workflowProperties" [label=""];
+  "R#processTask" -> "R#reviewEntriesTask" [label="dependsOn"];
+  "R#waitOnUserFeedbackAction" -> "R#userWaitCondition" [label=""];
+  "R#submitFormTask" -> "R#waitOnUserFeedbackAction" [label="hasCondition"];
+
+  // Nodes
+  "R#userWaitCondition" [URL="#userWaitCondition",label="#userWaitCondition",shape=ellipse,color=blue];
+  "R#waitOnUserFeedbackAction" [URL="#waitOnUserFeedbackAction",label="#waitOnUserFeedbackAction",shape=ellipse,color=blue];
+  "R#loadInputAction" [URL="#loadInputAction",label="#loadInputAction",shape=ellipse,color=blue];
+  "R#loadInputTask" [URL="#loadInputTask",label="#loadInputTask",shape=ellipse,color=blue];
+  "R#processAction" [URL="#processAction",label="#processAction",shape=ellipse,color=blue];
+  "R#processTask" [URL="#processTask",label="#processTask",shape=ellipse,color=blue];
+  "R#reviewEntriesAction" [URL="#reviewEntriesAction",label="#reviewEntriesAction",shape=ellipse,color=blue];
+  "R#reviewEntriesTask" [URL="#reviewEntriesTask",label="#reviewEntriesTask",shape=ellipse,color=blue];
+  "R#setupFormAction" [URL="#setupFormAction",label="#setupFormAction",shape=ellipse,color=blue];
+  "R#setupFormTask" [URL="#setupFormTask",label="#setupFormTask",shape=ellipse,color=blue];
+  "R#stateChangeAction" [URL="#stateChangeAction",label="#stateChangeAction",shape=ellipse,color=blue];  
+  "R#submitFormAction" [URL="#submitFormAction",label="#submitFormAction",shape=ellipse,color=blue];
+  "R#submitFormTask" [URL="#submitFormTask",label="#submitFormTask",shape=ellipse,color=blue];
+  "R#workflowProperties" [URL="#workflowProperties",label="#workflowProperties",shape=ellipse,color=blue];
+}
