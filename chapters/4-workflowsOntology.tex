@@ -161,10 +161,85 @@ is available in the appendices, \S \ref{app:move-workflow}.
 \label{move-workflows}
 \end{figure}
 
+\subsection{Combining Cycles and Loops}
+
+The next example covers a more complicated use case which is arguably uncommon
+in more popular workflow engines: cycles and loops. This example, depicted in
+figure \ref{cycle-loop-test}, describes a simple workflow were fifty files are
+created using a threshold limiter and then deleted through a standard fifty
+iteration loop. A threshold limiter limits the amount of something - in this
+case the number of files created - based on a threshold. 
+
+This workflow is a simple model, but is a good analog to more complicated
+systems where data is gathered until a threshold is crossed, such as the number
+of counts from a detector, and then the set of files are processed in a loop. A
+threshold is well modeled by a cycle because the system waits until the
+threshold is met, which requires a periodic (cyclic) check against the limit.
+
+The examples contains two tasks, \#loopTask and \#cycleTask, with a \#loopTask
+having a dependency on \#cycleTask. The dependency is because \#cycleTask
+creates the files, which must all exist before the \#loopTask is executed. The
+action of the cycle task is to create a file using the Linux ``touch'' command
+and its condition is to created files until the number of files in the directory
+is greater than fifty. It checks the number of files using a Java program called
+``fileCounter.'' When this task is complete, the dependency for \#loopTask is
+satisfied and it can execute its action, the Linux ``rm'' command to remove a
+file. The condition on the loop is that it's action is executed for fifty
+iterations specified by the lowerBound, upperBound, and stepSize properties.
+
+Workflows such as this are easy to model in workflow systems where loops and
+cycles are supported. It is also possible to execute this workflow in systems
+that do not directly support those constructs by decomposing it into smaller
+workflows since the number of files is fixed. The \#cycleTask can be
+executed as a linear graph of fifty separate system checks. The \#loopTask can
+be unrolled to fifty separate executions of the remove command. However, limited
+polling and unrolling, respectively, only work in cases where the total number
+of iterations is fixed.
+
+\begin{figure}[htbp]
+\centering
+\baseIncludegraphics{figures/cycle-loop-test.png}
+\caption{This figure shows the combined cycle and loop workflow example.}
+\label{cycle-loop-test}
+\end{figure}
+
+The full TURTL version of this workflow is available in the appendices, \S
+\ref{app:cycle-loop-test}.
+
 \subsection{Pegasus Split Example}
 
-Notice comparison is flipped from original. Reason is dependency tracking versus
-flow tracking. ``Water came from'' versus ``water going to.''
+The Pegasus workflow management system is especially good at executing large,
+parallel workflows. The Pegasus website and documentation provide a simple
+example of splitting files into parts in parallel, \cite{}. The workflow model
+of Pegasus is very well paired with the workflow ontology, and mapping this
+example from its source (\cite{}) can be accomplished in a very straightforward
+fashion.
+
+Figure \ref{pegasus-split-workflow} is graph of the Pegasus splitting example
+showing only the most essential parts, namely tasks, actions, action types, and
+properties from the workflow ontology. Files and parameters in Pegasus map
+directly to properties in the ontology, with the jobs that are executed against
+them mapping to tasks and actions. This example illustrates how quickly even a
+simple workflow can become too hard to easily visualize in its entire scope, so
+figure \ref{pegasus-comparison} shows a) a greatly slimmed down version of the
+worfklow graph that contains only the tasks compared against b) the original
+graph of the image from the Pegasus website.
+
+One important difference of the workflow ontology that is highlighted by
+figure \ref{pegasus-comparison} is that it models workflow tasks and their
+dependencies, whereas other workflow models are focused on data flow. This is
+highlighted by the inversion of the arrow heads across the sides of the image.
+In part a), the arrows point from the tasks at the top of the dependency chain
+down to the initial task that has no dependencies against it. The opposite is
+true in part b), which shows the initial task with no dependencies generating
+output that is fed into the tasks where it is required. 
+
+Both views are correct - they are equally valid perspectives that are akin
+to saying that ``The donkey pulls the cart'' and ``The cart is pulled by the
+donkey.'' As long as the interpreter gets the point that the cart needs to move,
+there is not problem. This inverted graph phenomenon is also witnessed in
+provenance graphs when compared against workflows they describe (see \S
+\ref{provenance-background}).
 
 \begin{figure}[htbp]
 \centering
@@ -190,12 +265,28 @@ The full TURTL version of this workflow is available in the appendices, \S
 
 \subsection{Eclipse ICE II/III Task Model}
 
+Eclipse ICE, which was covered extensively in chapter \ref{ch:eclipse-ice},
+takes an entirely different view on workflow models. Workflows in Eclipse ICE
+are executed as finite state machines that can include human feedback,
+conditional branching, and error conditions. This makes it possible to describe
+workflows in a conceptually abstract way using state machine theory. It is also
+entirely consistent with the more common description of workflows as directed
+acyclic graphs, which can be observed in figure \ref{ice-workflow}. When looked
+cast into the workflow ontology, it is clear that the abstract workflow executed
+by ICE is directed and acyclic, even if its instances may execute conditional
+behavior. 
+
+Discuss elements of the figure, including conditional branch and state change.
+
 Note flipped dependency model. Note shared dependency on workflow properties.
 Discuss states \& state changes - How to tasks go from task to task through
 state changes, etc.?
 
 Discuss similarities between hasCondition and dependsOn. In what cases are they
 the same?
+
+Notice comparison is flipped from original. Reason is dependency tracking versus
+flow tracking. ``Water came from'' versus ``water going to.''
 
 \begin{figure}[htbp]
 \centering

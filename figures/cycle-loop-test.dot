@@ -1,0 +1,45 @@
+digraph {
+  charset="utf-8";
+
+  // Edges
+  "R#fileCounter" -> "Rice/workflows#JavaClass" [label="rdf:type"];
+  "R#totalLimitCycleCondition" -> "Rice/workflows#Cycle" [label="rdf:type"];
+  "R#totalLimitCycleCondition" -> "R#fileCounter" [label=""];
+  "R#cycleAction" -> "R#totalLimitCycleCondition" [label=""];
+  "R#touchAction" -> "R#touchActionType" [label=""];
+  "R#cycleTask" -> "R#cycleAction" [label="hasCondition"];
+  "R#cycleTask" -> "R#touchAction" [label="hasAction"];
+  "R#loopActionType" -> "Rice/workflows#Loop" [label="rdf:type"];
+  "R#loopActionType" -> L0 [label=""];
+  "R#loopActionType" -> L49 [label=""];
+  "R#loopActionType" -> L1 [label=""];
+  "R#loopAction" -> "R#loopActionType" [label=""];
+  "R#rmAction" -> "R#rmActionType" [label=""];
+  "R#loopTask" -> "R#loopAction" [label="hasCondition"];
+  "R#loopTask" -> "R#rmAction" [label="hasAction"];
+  "R#loopTask" -> "R#propValue" [label=""];
+  "R#loopTask" -> "R#cycleTask" [label="dependsOn"];
+  "R#cycle-loop-test" -> "R#cycleTask" [label=""];
+  "R#cycle-loop-test" -> "R#loopTask" [label=""];
+
+  // Nodes
+  L0 [label="lowerBound=0",shape=record];
+  L1 [label="stepSize=1",shape=record];
+  L49 [label="upperBound=49",shape=record];
+  "R#cycle-loop-test" [URL="#cycle-loop-test",label="#cycle-loop-test",shape=ellipse,color=blue];
+  "R#cycleAction" [URL="#cycleAction",label="#cycleAction",shape=ellipse,color=blue];
+  "R#cycleTask" [URL="#cycleTask",label="#cycleTask",shape=ellipse,color=blue];
+  "R#fileCounter" [URL="#fileCounter",label="#fileCounter",shape=ellipse,color=blue];
+  "R#loopAction" [URL="#loopAction",label="#loopAction",shape=ellipse,color=blue];
+  "R#loopActionType" [URL="#loopActionType",label="#loopActionType",shape=ellipse,color=blue];
+  "R#loopTask" [URL="#loopTask",label="#loopTask",shape=ellipse,color=blue];
+  "R#propValue" [URL="#propValue",label="#propValue",shape=ellipse,color=blue];
+  "R#rmAction" [URL="#rmAction",label="#rmAction",shape=ellipse,color=blue];
+  "R#rmActionType" [URL="#rmActionType",label="#rmActionType",shape=ellipse,color=blue];
+  "R#totalLimitCycleCondition" [URL="#totalLimitCycleCondition",label="#totalLimitCycleCondition",shape=ellipse,color=blue];
+  "R#touchAction" [URL="#touchAction",label="#touchAction",shape=ellipse,color=blue];
+  "R#touchActionType" [URL="#touchActionType",label="#touchActionType",shape=ellipse,color=blue];
+  "Rice/workflows#Cycle" [URL="https://www.eclipse.org/ice/workflows#Cycle",label="ice/workflows#Cycle",shape=ellipse,color=blue];
+  "Rice/workflows#Loop" [URL="https://www.eclipse.org/ice/workflows#Loop",label="ice/workflows#Loop",shape=ellipse,color=blue];
+  "Rice/workflows#JavaClass" [URL="https://www.eclipse.org/ice/workflows#JavaClass",label="ice/workflows#JavaClass",shape=ellipse,color=blue];
+}
