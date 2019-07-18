@@ -20,6 +20,8 @@ decision making and scientific computing tool.
 \section{Methodology}
 \label{workflow-ont-method}
 
+\todo{Talk about design philosophy?}
+
 The scientific workflow ontology presented below was developed by considering
 workflows in two environments including 1) the context of problems they solve,
 and 2) as entities that are executed by workflow management systems.
@@ -136,6 +138,7 @@ instances of the workflow ontology. The full RDF listings for all
 examples are provided in the appendices.
 
 \subsection{Basic File Move}
+\label{move-workflow}
 
 The first example is a very simple workflow, showing the move of a file from
 one location to another. The workflow description executes a single task, which
@@ -266,27 +269,41 @@ The full TURTL version of this workflow is available in the appendices, \S
 \subsection{Eclipse ICE II/III Task Model}
 
 Eclipse ICE, which was covered extensively in chapter \ref{ch:eclipse-ice},
-takes an entirely different view on workflow models. Workflows in Eclipse ICE
-are executed as finite state machines that can include human feedback,
-conditional branching, and error conditions. This makes it possible to describe
-workflows in a conceptually abstract way using state machine theory. It is also
-entirely consistent with the more common description of workflows as directed
-acyclic graphs, which can be observed in figure \ref{ice-workflow}. When looked
-cast into the workflow ontology, it is clear that the abstract workflow executed
-by ICE is directed and acyclic, even if its instances may execute conditional
-behavior. 
+uses a somewhat unique view of workflows in its workflow model. Workflows
+in Eclipse ICE are executed as finite state machines that can include human
+feedback, conditional branching, and error conditions. This makes it possible
+to describe workflows in a conceptually abstract way using state machine
+theory. It remains possible to model the execution flow of these state machines
+as directed acyclic graphs, which can be observed in figure \ref{ice-workflow}.
+When cast into the workflow ontology, it is clear that the abstract workflow
+executed by ICE is directed and acyclic, even if its instances may execute with
+cycles and other conditions.
 
-Discuss elements of the figure, including conditional branch and state change.
+ICE workflows start by setting up the Form used to collect
+\#workflowProperties, which is the \#setupFormTask. The workflow continues
+through multiple tasks that depend on the initial form as well as other tasks,
+and which cause state changes within the system. On state changes, the task
+executes the \#stateChangeAction to update the system state, reconfigure data,
+and prepare the next task. User feedback is required and the \#submitForm task
+will wait until this condition is met before transitioning to review and
+processing. Like the earlier examples, arrows point from tasks to previously
+executed tasks through the ``dependsOn'' property such that the last task,
+\#processTask, shows up at the top and does not appear to feed any other tasks.
 
-Note flipped dependency model. Note shared dependency on workflow properties.
-Discuss states \& state changes - How to tasks go from task to task through
-state changes, etc.?
+The system goes from one task to another through the state changes. Each state
+change configures the system so that it can execute its next task, and insures
+that all previous steps were executed properly. Thus the internal logic of when
+a task is complete remain internal to the workflow and no external logic is
+required to satisfy task completion.
 
-Discuss similarities between hasCondition and dependsOn. In what cases are they
-the same?
-
-Notice comparison is flipped from original. Reason is dependency tracking versus
-flow tracking. ``Water came from'' versus ``water going to.''
+This example shows a very interesting relationship between the \#hasCondition
+and \#dependsOn object properties in the ontology: Conditions are just special,
+internal dependencies that are managed directly by the task instead of the
+workflow engine. Conditions execute small ``micro-workflows'' within the task
+that affect its completion, while the workflow engine manages its completion by
+first executing the tasks on which it depends. Thus conditions can be thought of
+as merely subgraphs of the larger workflow that sit between a task and its
+dependencies.
 
 \begin{figure}[htbp]
 \centering
@@ -301,8 +318,13 @@ The full TURTL version of this workflow is available in the appendices, \S
 
 \subsection{Neutron Scattering User Workflow and Data Pipeline}
 
-Depicting workflow of \ldots, as described in \cite{sns-hfir-data-review}. No
-need for actions because conceptual workflows describe tasks in the abstract.
+The Spallation Neutron Source and the High-Flux Isotope Reactor operated by Oak
+Ridge National Laboratory are the premiere neutron sources in the United States.
+Figure \ref{neutron-workflow} shows the idealized, conceptual workflow that
+users can expect while performing experiments at the facility,
+\cite{sns-hfir-data-review}. This example is a good example of the conceptual
+workflows mentioned in chapter \ref{ch:introduction}, \S \ref{workflows} because
+it cannot be executed and represents high-level, idealized tasks.
 
 \begin{figure}[htbp]
 \centering
@@ -310,6 +332,24 @@ need for actions because conceptual workflows describe tasks in the abstract.
 \caption{The conceptual neutron scattering user workflow and data pipeline.}
 \label{neutron-workflow}
 \end{figure}
+
+The graph of this workflow when translated to the workflow ontology is shown in
+figure \ref{neutron-workflow-graph}. One immediate observation is that
+conceptual workflows may not require a deep translation to be understandable,
+and that in some cases only tasks are needed to describe conceptual workflows.
+Still, it is useful to look at conceptual worfklows in the same framework as
+concrete workflows to understand how conceptual workflows can evolve to be
+concrete and executable in the future.
+
+Another important observation is that this workflow is cyclic. It is tempting to
+believe that the Design of Experiments task is the first task because it is the
+top-most, left-most task in the diagram, which to English speakers may suggest
+that it is special. It is true that in some cases Design of Experiments may be
+the first task, but many users walking through this workflow start at other
+points, such as ``HPC, Modeling/Simulation, AI/ML'' because they approach the
+the problem from a theoretical perspective. There are several others cycles
+between the various parts of the graph, such as the ``Data Reduction'' to
+``Data Curation and Archival'' to ``HPC, Modeling/Simulation, AI/ML'' cycle.
 
 \begin{figure}[htbp]
 \centering
@@ -322,54 +362,25 @@ graphed in the workflow ontology.}
 The full TURTL version of this workflow is available in the appendices, \S
 \ref{app:neutron-workflow}.
 
-\section{Notes}
+\section{Summary}
+\label{workflows-ont-summary}
 
-History:
-What was the first appearance of the word workflow and in what context did it
-appear?
+This chapter presented the methodology and reasoning behind creating a workflows
+ontology using the methods discussed in chapter \ref{ch:ontologies}, the
+ontology for scientific workflows itself, and five examples of scientific
+workflows mapped or translated into instance graphs of the ontology. The
+examples in particular demonstrated the central thesis of this work that a
+comprehensive metamodel of scientific workflows could describe multiple types of
+scientific workflows. This includes high-throughput (Pegasus), modeling and
+simulation (Eclipse ICE), iterative workflows that run repeated, looping, and
+cyclic tasks (the cyclic looping example), and purely conceptual workflows that
+are not executed by machines, but remain important for communication and other
+work (Neutron Scattering User Workflow and Data Pipeline). The examples
+further demonstrated that common patterns can be described by the ontology
+in a common way that is agnostic to the underlying platform, much like
+design patterns in programming, (Move Workflow example). 
 
-Background:
-Workflows, etc. - Short, then point to longer discussion in the appendix.
-Ontologies - Semantic Web, {RDF,RDFS,OWL}, CWL, ICE data structures
-
-Results:
-Strategy - Merge CWL and ICE. Develop - if needed - optimization ontology components
-Discuss final product. Point to any additional appendices instead of including in the body.
-
-Case Studies:
-Data/Analysis - ICEMAN
-M\&S - AM?
-Optimization - AM or QC?
-
-\section{Writing}
-
-Open question:
-*How do cyclic, hierarchical, and multi-facility workflows fit into this?
-
-\textbf{So what do you know?}
-
-I know there are three broad types of scientific workflows. I lump testing
-workflows into high-throughput workflows.
-
-Define a workflow problem as any problem that is solved by the execution of a
-workflow. I know that a workflow problem of any type can be decomposed into
-three required components: the workflow description, the engine that executes
-that description, and the data required for the problem. The latter can be
-further decomposed into metadata, bulk data, and provenance.
-
-A workflow may be defined as a collection of tasks that are executed in some
-order by human and non-human actors. A workflow problem can then be defined as
-any problem that is solved the the execution of a specific workflow. Many
-systems exist that can execute workflows encoded in one or more
-\textit{description formats} for both business and scientific problems. There
-are predominantly three types of scientific workflows: High-throughput \cite{},
-Modeling and Simulation \cite{}, and Analysis \cite{}.
-
-Workflow problems of any of type can be decomposed into three required
-components: The workflow description, the \textit{workflow engine} that
-executes the workflow based on the description, and the data required to fully
-describe and execute the workflow. The latter may include - but does not
-necessarily require - metadata that describes the contents of the data itself,
-bulk data including values and quantities of interest used in the workflow.
-(For the purposes of this work, it is sufficient to consider provenance
-information as a type of metadata.)
+What remains is the final question of this thesis: If scientific workflows can
+be uniformly described, what are the implications for interoperability? Chapter
+\ref{ch:interoperability} will seek to address this question by examining the
+many different facets of interoperability.
