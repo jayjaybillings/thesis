@@ -2,21 +2,21 @@
 
 Having ontological tools for describing scientific workflows makes it possible
 to consider how workflow management systems might interoperate to execute
-workflows campaigns that combine and distribute workflows based solely on the
+workflow campaigns that combine and distribute workflows based solely on the
 descriptions of the workflows themselves. As discussed at length in
-chapter \ref{ch:introduction}, interoperable workflow management systems would
+Chapter \ref{ch:introduction}, interoperable workflow management systems would
 be extremely valuable to the scientific computing community because of the need
 to solve increasingly interdisciplinary problems, often using highly
-domain-specific workflow tools, and leverage exotic architectures.
+domain-specific workflow tools, and to leverage exotic architectures.
 
-This chapter will explore various aspects of interoperability, including its
+This chapter explores various aspects of interoperability, including its
 important relationship to interchangeability, and how differences in workflows
-and subworkflows can be identified ontologically and shared. Finally, as an
+and subworkflows can be identified ontologically and be shared. Finally, as an
 example of what ontological tools can offer, a new system for exchanging
-workflows, data, and metadata that is built on ontological principles will be
+workflows, data, and metadata that is built on ontological principles is
 discussed in the context of distributed workflow provenance.
 
-\section{Interoperable versus Interchangeable}
+\section{Interoperable Versus Interchangeable}
 
 It is important to understand the distinction between interoperable and
 interchangeable. Interoperable describes systems that work together by
@@ -29,26 +29,26 @@ Interchangeable workflow descriptions would be as easy to swap as components in
 computers or parts on two cars of the same model. On the other hand,
 interoperability for workflows would mean that the workflow management systems
 that execute workflows could exchange information and operate together to
-insure the complete execution of the workflows.
+ensure complete execution of the workflows.
 
 Requiring components to be interchangeable is a stronger constraint on systems
 than requiring that they be interoperable. The examples of \S
-\ref{workflow-ont-examples} can be used to illustrate this. Consider the Move
+\ref{workflow-ont-examples} can be used to illustrate this. Consider the move
 workflow of \S \ref{move-workflow}. If two systems supported interchangeable
 workflow descriptions, then both systems would be required to fully execute the
 original workflows. Interoperable workflow systems would instead only be
 required to execute the pieces they could - perhaps \#moveAction - while leaving
 the rest to partnering sytems.
 
-The conceptual neutron scattering workflow depicted in figure
+The conceptual neutron scattering workflow shown in Figure
 \ref{neutron-workflow} depicts a system of interoperable workflow management
 systems. This is evident because no one system could be reasonably expected to
 do all the proposed tasks. Modeling and simulation tools to perform density
-functional theory calculations are not the same as tools used to capture, reduce
-and curate experimental data. (The differences in workflow management tools
-across these broad domains were discussed extensively in chapter
+functional theory calculations are not the same as tools used to capture,
+reduce, and curate experimental data. (The differences in workflow management tools
+across these broad domains are discussed extensively in Chapter
 \ref{ch:introduction}.) Real user workflows that are executed to realize this
-conceptual workflow chain together many different workflow tools, scripts, and
+conceptual workflow link together many different workflow tools, scripts, and
 packages that translate, shape, convert, and otherwise manipulate input and
 output data between the steps. Each litle piece of software does its part to
 exchange and transmute the data in such a way that the other pieces can use it,
@@ -56,22 +56,22 @@ and, therefore, creates an interoperable ecosystem.
 
 This chapter explores the lesser of these two, interoperability, because there
 are immediate use cases for describing workflows in a common way and
-distributing the execution across multiple systems. These needs exists in
-science because, as in the example above, no workflow management system exists
-that can handle every subject. Many workflow systems exist that cannot be
-changed, but must still be used. On the contrary, interchangeable workflows
+distributing the execution across multiple systems. These needs exist in
+science because, as in the previous example, no workflow management system
+exists that can handle every subject. Many workflow systems exist that cannot be
+changed but must still be used. On the contrary, interchangeable workflows
 would require that all the systems be rebuilt to meet ``interchangeability
-standards,'' which would increase the development burden in providing the
-capability and thereby decrease the probability of the developers supporting
-it.
+standards,'' which would increase the development burden and thereby decrease
+the probability of the developers supporting it.
 
 \section{Using the Ontology for Interoperability}
 
-The ontology in chapter \ref{ch:workflow-ontology} was shown by example to cover
-a range of workflows. Four of the five examples were workflows that could be
+The ontology in Chapter \ref{ch:workflow-ontology} is shown by example to cover
+a range of workflows. Four of the five examples are workflows that can be
 executed, with two of the examples being executed from significantly different
 workflow engines, Eclipse ICE and Pegasus. Suppose that these four workflows
-were to be strung together into a single workflow that
+were to be strung together into a single workflow that accomplishes the
+following:
 \begin{enumerate}
   \item Gathers some data using a threshold limiter
   \item Moves the data to a work directory
@@ -81,29 +81,30 @@ were to be strung together into a single workflow that
   \item Loops over all the files in the directory, deleting the unneeded ones
 \end{enumerate}
 This combined workflow campaign stiches some of the workflows together directly
-(steps 2-5), and splits the cycling and looping workflow to stage data.
+(steps 2--5), and splits the cycling and looping workflow to stage data.
 Conceptually, this is simple, but in practice it may require years of work.
 
-The remaining question of this work is whether or not the workflows ontology
+The remaining question of this work is whether or not the workflow ontology
 simplifies the execution of a workflow campaign, such as that described by
-this example, i.e. - does it help the workflow management systems charged with
-executing these workflows interoperate. The answer is that, in principle, it
-does because 1) the ontology supports nested workflows by domain and range
-restrictions on Workflow Description and Task, and 2) it provides a formal,
+this example; that is, does it help the workflow management systems charged with
+executing these workflows interoperate? The answer is that, in principle, it
+does because i) the ontology supports nested workflows by domain and range
+restrictions on workflow description and task and ii) it provides a formal,
 common language for describing these different workflows that could not
 otherwise be described collectively. Together these two properties mean that
 any combination of workflows can be walked as a tree, split, and (re)-combined
 so long as the workflows (ontology instances) can understood by the ``client''
 workflow management systems.
 
-An alternative answer to this question is more practical: In so far as it can
-describe workflows for different systems perfectly, it only serves to prove
-how different they are. Thus, practically, the answer is also that the ontology
-does not facilitate greater interoperability for workflows because it does not
-address the differences across workflow management systems, including the
-absence of any particular application programming interface. This is a
-perspective that couples the execution of a workflow problem to the workflow
-management system made to solve it in the first place.
+An alternative answer to this question is more practical: In so far as the
+workflow ontology can describe workflows for different systems perfectly, it
+only serves to prove how different they are. Thus, practically, the answer is
+also that the ontology does not facilitate greater interoperability for
+workflows because it does not address the differences across workflow
+management systems, including the absence of any particular application
+programming interface. This is a perspective that couples the execution of a
+workflow problem to the workflow management system made to solve it in the
+first place.
 
 How can these two positions be rectified? On the one hand, there is a promise of
 improved interoperability provided by machine-readable formality and rigor. On
@@ -112,27 +113,27 @@ systems today are in closed ecosystems.
 
 The answer is that the workflow ontology should not be used for anything other
 than what it is: a means to formally describe, capture, and share information
-about workflows. It can only fix problems it was developed to solve. However, it
-can serve as an important decision making tool and virtual road map for
+about workflows. It can fix only problems it was developed to solve. However, it
+can serve as an important decision-making tool and virtual road map for
 developers, designers, users, and project planners, while still remaining
 something that can be used by a select few tools to translate, decompose,
 catalogue, and investigate workflows. The steps for using the workflow ontology
-effectively in a graded approach. The following sections provide instructions
+effectively is a graded approach. The following sections provide instructions
 for several use cases of the workflow ontology applied to practical workflow
 problems.
 
 \subsection{Typing Workflows}
 
-Chapter \ref{ch:introduction} included details for multiple distinct types of
-workflows and the workflow ontology can be used to categorize any workflow into
+Chapter \ref{ch:introduction} includes details for multiple distinct types of
+workflows, and the workflow ontology can be used to categorize any workflow into
 these types. First, create a model of the workflow in question and visualize it
 using Graphviz. The type of workflow can be determined as follows:
 \begin{itemize}
   \item If the workflow is linear, with no loops, cycles, and directed
   dependencies, then the workflow is a high-throughput workflow based on a
   directed acyclic graph.
-  \item If the workflow requires conditional behavior, external (possibly
-  human) feedback, and exhibits state changes, then the workflow may be a
+  \item If the workflow requires conditional behavior, and external (possibly
+  human) feedback and exhibits state changes, then it may be a
   modeling and simulation or similar type of workflow.
   \item If the workflow requires only tasks with few concrete parameters,
   properties, or anything that would make it executable, then it is a conceptual
@@ -142,10 +143,10 @@ using Graphviz. The type of workflow can be determined as follows:
   testing, optimization, or analysis workflow.
 \end{itemize}
 
-\subsection{Comparing workflows}
+\subsection{Comparing Workflows}
 
 Workflows can be compared directly using the workflow ontology. This is useful
-for workflows typed as described in the previous section, or for workflows that
+for workflows typed as described in the previous section or for workflows that
 are very similar to each other but described in separate and perhaps confusing
 description languages. First, create a model of two or more workflows using the
 workflow ontology, starting with the workflow description (root), tasks,
@@ -154,13 +155,13 @@ actions, and task dependencies. If a precise relationship between the workflows
 continue to model the properties and, if necessary, any state changes in the
 model.
 
-This may be done either manually, or by using RDF tools such as Apache Jena.
+This may be done either manually or by using RDF tools such as Apache Jena.
 Ontology and RDF model mergers are common features of these tools since the
 semantic underpinnings of RDF make it possible to compare graphs directly. The
-knowledge to determine whether or not two workflow models are similar using the
-ontology is embedded in the graph structure itself. Nodes (tasks, actions,
-etc.) can be compared as the graphs are walked, either to neighbors at the same
-level or different levels across the graphs.
+knowledge to use the ontology to determine whether or not two workflow models
+are similar is embedded in the graph structure itself. Nodes
+(tasks, actions, etc.) can be compared as the graphs are walked, either to
+neighbors at the same level or to different levels across the graphs.
 
 \subsection{Building Campaigns}
 
@@ -168,13 +169,13 @@ Workflow campaigns can be built in a straightforward fashion once workflows have
 been typed, compared, and thoroughly analyzed. For workflows that can actually
 be executed, a new root-level workflow description must be created. Each
 distinct workflow description that will be part of the campaign can be added
-into the into this new parent workflow description through the ontology's
-``executes'' object property, which can be applied Workflow Descriptions as
-well as Tasks. This produces a single workflow description with all subservient
+into the new parent workflow description through the ontology's
+``executes'' object property, which can be applied workflow descriptions as
+well as tasks. This produces a single workflow description with all subservient
 workflow descriptions in the same graph.
 
 Distributed workflow campaigns can be produced by using the ``hasHost'' property
-for WorkflowDescriptions and Tasks to indicate that the selected portion should
+for workflow descriptions and tasks to indicate that the selected portion should
 be executed on the specified host.
 
 Alternatively, workflow campaigns can be created by simply subdividing
@@ -193,28 +194,28 @@ Actors must be free to\ldots
 
 This section describes the Basic Artifcat Tracking System (BATS) that
 was developed as part of this thesis work to address data management,
-provenance and workflows. This is an example of how new technologies that solve
-longstanding problems can benefit from leveraging ontological principles, and
+provenance, and workflows. This is an example of how new technologies that solve
+longstanding problems can benefit from leveraging ontological principles and
 especially how this can be applied to the problems of workflow provenance.
 
 \baseInclude{pubs/billings-workflows-blockchain/content}
 
 \section{Summary}
 
-This chapter discussed various considerations for interoperability for
+This chapter discusses various considerations for interoperability for
 scientific workflows from the perspective of the workflow ontology developed as
-part of this work. It illustrated a problem faced by many new tools, but
+part of this work. It illustrates a problem faced by many new tools but
 especially this one: Promising opportunities would be available if tighter
-integration existed within the tooling stack. However, that only limits the
-usefulness of the workflow ontology as a programming tool, and it still
+integration existed within the tooling stack. However, this situation limits
+only the usefulness of the workflow ontology as a programming tool; it still
 functions well as a tool for reasoning and discussing scientific workflows. 
 
-This chapter also examined a real-world problem where the workflow ontology is
+This chapter also examines a real-world problem where the workflow ontology is
 proving useful in sharing and distributing provenance information across a
-permissioned distributed ledger. This example was provided to illustrate how new
+permissioned distributed ledger. This example is provided to illustrate how new
 technologies can leverage the workflow ontology from the outset to solve new
 problems. 
 
-The next chapter will consider these findings and other aspects of this work to
+The next chapter considers these findings and other aspects of this work to
 draw conclusions about the value of ontological tools in the scientific workflow
 space.
