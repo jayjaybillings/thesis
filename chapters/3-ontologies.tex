@@ -263,8 +263,8 @@ discussed in the extant literature.
 \subsection{The Resource Description Framework}
 
 RDF is a W3C standard for exchanging data
-across the internet \cite{rdf-w3c,rdf-concepts-syntax}. It forms the basis of a
-so-called \textit{semantic web} where data resources are both linked and
+across the internet \cite{noauthor_rdf_nodate}\cite{noauthor_rdf_nodate-3}. It
+forms the basis of a so-called \textit{semantic web} where data resources are both linked and
 self-describing, thus making large knowledge graphs that can be easily walked
 to understand and find meaning in data.
 
@@ -285,16 +285,16 @@ the ball is red.'' This type of statement is called a \textit{triple}.
 
 RDF triples are represented as full graph data structures in memory and are
 serialized to any one of a number of file formats, including an XML-based format
-and several formats that are easier for humans to read \cite{rdf-wikipedia}.
+and several formats that are easier for humans to read \cite{noauthor_resource_2019}.
 Most of the supported formats for RDF are standardized, although several formats
 add support for additional features not found in the standard. This includes the
 JSON Linked Data (JSON-LD) and Notation3 formats. Unless otherwise
 specified, the remainder of this document uses a very readable and common
-serialization called the Terse RDF Triple Language (TURTL) \cite{turtl}. This
-format is signifcantly easier to understand than others for humans and has the
-added advantage of being succinct in written text. For example, the statement
-``The color of the ball is red'' would be rendered as a TURTLE triple with
-\begin{lstlisting}[language=TURTL]
+serialization called the Terse RDF Triple Language (TURTL)
+\cite{noauthor_rdf_nodate-4}. This format is signifcantly easier to understand
+than others for humans and has the added advantage of being succinct in written
+text. For example, the statement ``The color of the ball is red'' would be
+rendered as a TURTLE triple with \begin{lstlisting}[language=TURTL]
 <#ball>
     hasColor <red>.
 \end{lstlisting}
@@ -334,8 +334,8 @@ Notice the previous listing includes the term
 \end{lstlisting}
 This term assigns a \textit{literal} value of ``Oak Ridge National Laboratory''
 to the subject of the triple. The additional characters at the end ---
-``\^\^xsd:string''--- set the type of the literal to an XML schema definition
-string. Literal values can be set for many different types of data, including
+``\textasciicircum\textasciicircum xsd:string''--- set the type of the literal
+to an XML schema definition string. Literal values can be set for many different types of data, including
 most primitives such as integers and floating point numbers found in standard
 programming languages.
 
@@ -356,11 +356,11 @@ ability to query it using the SPARQL query language.
 \subsubsection{Containers}
 
 RDF has several \textit{containers} that can hold sets of data
-\cite{rdf-syntax}. These include rdfs:Container, rdf:Bag, rdf:Seq, and rdf:Alt.
-These containers are considered to be open, and additional data can be added.
-Alternative closed containers called \textit{collections} represent sets of data
-that cannot be modified and that are ordered from first to last element. The
-only supported collection in the RDF specification is rdf:List.
+\cite{noauthor_rdf_nodate-3}. These include rdfs:Container, rdf:Bag, rdf:Seq,
+and rdf:Alt. These containers are considered to be open, and additional data can
+be added. Alternative closed containers called \textit{collections} represent
+sets of data that cannot be modified and that are ordered from first to last
+element. The only supported collection in the RDF specification is rdf:List.
 
 Containers and collections are signficantly different than similarly named
 structures in object-oriented programming languages, especially where generic
@@ -374,7 +374,7 @@ values and entries in a data file. This information is provided for users in
 a format specification for the data language but not in a way that can be
 programmatically enforced. 
 
-RDFS provides this capability for RDF \cite{rdf-schema,
+RDFS provides this capability for RDF \cite{noauthor_rdf_nodate-5}\cite{
 allemang_semantic_2008}. RDFS supports describing sets of RDF resources in a
 machine readable way that can subsequently be used for validation and inference.
 RDFS is itself defined in RDF, so the sets, or classes, of resources defined by
@@ -428,8 +428,8 @@ properties alike.
 
 Many schemas exist for reuse on the internet and are available for
 public download through sites like Linked Data Applications
-\cite{lov}. These schemas can be included through an approriate import
-call in the RDF file. In TURTL, imports are handled with the ``@prefix''
+\cite{noauthor_linked_nodate-1}. These schemas can be included through an
+approriate import call in the RDF file. In TURTL, imports are handled with the ``@prefix''
 statement, as follows:
 \begin{lstlisting}[language=TURTL]
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -455,9 +455,9 @@ available in OWL.
 \subsection{Web Ontology Language}
 
 OWL builds on RDF and RDFS to add additional
-features for inferencing and formal ontological syntax \cite{owl-2}. The major
-addition to OWL over RDFS is a set of properties that describe inverse,
-transitive, symmetric, and equivalent relationships
+features for inferencing and formal ontological syntax \cite{
+noauthor_owl_nodate}. The major addition to OWL over RDFS is a set of
+properties that describe inverse, transitive, symmetric, and equivalent relationships
 \cite{allemang_semantic_2008}. Unlike RDF and RDFS, the primary purpose of OWL
 it to provide enough semantic constructs so that inferencing can be greatly
 expanded for well-described data. This makes it possible for instance data that
@@ -470,7 +470,7 @@ is serialized using RDF (which is not a strict requirement) extension is
 performed simply by creating a new RDF triple that links the relevant terms.
 
 Modeling ontologies with OWL is different than modeling in languages such as the
-UML \cite{UML}. There are many subtle differences
+UML. There are many subtle differences
 between the two languages, but UML is more general. In fact, OWL is
 defined in part with UML models. One additional difference of particular
 importance is that classes in UML can have member variables that are tied
@@ -490,7 +490,7 @@ it. The complete version of OWL is commonly called OWL Full or just OWL. The two
 sublanguages of OWL are OWL Lite and OWL DL. OWL Lite is a lightweight subset
 of OWL on which inferencing models can be run very quickly. OWL DL
 is a middle ground in terms of feature richness and performance
-during inferencing \cite{owl-syntax}.
+during inferencing \cite{noauthor_owl_nodate-2}.
 
 \subsection{Useful Tools}
 
@@ -501,8 +501,8 @@ these tools, not as an endorsement but as a reference for the interested reader.
 \subsubsection{Linked Open Vocabularies}
 
 The Linked Open Vocabularies (LOV) project is a repository for ontologies from
-the Ontology Engineering Group \cite{lov}. The site provides up-to-date
-information on ontologies and vocabularies for a large number of projects, all
+the Ontology Engineering Group \cite{noauthor_linked_nodate-1}. The site
+provides up-to-date information on ontologies and vocabularies for a large number of projects, all
 of which is searchable and can be examined with a friendly web interface. This
 repository can be used to find high-quality, well-tested resources instead of
 writing new ones from scratch.
@@ -511,8 +511,8 @@ writing new ones from scratch.
 
 Prot\'eg\'e is an open source ontology editor created by the Stanford Center for
 Biomedical Informatics Research at the Stanford University School of Medicine
-\cite{protege}. Ontologies can be managed as individual files or as part of
-version control repositories. In addition to providing general creation and
+\cite{noauthor_protege_nodate}. Ontologies can be managed as individual files or
+as part of version control repositories. In addition to providing general creation and
 editorial support for ontologies, Prot\'eg\'e includes a large number of plugins
 that provide extra tools such as visualization engines and documentation
 exporters.
@@ -524,8 +524,8 @@ includes the original versions of graphs shown later in the text.
 \subsubsection{Apache Jena}
 
 Apache Jena is an open source framework that supports six different projects for
-semantic web and linked data applications \cite{apache-jena}. These include an
-RDF utility library and SPARQL query engine, a file-based and a web-based
+semantic web and linked data applications \cite{noauthor_apache_nodate-1}. These
+include an RDF utility library and SPARQL query engine, a file-based and a web-based
 triple store, and ontology and inference libraries. Apache Jena is written in
 Java, although the web-based triple store is available by standard HTTP calls. 
 Apache Jena is very useful for writing programs that can directly manipulate
@@ -534,21 +534,21 @@ RDF resources, including storing the graphs for later use.
 \subsubsection{Eclipse}
 
 The Eclipse Platform is an open source platform that has more than 300
-projects, managed by the Eclipse Foundation \cite{eclipse}. The
+projects, managed by the Eclipse Foundation. The
 platform includes many different tools, including a generic XML editor
 that is very good for RDF/XML files and a TURTL editor, that is available as a
-third-party plugin \cite{xturtl}. The platform includes additional tools for
-managing basic file manipulation for ontologies and RDF data. It also includes
-tools for managing software and data repositories. The majority of this
-dissertation was written using the Texlipse plugin to Eclipse \cite{texlipse}.
+third-party plugin \cite{ noauthor_xturtle_nodate}. The platform includes
+additional tools for managing basic file manipulation for ontologies and RDF
+data. It also includes tools for managing software and data repositories. The
+majority of this dissertation was written using the Texlipse plugin to Eclipse.
 
 \subsubsection{Graphviz}
 
 Graphviz is a powerful graph visualization tool that supports the Dot language
-\cite{graphviz}. Nodes in graphs are drawn as circles with labels and
-connections between the nodes are drawn as curves with annotations that describe
-their connection type. This is very useful for RDF graphs where both the node
-types and connections vary depending on the details of the triple.
+\cite{noauthor_graphviz_nodate}. Nodes in graphs are drawn as circles with
+labels and connections between the nodes are drawn as curves with annotations
+that describe their connection type. This is very useful for RDF graphs where
+both the node types and connections vary depending on the details of the triple.
 
 \subsection{Our Case Study in RDF and OWL}
 
