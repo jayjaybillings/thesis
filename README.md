@@ -4,18 +4,23 @@ This is the git repository for my PhD thesis and related research. It acts simul
 
 ## Prereqs
 
-LaTeX
-pdflatex
-BibTex
-BibTool
-git
+* LaTeX
+* pdflatex
+* BibTex
+* BibTool
+* git
 
 ## Recommended Tools
 
-Texlipse
-Overleaf
+* Texlipse
+* Overleaf
 
 ## Setup
+
+Clone the thesis and all of the submodules:
+```bash
+git clone --recurse-submodules https://github.com/jayjaybillings/thesis
+```
 
 For Texlipse, create bin/ and tmp/ directories. Git will ignore these. Texlipse needs them for the build. Texlipse will automatically try to build the project once Eclipse is started. 
 
