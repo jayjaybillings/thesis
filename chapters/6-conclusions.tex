@@ -1,36 +1,52 @@
 \chapter{Conclusions and Future Work}\label{ch:conclusions}
 
-It would certainly be fair to conclude that this work has a
-slight epistemological flare. Much of this work is focused on the persistence
-that different types of workflows can all be justifiably described as
-workflows. While this is indeed epistemological, it is necessary in light
-of the extremely great challenges posed within next generation problems, etc.
+It would certainly be fair to conclude that this work has a slight
+epistemological flare. Much of this work is focused on the insistence that
+different types of workflows can all be justifiably described as workflows.
+While this is indeed epistemological, it is necessary in light of the extremely
+great challenges posed by next generation problems, etc. It is not sufficient to
+merely assert equality in lieu of developing a sophisticated and beneficial
+understanding.
 
 Chapter \ref{ch:introduction} describes the problems that exist because of the
 proliferation of scientific workflow management systems and thus the need for a
 more common understanding. In an ideal world, it would be great for a set of
 common building blocks to be adopted and used widely, but that remains highly
 unlikely for the simple fact that developers, scientists, and other makers are
-all busy people. This phenomenon is well documented in \cite{ogrady_new_2013},
-which describes how developers, increasing pressed to deliver more with less,
-push for the solutions that make them more productive and thus more valuable. It
-is easy to say that everyone would have that with sophisticated common building
-blocks, but while years of effort are being expended to make the one true common
-building blocks that will make everyone productive, developers will be making
-tools that make them successful and moving on to more complicated problems. Thus
-the best solution is develop a common understanding of these tools, problems,
-and how they can work together.
+all busy people and the effort is costly. This phenomenon is well documented in
+\cite{ogrady_new_2013}, which describes how developers, increasingly pressed to
+deliver more with less, push for the solutions that make them more productive
+and thus more valuable. It is easy to say that everyone would be more productive
+with sophisticated common building blocks, but while years of effort are being
+expended to make the one true set of common building blocks that will make
+everyone productive, developers will be making tools that make them successful
+and moving on to more complicated problems. Thus the best solution is develop a
+common understanding of these tools and problems.
 
 This conclusion is well supported by the narrative herein. While Chapter
 \ref{ch:introduction} reviews many of the existing workflow technologies that
 are commonly recognized, Chapter \ref{ch:eclipse-ice} presents a detailed
-account of a modeling and simulation workflow environment, where decision making, looping, human/intelligent agent intervention, and cycling all
-exist within the same workflow. The examples of Chapter
-\ref{ch:workflow-ontology} showed that the workflow ontology of this work could
-indeed be used to describe these different types of workflows from the previous
-chapters in a consistent, semantic way.
+account of a modeling and simulation workflow management system, where decision
+making, looping, human/intelligent agent intervention, and cycling all exist
+within the same workflow. The examples of Chapter \ref{ch:workflow-ontology}
+showed that the workflow ontology can indeed be used to describe these different
+types of workflows from the previous chapters in a consistent, semantic way.
 
-Chapter \ref{ch:interoperability} presented INTEROPERABILITY PROBLEM!!!!
+Chapter \ref{ch:interoperability} concluded that it was impossible to apply the
+workflow ontology to enable interoperability in a broad sense because of the
+significant differences between workflow management systems, but that it
+remained possible for some systems. Furthermore, the decision making power
+provided by the workflow ontology is decoupled from the actual code that is
+written to execute the workflows. Execution is not a requirement if value is
+gained elsewhere, including in reasoning and planning.
+
+One final conclusion of note is that the workflow ontology is better at
+highlighting the differences between workflows than the similarities. The
+examples of \S \ref{workflow-ont-examples} are unremarkable in their
+similarities: they all have tasks gathered together that require some properties
+and execute based on some order by dependency. The differences are the most
+interesting part, with cycles and other features acting as key indicators of
+topics in need of further investigation.
 
 \section{Future Work}
 
@@ -67,38 +83,38 @@ The SciData model is one such effort \cite{noauthor_scidata_nodate}. The
 challenge for SciData and similar efforts is being descriptive enough to capture
 data across multiple domains. Their value proposition applies to the future of
 this work as well: uniformity (and/or transitivity) in data models increases
-productivity and drives discovery by eliminating knowledge gaps and
-duplication. Until sophisticated data metamodels are developed, adopted, and
-supported by tooling ecosystems, the best but far from optimal solution is to
-use RDF as was done in the examples of \S \ref{workflow-ont-examples}.
+productivity and drives discovery by eliminating knowledge gaps and duplication.
+Until sophisticated data metamodels are developed, adopted, and supported by
+tooling ecosystems, the best but far from optimal solution is to use RDF as was
+done in the examples of \S \ref{workflow-ont-examples}.
 
 \subsection{Artificial Intelligence for Workflows}
 
 Humans are the ultimate tool builders, but perhaps more importantly we are
 especially good at recognizing when new tools are needed. Digging holes with
-shovels is all well and good since it is much better than using our hands,
-but excavators are far superior for large jobs. Never has this been more
-true than in our quest to develop artificial intelligence and machine learning
-(AI/ML) tools.
+shovels is all well and good since it is much better than using our hands, but
+excavators are far superior for large jobs. Never has this been more true than
+in our quest to develop artificial intelligence and machine learning (AI/ML)
+tools.
 
 One extremely interesting possibility for the application of AI/ML is to develop
-a platform that can automatically ingest new workflow engines and tasks
-into an executable service framework based only on new software or data
-artifacts that are dynamically discovered. Previous work on the Eclipse ICE
-project examined this in the context of using grammar inference to
-automatically generate workflow tasks, shims, and input/output routines for new
-workflow tasks, \cite{bennett_rapid_2015}. The effort combined code
-generation tools from Xtext, Backus-Naur forms in context free grammars, and
-workflow tools to create a capstone in an automation trend for
-the Eclipse ICE project: plugins that required two or more weeks to write by
-hand when the project started could be autogenerated in a fraction of a second
-eight years later with generative models.
+a platform that can automatically ingest new workflow engines and tasks into an
+executable service framework based only on new software or data artifacts that
+are dynamically discovered. Previous work on the Eclipse ICE project examined
+this in the context of using grammar inference to automatically generate
+workflow tasks, shims, and input/output routines for new workflow tasks,
+\cite{bennett_rapid_2015}. The effort combined code generation tools from Xtext,
+Backus-Naur forms in context free grammars, and workflow tools to create a
+capstone in an automation trend for the Eclipse ICE project: plugins that
+required two or more weeks to write by hand when the project started could be
+autogenerated in a fraction of a second eight years later with generative
+models.
 
 A similar but broader effort could be undertaken using the workflow ontology as
 an intermediate object representation (IOR) for workflow models and a
 microservices framework as the coupler for workflow management systems. The
-conceptual workflow for hooking up a new workflow model and/or management
-system would be:
+conceptual workflow for hooking up a new workflow model and/or management system
+would be:
 \begin{enumerate}
   \item Apply grammar inference tools to example workflows from the new system
   to learn the grammar.
