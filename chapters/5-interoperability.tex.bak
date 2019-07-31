@@ -43,7 +43,7 @@ workflow of \S \ref{move-workflow}. If two systems supported interchangeable
 workflow descriptions, then both systems would be required to fully execute the
 original workflows. Interoperable workflow systems would instead only be
 required to execute the pieces they could - perhaps \#moveAction - while leaving
-the rest to partnering systems.
+the rest to partnering sytems.
 
 The conceptual neutron scattering workflow shown in Figure
 \ref{neutron-workflow} depicts a system of interoperable workflow management
@@ -89,11 +89,11 @@ systems.
 Consider some of the issues that can be quickly and easily identified between
 Eclipse ICE versions 2.0 and 3.0. An existing system, such as Eclipse ICE 2.0,
 likely has a large number of features, requirements, bug fixes, and ---being completely
-honest--- ``hacks'' that were necessary to achieve desired functionality. These
+honest--- ``hacks'' that were necessary to acheive desired functionality. These
 could be very obvious, such as the fact that Eclipse ICE 2.0 does not use the Resource
 Description Framework (RDF) whereas version 3.0 does. Several examples of these
 types of problems are discussed next to illustrate the nature of
-compatibility issues between systems, including systems developed by the same authors.
+compability issues between systems, including systems developed by the same authors.
 
 \subsubsection{Changes in Data Structure Design}
 \label{ice-data}
@@ -143,7 +143,7 @@ ICE 2.0 workflows that execute in ICE 3.0 will need to be broken into smaller
 pieces that divide any regions of dependency management into distinct steps.
 Alternatively, a decorator pattern could be implemented around the model to
 capture function calls and thereby identify which elements of the data model
-updated. This would, in effect, achieve the properties of the ICE 2.0 model
+updated. This would, in effect, acheive the properties of the ICE 2.0 model
 using the new model provided through Apache Jena.
 
 \section{Using the Ontology for Interoperability}
@@ -162,7 +162,7 @@ following:
   \item Moves the data and results back to the original directory
   \item Loops over all the files in the directory, deleting the unneeded ones
 \end{enumerate}
-This combined workflow campaign stitches some of the workflows together directly
+This combined workflow campaign stiches some of the workflows together directly
 (steps 2--5) and splits the cycling and looping workflow to stage data.
 Conceptually, this is simple, but in practice it may require years of work.
 
@@ -199,7 +199,7 @@ about workflows. It can fix only problems it was developed to solve. However, it
 can serve as an important decision-making tool and virtual road map for
 developers, designers, users, and project planners, while remaining
 usable by a select few tools to translate, decompose,
-cataloger, and investigate workflows. The formality and machine readability
+catalogue, and investigate workflows. The formality and machine readability
 has certain other implications that are are discussed in Chapter
 \ref{ch:conclusions}. Effectively using the workflow ontology requires a graded
 approach. The following sections provide instructions for several use cases of

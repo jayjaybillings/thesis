@@ -80,7 +80,7 @@ Pegasus \cite{noauthor_pegasus_nodate}, the Common Workflow Language
 \cite{noauthor_common-workflow-language:_2018}, Cylc
 \cite{j_oliver_cylc:_2018}, Chiron \cite{ ogasawara_chiron:_nodate}, Moteur
 \cite{glatard_flexible_2008}, and SAW \cite{clay_incorporating_2015}. One
-unnamed hierarchical workflow management system from Argonne National
+unnamed heirarchical workflow management system from Argonne National
 Laboratory was also reviewed.
 
 \section{Workflow Ontology}
@@ -340,7 +340,7 @@ Figure \ref{neutron-workflow-graph} shows the graph of this workflow when
 translated to the workflow ontology. One immediate observation is that
 conceptual workflows may not require a deep translation to be understandable
 and that in some cases only tasks are needed to describe conceptual workflows.
-Still, it is useful to look at conceptual workflows in the same framework as
+Still, it is useful to look at conceptual worfklows in the same framework as
 concrete workflows to understand how conceptual workflows can evolve to be
 concrete and executable in the future.
 

@@ -55,7 +55,7 @@ described here shows that:
 \item
   Such a system is applicable to a suite of problems in energy science,
   including virtual battery simulations, additive manufacturing and
-  other areas, (see ``Illustrative Examples'').
+  other areas, (see ``Illlustrative Examples'').
 \end{itemize}
 
 This section concludes with an introduction of the workflow model addressed by
@@ -128,7 +128,7 @@ This monitoring may be a simple check as to whether or not the execution
 has completed, or it may involve monitoring the output of individual
 quantities to examine the calculation state. The latter is often used to
 detect calculation errors that will result in incorrect results. If such
-problems are found, the job is typically canceled (``killed'') to save
+problems are found, the job is typically cancelled (``killed'') to save
 compute resources and is then re-run later.
 
 In this work, it should be assumed---unless otherwise noted---that
@@ -485,7 +485,7 @@ software that can utilize quantum hardware or perform calculations on
 simulated quantum hardware. Humble et al. created a simulator for
 adiabatic quantum computers where workflows were added to ICE to support
 interaction with the simulator, but also to process large sets of
-quadratic binary optimization problems, \cite{humble_integrated_2014}. Figure 5
+quadratic binary optimimzation problems, \cite{humble_integrated_2014}. Figure 5
 shows the workbench for this project.
 
 \begin{figure}[htbp]
@@ -592,8 +592,8 @@ clear now as it was in Mandal's 2007 paper that the best of all workflow
 management tools will be needed to address high-performance computing
 problems at the exascale and beyond.
 
-\section*{Acknowledgments}\label{acknowledgements}
-\addcontentsline{toc}{section}{Acknowledgments}
+\section*{Acknowledgements}\label{acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgements}
 
 The authors are grateful for the assistance and support of the following
 people and institutions without which this work would not have been

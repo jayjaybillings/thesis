@@ -24,12 +24,12 @@ benefit to computing because each new language or tool is designed purposely to
 solve a new problem, or to solve an old problem in a new way. This allows for
 the entire technology stack to  be layered, optimized, and deployed in ways
 specifically designed to exploit favorable conditions in complex systems. Case
-in point, older programming languages such as Fortran and COBOL did not lose
+in point, older programming languages such as Fortran and Kobol did not lose
 popularity because of divine intervention. They lost popularity because of
 economic forces that drove the development and adoption of more portable and
-expressive system languages, such as C. Fortran and COBOL are still used in
+expressive system languages, such as C. Fortran and Kobol are still used in
 places where they make sense, including high-performance computing and finance,
-but better tools are used where Fortran and COBOL are less than optimal.
+but better tools are used where Fortran and Kobol are less than optimal.
 
 One important class of programming languages and tools includes those that
 can be combined with data to streamline and, in many cases, automate the
@@ -40,7 +40,7 @@ because of the poorly understood panoply of tools found in this space.
 
 \section{Specific Contributions}
 
-This work examines workflow problems and associated technology under two
+This work examines workflow problems and assocciated technology under two
 assumptions that can be seen in parallel with broader
 computing ecosystems. Specifically, it assumes that (i) there are no preferred
 universal languages or tools and (ii) lack of standardization
@@ -56,7 +56,7 @@ on these assumptions, this work shows that
 \end{itemize}
 
 This chapter provides a thorough introduction of the workflow problem space as
-well as some philosophical background to prepare the reader. Chapter
+well as some philosopical background to prepare the reader. Chapter
 \ref{ch:eclipse-ice} introduces the Eclipse Integrated Computational Environment
 (Eclipse ICE), which acted as the primary model and served as a starting point
 for much of the ontological and technical work. Chapter \ref{ch:ontologies}
@@ -90,7 +90,7 @@ The ontological and classification work presented in Chapters
 \ref{ch:ontologies} and \ref{ch:interoperability} is completely new, and at
 time of this writing has not been published in manuscript form in
 workshop, conference, or journal publications. However, the full source of the
-ontologies and code has been made available on GitHub.com in the Eclipse ICE repository,
+ontologies and code has been made available on Github.com in the Eclipse ICE repository,
 \cite{billings_ice_2019}.
 
 \section{Workflows}

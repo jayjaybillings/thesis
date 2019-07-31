@@ -61,10 +61,10 @@ United States Currency, Coin would have subclasses Nickel and Penny. A roll of
 pennies from a bank would contain fifty pennies, all of which would be objects
 or instances of the Penny base class.
 
-\subsection{Ontological Openness}
+\subsection{Ontological Openess}
 \label{ont-openess}
 
-Ontological openness is the quality of a graph to be left open to modification.
+Ontological openess is the quality of a graph to be left open to modification.
 Open ontologies are capable of describing knowledge from multiple perspectives
 that more accurately describe the nature of the object. It is possible for
 individual entities within the ontology to be modified, or for new graphs to be
@@ -106,7 +106,7 @@ and obvious choice because most of the statements indicate that the members of
 the committee ``are'' professors, etc. Taxonomies are commonly understood as
 tools used to organize families, including family trees in genealogy.
 
-Statements 1-3 in the list describe six individuals who are all professors.
+Statements 1-3 in the list describe six indivuals who are all professors.
 However, three distinct types of professors are listed. Since there is no
 statement saying otherwise, it is reasonable to assume (and in fact correct),
 that the terms full, adjunct, and research professor all describe separate types
@@ -224,7 +224,7 @@ to show its path next to the black lines.
 \includegraphics[width=\textwidth]{figures/tc-ont-instances.png}
 \caption{Instance graph that uses the ontology in Figure \ref{ont-classes}
 to encode the example in \S \ref{case-study}. The green line is not of
-ontological significance but is colored separately to show the full connection.}
+ontological signficnance but is colored separately to show the full connection.}
 \label{ont-instances}
 \end{figure}
 
@@ -255,7 +255,7 @@ formality that is also useful to the human reader. OWL is based on RDFS, which
 is in turn based on RDF.
 
 Summaries of these languages are provided below based on the most recent
-language specifications and other sources, \cite{allemang_semantic_2008}. These
+langauge specifications and other sources, \cite{allemang_semantic_2008}. These
 summaries also include practical findings from the author who as a user of
 these languages discovered a number of pitfalls that are not commonly or widely
 discussed in the extant literature.
@@ -291,7 +291,7 @@ add support for additional features not found in the standard. This includes the
 JSON Linked Data (JSON-LD) and Notation3 formats. Unless otherwise
 specified, the remainder of this document uses a very readable and common
 serialization called the Terse RDF Triple Language (TURTL)
-\cite{noauthor_rdf_nodate-4}. This format is significantly easier to understand
+\cite{noauthor_rdf_nodate-4}. This format is signifcantly easier to understand
 than others for humans and has the added advantage of being succinct in written
 text. For example, the statement ``The color of the ball is red'' would be
 rendered as a TURTLE triple with \begin{lstlisting}[language=TURTL]
@@ -360,7 +360,7 @@ be added. Alternative closed containers called \textit{collections} represent
 sets of data that cannot be modified and that are ordered from first to last
 element. The only supported collection in the RDF specification is rdf:List.
 
-Containers and collections are significantly different than similarly named
+Containers and collections are signficantly different than similarly named
 structures in object-oriented programming languages, especially where generic
 and templated programming is concerned.
 
@@ -427,7 +427,7 @@ properties alike.
 Many schemas exist for reuse on the internet and are available for
 public download through sites like Linked Data Applications
 \cite{noauthor_linked_nodate-1}. These schemas can be included through an
-appropriate import call in the RDF file. In TURTL, imports are handled with the ``@prefix''
+approriate import call in the RDF file. In TURTL, imports are handled with the ``@prefix''
 statement, as follows:
 \begin{lstlisting}[language=TURTL]
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .

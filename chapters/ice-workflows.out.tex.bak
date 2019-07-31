@@ -5,7 +5,7 @@ This is an action that can be executed in a task of the workflow.
 			
 \begin{figure}[htbp] \centering
 \includegraphics[width=\textwidth]{figures/action.png}
-\caption{Action and its relationships to other classes in the ontology.}
+\caption{Action and its relationshiops to other classes in the ontology.}
 \label{action}
 \end{figure}
 

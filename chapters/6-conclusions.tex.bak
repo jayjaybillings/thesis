@@ -71,7 +71,7 @@ ontology would be good companion to the workflow ontology of Chapter
 The other reason why this was not covered by this work is that there is little
 debate within the community on what a workflow management system is. Workflow
 management systems are easily recognized. However, as discussed herein, there
-remains substantial debate on the definition of a scientific workflow; and thus
+remains substaintial debate on the definition of a scientific workflow; and thus
 it is the more pressing area where research is needed. To put this another way:
 while it would be valuable to have an ontology for workflow management systems,
 they are much more understood than the workflows they execute.
@@ -147,7 +147,7 @@ how those workflows could be subdivided. Second, it might also be possible to ha
 a degree of limited workflow interchangeability as well as interoperability
 since translation between compatible types of workflows would be possible and
 could determined on the fly. Third, it would be possible to develop an
-ever-expanding catalog (and possibly marketplace) of reusable workflows since
+ever-expanding catalogue (and possibly marketplace) of reusable workflows since
 the configuration learned by the AI/ML engine, as well as the newly generated
 code, could be packaged and shared.
 
@@ -187,7 +187,7 @@ of a greater journey, and that end really represents the start of a new
 beginning.
 
 The start of that journey for scientific workflows is not in building more
-highly threaded workflow management systems or better data formats. There are
+highly threaded worflow management systems or better data formats. There are
 enough of those. Instead, an understanding of the very definition of what a
 scientific workflow is and how and why they change is required. Only once the
 nature of workflows is understood, which hopefully will be aided in some small
