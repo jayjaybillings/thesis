@@ -55,7 +55,7 @@ across these broad domains are discussed extensively in Chapter
 \ref{ch:introduction}.) Real user workflows that are executed to realize this
 conceptual workflow link together many different workflow tools, scripts, and
 packages that translate, shape, convert, and otherwise manipulate input and
-output data between the steps. Each litle piece of software does its part to
+output data between the steps. Each little piece of software does its part to
 exchange and transmute the data in such a way that the other pieces can use it,
 and, therefore, creates an interoperable ecosystem.
 
@@ -67,7 +67,7 @@ exists that can handle every subject. Many workflow systems exist that cannot be
 changed but must still be used. On the contrary, interchangeable workflows
 would require that all the systems be rebuilt to meet ``interchangeability
 standards,'' which would increase the development burden and thereby decrease
-the probability of the developers supporting it.
+the probability of developers supporting it.
 
 \subsection{Practical Hangups and Examples}
 \label{practicality}
@@ -86,7 +86,7 @@ thermodynamicist would never get bored applying their trade to the study of
 programmers.} That is, someone must do the work to address these issues in real
 systems.
 
-Consider some of these issue that can be quickly and easily identified between
+Consider some of the issues that can be quickly and easily identified between
 Eclipse ICE versions 2.0 and 3.0. An existing system, such as Eclipse ICE 2.0,
 likely has a large number of features, requirements, bug fixes, and ---being completely
 honest--- ``hacks'' that were necessary to acheive desired functionality. These
@@ -118,20 +118,20 @@ structures in ICE 2.0 manage their own notifications. Observers can
 \textit{register} as listeners to a data structure in ICE 2.0, and that data
 structure will notify the observer when it changes. This is a very low-level
 implementation of the observer pattern that was designed
-to i) facilitate live updates in user interfaces, and ii) to manage dependencies
-between data structures asynchronously. The latter case made it possible for a
+to (i) facilitate live updates in user interfaces and (ii) asynchronously manage
+dependencies between data structures. The latter case made it possible for a
 data structure to change its own value in response to a change made to a second
 data structure that was observing what was modified in the user interface. Both
-data structures would then asynchronously update their own observers and the
+data structures would then asynchronously update their own observers, and the
 user interface would finally update dynamically. Such a complicated case as
 this is commonly used in ICE 2.0, and live updates to the user interface happen
 within every workflow task.
 
 RDF and OWL models in Apache Jena (and thus ICE 3.0) are available only at the
 highest level of the data model, and they are very coarse grained: They say only
-that the model changed, not what data structure in the model changed. This is a
-completely valid way to handle update notifications, but in contrast to the
-model of ICE 2.0 it requires a full reload of the data structures by clients,
+that the model changed not what data structure in the model changed. This is a
+completely valid way to handle update notifications; but in contrast to the
+model of ICE 2.0, it requires a full reload of the data structures by clients,
 including user interfaces. It has the distinct advantage of using far less
 resources than the ICE 2.0 model, namely that it does not launch separate
 threads for each update, but it comes at the possible cost of an expensive
@@ -163,24 +163,24 @@ following:
   \item Loops over all the files in the directory, deleting the unneeded ones
 \end{enumerate}
 This combined workflow campaign stiches some of the workflows together directly
-(steps 2--5), and splits the cycling and looping workflow to stage data.
+(steps 2--5) and splits the cycling and looping workflow to stage data.
 Conceptually, this is simple, but in practice it may require years of work.
 
 The remaining question of this work is whether or not the workflow ontology
 simplifies the execution of a workflow campaign, such as that described by
 this example; that is, does it help the workflow management systems charged with
 executing these workflows interoperate? The answer is that, in principle, it
-does because i) the ontology supports nested workflows by domain and range
-restrictions on the workflow description and task classes and ii) it provides a
+does because (i) the ontology supports nested workflows by domain and range
+restrictions on the workflow description and task classes and (ii) it provides a
 formal, common language for describing these different workflows that could not
 otherwise be described collectively. Together these two properties mean that
-any combination of workflows can be walked as a tree, split, and (re)-combined
-so long as the workflows (ontology instances) can understood by the ``client''
-workflow management systems.
+any combination of workflows can be walked as a tree, split, and be
+(re)-combined so long as the workflows (ontology instances) are understood by
+the ``client'' workflow management systems.
 
 An alternative answer to this question is from the practical perspective of \S
 \ref{practicality}: In so far as the workflow ontology can describe workflows
-for different systems perfectly, it only serves to prove how different they are.
+for different systems perfectly, it serves only to prove how different they are.
 Thus, practically, the answer is also that the ontology does not facilitate
 greater interoperability for workflows because it does not address the
 differences in software and present capabilities across workflow management
@@ -189,7 +189,7 @@ interfaces. This is a perspective that couples the execution of a workflow
 problem to the workflow management system made to solve it in the first place.
 
 How can these two positions be rectified? On the one hand, there is a promise of
-improved interoperability provided by machine readable formality and rigor. On
+improved interoperability provided by machine-readable formality and rigor. On
 the other, there is the very practical point that most workflow management
 systems today are in closed ecosystems.
 
@@ -197,11 +197,11 @@ The answer is that the workflow ontology should not be used for anything other
 than what it is: a means to formally describe, capture, and share information
 about workflows. It can fix only problems it was developed to solve. However, it
 can serve as an important decision-making tool and virtual road map for
-developers, designers, users, and project planners, while still remaining
-something that can be used by a select few tools to translate, decompose,
+developers, designers, users, and project planners, while remaining
+usable by a select few tools to translate, decompose,
 catalogue, and investigate workflows. The formality and machine readability
 has certain other implications that are are discussed in Chapter
-\ref{ch:conclusions}. Using the workflow ontology effectively requires a graded
+\ref{ch:conclusions}. Effectively using the workflow ontology requires a graded
 approach. The following sections provide instructions for several use cases of
 the workflow ontology applied to practical workflow problems.
 
@@ -215,7 +215,7 @@ these types. First, create a model of the workflow in question and visualize it
   \item If the workflow is linear, with no loops, cycles, and directed
   dependencies, then the workflow is a high-throughput workflow based on a
   directed acyclic graph.
-  \item If the workflow requires conditional behavior, and external (possibly
+  \item If the workflow requires conditional behavior and external (possibly
   human) feedback and exhibits state changes, then it may be a
   modeling and simulation or similar type of workflow.
   \item If the workflow requires only tasks with few concrete parameters,
@@ -264,17 +264,17 @@ be executed on the specified host.
 Alternatively, workflow campaigns can be created by simply subdividing
 workflows to create subworkflows that are executed on their own resources. This
 process works by identifying distinct branches of a workflow description and
-applying the ``hasHost'' the tasks of those branches. 
+applying the ``hasHost'' property to the tasks of those branches. 
 
 \section{Building an Interoperable Data, Provenance, and Workflow Metadata
-Management Systems}
+Management System}
 
 The previous discussion on interoperability (and much of this work at
 large) makes a very important assumption: it takes for granted that workflows
 and related artifacts can be easily shared. In practice, it may be very
 difficult to share real workflows and related artifacts because they are
 prohibitively large, exist on different networks, are stored in different
-layouts or orders (i.e.- endianness), or require special privileges for access.
+layouts or orders (i.e. endianness), or require special privileges for access.
 
 This section describes the Basic Artifact Tracking System (BATS) that
 was developed as part of this thesis work to address data management,
@@ -289,7 +289,7 @@ described by one or more ontologies. In the very specific case of Eclipse ICE
 the new Eclipse ICE data ontology mentioned in \S \ref{ice-data}.
 
 The discussion that follows focuses specifically on sharing provenance as a good
-working example, although as will be discussed this is virtually the same as
+working example, although as discussed this is virtually the same as
 storing the workflow data itself for a verbose and sophisticated provenance
 model.
 
@@ -300,22 +300,22 @@ model.
 This chapter discusses various considerations for interoperability for
 scientific workflows. This includes examining different facets of
 interoperability and interchangeability. It also provides a practical example of
-where two workflow systems written by the same authors can suffer from real
-world limitations in their programming that limit or prohibit interoperability.
-A detailed discussion how the workflow ontology can be used in a graded approach
-to study and make decisions about workflows is also provided. It illustrates a
-problem faced by many new tools but especially this one: Promising 
-opportunities would be available if tighter integration existed within the
-tooling stack. However, this situation limits only the usefulness of the
-workflow ontology as a programming tool; it still functions well as a tool for
-reasoning and discussing scientific workflows.
+where two workflow systems written by the same authors can suffer from
+real-world limitations in their programming that limit or prohibit
+interoperability. A detailed discussion of how the workflow ontology can be used
+in a graded approach to study and make decisions about workflows is also provided.
+It illustrates a problem faced by many new tools but especially this one:
+Promising opportunities would be available if tighter integration existed
+within the tooling stack. However, this situation limits only the usefulness of
+the workflow ontology as a programming tool; it still functions well as a tool
+for reasoning and discussing scientific workflows.
 
 The artifact tracking example provided in this chapter shows how ontological
-tools can be used to build new systems that are naturally interoperable, but
-also how this type of work requires us to examine our most basic assumptions
-about how and when information is shared. This example is provided to illustrate
-how new technologies can leverage the workflow ontology from the outset to
-solve new problems. 
+tools can be used to build new systems that are naturally interoperable, as
+well as how this type of work requires us to examine our most basic assumptions
+about how and when information is shared. This example is provided to
+illustrate how new technologies can leverage the workflow ontology from the
+outset to solve new problems.
 
 \baseInclude{pubs/billings-workflows-blockchain/conclusions}
 
