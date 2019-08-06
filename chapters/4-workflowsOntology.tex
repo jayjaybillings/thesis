@@ -14,7 +14,7 @@ manual labor or altogether impossible.
 The following sections present a workflow ontology, \S
 \ref{workflow-ont-section}, and the method used to develop it, \S
 \ref{workflow-ont-method}. Finally, concrete examples of the application of this
-ontology to workflows ```in the wild'' are provided to show its range as a
+ontology to workflows ``in the wild'' are provided to show its range as a
 decision-making and scientific computing tool.
 
 \section{Methodology}
@@ -58,7 +58,7 @@ systems, while allowing data to act as a kind of free variable, it is possible
 to describe the set of workflows completely.
 
 This is an empirical way of thinking about workflows that results in an emergent
-definition, versus a prescribed one. This method accepts the community will
+definition, versus a prescribed one. This method accepts that the community will
 move as it sees fit, but asserts (quite strongly) that progress can still be
 made by considering what exists collectively. The method is additive since
 any new workflow management system can be studied to learn about the
@@ -142,7 +142,7 @@ examples are provided in the appendices.
 \subsection{Basic File Move}
 \label{move-workflow}
 
-The first example is a very simple workflow showing the move of a file from
+The first example is a very simple workflow showing the movement of a file from
 one location to another. The workflow description executes a single task, which
 is specialized to move a file using a dedicated action type. The action type
 uses a Java class as its target, and it uses simple string values for file name
@@ -227,7 +227,7 @@ directly to properties in the ontology, with the jobs that are executed against
 them mapping to tasks and actions. This example illustrates how quickly even a
 simple workflow can become too hard to easily visualize in its entire scope, so
 figure \ref{pegasus-comparison} shows (i) a greatly slimmed down version of the
-worfklow graph that contains only the tasks compared against (ii) the original
+workflow graph that contains only the tasks compared against (ii) the original
 graph of the image from the Pegasus website.
 
 One important difference of the workflow ontology that is highlighted by
@@ -239,7 +239,7 @@ down to the initial task that has no dependencies against it. The opposite is
 true in part b), which shows the initial task with no dependencies generating
 output that is fed into the tasks where it is required. 
 
-Both views are correct: They are equally valid perspectives are akin
+Both views are correct: They are equally valid perspectives that are akin
 to saying that ``The donkey pulls the cart'' and ``The cart is pulled by the
 donkey.'' As long as the interpreter gets the point that the cart needs to move,
 there is not problem. This inverted graph phenomenon is also witnessed in
@@ -274,7 +274,7 @@ Eclipse ICE, covered extensively in Chapter \ref{ch:eclipse-ice},
 uses a somewhat unique view of workflows in its workflow model. Workflows
 in Eclipse ICE are executed as finite state machines that can include human
 feedback, conditional branching, and error conditions. This makes it possible
-to describe workflows in a conceptually abstract way using state machine
+to describe workflows in a conceptually-abstract way using state machine
 theory. It remains possible to model the execution flow of these state machines
 as directed acyclic graphs, which can be observed in Figure \ref{ice-workflow}.
 When cast into the workflow ontology, it is clear that the abstract workflow

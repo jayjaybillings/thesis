@@ -51,7 +51,7 @@ interchangeably herein.
 
 Classes define the properties (or in some definitions links to properties) and
 required relationships for objects. One special relationship is the
-\textit{Inheritance} relationship. This relationship indicates that one class
+\textit{inheritance} relationship. This relationship indicates that one class
 must have ---inherit--- the properties and relationships of another class,
 called its ``parent.'' Classes that inherit from other classes are said to be
 subclasses of their parent ``base'' class.
@@ -83,7 +83,7 @@ this page.
 \label{case-study}
 
 It is straightforward to create an educational example of an ontology that is
-also simple enough to be easily understood. The following example below
+also simple enough to be easily understood. The following example
 considers the members of a thesis committee for which all six of the following
 statements are true:
 
@@ -95,7 +95,6 @@ statements are true:
 \item Mike Jr. is Mike's son.                       %5
 \item Mike and John both play guitar.               %6
 \end{enumerate}
-
 The goal of the exercise is to encode all six of these statements into a single,
 formal ontology that is easily understood by the reader.
 
@@ -216,14 +215,14 @@ relationships and the ontological properties to fully represent the facts
 and removes the representational problems found in Figure \ref{tax-2}. This
 includes Mike's multiple roles and parental status. Professorial rank is
 captured with properties instead of through direct inheritance. Note that the
-green line in this figure has no special significance, but its color is useful
+green dashed line in this figure has no special significance, but its color is useful
 to show its path next to the black lines.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/tc-ont-instances.png}
 \caption{Instance graph that uses the ontology in Figure \ref{ont-classes}
-to encode the example in \S \ref{case-study}. The green line is not of
+to encode the example in \S \ref{case-study}. The green dashed line is not of
 ontological significance but is colored separately to show the full connection.}
 \label{ont-instances}
 \end{figure}
@@ -317,7 +316,7 @@ intervention it is very hard to establish the origin of data for which there are
 numerous distributed triples, unless one of those triples provides such a
 description. Within the current graph, resource descriptions can be segmented
 for clarity. If a statement such as ``Jay Jay Billings works at Oak Ridge
-National Laboratory, a DOE facility,'' is made, instead of writing a single
+National Laboratory, a DOE facility'' is made, instead of writing a single
 TURTL triple that captures all the facts, it could be written as
 \begin{lstlisting}[language=TURTL] <#JayJayBillings>
     worksAt <#ORNL>.
